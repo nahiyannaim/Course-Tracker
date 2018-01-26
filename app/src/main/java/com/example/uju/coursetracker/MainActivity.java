@@ -14,12 +14,6 @@ public class MainActivity extends AppCompatActivity {
         //Nahiyan's comment
         //FRANCIS IS DA SHIII
         //Test
-<<<<<<< HEAD
-        //uju's new branch
-=======
-        //TESTING
->>>>>>> 13c9ff3f26ccf9e624594e9ee4f36b290d8836e0
 
-//wooooo lol 
     }
 }
