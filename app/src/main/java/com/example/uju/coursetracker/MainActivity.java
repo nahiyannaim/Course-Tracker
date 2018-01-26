@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         //Nahiyan's comment
         //FRANCIS IS DA SHIII
 <<<<<<< HEAD
-        
+            
 =======
         //PUSH
 >>>>>>> ff1f33448c888314a49f93a75986e2d86f3d6a82
