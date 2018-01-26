@@ -14,8 +14,6 @@ public class MainActivity extends AppCompatActivity {
         //Nahiyan's comment
         //FRANCIS IS DA SHIII
         //Test
-        //TESTING AGAIN
-        //PUSHING TO IT1
 //wooooo lol 
     }
 }
