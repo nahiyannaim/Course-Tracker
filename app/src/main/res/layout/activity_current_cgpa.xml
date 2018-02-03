@@ -7,17 +7,20 @@
     tools:context="com.example.uju.coursetracker.CurrentCGPA">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/numCoursesComplInput"
         android:layout_width="110dp"
         android:layout_height="63dp"
         android:ems="10"
         android:inputType="number"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintHorizontal_bias="0.795"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintVertical_bias="0.198" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -30,7 +33,7 @@
         android:id="@+id/textView2"
         android:layout_width="293dp"
         android:layout_height="119dp"
-        android:text="Number of Completed Courses:"
+        android:text="@string/numCompleteCoursesText"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="30sp"
@@ -39,13 +42,13 @@
         app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.17" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="389dp"
         android:layout_height="67dp"
-        android:text="Select your known Grades:"
+        android:text="@string/knownGradesText"
         android:textAlignment="viewStart"
         android:textAllCaps="true"
         android:textColor="@android:color/black"
@@ -55,5 +58,19 @@
         app:layout_constraintHorizontal_bias="0.227"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.363" />
+        app:layout_constraintVertical_bias="0.404" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="433dp"
+        android:layout_height="72dp"
+        android:text="Calculating your Current CGPA"
+        android:textAlignment="viewStart"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.021" />
 </android.support.constraint.ConstraintLayout>
