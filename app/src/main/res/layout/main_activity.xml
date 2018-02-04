@@ -12,12 +12,7 @@
         android:background="@drawable/bk1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Course Tracker"
-            android:textSize="24sp"
-            />
+        
     </LinearLayout>
 
     <android.support.design.widget.NavigationView
