@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dLayout.addDrawerListener(dToggle);
         dToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        NavigationView navigationView = (NavigationView)findViewById(R.id.navigation_view);
+        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_v);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
