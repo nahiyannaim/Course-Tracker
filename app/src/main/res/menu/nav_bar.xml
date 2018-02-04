@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu"
+        android:title="Menu">
+    </item>>
+
+    <item android:id="@+id/cgpaCalc"
+        android:title="CGPA Calculator">
+    </item>>
+
+    <item android:id="@+id/cgpaPred"
+        android:title="CGPA Predictor">
+    </item>>
+    <item android:id="@+id/sched"
+        android:title="Schedule">
+    </item>>
+    <item android:id="@+id/crs"
+        android:title="Courses">
+    </item>>
+    <item android:id="@+id/prog"
+        android:title="Progress">
+    </item>>
+    <item android:id="@+id/loc"
+        android:title="Location">
+    </item>>
+
+
+</menu>
