@@ -2,27 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/menu"
-        android:title="Menu">
+        android:title="Menu" >
     </item>>
 
     <item android:id="@+id/cgpaCalc"
-        android:title="CGPA Calculator">
+        android:title="CGPA Calculator" android:icon="@drawable/ic_calculator">
     </item>>
 
     <item android:id="@+id/cgpaPred"
-        android:title="CGPA Predictor">
+        android:title="CGPA Predictor" android:icon="@drawable/ic_eye">
     </item>>
     <item android:id="@+id/sched"
-        android:title="Schedule">
+        android:title="Schedule" android:icon="@drawable/ic_calendar">
     </item>>
     <item android:id="@+id/crs"
-        android:title="Courses">
+        android:title="Courses" android:icon="@drawable/ic_list">
     </item>>
     <item android:id="@+id/prog"
-        android:title="Progress">
+        android:title="Progress" android:icon="@drawable/ic_stats_dots">
     </item>>
     <item android:id="@+id/loc"
-        android:title="Location">
+        android:title="Location" android:icon="@drawable/ic_location">
     </item>>
 
 
