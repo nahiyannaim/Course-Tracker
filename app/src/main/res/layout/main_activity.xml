@@ -29,14 +29,7 @@
         android:layout_gravity="start">
     </android.support.design.widget.NavigationView>
 
-    <Button
-        android:id="@+id/goToCurrButton"
-        android:layout_width="288dp"
-        android:layout_height="102dp"
-        android:onClick="sendMessage"
-        android:text="Go To Current CGPA page"
-        android:textSize="30sp"
-        />
+
 
 </android.support.v4.widget.DrawerLayout>
 
