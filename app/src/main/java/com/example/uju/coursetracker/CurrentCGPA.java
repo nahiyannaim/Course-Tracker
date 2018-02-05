@@ -16,14 +16,7 @@ public class CurrentCGPA extends AppCompatActivity {
         setContentView(R.layout.activity_current_cgpa);
 
 
-        //This section is to only create a navigation between home page and currCGPA page Delete it after getting the real home page
-        Button but2 = (Button) findViewById(R.id.toResultsButton);
 
-        but2.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                startActivity(new Intent(CurrentCGPA.this, Resultspage.class));
-            }
-        });
 
 
 
