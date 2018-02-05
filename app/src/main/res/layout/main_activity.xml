@@ -16,20 +16,7 @@
     </LinearLayout>
 
 
-    <Button
-        android:id="@+id/goToCurrButton"
-        android:layout_width="288dp"
-        android:layout_height="102dp"
-        android:onClick="sendMessage"
-        android:text="Go To Current CGPA page"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.697" />
 
-</android.support.constraint.ConstraintLayout>
 
     <android.support.design.widget.NavigationView
         android:layout_width="match_parent"
@@ -41,6 +28,15 @@
         app:menu="@menu/nav_bar"
         android:layout_gravity="start">
     </android.support.design.widget.NavigationView>
+
+    <Button
+        android:id="@+id/goToCurrButton"
+        android:layout_width="288dp"
+        android:layout_height="102dp"
+        android:onClick="sendMessage"
+        android:text="Go To Current CGPA page"
+        android:textSize="30sp"
+        />
 
 </android.support.v4.widget.DrawerLayout>
 
