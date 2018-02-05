@@ -1,10 +1,6 @@
 <resources>
     <string name="app_name">courseTracker</string>
-    <string name="predictedcgpa">Predicted</string>
-    <string name="predictedgrades">Predicted Grades for:</string>
-    <string name="course2">Course 2:</string>
-    <string name="course1">Course 1:</string>
-    <string name="predictedcgpaphrase">Your predicted CGPA based on predicted grades is:</string>
+
 
 
 
