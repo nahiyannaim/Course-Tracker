@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">courseTracker</string>
+
+  
     <string name="numCompleteCoursesText">Number of Completed Courses:</string>
     <string name="knownGradesText">Select your known Grades:</string>
 
@@ -15,5 +16,10 @@
         <item>F</item>
     </string-array>
 
+
+
+    <string name="app_name">Course Tracker</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
 </resources>
