@@ -48,11 +48,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (id) {
 
             case R.id.cgpaCalc:
+                Toast.makeText(this, "CGPA Calculator", Toast.LENGTH_SHORT).show();
                 Intent calc = new Intent(MainActivity.this, CurrentCGPA.class);
                 startActivity(calc);
                 break;
 
             case R.id.cgpaPred:
+                Toast.makeText(this, "CGPA Predictor", Toast.LENGTH_SHORT).show();
                 Intent res = new Intent(MainActivity.this, Resultspage.class);
                 startActivity(res);
                 break;
