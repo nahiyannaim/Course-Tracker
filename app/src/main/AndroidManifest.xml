@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".CurrentCGPA">
-
             /////////////////////////////////////////////////////////////////////
             // This section is required for the back button on top of currCGPA page
             android:parentActivityName=".MainActivity">
@@ -26,8 +25,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
             //////////////////////////////////////////////////////////////////////
-
         </activity>
+        <activity android:name=".Resultspage"></activity>
     </application>
 
 </manifest>
