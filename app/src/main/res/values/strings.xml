@@ -2,4 +2,18 @@
     <string name="app_name">courseTracker</string>
     <string name="numCompleteCoursesText">Number of Completed Courses:</string>
     <string name="knownGradesText">Select your known Grades:</string>
+
+
+    <string-array name="spinner1_array">
+        <item>A+</item>
+        <item>A</item>
+        <item>B+</item>
+        <item>B</item>
+        <item>C+</item>
+        <item>C</item>
+        <item>D</item>
+        <item>F</item>
+    </string-array>
+
+
 </resources>

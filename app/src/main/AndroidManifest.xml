@@ -18,13 +18,14 @@
         </activity>
         <activity android:name=".CurrentCGPA">
 
+            /////////////////////////////////////////////////////////////////////
             // This section is required for the back button on top of currCGPA page
             android:parentActivityName=".MainActivity">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
-            ////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////
 
         </activity>
     </application>
