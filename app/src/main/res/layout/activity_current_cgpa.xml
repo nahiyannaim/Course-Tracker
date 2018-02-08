@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/numCoursesComplInput"
-        android:layout_width="110dp"
-        android:layout_height="63dp"
+        android:layout_width="102dp"
+        android:layout_height="61dp"
         android:ems="10"
         android:inputType="number"
         android:selectAllOnFocus="false"

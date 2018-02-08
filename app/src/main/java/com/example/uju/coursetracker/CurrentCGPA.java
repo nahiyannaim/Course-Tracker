@@ -14,7 +14,7 @@ import org.w3c.dom.Text;
 
 public class CurrentCGPA extends AppCompatActivity {
 
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
