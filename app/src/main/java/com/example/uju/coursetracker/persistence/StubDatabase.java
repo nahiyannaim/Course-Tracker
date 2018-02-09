@@ -11,7 +11,7 @@ public class StubDatabase
 
     private ArrayList<Course> courses;
 
-    public DataAccessStub(String dbName)
+    public StubDatabase(String dbName)
     {
         this.dbName = dbName;
     }
