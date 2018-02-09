@@ -24,23 +24,23 @@ public class StubDatabase
 		courses = new ArrayList<Course>();
 
 		//Comp Sci
-		course = new Course("COMP3010", "Distributed Computing");
+		course = new Course("COMP3010", "Distributed Computing","C");
 		courses.add(course);
-		course = new Course("COMP3020", "Human-Computer Interaction");
+		course = new Course("COMP3020", "Human-Computer Interaction","A");
 		courses.add(course);
-		course = new Course("COMP3350", "Software Development");
+		course = new Course("COMP3350", "Software Development","A+");
 		courses.add(course);
-		course = new Course("COMP3380", "Introduction To Databases");
+		course = new Course("COMP3380", "Introduction To Databases","A+");
 		courses.add(course);
 
         //Electives
-        course = new Course("FMLY1000", "Introduction To Family Studies");
+        course = new Course("FMLY1000", "Introduction To Family Studies", "A+");
         courses.add(course);
-        course = new Course("MATH1500", "Calculus 1");
+        course = new Course("MATH1500", "Calculus 1","A");
         courses.add(course);
-        course = new Course("MATH1700", "Calculus 2");
+        course = new Course("MATH1700", "Calculus 2","A+");
         courses.add(course);
-        course = new Course("WOMN1500", "Women And Gender Studies");
+        course = new Course("WOMN1500", "Women And Gender Studies","D");
         courses.add(course);
 
 
