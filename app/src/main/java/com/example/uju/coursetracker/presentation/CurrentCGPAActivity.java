@@ -1,4 +1,4 @@
-package com.example.uju.coursetracker;
+package com.example.uju.coursetracker.presentation;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-public class CurrentCGPA extends AppCompatActivity {
+import com.example.uju.coursetracker.R;
+
+public class CurrentCGPAActivity extends AppCompatActivity {
 
 
     @Override
@@ -21,14 +23,7 @@ public class CurrentCGPA extends AppCompatActivity {
         setContentView(R.layout.activity_current_cgpa);
 
 
-        //This section is to only create a navigation between home page and currCGPA page Delete it after getting the real home page
-        Button but2 = (Button) findViewById(R.id.toResultsButton);
 
-        but2.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                startActivity(new Intent(CurrentCGPA.this, Resultspage.class));
-            }
-        });
 
 
 
