@@ -1,18 +1,16 @@
-package com.example.uju.coursetracker;
+package com.example.uju.coursetracker.application;
 
-import android.app.Fragment;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
-import android.widget.Button;
-import android.view.View;
 import android.content.Intent;
-import android.support.v4.view.GravityCompat;
+
+import com.example.uju.coursetracker.presentation.CurrentCGPAActivity;
+import com.example.uju.coursetracker.R;
+import com.example.uju.coursetracker.presentation.ResultspageActivity;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
       
 
     }
-
+//test
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(dToggle.onOptionsItemSelected(item)){
@@ -48,14 +46,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (id) {
 
             case R.id.cgpaCalc:
-                Toast.makeText(this, "CGPA Calculator", Toast.LENGTH_SHORT).show();
-                Intent calc = new Intent(MainActivity.this, CurrentCGPA.class);
+                Intent calc = new Intent(MainActivity.this, CurrentCGPAActivity.class);
                 startActivity(calc);
                 break;
 
             case R.id.cgpaPred:
-                Toast.makeText(this, "CGPA Predictor", Toast.LENGTH_SHORT).show();
-                Intent res = new Intent(MainActivity.this, Resultspage.class);
+                Intent res = new Intent(MainActivity.this, ResultspageActivity.class);
                 startActivity(res);
                 break;
 

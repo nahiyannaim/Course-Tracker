@@ -1,9 +1,11 @@
-package com.example.uju.coursetracker;
+package com.example.uju.coursetracker.presentation;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Resultspage extends AppCompatActivity {
+import com.example.uju.coursetracker.R;
+
+public class ResultspageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package com.example.uju.coursetracker;
+package com.example.uju.coursetracker.presentation;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-public class CurrentCGPA extends AppCompatActivity {
+import com.example.uju.coursetracker.R;
+
+public class CurrentCGPAActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
