@@ -3,11 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+<<<<<<< HEAD
       <module fileurl="file://C:\Users\Nahiyan Naim\Downloads\courseTracker\app\app.iml" filepath="C:\Users\Nahiyan Naim\Downloads\courseTracker\app\app.iml" />
       <module fileurl="file://C:\Users\Christian\Desktop\MainProj\courseTracker\app\app.iml" filepath="C:\Users\Christian\Desktop\MainProj\courseTracker\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/courseTracker.iml" filepath="$PROJECT_DIR$/courseTracker.iml" />
       <module fileurl="file://C:\Users\Christian\Desktop\MainProj\courseTracker\courseTracker.iml" filepath="C:\Users\Christian\Desktop\MainProj\courseTracker\courseTracker.iml" />
       <module fileurl="file://C:\Users\Nahiyan Naim\Downloads\courseTracker\courseTracker.iml" filepath="C:\Users\Nahiyan Naim\Downloads\courseTracker\courseTracker.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/courseTracker.iml" filepath="$PROJECT_DIR$/courseTracker.iml" />
+>>>>>>> d1a7c5be49a2361698d1b523cecb2d8aa87de123
     </modules>
   </component>
 </project>
