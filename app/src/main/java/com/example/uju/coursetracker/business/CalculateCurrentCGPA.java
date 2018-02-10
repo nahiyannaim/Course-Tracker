@@ -8,10 +8,12 @@ import java.util.ArrayList;
 public class CalculateCurrentCGPA
 {
     //This is where we will calculate the current CGPA based on the already completed courses of the user
-    public void double calculate(ArrayList<Course> completedCoursesList)
+    public static double calculate(ArrayList<Course> completedCoursesList)
     {
         String temp = "";
         double totalPoints = 0.0;
+        double currCGPA;
+        boolean flag = false;
 
         for(int i=0; i< completedCoursesList.size(); i++)
         {
@@ -51,13 +53,19 @@ public class CalculateCurrentCGPA
             }
             else
             {
-                System.out.println("Invalid Grade")
+                System.out.println("Invalid Grade");
+                flag = true;
             }
 
 
         }
 
-        return totalPoints / (completedCoursesList.size());
+        if(!flag)
+            currCGPA = totalPoints / (completedCoursesList.size()) ;
+        else
+            currCGPA = -1;
+
+        return currCGPA;
 
     }
 }
