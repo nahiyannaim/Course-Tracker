@@ -12,13 +12,14 @@ public class BreakdownTest extends TestCase
     {
         System.out.println("Starting Object Test: testBreakdown");
 
-        Breakdown breakdown = new Breakdown("Math 1500", "Term Test 2", 0.25);
-        Breakdown breakdown2 =  breakdown;
+        Breakdown breakdown = new Breakdown("GEOG 1280", "Term Test 2", 0.25);
 
         assertNotNull(breakdown);
-        assertEquals("Math 1500", breakdown.getCourseID());
+        assertEquals("GEOG 1280", breakdown.getCourseID());
         assertEquals("Term Test 2", breakdown.getBreakdownName());
         assertEquals(0.25, breakdown.getBreakdownPercentage());
+
+        Breakdown breakdown2 =  breakdown;
         assertSame(breakdown, breakdown2);
 
         System.out.println("Finished Test");
