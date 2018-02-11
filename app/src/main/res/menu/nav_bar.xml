@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:id="@+id/crs"
+        android:title="My Courses" android:icon="@drawable/ic_list">
+    </item>>
+
     <item android:id="@+id/cgpaCalc"
         android:title="CGPA Calculator" android:icon="@drawable/ic_calculator">
     </item>>
@@ -11,14 +15,11 @@
     <item android:id="@+id/sched"
         android:title="Schedule" android:icon="@drawable/ic_calendar">
     </item>>
-    <item android:id="@+id/crs"
-        android:title="Courses" android:icon="@drawable/ic_list">
-    </item>>
     <item android:id="@+id/prog"
         android:title="Progress" android:icon="@drawable/ic_stats_dots">
     </item>>
-    <item android:id="@+id/loc"
-        android:title="Location" android:icon="@drawable/ic_location">
+    <item android:id="@+id/about"
+        android:title="About" android:icon="@drawable/ic_info">
     </item>>
 
 
