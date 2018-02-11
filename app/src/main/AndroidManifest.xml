@@ -16,7 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".presentation.CurrentCGPAActivity">
             /////////////////////////////////////////////////////////////////////
             // This section is required for the back button on top of currCGPA page
@@ -27,7 +26,12 @@
                 android:value=".application.MainActivity" />
             /////////////////////////////////////////////////////////////////////
         </activity>
-
+        <activity android:name=".presentation.ResultspageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".application.MainActivity" />
+        </activity>
+        <activity android:name=".presentation.MyCoursesActivity"></activity>
     </application>
 
 </manifest>
