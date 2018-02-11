@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public class PredictNextCGPA
 {
     //This is where we will predict the next CGPA of the user based on currentCGPA AND grades in current semester courses
+    // totalCoursesCompleted is the number of courses completed already EXCLUDING current semester
+
     public static double calculate(ArrayList<Course> currentCoursesList, double currentCGPA, int totalCoursesCompleted)
     {
         String temp = "";
@@ -15,7 +17,7 @@ public class PredictNextCGPA
         double prediction;
         boolean flag = false;
 
-        if(currentCGPA > 0 && totalCoursesCompleted > 0)
+        if(currentCGPA >= 0 && currentCGPA <= 4.5 && totalCoursesCompleted >= 0)
         {
             points = currentCGPA * totalCoursesCompleted;
 
