@@ -15,55 +15,65 @@ public class CalculateCurrentCGPA
         double currCGPA;
         boolean flag = false;
 
-        for(int i=0; i< completedCoursesList.size(); i++)
+        if(completedCoursesList != null && completedCoursesList.size() > 0 && completedCoursesList.get(0) != null)
         {
-            temp = (completedCoursesList.get(i)).getGrade();
+            for (int i = 0; i < completedCoursesList.size(); i++)
+            {
+                temp = (completedCoursesList.get(i)).getGrade();
 
-            if(temp.equals("A+"))
-            {
-                totalPoints += 4.5;
-            }
-            else if(temp.equals("A"))
-            {
-                totalPoints += 4.0;
-            }
-            else if(temp.equals("B+"))
-            {
-                totalPoints += 3.5;
-            }
-            else if(temp.equals("B"))
-            {
-                totalPoints += 3.0;
-            }
-            else if(temp.equals("C+"))
-            {
-                totalPoints += 2.5;
-            }
-            else if(temp.equals("C"))
-            {
-                totalPoints += 2.0;
-            }
-            else if(temp.equals("D"))
-            {
-                totalPoints += 1.0;
-            }
-            else if(temp.equals("F"))
-            {
-                totalPoints += 0.0;
-            }
-            else
-            {
-                System.out.println("Invalid Grade");
-                flag = true;
-            }
+                if (temp.equals("A+"))
+                {
+                    totalPoints += 4.5;
+                }
+                else if (temp.equals("A"))
+                {
+                    totalPoints += 4.0;
+                }
+                else if (temp.equals("B+"))
+                {
+                    totalPoints += 3.5;
+                }
+                else if (temp.equals("B"))
+                {
+                    totalPoints += 3.0;
+                }
+                else if (temp.equals("C+"))
+                {
+                    totalPoints += 2.5;
+                }
+                else if (temp.equals("C"))
+                {
+                    totalPoints += 2.0;
+                }
+                else if (temp.equals("D"))
+                {
+                    totalPoints += 1.0;
+                }
+                else if (temp.equals("F"))
+                {
+                    totalPoints += 0.0;
+                }
+                else
+                {
+                    flag = true;
+                }
 
-
+            }//for
+        }
+        else
+        {
+            flag = true;
         }
 
+
         if(!flag)
-            currCGPA = totalPoints / (completedCoursesList.size()) ;
+        {
+            currCGPA = totalPoints / (completedCoursesList.size());
+        }
         else
-            currCGPA = -1;
+        {
+            currCGPA = -1.0;
+        }
 
         return currCGPA;
 
