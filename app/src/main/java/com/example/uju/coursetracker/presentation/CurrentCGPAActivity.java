@@ -13,6 +13,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import com.example.uju.coursetracker.R;
+import com.example.uju.coursetracker.application.MainActivity;
 
 public class CurrentCGPAActivity extends AppCompatActivity {
 
@@ -23,24 +24,22 @@ public class CurrentCGPAActivity extends AppCompatActivity {
         setContentView(R.layout.activity_current_cgpa);
 
 
+        Button button1 = findViewById(R.id.button);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToPredictedCGPA();
 
-
-
-
-//////////////////////////////////////////////////////////////
-
-        Spinner spinner = (Spinner) findViewById(R.id.spinner1);
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.spinner1_array, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-//////////////////////////////////////////////////////////////////
-
-
+            }
+        });
     }
+    private void goToPredictedCGPA() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+
+
 
 
 }
