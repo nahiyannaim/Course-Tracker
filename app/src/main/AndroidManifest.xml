@@ -28,11 +28,6 @@
             /////////////////////////////////////////////////////////////////////
         </activity>
 
-        <activity android:name=".presentation.ResultspageActivity">
-            <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".application.MainActivity" />
-        </activity>
     </application>
 
 </manifest>

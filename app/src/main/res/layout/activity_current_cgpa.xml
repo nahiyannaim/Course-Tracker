@@ -6,22 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.uju.coursetracker.presentation.CurrentCGPAActivity">
 
-    <EditText
-        android:id="@+id/numCoursesComplInput"
-        android:layout_width="102dp"
-        android:layout_height="61dp"
-        android:ems="10"
-        android:inputType="number"
-        android:selectAllOnFocus="false"
-        android:singleLine="false"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.795"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.198" />
-
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -30,87 +14,106 @@
         app:layout_constraintGuide_begin="20dp" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="293dp"
-        android:layout_height="119dp"
-        android:text="@string/numCompleteCoursesText"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="30sp"
+        android:id="@+id/textView"
+        android:layout_width="179dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="774dp"
+        android:layout_marginEnd="117dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/CGPAstring"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editText"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="761dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="17dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="223dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="628dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="94dp"
+        android:text="@string/numCompleteCoursesText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editText2"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="626dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="89dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="389dp"
-        android:layout_height="67dp"
-        android:text="@string/knownGradesText"
-        android:textAlignment="viewStart"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
-        android:textSize="26sp"
+        android:layout_width="217dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="520dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/gradesForCourses"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.227"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.404" />
+        app:layout_constraintEnd_toStartOf="@+id/editText4"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="433dp"
-        android:layout_height="72dp"
-        android:text="Calculating your Current CGPA"
-        android:textAlignment="viewStart"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.021" />
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="60dp"
-        android:layout_height="71dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.432"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.494" />
-
-    <TextView
-        android:id="@+id/textView6"
+    <EditText
+        android:id="@+id/editText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Course 1"
-        android:textSize="30sp"
-        android:textStyle="italic"
+        android:layout_marginBottom="518dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="62dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.486" />
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
-    <TextView
-        android:id="@+id/textView7"
+    <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Course 2"
-        android:textSize="30sp"
-        android:textStyle="italic"
+        android:layout_marginBottom="406dp"
+        android:layout_marginEnd="174dp"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/diffCGPA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.573" />
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
 </android.support.constraint.ConstraintLayout>
