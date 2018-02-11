@@ -77,6 +77,7 @@ public class PredictNextCGPA
         if(!flag)
         {
             prediction = points / ( currentCoursesList.size() + totalCoursesCompleted);
+            prediction  = Math.round(prediction*100.0)/100.0;
         }
         else
         {
