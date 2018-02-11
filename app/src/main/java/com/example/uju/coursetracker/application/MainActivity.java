@@ -8,10 +8,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.content.Intent;
 
-import com.example.uju.coursetracker.presentation.CurrentCGPAActivity;
 import com.example.uju.coursetracker.R;
+import com.example.uju.coursetracker.presentation.CurrentCGPAActivity;
 import com.example.uju.coursetracker.presentation.MyCoursesActivity;
-import com.example.uju.coursetracker.presentation.ResultspageActivity;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.cgpaPred:
-                Intent res = new Intent(MainActivity.this, ResultspageActivity.class);
+                Intent res = new Intent(MainActivity.this, CurrentCGPAActivity.class);
                 startActivity(res);
                 break;
 
