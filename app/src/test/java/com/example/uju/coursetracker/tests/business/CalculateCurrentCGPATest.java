@@ -40,14 +40,14 @@ public class CalculateCurrentCGPATest extends TestCase
         ArrayList<Course> list = new ArrayList();
         double result;
 
-        list.add(new Course("COMP 1010", "Intro to CS", "B+"));
+        list.add(new Course("COMP 1010", "Intro to CS", "A+"));
         list.add(new Course("COMP 1020", "Advanced CS", "A"));
-        list.add(new Course("PHYS 1500", "Mechanics", "C"));
-        list.add(new Course("CHEM 1300", "Organic Chemistry", "C+"));
-        list.add(new Course("MATH 1700", "Advanced Calculus", "D"));
-        list.add(new Course("FMLY 1000", "Family Development", "F"));
-        list.add(new Course("GEOG 1280", "Human Geography", "B"));
-        list.add(new Course("Math 1500", "Intro Calculus", "A+"));
+        list.add(new Course("PHYS 1500", "Mechanics", "B+"));
+        list.add(new Course("CHEM 1300", "Organic Chemistry", "B"));
+        list.add(new Course("MATH 1700", "Advanced Calculus", "C+"));
+        list.add(new Course("FMLY 1000", "Family Development", "C"));
+        list.add(new Course("GEOG 1280", "Human Geography", "D"));
+        list.add(new Course("Math 1500", "Intro Calculus", "F"));
 
         result = CalculateCurrentCGPA.calculate(list);
 
