@@ -11,13 +11,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp">
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:id="@+id/textView8"
-            android:layout_width="165dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/mycourse_title"
+            android:textAlignment="center"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,20 +28,23 @@
         <ListView
             android:id="@+id/CompletedCourseList"
             android:layout_width="match_parent"
-            android:layout_height="206dp">
+            android:layout_height="355dp">
 
         </ListView>
+
+        <Button
+            android:id="@+id/CalculateCGPAButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_light"
+            android:text="Calculate my current CGPA"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
         <ListView
             android:id="@+id/CurrentCourseList"
             android:layout_width="match_parent"
             android:layout_height="194dp" />
-
-        <Button
-            android:id="@+id/CalculateCGPAButton"
-            android:layout_width="172dp"
-            android:layout_height="wrap_content"
-            android:text="Calculate my CGPA" />
 
     </LinearLayout>
 

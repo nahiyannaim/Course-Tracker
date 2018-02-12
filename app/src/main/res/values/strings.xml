@@ -21,6 +21,6 @@
 
     <string name="fatalError">Fatal error</string>
     <string name="warning">Warning</string>
-    <string name="mycourse_title">My Course</string>
+    <string name="mycourse_title">My Completed Courses: </string>
 
 </resources>

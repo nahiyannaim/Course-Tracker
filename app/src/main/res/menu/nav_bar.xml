@@ -12,15 +12,5 @@
     <item android:id="@+id/cgpaPred"
         android:title="CGPA Predictor" android:icon="@drawable/ic_eye">
     </item>>
-    <item android:id="@+id/sched"
-        android:title="Schedule" android:icon="@drawable/ic_calendar">
-    </item>>
-    <item android:id="@+id/prog"
-        android:title="Progress" android:icon="@drawable/ic_stats_dots">
-    </item>>
-    <item android:id="@+id/about"
-        android:title="About" android:icon="@drawable/ic_info">
-    </item>>
-
 
 </menu>
