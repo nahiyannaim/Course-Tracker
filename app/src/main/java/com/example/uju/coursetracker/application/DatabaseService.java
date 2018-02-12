@@ -1,51 +1,38 @@
 package com.example.uju.coursetracker.application;
 
-import com.example.uju.coursetracker.persistence.DataAccess;
-import com.example.uju.coursetracker.persistence.DataAccessObject;
-import com.example.uju.coursetracker.presentation.MainActivity;
+import com.example.uju.coursetracker.persistence.StubDatabase;
 
 public class DatabaseService
 {
-    private static DataAccess dataAccessService = null;
+    private static StubDatabase stubDatabaseService = null;
 
-    public static DataAccess createDataAccess(String dbName)
+    public static StubDatabase createDataAccess(String dbName)
     {
-        if (dataAccessService == null)
+        if (stubDatabaseService == null)
         {
-            dataAccessService = new DataAccessObject(dbName);
-            dataAccessService.open(MainActivity.getDBPathName());
+            stubDatabaseService = new StubDatabase(dbName);
+            stubDatabaseService.open(dbName);
         }
-        return dataAccessService;
+        return stubDatabaseService;
     }
 
-    public static DataAccess createDataAccess(DataAccess alternateDataAccessService)
+    public static StubDatabase getDataAccess(String dbName)
     {
-        if (dataAccessService == null)
-        {
-            dataAccessService = alternateDataAccessService;
-            dataAccessService.open(MainActivity.getDBPathName());
-        }
-
-        return dataAccessService;
-    }
-
-    public static DataAccess getDataAccess(String dbName)
-    {
-        if (dataAccessService == null)
+        if (stubDatabaseService == null)
         {
             System.out.println("Connection to data access has not been established.");
             System.exit(1);
         }
-        return dataAccessService;
+        return stubDatabaseService;
     }
 
     public static void closeDataAccess()
     {
-        if (dataAccessService != null)
+        if (stubDatabaseService != null)
         {
-            dataAccessService.close();
+            stubDatabaseService.close();
         }
-        dataAccessService = null;
+        stubDatabaseService = null;
     }
 }
 

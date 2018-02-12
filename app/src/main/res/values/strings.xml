@@ -51,5 +51,7 @@
     <string name="navButton3">Predict Next CGPA</string>
     <string name="navButton4">My Reminders</string>
 
+    <string name="mycourse_title">My Course</string>
+
 </resources>
 
