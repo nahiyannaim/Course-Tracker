@@ -1,6 +1,7 @@
 package com.example.uju.coursetracker.business;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import com.example.uju.coursetracker.application.MainActivity;
 import com.example.uju.coursetracker.application.DatabaseService;
@@ -22,60 +23,16 @@ public class AccessCourses
         currentCourse = 0;
     }
 
-    public String getCourses(List<Course> courses)
+    public String getCourses(List<Course> courses, String key)
     {
         courses.clear();
-        return dataAccess.getCourseSequential(courses);
+        return dataAccess.getCourseSequential(courses, key);
     }
 
-    public Course getSequential()
+    public ArrayList<Course> getOldCourses()
     {
-        String result = null;
-        if (courses == null)
-        {
-            result = dataAccess.getCourseSequential(courses);
-            currentCourse = 0;
-        }
-        if (currentCourse < courses.size())
-        {
-            course = (Course) courses.get(currentCourse);
-            currentCourse++;
-        }
-        else
-        {
-            courses = null;
-            course = null;
-            currentCourse = 0;
-        }
-        return course;
-    }
-
-    public Course getRandom(String courseID)
-    {
-        courses = dataAccess.getCourseRandom(new Course(courseID));
-        currentCourse = 0;
-        if (currentCourse < courses.size())
-        {
-            course = (Course) courses.get(currentCourse);
-            currentCourse++;
-        }
-        else
-        {
-            courses = null;
-            course = null;
-            currentCourse = 0;
-        }
-        return course;
-    }
-
-    public String insertCompletedCourse(Course currentCourse)
-    {
-        return dataAccess.insertOldCourse(currentCourse);
-    }
-
-    public String insertNewCourse(Course currentCourse)
-    {
-        return dataAccess.insertNewCourse(currentCourse);
+        courses.clear();
+        return getOldCourses();
     }
 
     public String updateCompletedCourse(Course currentCourse)
