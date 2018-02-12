@@ -112,5 +112,28 @@ public class MyCoursesActivity extends AppCompatActivity
 ////                }
 ////            });
         }
+
+
+        Button calculateCurrCGPAButton = findViewById(R.id.CalculateCGPAButton);
+        calculateCurrCGPAButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                goToCurrentCGPA();
+            }
+        });
+
+
+
+
     }
+
+    private void goToCurrentCGPA()
+    {
+        Intent intent = new Intent(this, CurrentCGPAActivity.class);
+        startActivity(intent);
+    }
+
+
 }
