@@ -17,7 +17,7 @@ public class Course
         this.grade = grade;
     }
 
-    //Constructor for new courses with no assigned grade, grade wont be instantiated 
+    //Constructor for new courses with no assigned grade, grade wont be instantiated
     public Course(String id, String name)
     {
         this.courseID = id;

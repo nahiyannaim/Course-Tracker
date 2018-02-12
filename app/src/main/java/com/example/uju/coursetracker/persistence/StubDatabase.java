@@ -12,6 +12,7 @@ public class StubDatabase
 
     private ArrayList<Course> oldCourses;
     private ArrayList<Course> newCourses;
+    private ArrayList<Course> fullCourses;
 
     public StubDatabase(String dbName)
     {
@@ -90,6 +91,26 @@ public class StubDatabase
         newCourses.add(course);
 
 	}
+
+	public void createFullList()
+    {
+        int count= 0 ;
+        int cnt2=0;
+        for (int i =0 ; i<oldCourses.size()+newCourses.size() ; i++)
+        {
+
+            if(count<oldCourses.size())
+            {
+                fullCourses.add(oldCourses.get(i));
+            }//if end
+            else
+            {
+                newCourses.add(newCourses.get(cnt2));
+                cnt2++;
+            }//else end
+            count++;
+        }//for end
+    }
 
     public String updateOldCourse(Course currentCourse)
     {
