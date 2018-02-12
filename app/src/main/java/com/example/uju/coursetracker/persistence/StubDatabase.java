@@ -3,17 +3,16 @@ package com.example.uju.coursetracker.persistence;
 import com.example.uju.coursetracker.objects.Breakdown;
 import com.example.uju.coursetracker.objects.Course;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class StubDatabase
 {
-    // This is the stub database for the project
-    // This stub database will have a set of initial contents and will provide the data for other classes.
     private String dbName;
     private String dbType = "stub";
 
     private ArrayList<Course> oldCourses;
     private ArrayList<Course> newCourses;
+    private ArrayList<Course> fullCourses;
 
     public StubDatabase(String dbName)
     {
@@ -93,9 +92,24 @@ public class StubDatabase
 
 	}
 
-    public void close()
+	public void createFullList()
     {
-        System.out.println("Closed " +dbType +" database " +dbName);
+        int count= 0 ;
+        int cnt2=0;
+        for (int i =0 ; i<oldCourses.size()+newCourses.size() ; i++)
+        {
+
+            if(count<oldCourses.size())
+            {
+                fullCourses.add(oldCourses.get(i));
+            }//if end
+            else
+            {
+                fullCourses.add(newCourses.get(cnt2));
+                cnt2++;
+            }//else end
+            count++;
+        }//for end
     }
 
     public String updateOldCourse(Course currentCourse)
@@ -146,16 +160,19 @@ public class StubDatabase
         return null;
     }
 
-    public String insertOldCourse(Course currentCourse)
+    public String getCourseSequential(List<Course> courseResult,String key)
     {
-        // don't bother checking for duplicates
-        oldCourses.add(currentCourse);
+        if(key.equals("old")) {
+            courseResult.addAll(oldCourses);
+        }
+        else if (key.equals("new")) {
+            courseResult.addAll(newCourses);
+        }
+        else{
+            courseResult.addAll(fullCourses);
+        }
         return null;
     }
-
-    public String insertNewCourse(Course currentCourse)
-    {
-        newCourses.add(currentCourse);
-        return null;
-    }
+    // This is the stub database for the project
+    // This stub database will have a set of initial contents and will provide the data for other classes.
 }
