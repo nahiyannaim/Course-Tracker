@@ -186,9 +186,9 @@ public class MyCoursesActivity extends Activity
 
         result = validateCourseData(course, false);
         if (result == null) {
-            result = accessCompletedCourses.updateCourse(course);
+            result = accessCompletedCourses.updateCompletedCourse(course);
             if (result == null) {
-                accessCompletedCourses.getCourses(courseList);
+                accessCompletedCourses.getCourses(courseList, completedCoursesDBName);
                 courseArrayAdapter.notifyDataSetChanged();
                 int pos = courseList.indexOf(course);
                 if (pos >= 0) {
