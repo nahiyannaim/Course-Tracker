@@ -66,10 +66,8 @@ public class MyCoursesActivity extends AppCompatActivity
 
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
                     TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-                    //TextView text3 = (TextView) view.findViewById(android.R.id.text3);
 
                     text1.setText(courseList.get(position).getCourseID());
-                    text2.setText(courseList.get(position).getCourseName());
                     text2.setText(courseList.get(position).getGrade());
 
                     return view;
