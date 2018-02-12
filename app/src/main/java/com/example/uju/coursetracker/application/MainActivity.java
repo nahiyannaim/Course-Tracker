@@ -12,9 +12,9 @@ import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.presentation.CurrentCGPAActivity;
 import com.example.uju.coursetracker.presentation.MyCoursesActivity;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+//import java.io.BufferedReader; REMOVE LATER. THIS IS FOR CLI
+//import java.io.IOException;
+//import java.io.InputStreamReader;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
@@ -26,15 +26,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static final String dbName = "MyCourses";
     //public static BufferedReader console;   //REMOVE LATER
 
-    public static void main(String[] args)
-    {
-        startUp();
-
-        //CLI.run();
-
-        shutDown();
-        System.out.println("All done");
-    }
+//    public static void main(String[] args) //REMOVE LATER. THIS IS FOR CLI
+//    {
+//        startUp();
+//
+//        //CLI.run();
+//
+//        shutDown();
+//        System.out.println("All done");
+//    }
 
     //From sample project Services and main
     public static void startUp()
@@ -60,9 +60,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); 
         NavigationView navigationView = (NavigationView)findViewById(R.id.nav_v);
         navigationView.setNavigationItemSelectedListener(this);
-      
 
+       startUp();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        shutDown();
+    }
+
 //test
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

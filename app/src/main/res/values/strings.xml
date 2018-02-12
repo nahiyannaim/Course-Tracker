@@ -30,6 +30,8 @@
     <string name="diffCGPA">Calculate a different CGPA</string>
     <string name="gradesForCourses">Enter grades</string>
 
+    <string name="fatalError">Fatal error</string>
+    <string name="warning">Warning</string>
     <string name="mycourse_title">My Course</string>
 
 </resources>

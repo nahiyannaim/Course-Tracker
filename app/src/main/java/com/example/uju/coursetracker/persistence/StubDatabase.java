@@ -1,5 +1,6 @@
 package com.example.uju.coursetracker.persistence;
 
+import com.example.uju.coursetracker.application.MainActivity;
 import com.example.uju.coursetracker.objects.Breakdown;
 import com.example.uju.coursetracker.objects.Course;
 
@@ -17,6 +18,11 @@ public class StubDatabase
     public StubDatabase(String dbName)
     {
         this.dbName = dbName;
+    }
+
+    public StubDatabase()
+    {
+        this(MainActivity.dbName);
     }
 
     public void open(String dbName)
@@ -90,7 +96,13 @@ public class StubDatabase
         bkDwnLst.add(nwBk);
         newCourses.add(course);
 
+        System.out.println("Opened " +dbType +" database " +dbName);
 	}
+
+    public void close()
+    {
+        System.out.println("Closed " +dbType +" database " +dbName);
+    }
 
 	public void createFullList()
     {
@@ -172,6 +184,11 @@ public class StubDatabase
             courseResult.addAll(fullCourses);
         }
         return null;
+    }
+
+    public ArrayList<Course> getOldCourses()
+    {
+        return oldCourses;
     }
     // This is the stub database for the project
     // This stub database will have a set of initial contents and will provide the data for other classes.
