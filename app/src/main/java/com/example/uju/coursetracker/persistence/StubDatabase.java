@@ -105,7 +105,7 @@ public class StubDatabase
             }//if end
             else
             {
-                newCourses.add(newCourses.get(cnt2));
+                fullCourses.add(newCourses.get(cnt2));
                 cnt2++;
             }//else end
             count++;
