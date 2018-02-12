@@ -12,15 +12,22 @@
 
     <string name="predictedcgpa">Predicted</string>
     <string name="predictedgrades">Predicted Grades for:</string>
-    <string name="CGPAstring">Your current CGPA is: </string>
+    <string name="CGPAstring">Based on your completed courses, your current CGPA is: </string>
 
 
     <string name="predictedcgpaphrase">Your predicted CGPA based on predicted grades is:</string>
-    <string name="diffCGPA">Calculate a different CGPA</string>
+    <string name="diffCGPA">Predict my next CGPA</string>
     <string name="gradesForCourses">Enter grades</string>
 
     <string name="fatalError">Fatal error</string>
     <string name="warning">Warning</string>
     <string name="mycourse_title">My Completed Courses: </string>
+    <string name="based_on_your_current_courses_grades_your_predicted_cgpa_is">Based on your current courses grades, your predicted CGPA is:</string>
+    <string name="textview">TextView</string>
+    <string name="delete">Delete</string>
+    <string name="create">Create</string>
+    <string name="update">Update</string>
+    <string name="name">Grade:</string>
+    <string name="course_id">Course ID:</string>
 
 </resources>
