@@ -17,6 +17,14 @@ public class Course
         this.grade = grade;
     }
 
+    //Constructor for new courses with no assigned grade, grade wont be instantiated 
+    public Course(String id, String name)
+    {
+        this.courseID = id;
+        this.courseName = name;
+        this.breakdownList = new ArrayList<>();
+    }
+
     public String getCourseID()
     {
         return courseID;
@@ -50,6 +58,15 @@ public class Course
     public ArrayList<Breakdown> getBreakdownList()
     {
         return breakdownList;
+    }
+
+    public void printBreakdownList()
+    {
+        String txt = "";
+        for(int i = 0 ; i< breakdownList.size() ; i++){
+            txt+=breakdownList.get(i)+ " ";
+        }
+        System.out.print("Breakdown List: " + txt);
     }
 
     public boolean equals(Course other)

@@ -9,12 +9,11 @@
     <TextView
         android:id="@+id/textView8"
         android:layout_width="264dp"
-        android:layout_height="79dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="204dp"
         android:text="My Courses "
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.645"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
