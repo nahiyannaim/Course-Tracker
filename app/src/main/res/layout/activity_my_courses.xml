@@ -6,14 +6,43 @@
     android:layout_height="match_parent"
     tools:context="com.example.uju.coursetracker.presentation.MyCoursesActivity">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="264dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="204dp"
-        android:text="My Courses "
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:text="@string/mycourse_title"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ListView
+            android:id="@+id/CompletedCourseList"
+            android:layout_width="match_parent"
+            android:layout_height="181dp">
+
+        </ListView>
+
+        <ListView
+            android:id="@+id/CurrentCourseList"
+            android:layout_width="match_parent"
+            android:layout_height="194dp" />
+
+        <Button
+            android:id="@+id/CalculateCGPAButton"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:text="Calculate my CGPA" />
+
+    </LinearLayout>
+
+
 </android.support.constraint.ConstraintLayout>
