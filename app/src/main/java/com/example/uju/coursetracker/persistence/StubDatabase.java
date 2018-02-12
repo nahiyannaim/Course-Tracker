@@ -138,6 +138,16 @@ public class StubDatabase
         }
         return null;
     }
+
+    public ArrayList<Course> getOldCourses()
+    {
+        return oldCourses;
+    }
+
+    public ArrayList<Course> getNewCourses()
+    {
+        return newCourses;
+    }
     // This is the stub database for the project
     // This stub database will have a set of initial contents and will provide the data for other classes.
 }
