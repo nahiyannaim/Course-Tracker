@@ -187,10 +187,9 @@ public class StubDatabase
         return null;
     }
 
-    public ArrayList<Course> getOldCourses()
-    {
+    public ArrayList<Course> getOldCourses() {
         return oldCourses;
-
+    }
     public ArrayList<Course> getNewCourses()
     {
         return newCourses;
