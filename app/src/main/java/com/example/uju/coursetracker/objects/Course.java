@@ -45,9 +45,15 @@ public class Course
         this.courseName = courseName;
     }
 
-    public String getGrade() { return grade; }
+    public String getGrade()
+    {
+        return grade;
+    }
 
-    public void setGrade(String grade) { this.grade = grade; }
+    public void setGrade(String grade)
+    {
+        this.grade = grade;
+    }
 
     public ArrayList<Breakdown> getBreakdownList()
     {
