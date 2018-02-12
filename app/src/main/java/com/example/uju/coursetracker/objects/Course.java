@@ -73,4 +73,13 @@ public class Course
     {
         return (this.courseID.equals(other.getCourseID())) && (this.courseName.equals(other.getCourseName()));
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseID='" + courseID + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", grade='" + grade + '\'' +
+                '}';
+    }
 }
