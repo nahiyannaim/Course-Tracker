@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class StubDatabase
 {
+    // This is the stub database for the project
+    // This stub database will have a set of initial contents and will provide the data for other classes.
     private String dbName;
     private String dbType = "stub";
 
@@ -91,6 +93,11 @@ public class StubDatabase
 
 	}
 
+    public void close()
+    {
+        System.out.println("Closed " +dbType +" database " +dbName);
+    }
+
     public String updateOldCourse(Course currentCourse)
     {
         int index;
@@ -138,6 +145,17 @@ public class StubDatabase
         }
         return null;
     }
-    // This is the stub database for the project
-    // This stub database will have a set of initial contents and will provide the data for other classes.
+
+    public String insertOldCourse(Course currentCourse)
+    {
+        // don't bother checking for duplicates
+        oldCourses.add(currentCourse);
+        return null;
+    }
+
+    public String insertNewCourse(Course currentCourse)
+    {
+        newCourses.add(currentCourse);
+        return null;
+    }
 }
