@@ -1,9 +1,10 @@
 package com.example.uju.coursetracker.persistence;
 
+import com.example.uju.coursetracker.application.MainActivity;
 import com.example.uju.coursetracker.objects.Breakdown;
 import com.example.uju.coursetracker.objects.Course;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class StubDatabase
 {
@@ -12,10 +13,16 @@ public class StubDatabase
 
     private ArrayList<Course> oldCourses;
     private ArrayList<Course> newCourses;
+    private ArrayList<Course> fullCourses;
 
     public StubDatabase(String dbName)
     {
         this.dbName = dbName;
+    }
+
+    public StubDatabase()
+    {
+        this(MainActivity.dbName);
     }
 
     public void open(String dbName)
@@ -89,7 +96,33 @@ public class StubDatabase
         bkDwnLst.add(nwBk);
         newCourses.add(course);
 
+        System.out.println("Opened " +dbType +" database " +dbName);
 	}
+
+    public void close()
+    {
+        System.out.println("Closed " +dbType +" database " +dbName);
+    }
+
+	public void createFullList()
+    {
+        int count= 0 ;
+        int cnt2=0;
+        for (int i =0 ; i<oldCourses.size()+newCourses.size() ; i++)
+        {
+
+            if(count<oldCourses.size())
+            {
+                fullCourses.add(oldCourses.get(i));
+            }//if end
+            else
+            {
+                fullCourses.add(newCourses.get(cnt2));
+                cnt2++;
+            }//else end
+            count++;
+        }//for end
+    }
 
     public String updateOldCourse(Course currentCourse)
     {
@@ -139,14 +172,29 @@ public class StubDatabase
         return null;
     }
 
+
+    public String getCourseSequential(List<Course> courseResult,String key)
+    {
+        if(key.equals("old")) {
+            courseResult.addAll(oldCourses);
+        }
+        else if (key.equals("new")) {
+            courseResult.addAll(newCourses);
+        }
+        else{
+            courseResult.addAll(fullCourses);
+        }
+        return null;
+    }
+
     public ArrayList<Course> getOldCourses()
     {
         return oldCourses;
-    }
 
     public ArrayList<Course> getNewCourses()
     {
         return newCourses;
+
     }
     // This is the stub database for the project
     // This stub database will have a set of initial contents and will provide the data for other classes.
