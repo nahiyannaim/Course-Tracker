@@ -69,6 +69,7 @@ public class CalculateCurrentCGPA
         if(!flag)
         {
             currCGPA = totalPoints / (completedCoursesList.size());
+            currCGPA  = Math.round(currCGPA*100.0)/100.0;
         }
         else
         {
