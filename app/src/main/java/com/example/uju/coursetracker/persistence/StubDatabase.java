@@ -3,7 +3,7 @@ package com.example.uju.coursetracker.persistence;
 import com.example.uju.coursetracker.objects.Breakdown;
 import com.example.uju.coursetracker.objects.Course;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class StubDatabase
 {
@@ -156,6 +156,20 @@ public class StubDatabase
         if (index >= 0)
         {
             newCourses.remove(index);
+        }
+        return null;
+    }
+
+    public String getCourseSequential(List<Course> courseResult,String key)
+    {
+        if(key.equals("old")) {
+            courseResult.addAll(oldCourses);
+        }
+        else if (key.equals("new")) {
+            courseResult.addAll(newCourses);
+        }
+        else{
+            courseResult.addAll(fullCourses);
         }
         return null;
     }
