@@ -179,6 +179,22 @@ public class StubDatabase
     }
 
 
+    public String insertOldCourse(Course currentCourse)
+    {
+        oldCourses.add(currentCourse);
+
+        return null;
+    }
+
+    public String insertNewCourse(Course currentCourse)
+    {
+        newCourses.add(currentCourse);
+
+        return null;
+    }
+
+
+
     public String getCourseSequential(List<Course> courseResult,String key)
     {
         if(key.equals("old")) {

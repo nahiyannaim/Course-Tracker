@@ -141,28 +141,28 @@ public class MyCompletedCoursesActivity extends Activity {
 
 
 
-//    public void buttonCourseCreateOnClick(View v) {
-//        Course course = createCourseFromEditText();
-//        String result;
-//
-//        result = validateCourseData(course, true);
-//        if (result == null) {
-//            result = accessCompletedCourses.insertCourse(course);
-//            if (result == null) {
-//                accessCourses.getCourses(courseList);
-//                courseArrayAdapter.notifyDataSetChanged();
-//                int pos = courseList.indexOf(course);
-//                if (pos >= 0) {
-//                    ListView listView = (ListView)findViewById(R.id.listCourses);
-//                    listView.setSelection(pos);
-//                }
-//            } else {
-//                MessagesActivity.fatalError(this, result);
-//            }
-//        } else {
-//            MessagesActivity.warning(this, result);
-//        }
-//    }
+    public void buttonCourseCreateOnClick(View v) {
+        Course course = createCourseFromEditText();
+        String result;
+
+        result = validateCourseData(course, true);
+        if (result == null) {
+            result = accessCompletedCourses.insertCompletedCourse(course);
+            if (result == null) {
+                accessCompletedCourses.getCourses(courseList, "old");
+                courseArrayAdapter.notifyDataSetChanged();
+                int pos = courseList.indexOf(course);
+                if (pos >= 0) {
+                    ListView listView = (ListView)findViewById(R.id.CompletedCourseList);
+                    listView.setSelection(pos);
+                }
+            } else {
+                MessagesActivity.fatalError(this, result);
+            }
+        } else {
+            MessagesActivity.warning(this, result);
+        }
+    }
 
     public void buttonCourseUpdateOnClick(View v) {
         Course course = createCourseFromEditText();
@@ -235,12 +235,6 @@ public class MyCompletedCoursesActivity extends Activity {
             return "Invalid course grade";
 
         }
-
-
-
-//        if (isNewCourse && accessCourses.getRandom(course.getCourseID()) != null) {
-//            return "Course ID " + course.getCourseID() + " already exists.";
-//        }
 
         return null;
     }

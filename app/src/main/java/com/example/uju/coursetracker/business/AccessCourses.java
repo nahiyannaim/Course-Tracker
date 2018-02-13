@@ -57,4 +57,14 @@ public class AccessCourses
         return dataAccess.deleteNewCourse(currentCourse);
     }
 
+    public String insertCompletedCourse(Course currentCourse)
+    {
+        return dataAccess.insertOldCourse(currentCourse);
+    }
+
+    public String insertNewCourse(Course currentCourse)
+    {
+        return dataAccess.insertNewCourse(currentCourse);
+    }
+
 }
