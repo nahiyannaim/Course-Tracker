@@ -22,16 +22,14 @@ import com.example.uju.coursetracker.objects.Course;
 
 public class MyCompletedCoursesActivity extends Activity {
     private AccessCourses accessCompletedCourses;
-    //private AccessCourses accessNewCourses;
 
     private ArrayList<Course> courseList;
-    //private ArrayList<Course> newCourseList;
 
     private ArrayAdapter<Course> courseArrayAdapter;
     private int selectedCoursePosition = -1;
 
     private String completedCoursesDBName = "old";
-    private String newCoursesDBName = "new";
+
 
 
     @Override
@@ -111,6 +109,22 @@ public class MyCompletedCoursesActivity extends Activity {
                 goToCurrentCGPA();
             }
         });
+
+
+        Button predictNextCGPAButton = findViewById(R.id.goToCurrentCoursesButton);
+        predictNextCGPAButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                goToCurrentCourses();
+            }
+        });
+
+
+
+
+
     }
 
 
@@ -224,5 +238,14 @@ public class MyCompletedCoursesActivity extends Activity {
         Intent intent = new Intent(this, CurrentCGPAActivity.class);
         startActivity(intent);
     }
+
+
+    private void goToCurrentCourses()
+    {
+        Intent intent = new Intent(this, MyCurrentCoursesActivity.class);
+        startActivity(intent);
+    }
+
+
 
 }
