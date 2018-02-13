@@ -44,7 +44,7 @@ public class MyCompletedCoursesActivity extends Activity {
         //courseList = accessCompletedCourses.getOldCourses();
         String result = accessCompletedCourses.getCourses(courseList, completedCoursesDBName);
         if (result != null) {
-            Messages.fatalError(this, result);
+            MessagesActivity.fatalError(this, result);
         } else {
             courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, courseList) {
                 @Override
@@ -157,10 +157,10 @@ public class MyCompletedCoursesActivity extends Activity {
 //                    listView.setSelection(pos);
 //                }
 //            } else {
-//                Messages.fatalError(this, result);
+//                MessagesActivity.fatalError(this, result);
 //            }
 //        } else {
-//            Messages.warning(this, result);
+//            MessagesActivity.warning(this, result);
 //        }
 //    }
 
@@ -181,10 +181,10 @@ public class MyCompletedCoursesActivity extends Activity {
                     listView.setSelection(pos);
                 }
             } else {
-                Messages.fatalError(this, result);
+                MessagesActivity.fatalError(this, result);
             }
         } else {
-            Messages.warning(this, result);
+            MessagesActivity.warning(this, result);
         }
     }
 
@@ -202,7 +202,7 @@ public class MyCompletedCoursesActivity extends Activity {
             accessCompletedCourses.getCourses(courseList, "old");
             courseArrayAdapter.notifyDataSetChanged();
         } else {
-            Messages.warning(this, result);
+            MessagesActivity.warning(this, result);
         }
     }
 
@@ -216,13 +216,27 @@ public class MyCompletedCoursesActivity extends Activity {
     }
 
     private String validateCourseData(Course course, boolean isNewCourse) {
-        if (course.getCourseID().length() == 0) {
+        if (course.getCourseID().length() == 0)
+        {
             return "Course ID required";
         }
 
-        if (course.getGrade().length() == 0) {
+        if (course.getGrade().length() == 0)
+        {
             return "Course grade required";
         }
+
+        if(!(course.getGrade().equals("A+") ||  course.getGrade().equals("A") ||
+                course.getGrade().equals("B+") || course.getGrade().equals("B") ||
+                course.getGrade().equals("C+") || course.getGrade().equals("C") ||
+                course.getGrade().equals("D+") || course.getGrade().equals("D") ||
+                course.getGrade().equals("F")))
+        {
+            return "Invalid course grade";
+
+        }
+
+
 
 //        if (isNewCourse && accessCourses.getRandom(course.getCourseID()) != null) {
 //            return "Course ID " + course.getCourseID() + " already exists.";
@@ -235,7 +249,7 @@ public class MyCompletedCoursesActivity extends Activity {
 
     private void goToCurrentCGPA()
     {
-        Intent intent = new Intent(this, CurrentCGPAActivity.class);
+        Intent intent = new Intent(this, CurrentCGPAResultsActivity.class);
         startActivity(intent);
     }
 

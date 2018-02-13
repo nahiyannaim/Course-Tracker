@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.uju.coursetracker.presentation.PredictNextCGPAActivity">
-
+    tools:context="com.example.uju.coursetracker.presentation.CurrentCGPAResultsActivity">
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -15,23 +14,22 @@
         app:layout_constraintGuide_end="580dp" />
 
     <TextView
-        android:id="@+id/predictTitle"
+        android:id="@+id/textView"
 
         android:layout_width="384dp"
         android:layout_height="78dp"
 
-        android:text="@string/predictTitle"
+        android:text="@string/CGPAstring"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.033" />
 
     <TextView
-        android:id="@+id/predictResult"
+        android:id="@+id/textView4"
         android:layout_width="238dp"
         android:layout_height="61dp"
         android:text="@string/textview"
@@ -42,7 +40,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.16" />
-
-
 
 </android.support.constraint.ConstraintLayout>

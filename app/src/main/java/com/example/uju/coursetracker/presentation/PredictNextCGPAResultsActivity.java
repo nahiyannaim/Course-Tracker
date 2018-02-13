@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 
 
-public class PredictNextCGPAActivity extends AppCompatActivity {
+public class PredictNextCGPAResultsActivity extends AppCompatActivity {
 
 
     private ArrayList<Course> currentCourses;
@@ -23,7 +23,7 @@ public class PredictNextCGPAActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_predict_next_cgpa);
+        setContentView(R.layout.activity_predict_next_cgpa_results);
 
 
 
@@ -35,13 +35,21 @@ public class PredictNextCGPAActivity extends AppCompatActivity {
         double predictedCGPA = PredictNextCGPA.calculate(DatabaseService.getDataAccess("MyCourses").getNewCourses(), currCGPA, totalCoursesCompleted);
 
 
+        int currentCourseListSize = (DatabaseService.getDataAccess("MyCourses").getNewCourses()).size();
+
+
+        if(currentCourseListSize <= 0)
+        {
+            MessagesActivity.warning(this, "No Current Courses");
+        }
+
         if(predictedCGPA != -1.0)
         {
             tv.setText(Double.toString(predictedCGPA));
         }
         else
         {
-            tv.setText("Invalid Grades Entered");
+            tv.setText("0.0");
         }
 
 

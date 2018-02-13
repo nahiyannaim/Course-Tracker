@@ -9,10 +9,9 @@ import android.view.MenuItem;
 import android.content.Intent;
 
 import com.example.uju.coursetracker.R;
-import com.example.uju.coursetracker.presentation.CurrentCGPAActivity;
+import com.example.uju.coursetracker.presentation.MyAllCoursesActivity;
 import com.example.uju.coursetracker.presentation.MyCompletedCoursesActivity;
 import com.example.uju.coursetracker.presentation.MyCurrentCoursesActivity;
-import com.example.uju.coursetracker.presentation.PredictNextCGPAActivity;
 
 //import java.io.BufferedReader; REMOVE LATER. THIS IS FOR CLI
 //import java.io.IOException;
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (id) {
 
             case R.id.cgpaCalc:
-                Intent calc = new Intent(MainActivity.this, CurrentCGPAActivity.class);
+                Intent calc = new Intent(MainActivity.this, MyCompletedCoursesActivity.class);
                 startActivity(calc);
                 break;
 
@@ -98,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.crs:
-                Intent crss = new Intent(MainActivity.this, MyCompletedCoursesActivity.class);
+                Intent crss = new Intent(MainActivity.this, MyAllCoursesActivity.class);
                 startActivity(crss);
                 break;
 
