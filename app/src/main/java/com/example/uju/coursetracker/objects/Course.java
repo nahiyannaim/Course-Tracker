@@ -7,6 +7,18 @@ public class Course
     private String courseID; // "COMP 1010"
     private String courseName; // "Introduction to Computer Programming"
     private ArrayList<Breakdown> breakdownList; // List: [br1, br2, br3]  For e.g. Assignment br1, Midterm br2, Final br3
+    private String grade;
+
+    public Course(String id, String name, String grade)
+    {
+        this.courseID = id;
+        this.courseName = name;
+        this.breakdownList = new ArrayList<>();
+        this.grade = grade;
+    }
+
+
+    //Constructor for new courses with no assigned grade, grade wont be instantiated
 
     public Course(String id, String name)
     {
@@ -35,13 +47,54 @@ public class Course
         this.courseName = courseName;
     }
 
+    public String getGrade()
+    {
+        return grade;
+    }
+
+    public void setGrade(String grade)
+    {
+        this.grade = grade;
+    }
+
     public ArrayList<Breakdown> getBreakdownList()
     {
         return breakdownList;
     }
 
-    public boolean equals(Course other)
+    public void printBreakdownList()
     {
-        return (this.courseID == other.getCourseID()) && (this.courseName == other.getCourseName()) ;
+        String txt = "";
+        for(int i = 0 ; i< breakdownList.size() ; i++){
+            txt+=breakdownList.get(i)+ " ";
+        }
+        System.out.print("Breakdown List: " + txt);
+    }
+
+    public boolean equals(Object other)
+    {
+        boolean result;
+        Course c;
+
+        result = false;
+
+        if (other instanceof Course)
+        {
+            c = (Course) other;
+            if (((c.courseID == null) && (courseID == null)) || (c.courseID.equals(courseID)))
+            {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseID='" + courseID + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", grade='" + grade + '\'' +
+                '}';
     }
 }
