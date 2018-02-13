@@ -5,7 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import com.example.uju.coursetracker.R;
 
-public class Messages
+public class MessagesActivity
 {
     public static void fatalError(final Activity owner, String message) {
         AlertDialog alertDialog = new AlertDialog.Builder(owner).create();

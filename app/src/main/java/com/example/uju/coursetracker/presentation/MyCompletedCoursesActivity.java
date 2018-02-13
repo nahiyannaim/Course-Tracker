@@ -1,18 +1,10 @@
 package com.example.uju.coursetracker.presentation;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -28,24 +20,22 @@ import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.business.AccessCourses;
 import com.example.uju.coursetracker.objects.Course;
 
-public class MyCoursesActivity extends Activity {
+public class MyCompletedCoursesActivity extends Activity {
     private AccessCourses accessCompletedCourses;
-    //private AccessCourses accessNewCourses;
 
     private ArrayList<Course> courseList;
-    //private ArrayList<Course> newCourseList;
 
     private ArrayAdapter<Course> courseArrayAdapter;
     private int selectedCoursePosition = -1;
 
     private String completedCoursesDBName = "old";
-    private String newCoursesDBName = "new";
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_courses);
+        setContentView(R.layout.activity_my_completed_courses);
 
         accessCompletedCourses = new AccessCourses();
 
@@ -54,7 +44,7 @@ public class MyCoursesActivity extends Activity {
         //courseList = accessCompletedCourses.getOldCourses();
         String result = accessCompletedCourses.getCourses(courseList, completedCoursesDBName);
         if (result != null) {
-            Messages.fatalError(this, result);
+            MessagesActivity.fatalError(this, result);
         } else {
             courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, courseList) {
                 @Override
@@ -119,24 +109,25 @@ public class MyCoursesActivity extends Activity {
                 goToCurrentCGPA();
             }
         });
+
+
+        Button predictNextCGPAButton = findViewById(R.id.goToCurrentCoursesButton);
+        predictNextCGPAButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                goToCurrentCourses();
+            }
+        });
+
+
+
+
+
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_courses, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+
 
     public void selectCourseAtPosition(int position) {
         Course selected = courseArrayAdapter.getItem(position);
@@ -148,39 +139,30 @@ public class MyCoursesActivity extends Activity {
         editGrade.setText(selected.getGrade());
     }
 
-//    public void buttonCourseStudentsOnClick(View v) {
-//        EditText editID = (EditText)findViewById(R.id.editCourseID);
-//        String courseID = editID.getText().toString();
-//
-//        Intent csIntent = new Intent(CoursesActivity.this, CourseStudentsActivity.class);
-//        Bundle b = new Bundle();
-//        b.putString("courseID", courseID);
-//        csIntent.putExtras(b);
-//        CoursesActivity.this.startActivity(csIntent);
-//    }
 
-//    public void buttonCourseCreateOnClick(View v) {
-//        Course course = createCourseFromEditText();
-//        String result;
-//
-//        result = validateCourseData(course, true);
-//        if (result == null) {
-//            result = accessCompletedCourses.insertCourse(course);
-//            if (result == null) {
-//                accessCourses.getCourses(courseList);
-//                courseArrayAdapter.notifyDataSetChanged();
-//                int pos = courseList.indexOf(course);
-//                if (pos >= 0) {
-//                    ListView listView = (ListView)findViewById(R.id.listCourses);
-//                    listView.setSelection(pos);
-//                }
-//            } else {
-//                Messages.fatalError(this, result);
-//            }
-//        } else {
-//            Messages.warning(this, result);
-//        }
-//    }
+
+    public void buttonCourseCreateOnClick(View v) {
+        Course course = createCourseFromEditText();
+        String result;
+
+        result = validateCourseData(course, true);
+        if (result == null) {
+            result = accessCompletedCourses.insertCompletedCourse(course);
+            if (result == null) {
+                accessCompletedCourses.getCourses(courseList, "old");
+                courseArrayAdapter.notifyDataSetChanged();
+                int pos = courseList.indexOf(course);
+                if (pos >= 0) {
+                    ListView listView = (ListView)findViewById(R.id.CompletedCourseList);
+                    listView.setSelection(pos);
+                }
+            } else {
+                MessagesActivity.fatalError(this, result);
+            }
+        } else {
+            MessagesActivity.warning(this, result);
+        }
+    }
 
     public void buttonCourseUpdateOnClick(View v) {
         Course course = createCourseFromEditText();
@@ -199,10 +181,10 @@ public class MyCoursesActivity extends Activity {
                     listView.setSelection(pos);
                 }
             } else {
-                Messages.fatalError(this, result);
+                MessagesActivity.fatalError(this, result);
             }
         } else {
-            Messages.warning(this, result);
+            MessagesActivity.warning(this, result);
         }
     }
 
@@ -220,7 +202,7 @@ public class MyCoursesActivity extends Activity {
             accessCompletedCourses.getCourses(courseList, "old");
             courseArrayAdapter.notifyDataSetChanged();
         } else {
-            Messages.warning(this, result);
+            MessagesActivity.warning(this, result);
         }
     }
 
@@ -234,11 +216,13 @@ public class MyCoursesActivity extends Activity {
     }
 
     private String validateCourseData(Course course, boolean isNewCourse) {
-        if (course.getCourseID().length() == 0) {
+        if (course.getCourseID().length() == 0)
+        {
             return "Course ID required";
         }
 
-        if (course.getGrade().length() == 0) {
+        if (course.getGrade().length() == 0)
+        {
             return "Course grade required";
         }
 
@@ -249,19 +233,27 @@ public class MyCoursesActivity extends Activity {
                 course.getGrade().equals("F")))
         {
             return "Invalid course grade";
-        }
 
-//        if (isNewCourse && accessCourses.getRandom(course.getCourseID()) != null) {
-//            return "Course ID " + course.getCourseID() + " already exists.";
-//        }
+        }
 
         return null;
     }
 
+
+
     private void goToCurrentCGPA()
     {
-        Intent intent = new Intent(this, CurrentCGPAActivity.class);
+        Intent intent = new Intent(this, CurrentCGPAResultsActivity.class);
         startActivity(intent);
     }
+
+
+    private void goToCurrentCourses()
+    {
+        Intent intent = new Intent(this, MyCurrentCoursesActivity.class);
+        startActivity(intent);
+    }
+
+
 
 }
