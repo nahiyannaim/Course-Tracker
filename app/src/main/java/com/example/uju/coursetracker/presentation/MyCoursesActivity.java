@@ -104,7 +104,7 @@ public class MyCoursesActivity extends Activity
             });
 
             final EditText editCourseID = (EditText)findViewById(R.id.editCourseID);
-            final Button buttonCourseStudents = (Button)findViewById(R.id.buttonCourseStudents);
+            //final Button buttonCourseStudents = (Button)findViewById(R.id.buttonCourseStudents);
             editCourseID.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -113,7 +113,7 @@ public class MyCoursesActivity extends Activity
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    buttonCourseStudents.setEnabled(editCourseID.getText().toString().length() > 0);
+                    //buttonCourseStudents.setEnabled(editCourseID.getText().toString().length() > 0);
                 }
             });
         }
