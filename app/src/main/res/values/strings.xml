@@ -11,7 +11,7 @@
 
     <string name="predictedcgpa">Predicted</string>
     <string name="predictedgrades">Predicted Grades for:</string>
-    <string name="CGPAstring">Based on your completed courses, your current CGPA is: </string>
+    <string name="CGPAstring">Based on your Completed Courses, Your Current CGPA is: </string>
 
 
     <string name="predictedcgpaphrase">Your predicted CGPA based on predicted grades is:</string>
@@ -28,7 +28,7 @@
     <string name="update">Update</string>
     <string name="name">Grade:</string>
     <string name="course_id">Course ID:</string>
-    <string name="predictTitle">Based on your current courses grades, your predicted CGPA is: </string>
+    <string name="predictTitle">Based on the grades you entered for your Current Courses, Your Predicted CGPA is: </string>
 
 
 </resources>
