@@ -68,7 +68,7 @@ public class StubDatabase
 
         //New Courses------------------------------------------------------------------------------
         //Electives
-        course = new Course("SOCO 1200", "Introduction To Sociology");
+        course = new Course("SOCO 1200", "Introduction To Sociology", "A");
         bkDwnLst = course.getBreakdownList();
         nwBk = new Breakdown("SOCO 1200", "Assignment",0.25);
         bkDwnLst.add(nwBk);
@@ -78,7 +78,7 @@ public class StubDatabase
         bkDwnLst.add(nwBk);
         newCourses.add(course);
 
-        course = new Course("ECON 1020", "Introduction To Economics");
+        course = new Course("ECON 1020", "Introduction To Economics", "A");
         bkDwnLst = course.getBreakdownList();
         nwBk = new Breakdown("ECON 1020", "Assignment",0.80);
         bkDwnLst.add(nwBk);
@@ -86,7 +86,7 @@ public class StubDatabase
         bkDwnLst.add(nwBk);
         newCourses.add(course);
 
-        course = new Course("ENGL 1300", "Intro To English Literature");
+        course = new Course("ENGL 1300", "Intro To English Literature", "A");
         bkDwnLst = course.getBreakdownList();
         nwBk = new Breakdown("ENGL 1300", "Assignment",0.10);
         bkDwnLst.add(nwBk);
@@ -177,6 +177,22 @@ public class StubDatabase
         }
         return null;
     }
+
+
+    public String insertOldCourse(Course currentCourse)
+    {
+        oldCourses.add(currentCourse);
+
+        return null;
+    }
+
+    public String insertNewCourse(Course currentCourse)
+    {
+        newCourses.add(currentCourse);
+
+        return null;
+    }
+
 
 
     public String getCourseSequential(List<Course> courseResult,String key)
