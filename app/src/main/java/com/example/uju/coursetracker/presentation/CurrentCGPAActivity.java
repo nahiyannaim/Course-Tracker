@@ -45,6 +45,25 @@ public class CurrentCGPAActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
+        setContentView(R.layout.activity_current_cgpa);
+
+        StubDatabase stubdb = new StubDatabase("oldcrs");
+        TextView tv = (TextView) findViewById(R.id.textView4);
+        stubdb.open("oldcrs");
+        double currCGPA = calculate(stubdb.getOldCourses());
+        tv.setText(Double.toString(currCGPA));
+
+        Button button1 = findViewById(R.id.button);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToPredictedCGPA();
+            }
+        });
+    }
 
 
     private void goToPredictedCGPA() {
