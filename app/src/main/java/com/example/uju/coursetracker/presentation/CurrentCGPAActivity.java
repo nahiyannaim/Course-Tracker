@@ -32,9 +32,7 @@ public class CurrentCGPAActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_cgpa);
 
-        //        StubDatabase stubdb = new StubDatabase("oldcrs");
         TextView tv = (TextView) findViewById(R.id.textView4);
-//        stubdb.open("oldcrs");
         double currCGPA = calculate(DatabaseService.getDataAccess("MyCourses").getOldCourses());
         tv.setText(Double.toString(currCGPA));
 

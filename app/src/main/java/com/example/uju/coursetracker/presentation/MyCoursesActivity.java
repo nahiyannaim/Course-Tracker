@@ -242,38 +242,21 @@ public class MyCoursesActivity extends Activity {
             return "Course grade required";
         }
 
+        if(!(course.getGrade().equals("A+") ||  course.getGrade().equals("A") ||
+                course.getGrade().equals("B+") || course.getGrade().equals("B") ||
+                course.getGrade().equals("C+") || course.getGrade().equals("C") ||
+                course.getGrade().equals("D+") || course.getGrade().equals("D") ||
+                course.getGrade().equals("F")))
+        {
+            return "Invalid course grade";
+        }
+
 //        if (isNewCourse && accessCourses.getRandom(course.getCourseID()) != null) {
 //            return "Course ID " + course.getCourseID() + " already exists.";
 //        }
 
         return null;
     }
-
-
-
-
-////    public void showInputBox(String oldGrade, final int index)
-////    {
-////        final Dialog dialogBox = new Dialog(MyCoursesActivity.this);
-////        dialogBox.setTitle("Input Box");
-////        dialogBox.setContentView(R.layout.mycourses_inputbox);
-////        TextView txtMessage = (TextView) dialogBox.findViewById(R.id.InputBoxTitle);
-////        txtMessage.setText("Update Grade");
-////        txtMessage.setTextColor(Color.parseColor("#ff2222"));
-////        final EditText editText = (EditText) dialogBox.findViewById(R.id.TextInput);
-////        editText.setText(oldGrade);
-////        Button updateBtn = (Button) dialogBox.findViewById(R.id.UpdateBtn);
-////        updateBtn.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                courseList.set(index, editText.getText().toString());
-////                courseArrayAdapter.notifyDataSetChanged();
-////                dialogBox.dismiss();
-////            }
-////        });
-////        dialogBox.show();
-////
-//        }
 
     private void goToCurrentCGPA()
     {
