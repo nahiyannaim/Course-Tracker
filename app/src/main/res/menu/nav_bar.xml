@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/crs"
+        android:title="My Courses" android:icon="@drawable/ic_list">
+    </item>>
+
+    <item android:id="@+id/cgpaCalc"
+        android:title="My Current CGPA" android:icon="@drawable/ic_calculator">
+    </item>>
+
+    <item android:id="@+id/cgpaPred"
+        android:title="Predict Next CGPA" android:icon="@drawable/ic_eye">
+    </item>>
+
+</menu>
