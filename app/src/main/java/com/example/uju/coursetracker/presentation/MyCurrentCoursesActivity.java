@@ -128,28 +128,28 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
 
 
 
-//    public void buttonCourseCreateOnClick(View v) {
-//        Course course = createCourseFromEditText();
-//        String result;
-//
-//        result = validateCourseData(course, true);
-//        if (result == null) {
-//            result = accessCompletedCourses.insertCourse(course);
-//            if (result == null) {
-//                accessCourses.getCourses(courseList);
-//                courseArrayAdapter.notifyDataSetChanged();
-//                int pos = courseList.indexOf(course);
-//                if (pos >= 0) {
-//                    ListView listView = (ListView)findViewById(R.id.listCourses);
-//                    listView.setSelection(pos);
-//                }
-//            } else {
-//                MessagesActivity.fatalError(this, result);
-//            }
-//        } else {
-//            MessagesActivity.warning(this, result);
-//        }
-//    }
+    public void buttonCourseCreateOnClick(View v) {
+        Course course = createCourseFromEditText();
+        String result;
+
+        result = validateCourseData(course, true);
+        if (result == null) {
+            result = accessNewCourses.insertNewCourse(course);
+            if (result == null) {
+                accessNewCourses.getCourses(newCourseList, "new");
+                courseArrayAdapter.notifyDataSetChanged();
+                int pos = newCourseList.indexOf(course);
+                if (pos >= 0) {
+                    ListView listView = (ListView)findViewById(R.id.CurrentCourseList);
+                    listView.setSelection(pos);
+                }
+            } else {
+                MessagesActivity.fatalError(this, result);
+            }
+        } else {
+            MessagesActivity.warning(this, result);
+        }
+    }
 
     public void buttonCourseUpdateOnClick(View v) {
         Course course = createCourseFromEditText();
@@ -221,14 +221,6 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
             return "Invalid course grade";
 
         }
-
-
-
-
-
-//        if (isNewCourse && accessCourses.getRandom(course.getCourseID()) != null) {
-//            return "Course ID " + course.getCourseID() + " already exists.";
-//        }
 
         return null;
     }
