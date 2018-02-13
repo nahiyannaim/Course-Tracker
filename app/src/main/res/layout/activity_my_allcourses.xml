@@ -8,26 +8,26 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="468dp"
+        android:layout_width="306dp"
         android:layout_height="46dp"
         android:text="My Completed Courses:"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.227"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02" />
+        app:layout_constraintVertical_bias="0.021" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="482dp"
+        android:layout_width="284dp"
         android:layout_height="56dp"
-        android:text="My Current Semester Courses:"
-        android:textSize="30sp"
+        android:text="My Current Courses:"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.254"
+        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.534" />

@@ -17,30 +17,32 @@
     <TextView
         android:id="@+id/predictTitle"
 
-        android:layout_width="565dp"
-        android:layout_height="162dp"
+        android:layout_width="384dp"
+        android:layout_height="78dp"
 
         android:text="@string/predictTitle"
         android:textAlignment="center"
-        android:textSize="36sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.122" />
+        app:layout_constraintVertical_bias="0.033" />
 
     <TextView
         android:id="@+id/predictResult"
-        android:layout_width="342dp"
-        android:layout_height="168dp"
+        android:layout_width="238dp"
+        android:layout_height="61dp"
         android:text="@string/textview"
         android:textAlignment="center"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="75sp"
+        android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintVertical_bias="0.16" />
+
+
 
 </android.support.constraint.ConstraintLayout>

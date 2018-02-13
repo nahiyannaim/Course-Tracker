@@ -6,11 +6,11 @@
     </item>>
 
     <item android:id="@+id/cgpaCalc"
-        android:title="CGPA Calculator" android:icon="@drawable/ic_calculator">
+        android:title="My Current CGPA" android:icon="@drawable/ic_calculator">
     </item>>
 
     <item android:id="@+id/cgpaPred"
-        android:title="CGPA Predictor" android:icon="@drawable/ic_eye">
+        android:title="Predict Next CGPA" android:icon="@drawable/ic_eye">
     </item>>
 
 </menu>
