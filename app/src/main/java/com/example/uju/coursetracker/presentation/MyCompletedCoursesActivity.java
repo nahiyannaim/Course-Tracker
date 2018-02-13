@@ -13,39 +13,44 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import java.util.ArrayList;
+
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.business.AccessCourses;
 import com.example.uju.coursetracker.objects.Course;
 
-public class MyCompletedCoursesActivity extends Activity
-{
+public class MyCompletedCoursesActivity extends Activity {
     private AccessCourses accessCompletedCourses;
+    //private AccessCourses accessNewCourses;
+
     private ArrayList<Course> courseList;
+    //private ArrayList<Course> newCourseList;
+
     private ArrayAdapter<Course> courseArrayAdapter;
     private int selectedCoursePosition = -1;
 
+    private String completedCoursesDBName = "old";
+    private String newCoursesDBName = "new";
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_completed_courses);
 
         accessCompletedCourses = new AccessCourses();
-        courseList = new ArrayList<Course>();
 
-        String result = accessCompletedCourses.getCompletedCoursesSeq(courseList);
-        if (result != null)
-        {
-            MessagesActivity.fatalError(this, result);
-        }
-        else
-        {
-            courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, courseList)
-            {
+        //completed courseList
+        courseList = new ArrayList<Course>();
+        //courseList = accessCompletedCourses.getOldCourses();
+        String result = accessCompletedCourses.getCourses(courseList, completedCoursesDBName);
+        if (result != null) {
+            Messages.fatalError(this, result);
+        } else {
+            courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, courseList) {
                 @Override
-                public View getView(int position, View convertView, ViewGroup parent)
-                {
+                public View getView(int position, View convertView, ViewGroup parent) {
                     View view = super.getView(position, convertView, parent);
 
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
@@ -61,23 +66,18 @@ public class MyCompletedCoursesActivity extends Activity
             final ListView listView = (ListView) findViewById(R.id.CompletedCourseList);
             listView.setAdapter(courseArrayAdapter);
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-            {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-                {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Button updateButton = (Button)findViewById(R.id.buttonCourseUpdate);
                     Button deleteButton = (Button)findViewById(R.id.buttonCourseDelete);
 
-                    if (position == selectedCoursePosition)
-                    {
+                    if (position == selectedCoursePosition) {
                         listView.setItemChecked(position, false);
                         updateButton.setEnabled(false);
                         deleteButton.setEnabled(false);
                         selectedCoursePosition = -1;
-                    }
-                    else
-                    {
+                    } else {
                         listView.setItemChecked(position, true);
                         updateButton.setEnabled(true);
                         deleteButton.setEnabled(true);
@@ -88,19 +88,20 @@ public class MyCompletedCoursesActivity extends Activity
             });
 
             final EditText editCourseID = (EditText)findViewById(R.id.editCourseID);
-
-            editCourseID.addTextChangedListener(new TextWatcher()
-            {
+//            final Button buttonCourseStudents = (Button)findViewById(R.id.buttonCourseStudents);
+            editCourseID.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
                 @Override
-                public void afterTextChanged(Editable s) {}
+                public void afterTextChanged(Editable s) {
+//                    buttonCourseStudents.setEnabled(editCourseID.getText().toString().length() > 0);
+                }
             });
         }
 
-        // this button would take us to current CGPA results page
         Button calculateCurrCGPAButton = findViewById(R.id.CalculateCGPAButton);
         calculateCurrCGPAButton.setOnClickListener(new View.OnClickListener()
         {
@@ -110,21 +111,11 @@ public class MyCompletedCoursesActivity extends Activity
                 goToCurrentCGPA();
             }
         });
-
-        // this button would take us to predict CGPA results page
-        Button predictNextCGPAButton = findViewById(R.id.goToCurrentCoursesButton);
-        predictNextCGPAButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                goToCurrentCourses();
-            }
-        });
     }
 
-    public void selectCourseAtPosition(int position)
-    {
+
+
+    public void selectCourseAtPosition(int position) {
         Course selected = courseArrayAdapter.getItem(position);
 
         EditText editCourseID = (EditText)findViewById(R.id.editCourseID);
@@ -134,102 +125,74 @@ public class MyCompletedCoursesActivity extends Activity
         editGrade.setText(selected.getGrade());
     }
 
-    public void buttonCourseCreateOnClick(View v)
-    {
-        Course course = createCourseFromEditText();
-        String result;
-        result = accessCompletedCourses.validateCourseData(course);
-        if (result == null)
-        {
-            result = accessCompletedCourses.insertCompletedCourse(course);
-            if (result == null)
-            {
-                accessCompletedCourses.getCompletedCoursesSeq(courseList);
-                courseArrayAdapter.notifyDataSetChanged();
-                int pos = courseList.indexOf(course);
-                if (pos >= 0)
-                {
-                    ListView listView = (ListView)findViewById(R.id.CompletedCourseList);
-                    listView.setSelection(pos);
-                }
-            }
-            else
-            {
-                result = "This Course already exists in the list." ;
-                MessagesActivity.warning(this, result);
-            }
-        }
-        else
-        {
-            MessagesActivity.warning(this, result);
-        }
-    }
 
-    public void buttonCourseUpdateOnClick(View v)
-    {
+
+//    public void buttonCourseCreateOnClick(View v) {
+//        Course course = createCourseFromEditText();
+//        String result;
+//
+//        result = validateCourseData(course, true);
+//        if (result == null) {
+//            result = accessCompletedCourses.insertCourse(course);
+//            if (result == null) {
+//                accessCourses.getCourses(courseList);
+//                courseArrayAdapter.notifyDataSetChanged();
+//                int pos = courseList.indexOf(course);
+//                if (pos >= 0) {
+//                    ListView listView = (ListView)findViewById(R.id.listCourses);
+//                    listView.setSelection(pos);
+//                }
+//            } else {
+//                Messages.fatalError(this, result);
+//            }
+//        } else {
+//            Messages.warning(this, result);
+//        }
+//    }
+
+    public void buttonCourseUpdateOnClick(View v) {
         Course course = createCourseFromEditText();
 
         String result;
 
-        result = accessCompletedCourses.validateCourseData(course);
-        if (result == null)
-        {
+        result = validateCourseData(course, false);
+        if (result == null) {
             result = accessCompletedCourses.updateCompletedCourse(course);
-            if (result == null)
-            {
-                accessCompletedCourses.getCompletedCoursesSeq(courseList);
+            if (result == null) {
+                accessCompletedCourses.getCourses(courseList, "old");
                 courseArrayAdapter.notifyDataSetChanged();
                 int pos = courseList.indexOf(course);
-                if (pos >= 0)
-                {
+                if (pos >= 0) {
                     ListView listView = (ListView)findViewById(R.id.CompletedCourseList);
                     listView.setSelection(pos);
                 }
+            } else {
+                Messages.fatalError(this, result);
             }
-            else
-            {
-                result = "Cannot Update a course that is not in the list.";
-                MessagesActivity.warning(this, result);
-            }
-        }
-        else
-        {
-            MessagesActivity.warning(this, result);
+        } else {
+            Messages.warning(this, result);
         }
     }
 
-    public void buttonCourseDeleteOnClick(View v)
-    {
+    public void buttonCourseDeleteOnClick(View v) {
         Course course = createCourseFromEditText();
         String result;
 
         result = accessCompletedCourses.deleteCompletedCourse(course);
-        if (result == null)
-        {
+        if (result == null) {
             int pos = courseList.indexOf(course);
-            if (pos >= 0)
-            {
+            if (pos >= 0) {
                 ListView listView = (ListView) findViewById(R.id.CompletedCourseList);
                 listView.setSelection(pos);
             }
-            accessCompletedCourses.getCompletedCoursesSeq(courseList);
+            accessCompletedCourses.getCourses(courseList, "old");
             courseArrayAdapter.notifyDataSetChanged();
-        }
-        else
-        {
-            result = accessCompletedCourses.validateCourseData(course);
-
-            if(result == null)
-            {
-                result = "Cannot Delete a course that is not in the list.";
-            }
-
-            MessagesActivity.warning(this, result);
+        } else {
+            Messages.warning(this, result);
         }
     }
 
-    private Course createCourseFromEditText()
-    {
+    private Course createCourseFromEditText() {
         EditText editCourseID = (EditText)findViewById(R.id.editCourseID);
         EditText editGrade = (EditText)findViewById(R.id.editGrade);
 
@@ -238,15 +201,28 @@ public class MyCompletedCoursesActivity extends Activity
         return course;
     }
 
+    private String validateCourseData(Course course, boolean isNewCourse) {
+        if (course.getCourseID().length() == 0) {
+            return "Course ID required";
+        }
+
+        if (course.getGrade().length() == 0) {
+            return "Course grade required";
+        }
+
+//        if (isNewCourse && accessCourses.getRandom(course.getCourseID()) != null) {
+//            return "Course ID " + course.getCourseID() + " already exists.";
+//        }
+
+        return null;
+    }
+
+
+
     private void goToCurrentCGPA()
     {
-        Intent intent = new Intent(this, CurrentCGPAResultsActivity.class);
+        Intent intent = new Intent(this, CurrentCGPAActivity.class);
         startActivity(intent);
     }
 
-    private void goToCurrentCourses()
-    {
-        Intent intent = new Intent(this, MyCurrentCoursesActivity.class);
-        startActivity(intent);
-    }
 }

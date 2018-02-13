@@ -1,20 +1,53 @@
-package com.example.uju.coursetracker;
+package com.example.uju.coursetracker.application;
 
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
-import android.widget.Button;
-import android.view.View;
 import android.content.Intent;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import com.example.uju.coursetracker.R;
+import com.example.uju.coursetracker.presentation.CurrentCGPAActivity;
+import com.example.uju.coursetracker.presentation.MyCompletedCoursesActivity;
+
+//import java.io.BufferedReader; REMOVE LATER. THIS IS FOR CLI
+//import java.io.IOException;
+//import java.io.InputStreamReader;
+
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
+{
     private DrawerLayout dLayout;
     private ActionBarDrawerToggle dToggle;
+
+    //For accessing database (from Main and Services)
+    public static final String dbName = "MyCourses";
+    //public static BufferedReader console;   //REMOVE LATER
+
+//    public static void main(String[] args) //REMOVE LATER. THIS IS FOR CLI
+//    {
+//        startUp();
+//
+//        //CLI.run();
+//
+//        shutDown();
+//        System.out.println("All done");
+//    }
+
+    //From sample project Services and main
+    public static void startUp()
+    {
+        DatabaseService.createDataAccess(dbName);
+    }
+
+    public static void shutDown()
+    {
+        DatabaseService.closeDataAccess();
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,16 +60,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); 
         NavigationView navigationView = (NavigationView)findViewById(R.id.nav_v);
         navigationView.setNavigationItemSelectedListener(this);
-      
-      //This section is to only create a navigation between home page and currCGPA page Delete it after getting the real home page
-        Button but = (Button) findViewById(R.id.goToCurrButton);
 
-        but.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                startActivity(new Intent(MainActivity.this, CurrentCGPA.class));
-            }
-        });
+       startUp();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        shutDown();
+    }
+
 //test
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -47,37 +81,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.menu)
-        {
-            Toast.makeText(this, "Menu", Toast.LENGTH_SHORT).show();
-        }
-        if(id == R.id.cgpaCalc)
-        {
-            Toast.makeText(this, "CGPA Calculator", Toast.LENGTH_SHORT).show();
-        }
-        if(id == R.id.cgpaPred)
-        {
-            Toast.makeText(this, "CGPA Predictor", Toast.LENGTH_SHORT).show();
-        }
-        if(id == R.id.sched)
-        {
-            Toast.makeText(this, "Schedule", Toast.LENGTH_SHORT).show();
-        }
-        if(id == R.id.crs)
-        {
-            Toast.makeText(this, "Courses", Toast.LENGTH_SHORT).show();
-        }
-        if(id == R.id.prog)
-        {
-            Toast.makeText(this, "Progress", Toast.LENGTH_SHORT).show();
-        }
-        if(id == R.id.loc)
-        {
-            Toast.makeText(this, "Location", Toast.LENGTH_SHORT).show();
-        }
-        return false;
+        switch (id) {
 
+            case R.id.cgpaCalc:
+                Intent calc = new Intent(MainActivity.this, CurrentCGPAActivity.class);
+                startActivity(calc);
+                break;
+
+            case R.id.cgpaPred:
+                Intent res = new Intent(MainActivity.this, CurrentCGPAActivity.class);
+                startActivity(res);
+                break;
+
+            case R.id.crs:
+                Intent crss = new Intent(MainActivity.this, MyCompletedCoursesActivity.class);
+                startActivity(crss);
+                break;
+
+        }
+
+        return true;
     }
+
 }

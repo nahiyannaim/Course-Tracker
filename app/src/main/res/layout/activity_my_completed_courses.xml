@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/mycourse_title"
@@ -32,28 +32,18 @@
         <ListView
             android:id="@+id/CompletedCourseList"
             android:layout_width="match_parent"
-            android:layout_height="452dp"
-            android:listSelector="#c5d1d4">
+            android:layout_height="452dp">
 
         </ListView>
 
         <Button
             android:id="@+id/CalculateCGPAButton"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:background="@android:color/holo_blue_light"
-            android:text="@string/calculate_my_current_cgpa"
+            android:text="Calculate my current CGPA"
             android:textColor="@color/white"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/goToCurrentCoursesButton"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@android:color/holo_green_light"
-            android:text="@string/predict_my_next_cgpa"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -66,10 +56,10 @@
         android:rowCount="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.905">
+        app:layout_constraintVertical_bias="0.893">
 
         <TextView
             android:id="@+id/textCourseID"
@@ -92,7 +82,6 @@
             android:ems="12"
             android:enabled="true"
             android:inputType="textNoSuggestions"
-            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.901"
@@ -120,7 +109,6 @@
             android:layout_width="179dp"
             android:layout_height="55dp"
             android:inputType="text"
-            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.875"
@@ -134,23 +122,21 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/relativeLayout"
         android:layout_width="144dp"
-        android:layout_height="210dp"
+        android:layout_height="225dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintHorizontal_bias="0.964"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.951">
+        app:layout_constraintVertical_bias="0.953">
 
         <Button
             android:id="@+id/buttonCourseDelete"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_orange_light"
             android:enabled="false"
             android:onClick="buttonCourseDeleteOnClick"
             android:text="@string/delete"
-            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -160,13 +146,11 @@
 
         <Button
             android:id="@+id/buttonCourseCreate"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_orange_light"
             android:enabled="true"
             android:onClick="buttonCourseCreateOnClick"
             android:text="@string/create"
-            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -176,13 +160,11 @@
 
         <Button
             android:id="@+id/buttonCourseUpdate"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_orange_light"
             android:enabled="false"
             android:onClick="buttonCourseUpdateOnClick"
             android:text="@string/update"
-            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
