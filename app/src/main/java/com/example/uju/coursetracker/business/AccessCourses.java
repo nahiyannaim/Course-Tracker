@@ -1,5 +1,7 @@
 package com.example.uju.coursetracker.business;
 
+import android.util.Log;
+
 import java.util.List;
 import java.util.ArrayList;
 

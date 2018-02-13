@@ -69,9 +69,22 @@ public class Course
         System.out.print("Breakdown List: " + txt);
     }
 
-    public boolean equals(Course other)
+    public boolean equals(Object other)
     {
-        return (this.courseID.equals(other.getCourseID())) && (this.courseName.equals(other.getCourseName()));
+        boolean result;
+        Course c;
+
+        result = false;
+
+        if (other instanceof Course)
+        {
+            c = (Course) other;
+            if (((c.courseID == null) && (courseID == null)) || (c.courseID.equals(courseID)))
+            {
+                result = true;
+            }
+        }
+        return result;
     }
 
     @Override
