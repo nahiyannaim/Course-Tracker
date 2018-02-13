@@ -10,7 +10,7 @@ import android.content.Intent;
 
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.presentation.CurrentCGPAActivity;
-import com.example.uju.coursetracker.presentation.MyCoursesActivity;
+import com.example.uju.coursetracker.presentation.MyCompletedCoursesActivity;
 
 //import java.io.BufferedReader; REMOVE LATER. THIS IS FOR CLI
 //import java.io.IOException;
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.crs:
-                Intent crss = new Intent(MainActivity.this, MyCoursesActivity.class);
+                Intent crss = new Intent(MainActivity.this, MyCompletedCoursesActivity.class);
                 startActivity(crss);
                 break;
 

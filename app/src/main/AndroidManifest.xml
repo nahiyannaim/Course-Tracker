@@ -25,7 +25,7 @@
 
 
 
-        <activity android:name=".presentation.MyCoursesActivity">
+        <activity android:name=".presentation.MyCompletedCoursesActivity">
 
         </activity>
 

@@ -1,18 +1,10 @@
 package com.example.uju.coursetracker.presentation;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -28,7 +20,7 @@ import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.business.AccessCourses;
 import com.example.uju.coursetracker.objects.Course;
 
-public class MyCoursesActivity extends Activity {
+public class MyCompletedCoursesActivity extends Activity {
     private AccessCourses accessCompletedCourses;
     //private AccessCourses accessNewCourses;
 
@@ -45,7 +37,7 @@ public class MyCoursesActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_courses);
+        setContentView(R.layout.activity_my_completed_courses);
 
         accessCompletedCourses = new AccessCourses();
 
@@ -121,22 +113,7 @@ public class MyCoursesActivity extends Activity {
         });
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_courses, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+
 
     public void selectCourseAtPosition(int position) {
         Course selected = courseArrayAdapter.getItem(position);
@@ -148,16 +125,7 @@ public class MyCoursesActivity extends Activity {
         editGrade.setText(selected.getGrade());
     }
 
-//    public void buttonCourseStudentsOnClick(View v) {
-//        EditText editID = (EditText)findViewById(R.id.editCourseID);
-//        String courseID = editID.getText().toString();
-//
-//        Intent csIntent = new Intent(CoursesActivity.this, CourseStudentsActivity.class);
-//        Bundle b = new Bundle();
-//        b.putString("courseID", courseID);
-//        csIntent.putExtras(b);
-//        CoursesActivity.this.startActivity(csIntent);
-//    }
+
 
 //    public void buttonCourseCreateOnClick(View v) {
 //        Course course = createCourseFromEditText();
@@ -250,30 +218,6 @@ public class MyCoursesActivity extends Activity {
     }
 
 
-
-
-////    public void showInputBox(String oldGrade, final int index)
-////    {
-////        final Dialog dialogBox = new Dialog(MyCoursesActivity.this);
-////        dialogBox.setTitle("Input Box");
-////        dialogBox.setContentView(R.layout.mycourses_inputbox);
-////        TextView txtMessage = (TextView) dialogBox.findViewById(R.id.InputBoxTitle);
-////        txtMessage.setText("Update Grade");
-////        txtMessage.setTextColor(Color.parseColor("#ff2222"));
-////        final EditText editText = (EditText) dialogBox.findViewById(R.id.TextInput);
-////        editText.setText(oldGrade);
-////        Button updateBtn = (Button) dialogBox.findViewById(R.id.UpdateBtn);
-////        updateBtn.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                courseList.set(index, editText.getText().toString());
-////                courseArrayAdapter.notifyDataSetChanged();
-////                dialogBox.dismiss();
-////            }
-////        });
-////        dialogBox.show();
-////
-//        }
 
     private void goToCurrentCGPA()
     {
