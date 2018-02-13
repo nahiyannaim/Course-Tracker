@@ -45,18 +45,9 @@ public class CurrentCGPAActivity extends AppCompatActivity {
             tv.setText("Invalid Grades Entered");
         }
 
-        Button button1 = findViewById(R.id.button);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               goToPredictedCGPA();
-            }
-        });
+
     }
 
-    private void goToPredictedCGPA() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
+
 
 }

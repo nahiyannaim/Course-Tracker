@@ -5,7 +5,6 @@
     <string name="knownGradesText">Select your known Grades:</string>
 
 
-
     <string name="app_name">Course Tracker</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
@@ -22,12 +21,14 @@
     <string name="fatalError">Fatal error</string>
     <string name="warning">Warning</string>
     <string name="mycourse_title">My Completed Courses: </string>
-    <string name="based_on_your_current_courses_grades_your_predicted_cgpa_is">Based on your current courses grades, your predicted CGPA is:</string>
+
     <string name="textview">TextView</string>
     <string name="delete">Delete</string>
     <string name="create">Create</string>
     <string name="update">Update</string>
     <string name="name">Grade:</string>
     <string name="course_id">Course ID:</string>
+    <string name="predictTitle">Based on your current courses grades, your predicted CGPA is: </string>
+
 
 </resources>
