@@ -36,63 +36,63 @@ public class StubDatabase
 
         //Old Courses------------------------------------------------------------------------------
 		//Comp Sci
-        course = new Course("COMP1010", "Introduction To Java 1","A");
+        course = new Course("COMP 1010", "Introduction To Java 1","A");
         oldCourses.add(course);
-        course = new Course("COMP1020", "Introduction To Java 2","B");
+        course = new Course("COMP 1020", "Introduction To Java 2","B+");
         oldCourses.add(course);
-        course = new Course("COMP2140", "Data Structures","B");
+        course = new Course("COMP 2140", "Data Structures","B");
         oldCourses.add(course);
-        course = new Course("COMP2080", "Analysis Of Algorithms","C");
+        course = new Course("COMP 2080", "Analysis Of Algorithms","C+");
         oldCourses.add(course);
 
-		course = new Course("COMP3010", "Distributed Computing","C");
+		course = new Course("COMP 3010", "Distributed Computing","C");
         oldCourses.add(course);
-		course = new Course("COMP3020", "Human-Computer Interaction","A");
+		course = new Course("COMP 3020", "Human-Computer Interaction","A");
         oldCourses.add(course);
-		course = new Course("COMP3350", "Software Development","A+");
+		course = new Course("COMP 3350", "Software Development","A+");
         oldCourses.add(course);
-		course = new Course("COMP3380", "Introduction To Databases","A+");
+		course = new Course("COMP 3380", "Introduction To Databases","A+");
         oldCourses.add(course);
 
         //Electives
-        course = new Course("FMLY1000", "Introduction To Family Studies", "A+");
+        course = new Course("FMLY 1000", "Introduction To Family Studies", "B+");
         oldCourses.add(course);
-        course = new Course("MATH1500", "Calculus 1","A");
+        course = new Course("MATH 1500", "Calculus 1","A");
         oldCourses.add(course);
-        course = new Course("MATH1700", "Calculus 2","A+");
+        course = new Course("MATH 1700", "Calculus 2","A+");
         oldCourses.add(course);
-        course = new Course("WOMN1500", "Women And Gender Studies","D");
+        course = new Course("WOMN 1500", "Women And Gender Studies","D");
         oldCourses.add(course);
 
         //New Courses------------------------------------------------------------------------------
         //Electives
-        course = new Course("SOCO1200", "Introduction To Sociology");
+        course = new Course("SOCO 1200", "Introduction To Sociology");
         bkDwnLst = course.getBreakdownList();
-        nwBk = new Breakdown("SOCO1200", "Ass",0.25);
+        nwBk = new Breakdown("SOCO 1200", "Assignment",0.25);
         bkDwnLst.add(nwBk);
-        nwBk = new Breakdown("SOCO1200", "Mid",0.35);
+        nwBk = new Breakdown("SOCO 1200", "Midterm",0.35);
         bkDwnLst.add(nwBk);
-        nwBk = new Breakdown("SOCO1200", "Fin",0.40);
+        nwBk = new Breakdown("SOCO 1200", "Final",0.40);
         bkDwnLst.add(nwBk);
         newCourses.add(course);
 
-        course = new Course("ECON1020", "Introduction To Economics");
+        course = new Course("ECON 1020", "Introduction To Economics");
         bkDwnLst = course.getBreakdownList();
-        nwBk = new Breakdown("ECON1020", "Ass",0.80);
+        nwBk = new Breakdown("ECON 1020", "Assignment",0.80);
         bkDwnLst.add(nwBk);
-        nwBk = new Breakdown("ECON1020", "Fin",0.20);
+        nwBk = new Breakdown("ECON 1020", "Final",0.20);
         bkDwnLst.add(nwBk);
         newCourses.add(course);
 
-        course = new Course("ENGL1300", "Intro To English Literature");
+        course = new Course("ENGL 1300", "Intro To English Literature");
         bkDwnLst = course.getBreakdownList();
-        nwBk = new Breakdown("ENGL1300", "Ass",0.10);
+        nwBk = new Breakdown("ENGL 1300", "Assignment",0.10);
         bkDwnLst.add(nwBk);
-        nwBk = new Breakdown("ENGL1300", "Pro",0.20);
+        nwBk = new Breakdown("ENGL 1300", "Project",0.20);
         bkDwnLst.add(nwBk);
-        nwBk = new Breakdown("ENGL1300", "Mid",0.30);
+        nwBk = new Breakdown("ENGL 1300", "Midterm",0.30);
         bkDwnLst.add(nwBk);
-        nwBk = new Breakdown("ENGL1300", "Fin",0.40);
+        nwBk = new Breakdown("ENGL 1300", "Final",0.40);
         bkDwnLst.add(nwBk);
         newCourses.add(course);
 
@@ -172,6 +172,7 @@ public class StubDatabase
         return null;
     }
 
+
     public String getCourseSequential(List<Course> courseResult,String key)
     {
         if(key.equals("old")) {
@@ -186,9 +187,13 @@ public class StubDatabase
         return null;
     }
 
-    public ArrayList<Course> getOldCourses()
-    {
+    public ArrayList<Course> getOldCourses() {
         return oldCourses;
+    }
+    public ArrayList<Course> getNewCourses()
+    {
+        return newCourses;
+
     }
     // This is the stub database for the project
     // This stub database will have a set of initial contents and will provide the data for other classes.

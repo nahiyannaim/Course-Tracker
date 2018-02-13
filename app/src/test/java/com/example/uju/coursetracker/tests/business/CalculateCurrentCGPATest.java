@@ -52,7 +52,7 @@ public class CalculateCurrentCGPATest extends TestCase
         result = CalculateCurrentCGPA.calculate(list);
 
         assertNotNull(result);
-        assertEquals(2.5625, result);
+        assertEquals(2.56, result);
 
 
 		System.out.println("Finished Test");
