@@ -12,15 +12,15 @@ import com.example.uju.coursetracker.presentation.MyAllCoursesActivity;
 import com.example.uju.coursetracker.presentation.MyCompletedCoursesActivity;
 import com.example.uju.coursetracker.presentation.MyCurrentCoursesActivity;
 
+
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
     private DrawerLayout dLayout;
     private ActionBarDrawerToggle dToggle;
+    public static final String dbName = "MyCourses"; //For accessing the database called MyCourses
 
-    //For accessing the database called MyCourses
-    public static final String dbName = "MyCourses";
-
-    //From sample project Main
+    //To start and close the database
     public static void startUp()
     {
         DatabaseService.createDataAccess(dbName);
@@ -31,12 +31,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DatabaseService.closeDataAccess();
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        //Everything related to home page and navigation bar
+        //Setup of the navigation bar in the home page
         dLayout = (DrawerLayout)findViewById(R.id.drawer);
         dToggle = new ActionBarDrawerToggle(MainActivity.this,dLayout,R.string.open,R.string.close);
         dLayout.addDrawerListener(dToggle);
@@ -45,15 +46,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView)findViewById(R.id.nav_v);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //starts up the database
-       startUp();
+       startUp(); //Start the database
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        //close the database
         shutDown();
     }
 
