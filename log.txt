@@ -1,0 +1,258 @@
+Log File
+
+
+Team meetings and rationales behind any decisions:
+
+Jan 21
+Discussed Github version control and how to properly integrate it with Android studio
+Installed Android Studio and created GitHub account on every team member’s computer
+
+Jan 25 - 26
+Meeting to fix the Github integration issues with Android Studio
+Discussed the app GUI to get more idea on what it will look like and how it will all work together.
+Initial commit to the remote repository in GitHub
+
+Jan 28
+Made paper prototypes and got feedback from 3 possible actual users
+Discussed the feasibility and requirements for a few possible designs
+Discussed implementation difficulties of each design
+Decided on the final interface design of the app
+
+Jan 29	
+Created separate branches to work independently on local copy
+Created tag “iteration 1” just incase rollback needed in Git
+Separated each android activity of app and assigned developer tasks to each members
+Home-page, CurrentCGPA sections assigned to Francis, Nahiyan, Christian and Prediction and Results section assigned to Daniel and Uju  
+
+Feb 2
+Met with the professor to discuss storage issues regarding our specific project.
+Discussed possible solutions to satisfy the Persistence requirement of the project 
+
+Decided to separate the entire database to “My Courses” section of the app to satisfy the persistence requirement
+
+Feb 4
+Implemented the required class for persistence/storage (StubDatabase file)
+Reorganized the package structure of the entire project to match 3 layer architecture
+
+Feb 6 (Group Voice call)
+Decided that  both the current CGPA page and the predict CGPA page should be fetching data from the database to display the results instead of having the user input the data from the beginning. 
+
+Feb 7
+Created automated unit tests for all files under business (CalculateCurrentCGPATest, PredictNextCGPATest) and objects (BreakdownTest, CourseTest) using JUnit 3 framework
+TDD and Whitebox testing were kept in mind when implementing the tests to test implementation specifics and desired behaviour with a thorough set of test cases 
+Included a test suite AllTests.java that runs all of the unit tests of the project together
+
+Feb 9
+Implemented warning and error messages
+Implemented the interface for Current CGPA results page and Predicted CGPA results page
+
+Feb 12
+Created an activity page for displaying all of the student’s courses in “My Courses”
+Decided to split Current CGPA section into two pages. First page showing a list of completed courses so that the user can modify his completed courses information. Second page showing the current CGPA result of the user because it depends on the grades of completed course list.
+Prediction also split into two pages. First page showing list of current (ongoing) semester courses so that the user can modify his current courses information. Second page showing the predicted CGPA result of the user because it depends on the user’s assumed final grades for those current courses.
+Implemented the required activity page for Current CGPA results and Predicted CGPA results
+Implemented the required functionality to create and delete courses
+Implemented the required functionality to update the grade of a course
+Working copy of iteration 1
+
+Feb 13
+Code cleanup for unnecessary codes and dead codes
+Final touches to the user interface (Desired colours for buttons, texts) Final cosmetic changes.
+Preparing project handin. 
+Drew the architectural sketch for the project.
+
+
+
+
+
+
+
+Task assignments, estimates, and actual time spent:
+
+
+Set up the background image for the Home page
+Assigned to: Francis 
+Estimated Cost: 30 minutes 
+Actual time: 30 minutes
+
+Create a “hamburger” menu in the Home page to provide easy access/navigation between each components of the app
+Assigned to: Francis 
+Estimated Cost: 1 hour
+Actual time: 1 hour
+
+Link each button of the menu to their appropriate destination activity
+Assigned to: Francis 
+Estimated Cost: 30 minutes
+Actual time: 1 hour
+
+Implement a stub database that uses non-persistent storage using Java built-in ArrayList with a set of initial contents (Completed Courses list and Current Semester Courses list) that will provide the data for all necessary calculations in the app 
+Assigned to: Francis, Christian 
+Estimated Cost: 1.5 hours
+Actual time: 2 hours
+
+Create sample courses to be added to the stub database
+Assigned to: Francis
+Estimated Cost: 10 minutes
+Actual time: 30 minutes 
+
+Create an interface (AccessCourses.java) for the database to allow access, retrieving of data and ability to change contents of the database
+Assigned to: Christian
+Estimated Cost: 2 hours
+Actual time: 1 hour
+
+Create a class for application that instantiates the creation and deletion of the database (DatabaseService.java). This will be called at the MainActivity of the project
+Assigned to: Christian
+Estimated Cost: 1 hour
+Actual time: 45 minutes
+
+Implement the algorithm for the main calculations of the app in CalculateCurrentCGPA.java and PredictNextCGPA.java
+Assigned to: Nahiyan
+Estimated Cost: 2 hours
+Actual time: 2.5 hours
+
+Create the domain-specific objects for the app - Course.java, Breakdown.java
+Assigned to: Nahiyan
+Estimated Cost: 1 hour
+Actual time: 1 hour
+
+Create automated unit tests for business (CalculateCurrentCGPATest, PredictNextCGPATest) and objects (BreakdownTest, CourseTest) using JUnit 3 framework with a thorough set of test cases
+Assigned to: Nahiyan
+Estimated Cost: 6 hours
+Actual time: 8.5 hours
+
+Create a test suite AllTests.java that runs all of the unit tests of the entire project together
+Assigned to: Nahiyan
+Estimated Cost: 1 hour
+Actual time: 30 mins
+
+
+Make completed course page fetch all required data from the stub database in “My All Courses” 
+Assigned to: Nahiyan, Christian
+Estimated Cost: 1 hour
+Actual time: 1 hour
+
+
+Display/Print the current CGPA based on the calculation to textView rounded to 2 decimal places in a separate results page
+Assigned to: Uju, Daniel
+Estimated Cost: 35 minutes
+Actual time: 45 minutes
+
+Add “create”, “update” and “delete” buttons and their functionality in completed courses page to allow the user to make changes to their completed courses list
+Assigned to: Nahiyan, Christian 
+Estimated Cost: 3 hours
+Actual time: 4 hours
+
+Create a list view to display all of the student’s Completed courses
+Assigned to: Christian
+Estimated Cost: 1 hour
+Actual time: 2.5 hours
+
+Create an Edit Text (or input field box) that handles user input changes to the completed courses information
+Assigned to: Nahiyan, Christian
+Estimated Cost:  1.5 hours
+Actual time: 2.5 hours
+
+Add functionality so that the changes in the completed course list by the user is reflected in the curr CGPA results page. Curr CGPA should be linked to the grades in completed course list and should change accordingly.
+Assigned to: Nahiyan, Christian
+Estimated Cost: 1 hour
+Actual time: 3.5 hours
+
+Create a button that links “My Completed Courses” page and its current CGPA results page via “Calculate current CGPA” button 
+Assigned to: Uju, Daniel
+Estimated Cost: 30 minutes
+Actual time: 1.5 hours
+
+Create a button that links “My Completed Courses” to “My Current Courses” via “Predict CGPA” button
+Assigned to: Nahiyan
+Estimated Cost: 30 minutes
+Actual time: 30 minutes
+
+Make PredictCGPA page fetch all required data from the stub database in “My All Courses” 
+Assigned to: Christian, Nahiyan
+Estimated Cost: 1 hour
+Actual time: 1 hour
+
+Display/Print the predicted CGPA based on the calculation to textView rounded to 2 decimal places in a separate results page
+Assigned to: Uju, Daniel
+Estimated Cost: 30 minutes
+Actual time: 15 minutes
+
+Add “create”, “update” and “delete” buttons and their functionalities in current courses page to allow the user to make changes to their current semester courses list
+Assigned to: Nahiyan, Christian
+Estimated Cost: 20 minutes
+Actual time: 30 minutes
+
+Create a list view to display all of the student’s Current courses
+Assigned to: Christian
+Estimated Cost: 20 minutes
+Actual time: 20 minutes
+
+Create an Edit Text (or input field box) that handles user input changes to the current courses information
+Assigned to: Nahiyan, Christian
+Estimated Cost: 1 hour
+Actual time: 1 hour
+
+Add functionality so that the changes in the current courses list by the user is reflected in the Predict CGPA results page. Predict CGPA should be linked to the grades in current course list and should change accordingly.
+Assigned to: Nahiyan, Christian
+Estimated Cost: 1 hour
+Actual time: 1.5 hour
+
+Create a button that links “My Current Courses” page and its predicted CGPA results page via “Predict CGPA” button 
+Assigned to: Nahiyan
+Estimated Cost: 30 minutes
+Actual time: 30 minutes
+
+Create an Activity page that handles processing of warning and error messages
+Assigned to: Christian
+Estimated Cost: 50 minutes
+Actual time: 50 minutes
+
+Create an activity page called “My All Courses” that displays both completed and current courses using 2 list views 
+Assigned to: Christian, Nahiyan
+Estimated Cost: 1 hour
+Actual time: 1.5 hour
+
+Make the 2 listviews of “My All Courses” page fetch data from the stub database
+Assigned to: Christian, Nahiyan
+Estimated Cost: 1 hour
+Actual time: 1 hour
+
+Validate correct grade input from the user in “My Completed Courses” page and “My Current Courses” page
+Assigned to: Christian, Nahiyan
+Estimated Cost: 30 minutes
+Actual time: 30 minutes
+
+
+
+
+
+
+NEW detailed stories:
+
+Update Course Grades
+Make changes to the course’s grade by updating it
+Priority: High
+Cost: 1 day
+
+Create Courses with its Grades
+Make an entire course with its course ID and course grade
+Priority: High
+Cost: 1 day
+
+
+
+
+
+Outstanding bugs and their fixes:
+
+User can create multiple or duplicate courses with the same course ID
+Fix: Create an algorithm that checks if the course already exists or stored in the database and give the appropriate warning/error message
+
+User input of lowercase grades is considered invalid. 
+Fix: Add code to ignore cases 
+
+The “Course ID:” text and “Grade:” text overlaps with the list view and other buttons when the keyboard appears
+Fix: Add appropriate layout code for them to rearrange automatically
+
+The list item that user selected is not highlighted 
+Fix: Add appropriate highlight code for the selected item from list view
