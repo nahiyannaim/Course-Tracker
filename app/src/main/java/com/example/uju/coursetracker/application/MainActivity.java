@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        //Setup the navigation bar in the home page
+        //Setup of the navigation bar in the home page
         dLayout = (DrawerLayout)findViewById(R.id.drawer);
         dToggle = new ActionBarDrawerToggle(MainActivity.this,dLayout,R.string.open,R.string.close);
         dLayout.addDrawerListener(dToggle);
