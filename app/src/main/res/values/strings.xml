@@ -1,7 +1,7 @@
 <resources>
 
 
-    <string name="numCompleteCoursesText">Number of Courses you're taking currently:</string>
+    <string name="numCompleteCoursesText">Number of Courses you are taking currently:</string>
     <string name="knownGradesText">Select your known Grades:</string>
 
 
