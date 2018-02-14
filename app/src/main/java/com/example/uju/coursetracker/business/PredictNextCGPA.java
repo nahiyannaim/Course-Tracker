@@ -1,8 +1,6 @@
 package com.example.uju.coursetracker.business;
 
-
 import com.example.uju.coursetracker.objects.Course;
-
 import java.util.ArrayList;
 
 public class PredictNextCGPA

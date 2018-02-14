@@ -4,16 +4,11 @@ import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
-
-
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.application.DatabaseService;
 import com.example.uju.coursetracker.objects.Course;
-
 import java.util.ArrayList;
-
 import static com.example.uju.coursetracker.business.CalculateCurrentCGPA.calculate;
-
 
 public class CurrentCGPAResultsActivity extends AppCompatActivity {
 

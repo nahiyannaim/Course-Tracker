@@ -7,37 +7,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.content.Intent;
-
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.presentation.MyAllCoursesActivity;
 import com.example.uju.coursetracker.presentation.MyCompletedCoursesActivity;
 import com.example.uju.coursetracker.presentation.MyCurrentCoursesActivity;
-
-//import java.io.BufferedReader; REMOVE LATER. THIS IS FOR CLI
-//import java.io.IOException;
-//import java.io.InputStreamReader;
-
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
     private DrawerLayout dLayout;
     private ActionBarDrawerToggle dToggle;
 
-    //For accessing database (from Main and Services)
+    //For accessing the database called MyCourses
     public static final String dbName = "MyCourses";
-    //public static BufferedReader console;   //REMOVE LATER
 
-//    public static void main(String[] args) //REMOVE LATER. THIS IS FOR CLI
-//    {
-//        startUp();
-//
-//        //CLI.run();
-//
-//        shutDown();
-//        System.out.println("All done");
-//    }
-
-    //From sample project Services and main
+    //From sample project Main
     public static void startUp()
     {
         DatabaseService.createDataAccess(dbName);
@@ -48,12 +31,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DatabaseService.closeDataAccess();
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
+        //Everything related to home page and navigation bar
         dLayout = (DrawerLayout)findViewById(R.id.drawer);
         dToggle = new ActionBarDrawerToggle(MainActivity.this,dLayout,R.string.open,R.string.close);
         dLayout.addDrawerListener(dToggle);
@@ -62,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView)findViewById(R.id.nav_v);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //starts up the database
        startUp();
     }
 
@@ -69,10 +53,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onDestroy() {
         super.onDestroy();
 
+        //close the database
         shutDown();
     }
 
-//test
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(dToggle.onOptionsItemSelected(item)){
