@@ -1,8 +1,6 @@
 package com.example.uju.coursetracker.business;
 
-
 import com.example.uju.coursetracker.objects.Course;
-
 import java.util.ArrayList;
 
 public class PredictNextCGPA
@@ -79,7 +77,7 @@ public class PredictNextCGPA
         if(!flag)
         {
             prediction = points / ( currentCoursesList.size() + totalCoursesCompleted);
-            prediction  = Math.round(prediction*100.0)/100.0;
+            prediction  = Math.round(prediction*100.0)/100.0; //Rounding to 2 decimal places
         }
         else
         {

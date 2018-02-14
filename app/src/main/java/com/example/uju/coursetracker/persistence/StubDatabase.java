@@ -1,12 +1,13 @@
 package com.example.uju.coursetracker.persistence;
 
-import android.util.Log;
-
 import com.example.uju.coursetracker.application.MainActivity;
 import com.example.uju.coursetracker.objects.Breakdown;
 import com.example.uju.coursetracker.objects.Course;
-
 import java.util.*;
+
+
+// This is the stub database for the project
+// This stub database will have a set of initial contents and will provide the data for other classes.
 
 public class StubDatabase
 {
@@ -128,16 +129,12 @@ public class StubDatabase
 
     public String updateOldCourse(Course currentCourse)
     {
-        Log.v("myTag", currentCourse.getGrade());
-        Log.v("myTag", currentCourse.getCourseID());
         int index;
 
         index = oldCourses.indexOf(currentCourse);
-        Log.v("myTag", index + "");
         if (index >= 0)
         {
             oldCourses.set(index, currentCourse);
-            Log.v("myTag", "1");
         }
         return null;
     }
@@ -217,6 +214,5 @@ public class StubDatabase
         return newCourses;
 
     }
-    // This is the stub database for the project
-    // This stub database will have a set of initial contents and will provide the data for other classes.
+
 }

@@ -1,9 +1,6 @@
 package com.example.uju.coursetracker.tests.objects;
 
-
 import com.example.uju.coursetracker.objects.Breakdown;
-import com.example.uju.coursetracker.objects.Course;
-
 import junit.framework.TestCase;
 
 public class BreakdownTest extends TestCase
