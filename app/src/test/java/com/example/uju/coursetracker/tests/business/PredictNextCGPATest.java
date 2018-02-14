@@ -1,7 +1,5 @@
 package com.example.uju.coursetracker.tests.business;
 
-
-import com.example.uju.coursetracker.business.CalculateCurrentCGPA;
 import com.example.uju.coursetracker.business.PredictNextCGPA;
 import com.example.uju.coursetracker.objects.Course;
 

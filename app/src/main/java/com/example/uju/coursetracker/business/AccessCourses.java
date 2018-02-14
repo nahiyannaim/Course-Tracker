@@ -1,10 +1,6 @@
 package com.example.uju.coursetracker.business;
 
-import android.util.Log;
-
 import java.util.List;
-import java.util.ArrayList;
-
 import com.example.uju.coursetracker.application.MainActivity;
 import com.example.uju.coursetracker.application.DatabaseService;
 import com.example.uju.coursetracker.objects.Course;
@@ -29,12 +25,6 @@ public class AccessCourses
     {
         courses.clear();
         return dataAccess.getCourseSequential(courses, key);
-    }
-
-    public ArrayList<Course> getOldCourses()
-    {
-        courses.clear();
-        return getOldCourses();
     }
 
     public String updateCompletedCourse(Course currentCourse)
