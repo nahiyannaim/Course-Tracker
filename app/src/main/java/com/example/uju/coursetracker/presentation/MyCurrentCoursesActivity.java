@@ -13,25 +13,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.business.AccessCourses;
 import com.example.uju.coursetracker.objects.Course;
-
 import java.util.ArrayList;
+
 
 public class MyCurrentCoursesActivity extends AppCompatActivity {
 
-
     private AccessCourses accessNewCourses;
-
     private ArrayList<Course> newCourseList;
-
     private ArrayAdapter<Course> courseArrayAdapter;
     private int selectedCoursePosition = -1;
-
     private String newCoursesDBName = "new";
-
 
 
     @Override
@@ -88,17 +82,15 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
             });
 
             final EditText editCourseID2 = (EditText)findViewById(R.id.editCourseID2);
-//            final Button buttonCourseStudents = (Button)findViewById(R.id.buttonCourseStudents);
-            editCourseID2.addTextChangedListener(new TextWatcher() {
+
+            editCourseID2.addTextChangedListener(new TextWatcher()
+            {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
                 @Override
-                public void afterTextChanged(Editable s) {
-//                    buttonCourseStudents.setEnabled(editCourseID.getText().toString().length() > 0);
-                }
+                public void afterTextChanged(Editable s) {}
             });
         }
 
@@ -136,7 +128,7 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
         if (result == null) {
             result = accessNewCourses.insertNewCourse(course);
             if (result == null) {
-                accessNewCourses.getCourses(newCourseList, "new");
+                accessNewCourses.getCourses(newCourseList, newCoursesDBName);
                 courseArrayAdapter.notifyDataSetChanged();
                 int pos = newCourseList.indexOf(course);
                 if (pos >= 0) {
@@ -160,7 +152,7 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
         if (result == null) {
             result = accessNewCourses.updateNewCourse(course);
             if (result == null) {
-                accessNewCourses.getCourses(newCourseList, "new");
+                accessNewCourses.getCourses(newCourseList, newCoursesDBName);
                 courseArrayAdapter.notifyDataSetChanged();
                 int pos = newCourseList.indexOf(course);
                 if (pos >= 0) {
@@ -186,7 +178,7 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
                 ListView listView = (ListView) findViewById(R.id.CurrentCourseList);
                 listView.setSelection(pos);
             }
-            accessNewCourses.getCourses(newCourseList, "new");
+            accessNewCourses.getCourses(newCourseList, newCoursesDBName);
             courseArrayAdapter.notifyDataSetChanged();
         } else {
             MessagesActivity.warning(this, result);
