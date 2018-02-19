@@ -204,11 +204,11 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
         {
             return "Course grade required";
         }
-        if(!(course.getGrade().equals("A+") ||  course.getGrade().equals("A") ||
-                course.getGrade().equals("B+") || course.getGrade().equals("B") ||
-                course.getGrade().equals("C+") || course.getGrade().equals("C") ||
-                course.getGrade().equals("D+") || course.getGrade().equals("D") ||
-                course.getGrade().equals("F")))
+        if( !(course.getGrade().equals("A+") ||  course.getGrade().equalsIgnoreCase("A") ||
+                course.getGrade().equals("B+") || course.getGrade().equalsIgnoreCase("B") ||
+                course.getGrade().equals("C+") || course.getGrade().equalsIgnoreCase("C") ||
+                course.getGrade().equals("D+") || course.getGrade().equalsIgnoreCase("D") ||
+                course.getGrade().equalsIgnoreCase("F"))  && !(( course.getGrade().equals("a+") ||  course.getGrade().equals("b+") || course.getGrade().equals("c+")) ))
         {
             return "Invalid course grade";
 
