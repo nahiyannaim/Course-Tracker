@@ -19,35 +19,35 @@ public class CalculateCurrentCGPA
             {
                 temp = (completedCoursesList.get(i)).getGrade();
 
-                if (temp.equals("A+"))
+                if (temp.equals("A+") || temp.equals("a+"))
                 {
                     totalPoints += 4.5;
                 }
-                else if (temp.equals("A"))
+                else if (temp.equalsIgnoreCase("A"))
                 {
                     totalPoints += 4.0;
                 }
-                else if (temp.equals("B+"))
+                else if (temp.equals("B+") || temp.equals("b+"))
                 {
                     totalPoints += 3.5;
                 }
-                else if (temp.equals("B"))
+                else if (temp.equalsIgnoreCase("B"))
                 {
                     totalPoints += 3.0;
                 }
-                else if (temp.equals("C+"))
+                else if (temp.equals("C+") || temp.equals("c+"))
                 {
                     totalPoints += 2.5;
                 }
-                else if (temp.equals("C"))
+                else if (temp.equalsIgnoreCase("C"))
                 {
                     totalPoints += 2.0;
                 }
-                else if (temp.equals("D"))
+                else if (temp.equalsIgnoreCase("D"))
                 {
                     totalPoints += 1.0;
                 }
-                else if (temp.equals("F"))
+                else if (temp.equalsIgnoreCase("F"))
                 {
                     totalPoints += 0.0;
                 }
