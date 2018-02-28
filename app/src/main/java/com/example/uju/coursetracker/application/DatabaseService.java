@@ -4,35 +4,49 @@ import com.example.uju.coursetracker.persistence.StubDatabase;
 
 public class DatabaseService
 {
-    private static StubDatabase stubDatabaseService = null;
+    private static StubDatabase dataAccessService = null;
 
     public static StubDatabase createDataAccess(String dbName)
     {
-        if (stubDatabaseService == null)
+        if (dataAccessService == null)
         {
-            stubDatabaseService = new StubDatabase(dbName);
-            stubDatabaseService.open(dbName);
+            dataAccessService = new StubDatabase(dbName);
+            dataAccessService.open(dbName);
         }
-        return stubDatabaseService;
+        return dataAccessService;
     }
+
+    //For Iteration 2
+    //***************************************************************************************
+    public static DataAccess createDataAccess(DataAccess alternateDataAccessService)
+    {
+        if (dataAccessService == null)
+        {
+            dataAccessService = alternateDataAccessService;
+            dataAccessService.open(Main.getDBPathName());
+        }
+        return dataAccessService;
+    }
+    //************************************************************************************
+
 
     public static StubDatabase getDataAccess(String dbName)
     {
-        if (stubDatabaseService == null)
+        if (dataAccessService == null)
         {
             System.out.println("Connection to data access has not been established.");
             System.exit(1);
         }
-        return stubDatabaseService;
+        return dataAccessService;
     }
 
     public static void closeDataAccess()
     {
-        if (stubDatabaseService != null)
+        if (dataAccessService != null)
         {
-            stubDatabaseService.close();
+            dataAccessService.close();
         }
-        stubDatabaseService = null;
+        dataAccessService = null;
     }
 }
 
