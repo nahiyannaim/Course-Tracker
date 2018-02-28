@@ -44,40 +44,6 @@ public class DataAccessObject implements DataAccess
             st2 = c1.createStatement();
             st3 = c1.createStatement();
 
-            /*** Alternate setups for different DB engines, just given as examples. Don't use them. ***/
-
-			/*
-			 * // Setup for SQLite. Note that this is undocumented and is not guaranteed to work.
-			 * // See also: https://github.com/SQLDroid/SQLDroid
-			 * dbType = "SQLite";
-			 * Class.forName("SQLite.JDBCDriver").newInstance();
-			 * url = "jdbc:sqlite:" + dbPath;
-			 * c1 = DriverManager.getConnection(url);
-			 *
-			 * ... create statements
-			 */
-
-            /*** The following two work on desktop builds: ***/
-
-			/*
-			 * // Setup for Access
-			 * dbType = "Access";
-			 * Class.forName("sun.jdbc.odbc.JdbcOdbcDriver").newInstance();
-			 * url = "jdbc:odbc:SC";
-			 * c1 = DriverManager.getConnection(url,"userid","userpassword");
-			 *
-			 * ... create statements
-			 */
-
-			/*
-			 * //Setup for MySQL
-			 * dbType = "MySQL";
-			 * Class.forName("com.mysql.jdbc.Driver");
-			 * url = "jdbc:mysql://localhost/database01";
-			 * c1 = DriverManager.getConnection(url, "root", "");
-			 *
-			 * ... create statements
-			 */
         }
         catch (Exception e)
         {
@@ -101,141 +67,7 @@ public class DataAccessObject implements DataAccess
         System.out.println("Closed " +dbType +" database " +dbName);
     }
 
-    public String getStudentSequential(List<Student> studentResult)
-    {
-        Student student;
-        String myID, myStudentName, myAddress;
-        myStudentName = EOF;
-        myAddress = EOF;
-        myID = EOF;
 
-        result = null;
-        try
-        {
-            cmdString = "Select * from Students";
-            rs2 = st1.executeQuery(cmdString);
-            //ResultSetMetaData md2 = rs2.getMetaData();
-        }
-        catch (Exception e)
-        {
-            processSQLError(e);
-        }
-        try
-        {
-            while (rs2.next())
-            {
-                myID = rs2.getString("StudentID");
-                myStudentName = rs2.getString("Name");
-                myAddress = rs2.getString("Address");
-                student = new Student(myID, myStudentName, myAddress);
-                studentResult.add(student);
-            }
-            rs2.close();
-        }
-        catch (Exception e)
-        {
-            result = processSQLError(e);
-        }
-
-        return result;
-    }
-
-    public ArrayList<Student> getStudentRandom(Student newStudent)
-    {
-        Student student;
-        String myID, myStudentName, myAddress;
-        myID = EOF;
-        myStudentName = EOF;
-        myAddress = EOF;
-        students = new ArrayList<Student>();
-        try
-        {
-            cmdString = "Select * from Students where StudentID=" + newStudent.getStudentID();
-            rs3 = st1.executeQuery(cmdString);
-            // ResultSetMetaData md2 = rs3.getMetaData();
-            while (rs3.next())
-            {
-                myID = rs3.getString("StudentID");
-                myStudentName = rs3.getString("Name");
-                myAddress = rs3.getString("Address");
-                student = new Student(myID, myStudentName, myAddress);
-                students.add(student);
-            }
-            rs3.close();
-        } catch (Exception e)
-        {
-            processSQLError(e);
-        }
-        return students;
-    }
-
-    public String insertStudent(Student currentStudent)
-    {
-        String values;
-
-        result = null;
-        try
-        {
-            values = currentStudent.getStudentID()
-                    +", '" +currentStudent.getStudentName()
-                    +"', '" +currentStudent.getStudentAddress()
-                    +"'";
-            cmdString = "Insert into Students " +" Values(" +values +")";
-            //System.out.println(cmdString);
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1, updateCount);
-        }
-        catch (Exception e)
-        {
-            result = processSQLError(e);
-        }
-        return result;
-    }
-
-    public String updateStudent(Student currentStudent)
-    {
-        String values;
-        String where;
-
-        result = null;
-        try
-        {
-            // Should check for empty values and not update them
-            values = "Name='" +currentStudent.getStudentName()
-                    +"', Address='" +currentStudent.getStudentAddress()
-                    +"'";
-            where = "where StudentID=" +currentStudent.getStudentID();
-            cmdString = "Update Students " +" Set " +values +" " +where;
-            //System.out.println(cmdString);
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1, updateCount);
-        }
-        catch (Exception e)
-        {
-            result = processSQLError(e);
-        }
-        return result;
-    }
-
-    public String deleteStudent(Student currentStudent)
-    {
-        String values;
-
-        result = null;
-        try
-        {
-            values = currentStudent.getStudentID();
-            cmdString = "Delete from Students where StudentID=" +values;
-            //System.out.println(cmdString);
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1, updateCount);
-        }
-        catch (Exception e)
-        {
-            result = processSQLError(e);
-        }
-        return result;
-    }
 
     public String getCourseSequential(List<Course> courseResult)
     {
@@ -266,33 +98,7 @@ public class DataAccessObject implements DataAccess
         return result;
     }
 
-    public ArrayList<Course> getCourseRandom(Course newCourse)
-    {
-        Course course;
-        String myID, myCourseName;
-        myID = EOF;
-        myCourseName = EOF;
-        courses = new ArrayList<Course>();
-        try
-        {
-            cmdString = "Select * from Courses where CourseID='" +newCourse.getCourseID() +"'";
-            rs5 = st3.executeQuery(cmdString);
-            // ResultSetMetaData md5 = rs5.getMetaData();
-            while (rs5.next())
-            {
-                myID = rs5.getString("CourseID");
-                myCourseName = rs5.getString("Name");
-                course = new Course(myID, myCourseName);
-                courses.add(course);
-            }
-            rs5.close();
-        }
-        catch (Exception e)
-        {
-            processSQLError(e);
-        }
-        return courses;
-    }
+
 
     public String insertCourse(Course currentCourse)
     {
@@ -315,6 +121,7 @@ public class DataAccessObject implements DataAccess
         }
         return result;
     }
+
 
     public String updateCourse(Course currentCourse)
     {
@@ -340,6 +147,8 @@ public class DataAccessObject implements DataAccess
         return result;
     }
 
+
+
     public String deleteCourse(Course currentCourse)
     {
         String values;
@@ -360,77 +169,7 @@ public class DataAccessObject implements DataAccess
         return result;
     }
 
-    public ArrayList<SC> getSC(SC newSC)
-    {
-        String myStudentID, myCourseID, myCourseName, myGrade;
-        SC mySC;
-        int counter;
 
-        myStudentID = EOF;
-        myCourseID = EOF;
-        myGrade = EOF;
-        myCourseName = EOF;
-        counter = 0;
-        scs = new ArrayList<SC>();
-        try
-        {
-            cmdString = "Select * from Courses,StudentsCourses where Courses.CourseID=StudentsCourses.CourseID and StudentID=" + newSC.getStudentID();
-            rs4 = st2.executeQuery(cmdString);
-            // ResultSetMetaData md4 = rs4.getMetaData();
-            while (rs4.next())
-            {
-                myStudentID = rs4.getString("StudentID");
-                myCourseID = rs4.getString("CourseID");
-                myGrade = rs4.getString("Grade");
-                myCourseName = rs4.getString("Name");
-                mySC = new SC(myStudentID, myCourseID, "", myCourseName, myGrade);
-                scs.add(mySC);
-                counter++;
-            }
-            rs4.close();
-        }
-        catch (Exception e)
-        {
-            processSQLError(e);
-        }
-        return scs;
-    }
-
-    public ArrayList<SC> getCS(SC newSC)
-    {
-        String myStudentID, myCourseID, myStudentName, myGrade;
-        SC myCS;
-        int counter;
-
-        myStudentID = EOF;
-        myCourseID = EOF;
-        myGrade = EOF;
-        myStudentName = EOF;
-        counter = 0;
-        scs = new ArrayList<SC>();
-        try
-        {
-            cmdString = "Select * from Students,StudentsCourses where Students.StudentID=StudentsCourses.StudentID and CourseID='" +newSC.getCourseID() +"'";
-            rs4 = st2.executeQuery(cmdString);
-            // ResultSetMetaData md4 = rs4.getMetaData();
-            while (rs4.next())
-            {
-                myStudentID = rs4.getString("StudentID");
-                myCourseID = rs4.getString("CourseID");
-                myGrade = rs4.getString("Grade");
-                myStudentName = rs4.getString("Name");
-                myCS = new SC(myStudentID, myCourseID, myStudentName, "", myGrade);
-                scs.add(myCS);
-                counter++;
-            }
-            rs4.close();
-        }
-        catch (Exception e)
-        {
-            processSQLError(e);
-        }
-        return scs;
-    }
 
     public String checkWarning(Statement st, int updateCount)
     {
