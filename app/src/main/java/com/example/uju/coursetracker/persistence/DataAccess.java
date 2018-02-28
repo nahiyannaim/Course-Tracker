@@ -1,9 +1,5 @@
 package com.example.uju.coursetracker.persistence;
 
-import com.example.uju.coursetracker.objects.Course;
-import com.example.uju.coursetracker.objects.Reminder;
-import java.util.ArrayList;
-import java.util.List;
 
 public interface DataAccess
 {
@@ -11,36 +7,27 @@ public interface DataAccess
 
     void close();
 
-    //For Completed Courses
-    String getCompletedCoursesSeq(List<Course> completedCoursesList);
+    String getStudentSequential(List<Student> studentResult);
 
-    ArrayList<Course> getCompletedCourses();
+    ArrayList<Student> getStudentRandom(Student student);
 
-    String insertCompletedCourse(Course course);
+    String insertStudent(Student student);
 
-    String updateCompletedCourse(Course course);
+    String updateStudent(Student student);
 
-    String deleteCompletedCourse(Course course);
+    String deleteStudent(Student student);
 
-    //For Current Semester Courses
-    String getCurrentCoursesSeq(List<Course> currentCoursesList);
+    String getCourseSequential(List<Course> courseResult);
 
-    ArrayList<Course> getCurrentCourses();
+    ArrayList<Course> getCourseRandom(Course course);
 
-    String insertCurrentCourse(Course course);
+    String insertCourse(Course course);
 
-    String updateCurrentCourse(Course course);
+    String updateCourse(Course course);
 
-    String deleteCurrentCourse(Course course);
+    String deleteCourse(Course course);
 
-    //For Reminders
-    String getRemindersSeq(List<Reminder> list);
+    ArrayList<SC> getSC(SC sc);
 
-    ArrayList<Reminder> getReminders();
-
-    String insertReminder(Reminder reminder);
-
-    String updateReminder(Reminder reminder);
-
-    String deleteReminder(Reminder reminder);
+    ArrayList<SC> getCS(SC sc);
 }
