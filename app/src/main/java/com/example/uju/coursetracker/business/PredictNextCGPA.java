@@ -25,35 +25,35 @@ public class PredictNextCGPA
                 {
                     temp = (currentCoursesList.get(i)).getGrade();
 
-                    if (temp.equals("A+"))
+                    if (temp.equals("A+") || temp.equals("a+"))
                     {
                         points += 4.5;
                     }
-                    else if (temp.equals("A"))
+                    else if (temp.equalsIgnoreCase("A"))
                     {
                         points += 4.0;
                     }
-                    else if (temp.equals("B+"))
+                    else if (temp.equals("B+") || temp.equals("b+"))
                     {
                         points += 3.5;
                     }
-                    else if (temp.equals("B"))
+                    else if (temp.equalsIgnoreCase("B"))
                     {
                         points += 3.0;
                     }
-                    else if (temp.equals("C+"))
+                    else if (temp.equals("C+") || temp.equals("c+"))
                     {
                         points += 2.5;
                     }
-                    else if (temp.equals("C"))
+                    else if (temp.equalsIgnoreCase("C"))
                     {
                         points += 2.0;
                     }
-                    else if (temp.equals("D"))
+                    else if (temp.equalsIgnoreCase("D"))
                     {
                         points += 1.0;
                     }
-                    else if (temp.equals("F"))
+                    else if (temp.equalsIgnoreCase("F"))
                     {
                         points += 0.0;
                     }
@@ -77,7 +77,7 @@ public class PredictNextCGPA
         if(!flag)
         {
             prediction = points / ( currentCoursesList.size() + totalCoursesCompleted);
-            prediction  = Math.round(prediction*100.0)/100.0;
+            prediction  = Math.round(prediction*100.0)/100.0; //Rounding to 2 decimal places
         }
         else
         {

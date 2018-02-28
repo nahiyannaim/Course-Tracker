@@ -13,21 +13,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.business.AccessCourses;
 import com.example.uju.coursetracker.objects.Course;
 
-public class MyCompletedCoursesActivity extends Activity {
+
+public class MyCompletedCoursesActivity extends Activity
+{
+
     private AccessCourses accessCompletedCourses;
-
     private ArrayList<Course> courseList;
-
     private ArrayAdapter<Course> courseArrayAdapter;
     private int selectedCoursePosition = -1;
-
     private String completedCoursesDBName = "old";
 
 
@@ -86,17 +84,15 @@ public class MyCompletedCoursesActivity extends Activity {
             });
 
             final EditText editCourseID = (EditText)findViewById(R.id.editCourseID);
-//            final Button buttonCourseStudents = (Button)findViewById(R.id.buttonCourseStudents);
-            editCourseID.addTextChangedListener(new TextWatcher() {
+
+            editCourseID.addTextChangedListener(new TextWatcher()
+            {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
                 @Override
-                public void afterTextChanged(Editable s) {
-//                    buttonCourseStudents.setEnabled(editCourseID.getText().toString().length() > 0);
-                }
+                public void afterTextChanged(Editable s) {}
             });
         }
 
@@ -121,15 +117,11 @@ public class MyCompletedCoursesActivity extends Activity {
             }
         });
 
-
-
-
-
     }
 
 
-
-    public void selectCourseAtPosition(int position) {
+    public void selectCourseAtPosition(int position)
+    {
         Course selected = courseArrayAdapter.getItem(position);
 
         EditText editCourseID = (EditText)findViewById(R.id.editCourseID);
@@ -140,8 +132,8 @@ public class MyCompletedCoursesActivity extends Activity {
     }
 
 
-
-    public void buttonCourseCreateOnClick(View v) {
+    public void buttonCourseCreateOnClick(View v)
+    {
         Course course = createCourseFromEditText();
         String result;
 
@@ -149,7 +141,7 @@ public class MyCompletedCoursesActivity extends Activity {
         if (result == null) {
             result = accessCompletedCourses.insertCompletedCourse(course);
             if (result == null) {
-                accessCompletedCourses.getCourses(courseList, "old");
+                accessCompletedCourses.getCourses(courseList, completedCoursesDBName);
                 courseArrayAdapter.notifyDataSetChanged();
                 int pos = courseList.indexOf(course);
                 if (pos >= 0) {
@@ -173,7 +165,7 @@ public class MyCompletedCoursesActivity extends Activity {
         if (result == null) {
             result = accessCompletedCourses.updateCompletedCourse(course);
             if (result == null) {
-                accessCompletedCourses.getCourses(courseList, "old");
+                accessCompletedCourses.getCourses(courseList, completedCoursesDBName);
                 courseArrayAdapter.notifyDataSetChanged();
                 int pos = courseList.indexOf(course);
                 if (pos >= 0) {
@@ -199,7 +191,7 @@ public class MyCompletedCoursesActivity extends Activity {
                 ListView listView = (ListView) findViewById(R.id.CompletedCourseList);
                 listView.setSelection(pos);
             }
-            accessCompletedCourses.getCourses(courseList, "old");
+            accessCompletedCourses.getCourses(courseList, completedCoursesDBName);
             courseArrayAdapter.notifyDataSetChanged();
         } else {
             MessagesActivity.warning(this, result);
@@ -226,11 +218,11 @@ public class MyCompletedCoursesActivity extends Activity {
             return "Course grade required";
         }
 
-        if(!(course.getGrade().equals("A+") ||  course.getGrade().equals("A") ||
-                course.getGrade().equals("B+") || course.getGrade().equals("B") ||
-                course.getGrade().equals("C+") || course.getGrade().equals("C") ||
-                course.getGrade().equals("D+") || course.getGrade().equals("D") ||
-                course.getGrade().equals("F")))
+        if( !(course.getGrade().equals("A+") ||  course.getGrade().equalsIgnoreCase("A") ||
+                course.getGrade().equals("B+") || course.getGrade().equalsIgnoreCase("B") ||
+                course.getGrade().equals("C+") || course.getGrade().equalsIgnoreCase("C") ||
+                course.getGrade().equals("D+") || course.getGrade().equalsIgnoreCase("D") ||
+                course.getGrade().equalsIgnoreCase("F"))  && !(( course.getGrade().equals("a+") ||  course.getGrade().equals("b+") || course.getGrade().equals("c+")) ))
         {
             return "Invalid course grade";
 
@@ -253,7 +245,5 @@ public class MyCompletedCoursesActivity extends Activity {
         Intent intent = new Intent(this, MyCurrentCoursesActivity.class);
         startActivity(intent);
     }
-
-
 
 }

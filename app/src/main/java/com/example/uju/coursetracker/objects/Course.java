@@ -87,12 +87,4 @@ public class Course
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "Course{" +
-                "courseID='" + courseID + '\'' +
-                ", courseName='" + courseName + '\'' +
-                ", grade='" + grade + '\'' +
-                '}';
-    }
 }
