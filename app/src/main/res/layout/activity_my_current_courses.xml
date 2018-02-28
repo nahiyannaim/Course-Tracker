@@ -33,7 +33,8 @@
         <ListView
             android:id="@+id/CurrentCourseList"
             android:layout_width="match_parent"
-            android:layout_height="452dp">
+            android:layout_height="452dp"
+            android:choiceMode="singleChoice">
 
         </ListView>
 
