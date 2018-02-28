@@ -13,8 +13,8 @@
             android:title="Predict Next CGPA" android:icon="@drawable/ic_eye">
         </item>>
 
-        <item android:id="@+id/dueD"
-            android:title="Due Dates" android:icon="@drawable/ic_calendar">
+        <item android:id="@+id/myRem"
+            android:title="My Reminders" android:icon="@drawable/ic_calendar">
         </item>>
 
     </group>
