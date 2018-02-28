@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.widget.TextView;
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.application.DatabaseService;
+
 import static com.example.uju.coursetracker.business.CalculateCurrentCGPA.calculate;
 
 
 public class CurrentCGPAResultsActivity extends AppCompatActivity
 {
+
 
     @SuppressLint("SetTextI18n")
     @Override
