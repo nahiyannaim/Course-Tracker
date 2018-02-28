@@ -12,10 +12,7 @@ public interface DataAccess
 
     void close();
 
-
     String getCourseSequential(List<Course> courseResult);
-
-    ArrayList<Course> getCourseRandom(Course course);
 
     String insertCourse(Course course);
 
