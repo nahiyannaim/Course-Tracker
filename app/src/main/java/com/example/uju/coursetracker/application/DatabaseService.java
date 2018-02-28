@@ -18,15 +18,15 @@ public class DatabaseService
 
     //For Iteration 2
     //***************************************************************************************
-    public static DataAccess createDataAccess(DataAccess alternateDataAccessService)
-    {
-        if (dataAccessService == null)
-        {
-            dataAccessService = alternateDataAccessService;
-            dataAccessService.open(Main.getDBPathName());
-        }
-        return dataAccessService;
-    }
+//    public static DataAccess createDataAccess(DataAccess alternateDataAccessService)
+//    {
+//        if (dataAccessService == null)
+//        {
+//            dataAccessService = alternateDataAccessService;
+//            dataAccessService.open(Main.getDBPathName());
+//        }
+//        return dataAccessService;
+//    }
     //************************************************************************************
 
 
