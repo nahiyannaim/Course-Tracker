@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout dLayout;
     private ActionBarDrawerToggle dToggle;
     public static final String dbName = "MyCourses"; //For accessing the database called MyCourses
-
+    private static String dbPathName = "database/MyCourses";
 
     //To start and close the database
 
@@ -33,6 +33,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static void shutDown()
     {
         DatabaseService.closeDataAccess();
+    }
+
+    public static String getDBPathName() {
+        if (dbPathName == null)
+            return dbName;
+        else
+            return dbPathName;
+    }
+
+    public static void setDBPathName(String pathName) {
+        System.out.println("Setting DB path to: " + pathName);
+        dbPathName = pathName;
     }
 
     @Override
