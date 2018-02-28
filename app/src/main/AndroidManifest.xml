@@ -9,13 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".application.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.CurrentCGPAResultsActivity" />
+        <activity android:name=".presentation.MyCompletedCoursesActivity" />
+        <activity android:name=".presentation.MyCurrentCoursesActivity" />
+        <activity android:name=".presentation.PredictNextCGPAResultsActivity" />
+        <activity android:name=".presentation.MyAllCoursesActivity"></activity>
     </application>
 
 </manifest>
