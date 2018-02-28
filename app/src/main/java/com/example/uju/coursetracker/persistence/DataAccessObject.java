@@ -7,6 +7,16 @@
 package com.example.uju.coursetracker.persistence;
 
 
+import com.example.uju.coursetracker.objects.Course;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLWarning;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 public class DataAccessObject implements DataAccess
 {
     private Statement st1, st2, st3;
@@ -16,9 +26,9 @@ public class DataAccessObject implements DataAccess
     private String dbName;
     private String dbType;
 
-    private ArrayList<Student> students;
+
     private ArrayList<Course> courses;
-    private ArrayList<SC> scs;
+
 
     private String cmdString;
     private int updateCount;
