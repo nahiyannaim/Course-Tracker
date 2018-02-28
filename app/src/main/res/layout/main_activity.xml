@@ -9,25 +9,22 @@
 
 
     <LinearLayout
-        android:background="@drawable/bk1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bk1">
 
     </LinearLayout>
 
 
-
-
     <android.support.design.widget.NavigationView
+        android:id="@+id/nav_v"
         android:layout_width="275dp"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
         android:background="@color/white"
-        app:itemTextColor="@color/darkgray"
         app:itemIconTint="@color/darkgray"
-        android:id="@+id/nav_v"
-        app:menu="@menu/nav_bar"
-        android:layout_gravity="start">
-    </android.support.design.widget.NavigationView>
+        app:itemTextColor="@color/darkgray"
+        app:menu="@menu/nav_bar"></android.support.design.widget.NavigationView>
 
     <Button
         android:id="@+id/goToCurrButton"
