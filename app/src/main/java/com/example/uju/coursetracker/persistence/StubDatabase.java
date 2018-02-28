@@ -1,5 +1,6 @@
 package com.example.uju.coursetracker.persistence;
 
+
 import com.example.uju.coursetracker.application.MainActivity;
 import com.example.uju.coursetracker.objects.Breakdown;
 import com.example.uju.coursetracker.objects.Course;
@@ -30,7 +31,6 @@ public class StubDatabase
 
     public void open(String dbName)
 	{
-
 		Course course;
         Breakdown nwBk;
         ArrayList<Breakdown> bkDwnLst;
@@ -189,8 +189,6 @@ public class StubDatabase
 
         return null;
     }
-
-
 
     public String getCourseSequential(List<Course> courseResult,String key)
     {
