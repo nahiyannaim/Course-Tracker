@@ -34,7 +34,7 @@
             android:id="@+id/CurrentCourseList"
             android:layout_width="match_parent"
             android:layout_height="452dp"
-            android:choiceMode="singleChoice">
+            android:listSelector="#FFC5D1D4">
 
         </ListView>
 
