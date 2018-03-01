@@ -31,6 +31,7 @@
     <string name="predictTitle">Based on the grades you entered for your Current Courses, Your Predicted CGPA is: </string>
 
     <string name="currentCourse">My Current Courses</string>
+    <string name="addReminderButton">Add Reminder</string>
 
 
 </resources>
