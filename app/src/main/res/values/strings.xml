@@ -22,6 +22,7 @@
     <string name="course_id">Course ID:</string>
     <string name="predictTitle">Based on the grades you entered for your Current Courses, Your Predicted CGPA is: </string>
     <string name="currentCourse">My Current Courses</string>
+    <string name="addReminderButton">Add Reminder</string>
 
     <string name="addReminderButton">Add/Edit</string>
     <string name="addReminderButton2">Delete</string>
