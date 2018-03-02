@@ -111,4 +111,34 @@ public class AccessCourses
         return dataAccess.deleteCompletedCourse(currentCourse);
     }
 
+
+    /////////////////////////////
+    //Current Courses:
+    /////////////////////////////
+
+    public String getCurrentCoursesSeq(List<Course> courses)
+    {
+        courses.clear();
+        return dataAccess.getCurrentCoursesSeq(courses);
+    }
+
+    public String insertCurrentCourse(Course currentCourse)
+    {
+        return dataAccess.insertCurrentCourse(currentCourse);
+    }
+
+    public String updateCurrentCourse(Course currentCourse)
+    {
+        return dataAccess.updateCurrentCourse(currentCourse);
+    }
+
+    public String deleteCurrentCourse(Course currentCourse)
+    {
+        return dataAccess.deleteCurrentCourse(currentCourse);
+    }
+
+
+
+
+
 }
