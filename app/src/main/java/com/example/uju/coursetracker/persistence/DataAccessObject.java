@@ -7,6 +7,8 @@
 package com.example.uju.coursetracker.persistence;
 
 
+import android.util.Log;
+
 import com.example.uju.coursetracker.objects.Course;
 
 import java.sql.Connection;
@@ -84,17 +86,28 @@ public class DataAccessObject implements DataAccess
         myCourseName = EOF;
         myGrade = EOF;
 
+
+
         result = null;
         try
         {
             cmdString = "Select * from Courses"; //**************** CHANGE TO completedCourses later
+
+            if(st3 == null)
+            {
+                Log.d("myTag", "*********************");
+            }
+
             rs5 = st3.executeQuery(cmdString);
-            // ResultSetMetaData md5 = rs5.getMetaData();
+
+
+
             while (rs5.next())
             {
                 myID = rs5.getString("CourseID");
                 myCourseName = rs5.getString("Name");
                 myGrade = rs5.getString("Grade");
+
 
                 course = new Course(myID, myCourseName, myGrade);
                 completedCoursesList.add(course);
@@ -105,6 +118,9 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
+
+
         return result;
     }
 
