@@ -12,7 +12,7 @@ public interface DataAccess
 
     void close();
 
-    String getCourseSequential(List<Course> courseResult);
+    String getCompletedCourses(List<Course> completedCourses);
 
     String insertCourse(Course course);
 
