@@ -26,9 +26,7 @@ public class DataAccessObject implements DataAccess
     private String dbName;
     private String dbType;
 
-
     private ArrayList<Course> courses;
-
 
     private String cmdString;
     private int updateCount;
@@ -77,8 +75,6 @@ public class DataAccessObject implements DataAccess
         System.out.println("Closed " +dbType +" database " +dbName);
     }
 
-
-
     public String getCourseSequential(List<Course> courseResult)
     {
         Course course;
@@ -107,8 +103,6 @@ public class DataAccessObject implements DataAccess
         }
         return result;
     }
-
-
 
     public String insertCourse(Course currentCourse)
     {
@@ -157,8 +151,6 @@ public class DataAccessObject implements DataAccess
         return result;
     }
 
-
-
     public String deleteCourse(Course currentCourse)
     {
         String values;
@@ -178,8 +170,6 @@ public class DataAccessObject implements DataAccess
         }
         return result;
     }
-
-
 
     public String checkWarning(Statement st, int updateCount)
     {
