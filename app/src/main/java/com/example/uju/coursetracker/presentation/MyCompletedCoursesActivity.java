@@ -40,7 +40,7 @@ public class MyCompletedCoursesActivity extends Activity
         //completed courseList
         courseList = new ArrayList<Course>();
         //courseList = accessCompletedCourses.getOldCourses();
-        String result = accessCompletedCourses.getCourses(courseList, completedCoursesDBName);
+        String result = accessCompletedCourses.getCompletedCoursesSeq(courseList);
         if (result != null) {
             MessagesActivity.fatalError(this, result);
         } else {
@@ -141,7 +141,7 @@ public class MyCompletedCoursesActivity extends Activity
         if (result == null) {
             result = accessCompletedCourses.insertCompletedCourse(course);
             if (result == null) {
-                accessCompletedCourses.getCourses(courseList, completedCoursesDBName);
+                accessCompletedCourses.getCompletedCoursesSeq(courseList);
                 courseArrayAdapter.notifyDataSetChanged();
                 int pos = courseList.indexOf(course);
                 if (pos >= 0) {
@@ -165,7 +165,7 @@ public class MyCompletedCoursesActivity extends Activity
         if (result == null) {
             result = accessCompletedCourses.updateCompletedCourse(course);
             if (result == null) {
-                accessCompletedCourses.getCourses(courseList, completedCoursesDBName);
+                accessCompletedCourses.getCompletedCoursesSeq(courseList);
                 courseArrayAdapter.notifyDataSetChanged();
                 int pos = courseList.indexOf(course);
                 if (pos >= 0) {
@@ -191,7 +191,7 @@ public class MyCompletedCoursesActivity extends Activity
                 ListView listView = (ListView) findViewById(R.id.CompletedCourseList);
                 listView.setSelection(pos);
             }
-            accessCompletedCourses.getCourses(courseList, completedCoursesDBName);
+            accessCompletedCourses.getCompletedCoursesSeq(courseList);
             courseArrayAdapter.notifyDataSetChanged();
         } else {
             MessagesActivity.warning(this, result);

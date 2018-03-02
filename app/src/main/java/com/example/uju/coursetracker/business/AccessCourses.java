@@ -61,50 +61,54 @@ public class AccessCourses
 //        return dataAccess.insertNewCourse(currentCourse);
 //    }
 
+
+
+//    public Course getSequential()
+//    {
+//        String result = null;
+//        if (courses == null)
+//        {
+//            // the following line was added as a result of a failing test in AccessCoursesTest!
+//            courses = new ArrayList<Course>();
+//            result = dataAccess.getCompletedCourses(courses);
+//            currentCourse = 0;
+//        }
+//        if (currentCourse < courses.size())
+//        {
+//            course = courses.get(currentCourse);
+//            currentCourse++;
+//        }
+//        else
+//        {
+//            courses = null;
+//            course = null;
+//            currentCourse = 0;
+//        }
+//        return course;
+//    }
+
+
+
     //ITERATION 2 ****************************
-    public String getCourses(List<Course> courses)
+    public String getCompletedCoursesSeq(List<Course> courses)
     {
         courses.clear();
-        return dataAccess.getCourseSequential(courses);
+        return dataAccess.getCompletedCoursesSeq(courses);
     }
 
-    public Course getSequential()
+    public String insertCompletedCourse(Course currentCourse)
     {
-        String result = null;
-        if (courses == null)
-        {
-            // the following line was added as a result of a failing test in AccessCoursesTest!
-            courses = new ArrayList<Course>();
-            result = dataAccess.getCourseSequential(courses);
-            currentCourse = 0;
-        }
-        if (currentCourse < courses.size())
-        {
-            course = courses.get(currentCourse);
-            currentCourse++;
-        }
-        else
-        {
-            courses = null;
-            course = null;
-            currentCourse = 0;
-        }
-        return course;
+        return dataAccess.insertCompletedCourse(currentCourse);
     }
 
-    public String insertCourse(Course currentCourse)
+    public String updateCompletedCourse(Course currentCourse)
     {
-        return dataAccess.insertCourse(currentCourse);
+        return dataAccess.updateCompletedCourse(currentCourse);
     }
 
-    public String updateCourse(Course currentCourse)
+    public String deleteCompletedCourse(Course currentCourse)
     {
-        return dataAccess.updateCourse(currentCourse);
-    }
-
-    public String deleteCourse(Course currentCourse)
-    {
-        return dataAccess.deleteCourse(currentCourse);
+        return dataAccess.deleteCompletedCourse(currentCourse);
     }
 
 }
