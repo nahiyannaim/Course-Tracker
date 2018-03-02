@@ -12,6 +12,8 @@ public interface DataAccess
 
     void close();
 
+
+    //For Completed Courses
     String getCompletedCoursesSeq(List<Course> completedCoursesList);
 
     ArrayList<Course> getCompletedCourses();
@@ -23,12 +25,15 @@ public interface DataAccess
     String deleteCompletedCourse(Course course);
 
 
+    //For Current Semester Courses
+    String getCurrentCoursesSeq(List<Course> currentCoursesList);
 
-    // WE COULD HAVE TWO VERSIONS OF THESE METHODS HERE to facilitate use in AccessCourses.java like in iteration 1
-    // insertOldCourse
-    // insertNewCourse
+    ArrayList<Course> getCurrentCourses();
 
+    String insertCurrentCourse(Course course);
 
+    String updateCurrentCourse(Course course);
 
-    //ArrayList<SC> getCS(SC sc);
+    String deleteCurrentCourse(Course course);
+
 }
