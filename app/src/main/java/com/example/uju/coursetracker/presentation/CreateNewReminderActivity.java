@@ -1,11 +1,14 @@
 package com.example.uju.coursetracker.presentation;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.uju.coursetracker.R;
@@ -54,5 +57,25 @@ public class CreateNewReminderActivity extends AppCompatActivity {
             listView2.setAdapter(courseArrayAdapter);
 
         }
+
+        Spinner remTypeSpinner = findViewById(R.id.RemSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.reminderTypes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        remTypeSpinner.setAdapter(adapter);
+
+        Button doneButton = findViewById(R.id.RemDoneButton);
+        doneButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                goToDueDatesPage();
+            }
+        });
+    }
+    private void goToDueDatesPage() {
+        Intent intent = new Intent(this, DueDatesActivity.class);
+        startActivity(intent);
     }
 }

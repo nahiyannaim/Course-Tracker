@@ -32,6 +32,14 @@
 
     <string name="currentCourse">My Current Courses</string>
     <string name="addReminderButton">Add Reminder</string>
-
+    <string name="typeOfReminder">Type:</string>
+    <string-array name="reminderTypes">
+        <item>Assignment</item>
+        <item>Quiz</item>
+        <item>Midterm</item>
+        <item>Final</item>
+    </string-array>
+    <string name="RemDate">Date:</string>
+    <string name="RemDoneButton">DONE</string>
 
 </resources>
