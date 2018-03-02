@@ -26,7 +26,7 @@ public class DataAccessObject implements DataAccess
     private String dbName;
     private String dbType;
 
-    private ArrayList<Course> courses;
+    private ArrayList<Course> completedCourses;
     //Here we could have 2 lists, completedCourses, currentCourses
 
     private String cmdString;
@@ -76,25 +76,28 @@ public class DataAccessObject implements DataAccess
         System.out.println("Closed " +dbType +" database " +dbName);
     }
 
-    public String getCourseSequential(List<Course> courseResult)
+    public String getCompletedCoursesSeq(List<Course> completedCoursesList)
     {
         Course course;
-        String myID, myCourseName;
+        String myID, myCourseName, myGrade;
         myID = EOF;
         myCourseName = EOF;
+        myGrade = EOF;
 
         result = null;
         try
         {
-            cmdString = "Select * from Courses";
+            cmdString = "Select * from Courses"; //**************** CHANGE TO completedCourses later
             rs5 = st3.executeQuery(cmdString);
             // ResultSetMetaData md5 = rs5.getMetaData();
             while (rs5.next())
             {
                 myID = rs5.getString("CourseID");
                 myCourseName = rs5.getString("Name");
-                course = new Course(myID, myCourseName);
-                courseResult.add(course);
+                myGrade = rs5.getString("Grade");
+
+                course = new Course(myID, myCourseName, myGrade);
+                completedCoursesList.add(course);
             }
             rs5.close();
         }
@@ -105,16 +108,54 @@ public class DataAccessObject implements DataAccess
         return result;
     }
 
-    public String insertCourse(Course currentCourse)
+
+    public ArrayList<Course> getCompletedCourses()
+    {
+        String myCourseID, myCourseName, myGrade;
+        Course myCS;
+        int counter;
+
+        myCourseName = EOF;
+        myCourseID = EOF;
+        myGrade = EOF;
+
+        counter = 0;
+        completedCourses = new ArrayList<Course>();
+        try
+        {
+            cmdString = "Select * from Courses";  //**************** CHANGE TO completedCourses later
+            rs4 = st2.executeQuery(cmdString);
+            // ResultSetMetaData md4 = rs4.getMetaData();
+            while (rs4.next())
+            {
+
+                myCourseID = rs4.getString("CourseID");
+                myCourseName = rs4.getString("Name");
+                myGrade = rs4.getString("Grade");
+
+                myCS = new Course(myCourseID, myCourseName, myGrade);
+                completedCourses.add(myCS);
+                counter++;
+            }
+            rs4.close();
+        }
+        catch (Exception e)
+        {
+            processSQLError(e);
+        }
+        return completedCourses;
+    }
+
+
+
+    public String insertCompletedCourse(Course course)
     {
         String values;
 
         result = null;
         try
         {
-            values =  "'" +currentCourse.getCourseID()
-                    +"', '" +currentCourse.getCourseName()
-                    +"'";
+            values =  "'" +course.getCourseID() + "', '" +course.getCourseName() + "', '" +course.getGrade()+"'";
             cmdString = "Insert into Courses " +" Values(" +values +")";
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
@@ -128,7 +169,7 @@ public class DataAccessObject implements DataAccess
     }
 
 
-    public String updateCourse(Course currentCourse)
+    public String updateCompletedCourse(Course course)
     {
         String values;
         String where;
@@ -137,9 +178,9 @@ public class DataAccessObject implements DataAccess
         try
         {
             // Should check for empty values and not update them
-            values = "Name='" +currentCourse.getCourseName()
+            values = "Grade='" +course.getGrade()
                     +"'";
-            where = "where CourseID='" +currentCourse.getCourseID() +"'";
+            where = "where CourseID='" +course.getCourseID() +"'";
             cmdString = "Update Courses " +" Set " +values +" " +where;
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
@@ -152,14 +193,14 @@ public class DataAccessObject implements DataAccess
         return result;
     }
 
-    public String deleteCourse(Course currentCourse)
+    public String deleteCompletedCourse(Course course)
     {
         String values;
 
         result = null;
         try
         {
-            values = currentCourse.getCourseID();
+            values = course.getCourseID();
             cmdString = "Delete from Courses where CourseID='" +values +"'";
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
