@@ -12,13 +12,23 @@ public interface DataAccess
 
     void close();
 
-    String getCompletedCourses(List<Course> completedCourses);
+    String getCompletedCoursesSeq(List<Course> completedCoursesList);
 
-    String insertCourse(Course course);
+    ArrayList<Course> getCompletedCourses();
 
-    String updateCourse(Course course);
+    String insertCompletedCourse(Course course);
 
-    String deleteCourse(Course course);
+    String updateCompletedCourse(Course course);
+
+    String deleteCompletedCourse(Course course);
+
+
+
+    // WE COULD HAVE TWO VERSIONS OF THESE METHODS HERE to facilitate use in AccessCourses.java like in iteration 1
+    // insertOldCourse
+    // insertNewCourse
+
+
 
     //ArrayList<SC> getCS(SC sc);
 }
