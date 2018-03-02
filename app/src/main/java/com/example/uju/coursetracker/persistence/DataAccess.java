@@ -14,6 +14,10 @@ public interface DataAccess
 
     String getCourseSequential(List<Course> courseResult);
 
+    // WE COULD HAVE TWO VERSIONS OF THESE METHODS HERE to facilitate use in AccessCourses.java like in iteration 1
+    // insertOldCourse
+    // insertNewCourse
+
     String insertCourse(Course course);
 
     String updateCourse(Course course);
