@@ -28,7 +28,7 @@ public class PredictNextCGPAResultsActivity extends AppCompatActivity
 
         if(currentCourseListSize <= 0)
         {
-            MessagesActivity.warning(this, "No Current Courses");
+            MessagesActivity.warning(this, "No Courses in current Semester. Your predicted CGPA is the same as your current CGPA.");
         }
 
         if(predictedCGPA != -1.0)
@@ -37,7 +37,7 @@ public class PredictNextCGPAResultsActivity extends AppCompatActivity
         }
         else
         {
-            tv.setText("0.0");
+            tv.setText(Double.toString(currCGPA)); // If there is no Courses in current semester, display the current CGPA
         }
 
     }
