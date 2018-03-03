@@ -25,7 +25,7 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
     private ArrayList<Course> newCourseList;
     private ArrayAdapter<Course> courseArrayAdapter;
     private int selectedCoursePosition = -1;
-    private String newCoursesDBName = "new";
+//    private String newCoursesDBName = "new";
 
 
     @Override
