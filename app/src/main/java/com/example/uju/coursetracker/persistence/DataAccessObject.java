@@ -84,7 +84,7 @@ public class DataAccessObject implements DataAccess
         result = null;
         try
         {
-            cmdString = "Select * from Courses"; //**************** CHANGE TO completedCourses later
+            cmdString = "Select * from CompletedCourses"; //**************** CHANGE TO completedCourses later
             rs5 = st3.executeQuery(cmdString);
 
             while (rs5.next())
@@ -124,7 +124,7 @@ public class DataAccessObject implements DataAccess
         completedCourses = new ArrayList<Course>();
         try
         {
-            cmdString = "Select * from Courses";  //**************** CHANGE TO completedCourses later
+            cmdString = "Select * from CompletedCourses";  //**************** CHANGE TO completedCourses later
             rs4 = st2.executeQuery(cmdString);
             // ResultSetMetaData md4 = rs4.getMetaData();
             while (rs4.next())
@@ -157,7 +157,7 @@ public class DataAccessObject implements DataAccess
         try
         {
             values =  "'" +course.getCourseID() + "', '" +course.getCourseName() + "', '" +course.getGrade()+"'";
-            cmdString = "Insert into Courses " +" Values(" +values +")";
+            cmdString = "Insert into CompletedCourses " +" Values(" +values +")";
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
@@ -182,7 +182,7 @@ public class DataAccessObject implements DataAccess
             values = "Grade='" +course.getGrade()
                     +"'";
             where = "where CourseID='" +course.getCourseID() +"'";
-            cmdString = "Update Courses " +" Set " +values +" " +where;
+            cmdString = "Update CompletedCourses " +" Set " +values +" " +where;
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
@@ -202,7 +202,7 @@ public class DataAccessObject implements DataAccess
         try
         {
             values = course.getCourseID();
-            cmdString = "Delete from Courses where CourseID='" +values +"'";
+            cmdString = "Delete from CompletedCourses where CourseID='" +values +"'";
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
