@@ -10,7 +10,7 @@ import com.example.uju.coursetracker.persistence.DataAccess;
 
 public class AccessCourses
 {
-//    private StubDatabase dataAccess;
+    //private StubDatabase dataAccess;
     private DataAccess dataAccess;
     private List<Course> courses;
     private Course course;
@@ -18,7 +18,7 @@ public class AccessCourses
 
     public AccessCourses()
     {
-//        dataAccess = (StubDatabase) DatabaseService.getDataAccess(MainActivity.dbName);
+        //dataAccess = (StubDatabase) DatabaseService.getDataAccess(MainActivity.dbName);
         dataAccess = DatabaseService.getDataAccess(MainActivity.dbName);
         courses = null;
         course = null;
@@ -60,33 +60,6 @@ public class AccessCourses
 //    {
 //        return dataAccess.insertNewCourse(currentCourse);
 //    }
-
-
-
-//    public Course getSequential()
-//    {
-//        String result = null;
-//        if (courses == null)
-//        {
-//            // the following line was added as a result of a failing test in AccessCoursesTest!
-//            courses = new ArrayList<Course>();
-//            result = dataAccess.getCompletedCourses(courses);
-//            currentCourse = 0;
-//        }
-//        if (currentCourse < courses.size())
-//        {
-//            course = courses.get(currentCourse);
-//            currentCourse++;
-//        }
-//        else
-//        {
-//            courses = null;
-//            course = null;
-//            currentCourse = 0;
-//        }
-//        return course;
-//    }
-
 
 
     //ITERATION 2 ****************************
@@ -136,9 +109,6 @@ public class AccessCourses
     {
         return dataAccess.deleteCurrentCourse(currentCourse);
     }
-
-
-
 
 
 }

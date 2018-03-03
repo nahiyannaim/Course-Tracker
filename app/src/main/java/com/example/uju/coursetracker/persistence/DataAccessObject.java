@@ -1,11 +1,5 @@
-/**
- * This code is not used in the first iteration. It is provided as
- * an example of usage of HSQLDB (for iteration 2).
- */
-
 
 package com.example.uju.coursetracker.persistence;
-
 
 import android.util.Log;
 
@@ -21,22 +15,14 @@ import java.util.List;
 
 public class DataAccessObject implements DataAccess
 {
-    private Statement st1, st2, st3; // For Completed courses
-                                     // st1 - open, close, insert, update, delete
-                                     // st2 - getCompletedCourses
-                                     // st3 - getCompletedCoursesSeq
-
-    //private Statement st4, st5, st6;
-
+    private Statement st1, st2, st3;
     private Connection c1;
     private ResultSet rs2, rs3, rs4, rs5;
-
     private String dbName;
     private String dbType;
 
     private ArrayList<Course> completedCourses;
     private ArrayList<Course> currentCourses;
-
 
     private String cmdString;
     private int updateCount;
@@ -376,12 +362,6 @@ public class DataAccessObject implements DataAccess
         }
         return result;
     }
-
-
-
-
-
-
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
