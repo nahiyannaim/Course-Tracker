@@ -1,33 +1,39 @@
 package com.example.uju.coursetracker.persistence;
 
 
+import com.example.uju.coursetracker.objects.Course;
+import java.util.ArrayList;
+import java.util.List;
+
+
 public interface DataAccess
 {
     void open(String string);
 
     void close();
 
-    String getStudentSequential(List<Student> studentResult);
 
-    ArrayList<Student> getStudentRandom(Student student);
+    //For Completed Courses
+    String getCompletedCoursesSeq(List<Course> completedCoursesList);
 
-    String insertStudent(Student student);
+    ArrayList<Course> getCompletedCourses();
 
-    String updateStudent(Student student);
+    String insertCompletedCourse(Course course);
 
-    String deleteStudent(Student student);
+    String updateCompletedCourse(Course course);
 
-    String getCourseSequential(List<Course> courseResult);
+    String deleteCompletedCourse(Course course);
 
-    ArrayList<Course> getCourseRandom(Course course);
 
-    String insertCourse(Course course);
+    //For Current Semester Courses
+    String getCurrentCoursesSeq(List<Course> currentCoursesList);
 
-    String updateCourse(Course course);
+    ArrayList<Course> getCurrentCourses();
 
-    String deleteCourse(Course course);
+    String insertCurrentCourse(Course course);
 
-    ArrayList<SC> getSC(SC sc);
+    String updateCurrentCourse(Course course);
 
-    ArrayList<SC> getCS(SC sc);
+    String deleteCurrentCourse(Course course);
+
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.application.DatabaseService;
+import com.example.uju.coursetracker.application.MainActivity;
 import com.example.uju.coursetracker.business.CalculateCurrentCGPA;
 import com.example.uju.coursetracker.business.PredictNextCGPA;
 
@@ -20,14 +21,14 @@ public class PredictNextCGPAResultsActivity extends AppCompatActivity
 
         TextView tv = (TextView) findViewById(R.id.predictResult);
 
-        double currCGPA = CalculateCurrentCGPA.calculate(DatabaseService.getDataAccess("MyCourses").getOldCourses());
-        int totalCoursesCompleted = (DatabaseService.getDataAccess("MyCourses").getOldCourses()).size();
-        double predictedCGPA = PredictNextCGPA.calculate(DatabaseService.getDataAccess("MyCourses").getNewCourses(), currCGPA, totalCoursesCompleted);
-        int currentCourseListSize = (DatabaseService.getDataAccess("MyCourses").getNewCourses()).size();
+        double currCGPA = CalculateCurrentCGPA.calculate(DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCompletedCourses());
+        int totalCoursesCompleted = (DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCompletedCourses()).size();
+        double predictedCGPA = PredictNextCGPA.calculate(DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCurrentCourses(), currCGPA, totalCoursesCompleted);
+        int currentCourseListSize = (DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCurrentCourses()).size();
 
         if(currentCourseListSize <= 0)
         {
-            MessagesActivity.warning(this, "No Current Courses");
+            MessagesActivity.warning(this, "No Courses in current Semester. Your predicted CGPA is the same as your current CGPA.");
         }
 
         if(predictedCGPA != -1.0)
@@ -36,7 +37,7 @@ public class PredictNextCGPAResultsActivity extends AppCompatActivity
         }
         else
         {
-            tv.setText("0.0");
+            tv.setText(Double.toString(currCGPA)); // If there is no Courses in current semester, display the current CGPA
         }
 
     }

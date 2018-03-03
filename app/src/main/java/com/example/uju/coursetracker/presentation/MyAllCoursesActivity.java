@@ -41,7 +41,7 @@ public class MyAllCoursesActivity extends AppCompatActivity
         //completed course List
         oldCourseList = new ArrayList<Course>();
 
-        String result = accessCompletedCourses.getCourses(oldCourseList, completedCoursesDBName);
+        String result = accessCompletedCourses.getCompletedCoursesSeq(oldCourseList);
         if (result != null) {
             MessagesActivity.fatalError(this, result);
         } else {
@@ -75,7 +75,7 @@ public class MyAllCoursesActivity extends AppCompatActivity
         //current semester courseList
         newCourseList = new ArrayList<Course>();
 
-        String result2 = accessNewCourses.getCourses(newCourseList, newCoursesDBName);
+        String result2 = accessNewCourses.getCurrentCoursesSeq(newCourseList);
         if (result2 != null) {
             MessagesActivity.fatalError(this, result2);
         } else {

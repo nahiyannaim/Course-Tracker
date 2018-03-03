@@ -25,7 +25,7 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
     private ArrayList<Course> newCourseList;
     private ArrayAdapter<Course> courseArrayAdapter;
     private int selectedCoursePosition = -1;
-    private String newCoursesDBName = "new";
+//    private String newCoursesDBName = "new";
 
 
     @Override
@@ -38,7 +38,7 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
         //current semester courseList
         newCourseList = new ArrayList<Course>();
 
-        String result = accessNewCourses.getCourses(newCourseList, newCoursesDBName);
+        String result = accessNewCourses.getCurrentCoursesSeq(newCourseList);
         if (result != null) {
             MessagesActivity.fatalError(this, result);
         } else {
@@ -126,9 +126,9 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
 
         result = validateCourseData(course, true);
         if (result == null) {
-            result = accessNewCourses.insertNewCourse(course);
+            result = accessNewCourses.insertCurrentCourse(course);
             if (result == null) {
-                accessNewCourses.getCourses(newCourseList, newCoursesDBName);
+                accessNewCourses.getCurrentCoursesSeq(newCourseList);
                 courseArrayAdapter.notifyDataSetChanged();
                 int pos = newCourseList.indexOf(course);
                 if (pos >= 0) {
@@ -150,9 +150,9 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
 
         result = validateCourseData(course, false);
         if (result == null) {
-            result = accessNewCourses.updateNewCourse(course);
+            result = accessNewCourses.updateCurrentCourse(course);
             if (result == null) {
-                accessNewCourses.getCourses(newCourseList, newCoursesDBName);
+                accessNewCourses.getCurrentCoursesSeq(newCourseList);
                 courseArrayAdapter.notifyDataSetChanged();
                 int pos = newCourseList.indexOf(course);
                 if (pos >= 0) {
@@ -171,14 +171,14 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
         Course course = createCourseFromEditText();
         String result;
 
-        result = accessNewCourses.deleteNewCourse(course);
+        result = accessNewCourses.deleteCurrentCourse(course);
         if (result == null) {
             int pos = newCourseList.indexOf(course);
             if (pos >= 0) {
                 ListView listView = (ListView) findViewById(R.id.CurrentCourseList);
                 listView.setSelection(pos);
             }
-            accessNewCourses.getCourses(newCourseList, newCoursesDBName);
+            accessNewCourses.getCurrentCoursesSeq(newCourseList);
             courseArrayAdapter.notifyDataSetChanged();
         } else {
             MessagesActivity.warning(this, result);

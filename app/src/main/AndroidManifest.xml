@@ -20,7 +20,9 @@
         <activity android:name=".presentation.MyCompletedCoursesActivity" />
         <activity android:name=".presentation.MyCurrentCoursesActivity" />
         <activity android:name=".presentation.PredictNextCGPAResultsActivity" />
-        <activity android:name=".presentation.MyAllCoursesActivity"></activity>
+        <activity android:name=".presentation.MyAllCoursesActivity" />
+        <activity android:name=".presentation.DueDatesActivity" />
+        <activity android:name=".presentation.CreateNewReminderActivity"></activity>
     </application>
 
 </manifest>
