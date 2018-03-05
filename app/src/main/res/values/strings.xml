@@ -31,6 +31,24 @@
     <string name="predictTitle">Based on the grades you entered for your Current Courses, Your Predicted CGPA is: </string>
 
     <string name="currentCourse">My Current Courses</string>
+    <string name="addReminderButton">Add Reminder</string>
+    <string name="typeOfReminder">Type:</string>
+    <string-array name="reminderTypes">
+        <item>Assignment</item>
+        <item>Quiz</item>
+        <item>Midterm</item>
+        <item>Final</item>
+    </string-array>
+    <string name="RemDate">Date:</string>
+    <string name="RemDoneButton">DONE</string>
+
+    <string name="addReminderButton2">Delete</string>
+
+    <string name="duedates">My Reminders</string>
+
+
+
+
 
 
 </resources>
