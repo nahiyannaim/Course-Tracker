@@ -1,20 +1,8 @@
 <resources>
 
 
-    <string name="numCompleteCoursesText">Number of Completed Courses:</string>
+    <string name="numCompleteCoursesText">Number of Courses you are taking currently:</string>
     <string name="knownGradesText">Select your known Grades:</string>
-
-
-    <string-array name="spinner1_array">
-        <item>A+</item>
-        <item>A</item>
-        <item>B+</item>
-        <item>B</item>
-        <item>C+</item>
-        <item>C</item>
-        <item>D</item>
-        <item>F</item>
-    </string-array>
 
 
     <string name="app_name">Course Tracker</string>
@@ -23,8 +11,26 @@
 
     <string name="predictedcgpa">Predicted</string>
     <string name="predictedgrades">Predicted Grades for:</string>
-    <string name="course2">Course 2:</string>
-    <string name="course1">Course 1:</string>
+    <string name="CGPAstring">Based on your Completed Courses, Your Current CGPA is: </string>
+
+
     <string name="predictedcgpaphrase">Your predicted CGPA based on predicted grades is:</string>
+    <string name="diffCGPA">Predict my next CGPA</string>
+    <string name="gradesForCourses">Enter grades</string>
+
+    <string name="fatalError">Fatal error</string>
+    <string name="warning">Warning</string>
+    <string name="mycourse_title">My Completed Courses: </string>
+
+    <string name="textview">TextView</string>
+    <string name="delete">Delete</string>
+    <string name="create">Create</string>
+    <string name="update">Update</string>
+    <string name="name">Grade:</string>
+    <string name="course_id">Course ID:</string>
+    <string name="predictTitle">Based on the grades you entered for your Current Courses, Your Predicted CGPA is: </string>
+
+    <string name="currentCourse">My Current Courses</string>
+
 
 </resources>
