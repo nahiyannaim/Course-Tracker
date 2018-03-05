@@ -42,9 +42,9 @@
                 android:layout_height="90dp"
                 android:layout_weight="1"
                 android:background="@android:color/holo_orange_dark"
+                android:onClick="deleteButtonOnClick"
                 android:text="@string/addReminderButton2"
                 android:textSize="30sp"
-                android:onClick="deleteButtonOnClick"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -67,17 +67,6 @@
     </LinearLayout>
 
 
-
-    <Button
-        android:id="@+id/addReminderButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/addReminderButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dueDatesTitle" />
 
 
 </android.support.constraint.ConstraintLayout>
