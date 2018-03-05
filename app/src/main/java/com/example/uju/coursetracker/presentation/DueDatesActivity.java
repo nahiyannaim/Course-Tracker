@@ -23,6 +23,7 @@ public class DueDatesActivity extends AppCompatActivity {
 
 
 
+
     private ArrayList<Reminder> reminderList;
     private ArrayAdapter<Reminder> creminderArrayAdapter;
     private ArrayAdapter<Reminder> reminderArrayAdapter;
