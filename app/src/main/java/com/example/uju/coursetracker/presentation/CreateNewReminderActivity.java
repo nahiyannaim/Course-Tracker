@@ -22,7 +22,7 @@ public class CreateNewReminderActivity extends AppCompatActivity {
     private AccessCourses accessNewCourses;
     private ArrayList<Course> newCourseList;
     private ArrayAdapter<Course> courseArrayAdapter;
-    private String newCoursesDBName = "new";
+    //private String newCoursesDBName = "new";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         //current semester courseList
         newCourseList = new ArrayList<Course>();
 
-        String result2 = accessNewCourses.getCourses(newCourseList, newCoursesDBName);
+        String result2 = accessNewCourses.getCurrentCoursesSeq(newCourseList);
         if (result2 != null) {
             MessagesActivity.fatalError(this, result2);
         } else {

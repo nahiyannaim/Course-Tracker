@@ -1,8 +1,5 @@
 package com.example.uju.coursetracker.objects;
 
-/**
- * Created by Uju on 2018-03-02.
- */
 
 public class Reminder {
 

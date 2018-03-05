@@ -1,35 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
+
     tools:context="com.example.uju.coursetracker.presentation.DueDatesActivity">
 
-    <TextView
-        android:id="@+id/dueDatesTitle"
-        android:layout_width="368dp"
-        android:layout_height="35dp"
-        android:text="@string/currentCourse"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008"
-        tools:textAlignment="center" />
 
-    <Button
-        android:id="@+id/addReminderButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/addReminderButton"
+    <LinearLayout
+
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+
+        android:gravity="bottom|end"
+
+        android:orientation="vertical"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dueDatesTitle" />
+
+        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <TextView
+
+            android:id="@+id/textView8"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:gravity="fill_vertical|center"
+
+            android:text="@string/duedates"
+
+            android:textSize="30sp" />
+
+
+        <ListView
+
+            android:id="@+id/ReminderList"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="695dp" />
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+
+            <Button
+
+                android:id="@+id/addReminderButton2"
+
+                android:layout_width="300dp"
+
+                android:layout_height="90dp"
+
+                android:layout_weight="1"
+
+                android:background="@android:color/holo_orange_dark"
+
+                android:text="@string/addReminderButton2"
+
+                android:textSize="30sp"
+
+                android:onClick="deleteButtonOnClick"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintHorizontal_bias="0.0"
+
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <Button
+
+                android:id="@+id/addReminderButton"
+
+                android:layout_width="300dp"
+
+                android:layout_height="90dp"
+
+                android:layout_weight="1"
+
+                android:background="@android:color/holo_green_light"
+
+                android:text="@string/addReminderButton"
+
+                android:textSize="30sp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintHorizontal_bias="0.0"
+
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
 
 </android.support.constraint.ConstraintLayout>
