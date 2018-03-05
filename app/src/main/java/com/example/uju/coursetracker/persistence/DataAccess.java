@@ -12,13 +12,28 @@ public interface DataAccess
 
     void close();
 
-    String getCourseSequential(List<Course> courseResult);
 
-    String insertCourse(Course course);
+    //For Completed Courses
+    String getCompletedCoursesSeq(List<Course> completedCoursesList);
 
-    String updateCourse(Course course);
+    ArrayList<Course> getCompletedCourses();
 
-    String deleteCourse(Course course);
+    String insertCompletedCourse(Course course);
 
-    //ArrayList<SC> getCS(SC sc);
+    String updateCompletedCourse(Course course);
+
+    String deleteCompletedCourse(Course course);
+
+
+    //For Current Semester Courses
+    String getCurrentCoursesSeq(List<Course> currentCoursesList);
+
+    ArrayList<Course> getCurrentCourses();
+
+    String insertCurrentCourse(Course course);
+
+    String updateCurrentCourse(Course course);
+
+    String deleteCurrentCourse(Course course);
+
 }

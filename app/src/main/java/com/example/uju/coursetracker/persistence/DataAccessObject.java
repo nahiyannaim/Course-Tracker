@@ -1,11 +1,7 @@
-/**
- * This code is not used in the first iteration. It is provided as
- * an example of usage of HSQLDB (for iteration 2).
- */
-
 
 package com.example.uju.coursetracker.persistence;
 
+import android.util.Log;
 
 import com.example.uju.coursetracker.objects.Course;
 
@@ -22,13 +18,11 @@ public class DataAccessObject implements DataAccess
     private Statement st1, st2, st3;
     private Connection c1;
     private ResultSet rs2, rs3, rs4, rs5;
-
     private String dbName;
     private String dbType;
 
-
-    private ArrayList<Course> courses;
-
+    private ArrayList<Course> completedCourses;
+    private ArrayList<Course> currentCourses;
 
     private String cmdString;
     private int updateCount;
@@ -77,27 +71,31 @@ public class DataAccessObject implements DataAccess
         System.out.println("Closed " +dbType +" database " +dbName);
     }
 
-
-
-    public String getCourseSequential(List<Course> courseResult)
+    public String getCompletedCoursesSeq(List<Course> completedCoursesList)
     {
         Course course;
-        String myID, myCourseName;
+        String myID, myCourseName, myGrade;
         myID = EOF;
         myCourseName = EOF;
+        myGrade = EOF;
+
+
 
         result = null;
         try
         {
-            cmdString = "Select * from Courses";
+            cmdString = "Select * from CompletedCourses"; //**************** CHANGE TO completedCourses later
             rs5 = st3.executeQuery(cmdString);
-            // ResultSetMetaData md5 = rs5.getMetaData();
+
             while (rs5.next())
             {
                 myID = rs5.getString("CourseID");
                 myCourseName = rs5.getString("Name");
-                course = new Course(myID, myCourseName);
-                courseResult.add(course);
+                myGrade = rs5.getString("Grade");
+
+
+                course = new Course(myID, myCourseName, myGrade);
+                completedCoursesList.add(course);
             }
             rs5.close();
         }
@@ -105,22 +103,61 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
+
+
         return result;
     }
 
 
+    public ArrayList<Course> getCompletedCourses()
+    {
+        String myCourseID, myCourseName, myGrade;
+        Course myCS;
+        int counter;
 
-    public String insertCourse(Course currentCourse)
+        myCourseName = EOF;
+        myCourseID = EOF;
+        myGrade = EOF;
+
+        counter = 0;
+        completedCourses = new ArrayList<Course>();
+        try
+        {
+            cmdString = "Select * from CompletedCourses";  //**************** CHANGE TO completedCourses later
+            rs4 = st2.executeQuery(cmdString);
+            // ResultSetMetaData md4 = rs4.getMetaData();
+            while (rs4.next())
+            {
+
+                myCourseID = rs4.getString("CourseID");
+                myCourseName = rs4.getString("Name");
+                myGrade = rs4.getString("Grade");
+
+                myCS = new Course(myCourseID, myCourseName, myGrade);
+                completedCourses.add(myCS);
+                counter++;
+            }
+            rs4.close();
+        }
+        catch (Exception e)
+        {
+            processSQLError(e);
+        }
+        return completedCourses;
+    }
+
+
+
+    public String insertCompletedCourse(Course course)
     {
         String values;
 
         result = null;
         try
         {
-            values =  "'" +currentCourse.getCourseID()
-                    +"', '" +currentCourse.getCourseName()
-                    +"'";
-            cmdString = "Insert into Courses " +" Values(" +values +")";
+            values =  "'" +course.getCourseID() + "', '" +course.getCourseName() + "', '" +course.getGrade()+"'";
+            cmdString = "Insert into CompletedCourses " +" Values(" +values +")";
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
@@ -133,7 +170,7 @@ public class DataAccessObject implements DataAccess
     }
 
 
-    public String updateCourse(Course currentCourse)
+    public String updateCompletedCourse(Course course)
     {
         String values;
         String where;
@@ -142,10 +179,10 @@ public class DataAccessObject implements DataAccess
         try
         {
             // Should check for empty values and not update them
-            values = "Name='" +currentCourse.getCourseName()
+            values = "Grade='" +course.getGrade()
                     +"'";
-            where = "where CourseID='" +currentCourse.getCourseID() +"'";
-            cmdString = "Update Courses " +" Set " +values +" " +where;
+            where = "where CourseID='" +course.getCourseID() +"'";
+            cmdString = "Update CompletedCourses " +" Set " +values +" " +where;
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
@@ -157,17 +194,15 @@ public class DataAccessObject implements DataAccess
         return result;
     }
 
-
-
-    public String deleteCourse(Course currentCourse)
+    public String deleteCompletedCourse(Course course)
     {
         String values;
 
         result = null;
         try
         {
-            values = currentCourse.getCourseID();
-            cmdString = "Delete from Courses where CourseID='" +values +"'";
+            values = course.getCourseID();
+            cmdString = "Delete from CompletedCourses where CourseID='" +values +"'";
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
@@ -179,6 +214,157 @@ public class DataAccessObject implements DataAccess
         return result;
     }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//   FOR CURRENT COURSES
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    public String getCurrentCoursesSeq(List<Course> currentCoursesList)
+    {
+        Course course;
+        String myID, myCourseName, myGrade;
+        myID = EOF;
+        myCourseName = EOF;
+        myGrade = EOF;
+
+
+
+        result = null;
+        try
+        {
+            cmdString = "Select * from CurrentCourses";
+            rs5 = st3.executeQuery(cmdString);
+
+            while (rs5.next())
+            {
+                myID = rs5.getString("CourseID");
+                myCourseName = rs5.getString("Name");
+                myGrade = rs5.getString("Grade");
+
+
+                course = new Course(myID, myCourseName, myGrade);
+                currentCoursesList.add(course);
+            }
+            rs5.close();
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+
+
+
+        return result;
+    }
+
+
+    public  ArrayList<Course> getCurrentCourses()
+    {
+        String myCourseID, myCourseName, myGrade;
+        Course myCS;
+        int counter;
+
+        myCourseName = EOF;
+        myCourseID = EOF;
+        myGrade = EOF;
+
+        counter = 0;
+        currentCourses = new ArrayList<Course>();
+        try
+        {
+            cmdString = "Select * from CurrentCourses";
+            rs4 = st2.executeQuery(cmdString);
+            // ResultSetMetaData md4 = rs4.getMetaData();
+            while (rs4.next())
+            {
+
+                myCourseID = rs4.getString("CourseID");
+                myCourseName = rs4.getString("Name");
+                myGrade = rs4.getString("Grade");
+
+                myCS = new Course(myCourseID, myCourseName, myGrade);
+                currentCourses.add(myCS);
+                counter++;
+            }
+            rs4.close();
+        }
+        catch (Exception e)
+        {
+            processSQLError(e);
+        }
+        return currentCourses;
+    }
+
+
+
+    public String insertCurrentCourse(Course course)
+    {
+        String values;
+
+        result = null;
+        try
+        {
+            values =  "'" +course.getCourseID() + "', '" +course.getCourseName() + "', '" +course.getGrade()+"'";
+            cmdString = "Insert into CurrentCourses " +" Values(" +values +")";
+            //System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+        return result;
+    }
+
+
+    public String updateCurrentCourse(Course course)
+    {
+        String values;
+        String where;
+
+        result = null;
+        try
+        {
+            // Should check for empty values and not update them
+            values = "Grade='" +course.getGrade()
+                    +"'";
+            where = "where CourseID='" +course.getCourseID() +"'";
+            cmdString = "Update CurrentCourses " +" Set " +values +" " +where;
+            //System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+        return result;
+    }
+
+    public  String deleteCurrentCourse(Course course)
+    {
+        String values;
+
+        result = null;
+        try
+        {
+            values = course.getCourseID();
+            cmdString = "Delete from CurrentCourses where CourseID='" +values +"'";
+            //System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+        return result;
+    }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     public String checkWarning(Statement st, int updateCount)
