@@ -12,11 +12,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.business.AccessCourses;
 import com.example.uju.coursetracker.objects.Course;
-
 import java.util.ArrayList;
 
 public class CreateNewReminderActivity extends AppCompatActivity {
@@ -24,7 +22,7 @@ public class CreateNewReminderActivity extends AppCompatActivity {
     private AccessCourses accessNewCourses;
     private ArrayList<Course> newCourseList;
     private ArrayAdapter<Course> courseArrayAdapter;
-    //private String newCoursesDBName = "new";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +31,20 @@ public class CreateNewReminderActivity extends AppCompatActivity {
       
         accessNewCourses = new AccessCourses();
 
-        //current semester courseList
+        //current semester courses list
         newCourseList = new ArrayList<Course>();
 
         String result2 = accessNewCourses.getCurrentCoursesSeq(newCourseList);
-        if (result2 != null) {
+        if (result2 != null)
+        {
             MessagesActivity.fatalError(this, result2);
-        } else {
+        }
+        else
+        {
             courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, newCourseList) {
                 @Override
-                public View getView(int position, View convertView, ViewGroup parent) {
+                public View getView(int position, View convertView, ViewGroup parent)
+                {
                     View view = super.getView(position, convertView, parent);
 
                     TextView text1 = view.findViewById(android.R.id.text1);
@@ -61,10 +63,10 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         }
 
         Spinner remTypeSpinner = findViewById(R.id.RemSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.reminderTypes, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.reminderTypes, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         remTypeSpinner.setAdapter(adapter);
+
 
         Button doneButton = findViewById(R.id.RemDoneButton);
         doneButton.setOnClickListener(new View.OnClickListener()
@@ -76,7 +78,9 @@ public class CreateNewReminderActivity extends AppCompatActivity {
             }
         });
     }
-    private void goToDueDatesPage() {
+
+    private void goToDueDatesPage()
+    {
         Intent intent = new Intent(this, DueDatesActivity.class);
         startActivity(intent);
     }

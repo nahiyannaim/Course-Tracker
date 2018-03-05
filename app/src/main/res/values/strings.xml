@@ -43,6 +43,7 @@
         <item>Quiz</item>
         <item>Midterm</item>
         <item>Final</item>
+        <item>Project</item>
     </string-array>
     <string name="RemDate">Date:</string>
     <string name="RemDoneButton">DONE</string>
