@@ -3,6 +3,7 @@ package com.example.uju.coursetracker.presentation;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -66,6 +67,9 @@ public class DueDatesActivity extends AppCompatActivity {
 
                     text1.setText(reminderList.get(position).getCourseID());
                     text2.setText(reminderList.get(position).getReminderType() +" Due: "+reminderList.get(position).getDueDate());
+
+                    Log.d("myTag", reminderList.get(position).getDueDate());
+                    Log.d("myTag", reminderList.size()+"");
 
                     return view;
 
