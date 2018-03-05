@@ -24,6 +24,7 @@ public class DataAccessObject implements DataAccess
     private ArrayList<Course> completedCourses;
     private ArrayList<Course> currentCourses;
 
+
     private String cmdString;
     private int updateCount;
     private String result;
