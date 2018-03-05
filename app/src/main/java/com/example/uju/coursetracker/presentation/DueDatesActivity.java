@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.example.uju.coursetracker.R;
@@ -27,6 +28,10 @@ public class DueDatesActivity extends AppCompatActivity
     private int selectedReminder = -1;
     private AccessReminders accessReminders;
     private ArrayList<Reminder> reminderList;
+
+    private String selectedCourseID;
+    private String selectedType;
+    private String selectedDate;
 
 
     @Override
@@ -62,11 +67,10 @@ public class DueDatesActivity extends AppCompatActivity
             final ListView listView = (ListView) findViewById(R.id.ReminderList);
             listView.setAdapter(reminderArrayAdapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id)
                 {
-                    Button deleteButton = findViewById(R.id.addReminderButton2);
+                    Button deleteButton = findViewById(R.id.deleteReminderButton);
 
                     if (position == selectedReminder)
                     {
@@ -74,12 +78,11 @@ public class DueDatesActivity extends AppCompatActivity
                         deleteButton.setEnabled(false);
                         selectedReminder = -1;
 
-                    }
-                    else
-                    {
+                    } else {
                         listView.setItemChecked(position, true);
                         deleteButton.setEnabled(true);
                         selectedReminder = position;
+                        selectReminderAtPosition(position);
                     }
                 }
             });
@@ -97,29 +100,62 @@ public class DueDatesActivity extends AppCompatActivity
                 goToReminderPage();
             }
         });
-        }
+    }
+
+    public void selectReminderAtPosition(int position)
+    {
+        Reminder selected = reminderArrayAdapter.getItem(position);
+
+        selectedCourseID = selected.getCourseID();
+        selectedType = selected.getReminderType();
+        selectedDate = selected.getDueDate();
+
+    }
 
 
     public void deleteButtonOnClick(View v)
     {
 
-        reminderList.remove(selectedReminder);
+        Reminder reminder = new Reminder(selectedCourseID, selectedType, selectedDate);
+        String result;
+
+        result = accessReminders.deleteReminder(reminder);
+
+            if (result == null)
+            {
+                int pos = reminderList.indexOf(reminder);
+
+                if (pos >= 0)
+                {
+                    ListView listView = (ListView) findViewById(R.id.ReminderList);
+                    listView.setSelection(pos);
+                }
+
+                accessReminders.getRemindersSeq(reminderList);
+                reminderArrayAdapter.notifyDataSetChanged();
+            }
+            else
+            {
+                MessagesActivity.warning(this, result);
+            }
 
 
-        int pos = selectedReminder;
 
-        if (pos >= 0)
-        {
-            ListView listView = (ListView) findViewById(R.id.ReminderList);
-            listView.setSelection(pos);
-            reminderArrayAdapter.notifyDataSetChanged();
-        }
 
-        else
-        {
-            MessagesActivity.warning(this, "Item to delete not found!");
-        }
     }
+
+
+
+    private Course createCourseFromEditText() {
+        EditText editCourseID = (EditText)findViewById(R.id.editCourseID);
+        EditText editGrade = (EditText)findViewById(R.id.editGrade);
+
+        Course course = new Course(editCourseID.getText().toString(), "", editGrade.getText().toString());
+
+        return course;
+    }
+
+
 
     private void goToReminderPage()
     {
