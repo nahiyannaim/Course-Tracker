@@ -32,8 +32,8 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
     private int selectedReminder = -1;
     private String selectedCourseID;
-//    private String selectedType;
-  //  private String selectedDate;
+    private String selectedType;
+    private String selectedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,12 +80,10 @@ public class CreateNewReminderActivity extends AppCompatActivity {
                     if (position == selectedReminder) {
                         listView.setItemChecked(position, false);
                         doneButton.setEnabled(false);
-
                         selectedReminder = -1;
                     } else {
                         listView.setItemChecked(position, true);
                         doneButton.setEnabled(true);
-
                         selectedReminder = position;
                         selectReminderAtPosition(position);
                     }
@@ -122,12 +120,14 @@ public class CreateNewReminderActivity extends AppCompatActivity {
     public void buttonCourseCreateOnClick(View v)
     {
         EditText editDate = (EditText) findViewById(R.id.editText);
+        selectedDate = (editDate.getText()).toString();
 
-        String dueDate = (editDate.getText()).toString();
+        Spinner reminderItem =(Spinner) findViewById(R.id.RemSpinner);
+        selectedType = reminderItem.getSelectedItem().toString();
 
-        Reminder reminder = new Reminder(selectedCourseID, "Mid", dueDate);
+        Reminder reminder = new Reminder(selectedCourseID, selectedType, selectedDate);
+
         String result;
-
         result = validateDate(reminder);
         if (result == null) {
             result = accessReminders.insertReminder(reminder);
@@ -148,9 +148,7 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
         Log.d("myTag", reminderList.size()+"");
 
-
     }
-
 
     private String validateDate(Reminder reminder)
     {
@@ -163,10 +161,6 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
         return result;
     }
-
-
-
-
 
     private void goToDueDatesPage()
     {
