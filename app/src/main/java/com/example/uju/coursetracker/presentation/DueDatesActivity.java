@@ -106,6 +106,15 @@ public class DueDatesActivity extends AppCompatActivity
         });
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        if(reminderArrayAdapter != null){
+            reminderArrayAdapter.notifyDataSetChanged();
+        }
+
+    }
+
     public void selectReminderAtPosition(int position)
     {
         Reminder selected = reminderArrayAdapter.getItem(position);

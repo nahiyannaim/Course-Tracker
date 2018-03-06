@@ -130,7 +130,7 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         String result;
         result = validateDate(reminder);
         if (result == null) {
-            result = accessReminders.insertReminder(reminder);
+            result = accessReminders.insertReminder(reminder); //cant find problem
             if (result == null) {
                 accessReminders.getRemindersSeq(reminderList);
                 courseArrayAdapter.notifyDataSetChanged();
