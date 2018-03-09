@@ -14,8 +14,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.example.uju.coursetracker.R;
-import com.example.uju.coursetracker.application.MainActivity;
-import com.example.uju.coursetracker.business.AccessCourses;
 import com.example.uju.coursetracker.business.AccessReminders;
 import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.objects.Reminder;
@@ -61,8 +59,6 @@ public class DueDatesActivity extends AppCompatActivity
                     text1.setText(reminderList.get(position).getCourseID());
                     text2.setText(reminderList.get(position).getReminderType() + " Due on: "+reminderList.get(position).getDueDate());
 
-//                    Log.d("myTag", reminderList.get(position).getDueDate());
-//                    Log.d("myTag", reminderList.size()+"");
 
                     return view;
                 }
@@ -92,7 +88,9 @@ public class DueDatesActivity extends AppCompatActivity
             });
         }
 
+
         Button addRemButton = findViewById(R.id.addReminderButton);
+
         addRemButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -104,14 +102,6 @@ public class DueDatesActivity extends AppCompatActivity
         });
     }
 
-    @Override
-    public void onResume(){
-        super.onResume();
-        if(reminderArrayAdapter != null){
-            reminderArrayAdapter.notifyDataSetChanged();
-        }
-    }
-
     public void selectReminderAtPosition(int position)
     {
         Reminder selected = reminderArrayAdapter.getItem(position);
@@ -119,7 +109,9 @@ public class DueDatesActivity extends AppCompatActivity
         selectedCourseID = selected.getCourseID();
         selectedType = selected.getReminderType();
         selectedDate = selected.getDueDate();
+
     }
+
 
     public void deleteButtonOnClick(View v)
     {

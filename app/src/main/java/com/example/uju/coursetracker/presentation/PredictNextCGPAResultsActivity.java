@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.application.DatabaseService;
-import com.example.uju.coursetracker.application.MainActivity;
 import com.example.uju.coursetracker.business.CalculateCurrentCGPA;
 import com.example.uju.coursetracker.business.PredictNextCGPA;
 

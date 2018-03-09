@@ -2,7 +2,7 @@ package com.example.uju.coursetracker.business;
 
 
 import com.example.uju.coursetracker.application.DatabaseService;
-import com.example.uju.coursetracker.application.MainActivity;
+import com.example.uju.coursetracker.presentation.MainActivity;
 import com.example.uju.coursetracker.objects.Reminder;
 import com.example.uju.coursetracker.persistence.DataAccess;
 import java.util.List;
