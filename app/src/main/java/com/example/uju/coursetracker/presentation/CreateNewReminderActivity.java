@@ -119,7 +119,7 @@ public class CreateNewReminderActivity extends AppCompatActivity {
     }
 
 
-    public void buttonCourseCreateOnClick(View v)
+    public void buttonReminderCreateOnClick(View v)
     {
         EditText editDate = (EditText) findViewById(R.id.editText);
 

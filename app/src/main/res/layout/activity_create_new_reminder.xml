@@ -94,6 +94,7 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="28sp"
+        android:onClick="buttonReminderCreateOnClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
