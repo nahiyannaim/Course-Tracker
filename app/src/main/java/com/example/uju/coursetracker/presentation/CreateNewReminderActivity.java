@@ -95,9 +95,9 @@ public class CreateNewReminderActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int pos, long id) {
 
-                CharSequence rem = RemTypeAdapter.getItem(pos);
+                CharSequence remTyp = RemTypeAdapter.getItem(pos);
                 selectedRemType = findViewById(R.id.editText2);
-                selectedRemType.setText(rem.toString());
+                selectedRemType.setText(remTyp.toString());
 
             }
             @Override
