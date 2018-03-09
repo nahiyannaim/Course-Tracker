@@ -82,20 +82,21 @@
 
                 android:layout_weight="1"
 
-                android:background="@android:color/holo_orange_dark"
+                android:background="@android:color/holo_orange_light"
+
+                android:onClick="deleteButtonOnClick"
 
                 android:text="@string/addReminderButton2"
 
-                android:textSize="30sp"
+                android:textColor="@color/white"
 
-                android:onClick="deleteButtonOnClick"
+                android:textSize="30sp"
 
                 app:layout_constraintBottom_toBottomOf="parent"
 
                 app:layout_constraintEnd_toEndOf="parent"
 
                 app:layout_constraintHorizontal_bias="0.0"
-
                 app:layout_constraintStart_toStartOf="parent" />
 
 
@@ -113,6 +114,8 @@
 
                 android:text="@string/addReminderButton"
 
+                android:textColor="@color/white"
+
                 android:textSize="30sp"
 
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -120,7 +123,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
 
                 app:layout_constraintHorizontal_bias="0.0"
-
                 app:layout_constraintStart_toStartOf="parent" />
 
         </LinearLayout>

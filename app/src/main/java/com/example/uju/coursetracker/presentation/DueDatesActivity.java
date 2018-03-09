@@ -59,6 +59,8 @@ public class DueDatesActivity extends AppCompatActivity
                     text1.setText(reminderList.get(position).getCourseID());
                     text2.setText(reminderList.get(position).getReminderType() + " Due on: "+reminderList.get(position).getDueDate());
 
+//                    Log.d("myTag", reminderList.get(position).getDueDate());
+//                    Log.d("myTag", reminderList.size()+"");
 
                     return view;
                 }
