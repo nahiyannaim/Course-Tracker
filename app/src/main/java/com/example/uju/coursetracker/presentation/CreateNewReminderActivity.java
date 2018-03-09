@@ -3,16 +3,22 @@ package com.example.uju.coursetracker.presentation;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.business.AccessCourses;
+import com.example.uju.coursetracker.business.AccessReminders;
 import com.example.uju.coursetracker.objects.Course;
+import com.example.uju.coursetracker.objects.Reminder;
+
 import java.util.ArrayList;
 
 public class CreateNewReminderActivity extends AppCompatActivity {
@@ -21,6 +27,13 @@ public class CreateNewReminderActivity extends AppCompatActivity {
     private ArrayList<Course> newCourseList;
     private ArrayAdapter<Course> courseArrayAdapter;
 
+    private AccessReminders accessReminders;
+    private ArrayList<Reminder> reminderList;
+
+    private int selectedReminder = -1;
+    private String selectedCourseID;
+//    private String selectedType;
+  //  private String selectedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +68,29 @@ public class CreateNewReminderActivity extends AppCompatActivity {
                 }
             };
 
-            final ListView listView2 = findViewById(R.id.printComplCourses);
-            listView2.setAdapter(courseArrayAdapter);
+            final ListView listView = findViewById(R.id.printComplCourses);
+            listView.setAdapter(courseArrayAdapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Button doneButton = (Button)findViewById(R.id.RemDoneButton);
+
+
+                    if (position == selectedReminder) {
+                        listView.setItemChecked(position, false);
+                        doneButton.setEnabled(false);
+
+                        selectedReminder = -1;
+                    } else {
+                        listView.setItemChecked(position, true);
+                        doneButton.setEnabled(true);
+
+                        selectedReminder = position;
+                        selectReminderAtPosition(position);
+                    }
+                }
+            });
 
         }
 
@@ -76,6 +110,63 @@ public class CreateNewReminderActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    public void selectReminderAtPosition(int position)
+    {
+        Course selected = courseArrayAdapter.getItem(position);
+        selectedCourseID = selected.getCourseID();
+    }
+
+
+    public void buttonCourseCreateOnClick(View v)
+    {
+        EditText editDate = (EditText) findViewById(R.id.editText);
+
+        String dueDate = (editDate.getText()).toString();
+
+        Reminder reminder = new Reminder(selectedCourseID, "Mid", dueDate);
+        String result;
+
+        result = validateDate(reminder);
+        if (result == null) {
+            result = accessReminders.insertReminder(reminder);
+            if (result == null) {
+                accessReminders.getRemindersSeq(reminderList);
+                courseArrayAdapter.notifyDataSetChanged();
+                int pos = reminderList.indexOf(reminder);
+                if (pos >= 0) {
+                    ListView listView = (ListView)findViewById(R.id.ReminderList);
+                    listView.setSelection(pos);
+                }
+            } else {
+                MessagesActivity.fatalError(this, result);
+            }
+        } else {
+            MessagesActivity.warning(this, result);
+        }
+
+        Log.d("myTag", reminderList.size()+"");
+
+
+    }
+
+
+    private String validateDate(Reminder reminder)
+    {
+        String result = null;
+
+        if((reminder.getDueDate()).length() == 0)
+        {
+            result = "Due date required";
+        }
+
+        return result;
+    }
+
+
+
+
 
     private void goToDueDatesPage()
     {

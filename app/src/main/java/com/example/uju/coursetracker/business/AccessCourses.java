@@ -1,16 +1,14 @@
 package com.example.uju.coursetracker.business;
 
-import java.util.ArrayList;
 import java.util.List;
-import com.example.uju.coursetracker.application.MainActivity;
+import com.example.uju.coursetracker.presentation.MainActivity;
 import com.example.uju.coursetracker.application.DatabaseService;
 import com.example.uju.coursetracker.objects.Course;
-//import com.example.uju.coursetracker.persistence.StubDatabase;
 import com.example.uju.coursetracker.persistence.DataAccess;
 
 public class AccessCourses
 {
-    //private StubDatabase dataAccess;
+
     private DataAccess dataAccess;
     private List<Course> courses;
     private Course course;
