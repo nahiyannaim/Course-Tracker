@@ -117,8 +117,9 @@ public class CreateNewReminderActivity extends AppCompatActivity {
     }
 
 
-    public void buttonCourseCreateOnClick(View v)
+    public void buttonReminderCreateOnClick(View v)
     {
+        Log.d("myTag", "hello");
         EditText editDate = (EditText) findViewById(R.id.editText);
         selectedDate = (editDate.getText()).toString();
 
@@ -145,8 +146,12 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         } else {
             MessagesActivity.warning(this, result);
         }
+        for(int i = 0; i < reminderList.size(); i++)
+        {
+            Log.d("myTag", reminderList.get(i)+"");
+        }
 
-        Log.d("myTag", reminderList.size()+"");
+//        Log.d("myTag", reminderList.size()+"");
 
     }
 

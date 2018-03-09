@@ -61,8 +61,8 @@ public class DueDatesActivity extends AppCompatActivity
                     text1.setText(reminderList.get(position).getCourseID());
                     text2.setText(reminderList.get(position).getReminderType() + " Due on: "+reminderList.get(position).getDueDate());
 
-                    Log.d("myTag", reminderList.get(position).getDueDate());
-                    Log.d("myTag", reminderList.size()+"");
+//                    Log.d("myTag", reminderList.get(position).getDueDate());
+//                    Log.d("myTag", reminderList.size()+"");
 
                     return view;
                 }
@@ -92,9 +92,7 @@ public class DueDatesActivity extends AppCompatActivity
             });
         }
 
-
         Button addRemButton = findViewById(R.id.addReminderButton);
-
         addRemButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -112,7 +110,6 @@ public class DueDatesActivity extends AppCompatActivity
         if(reminderArrayAdapter != null){
             reminderArrayAdapter.notifyDataSetChanged();
         }
-
     }
 
     public void selectReminderAtPosition(int position)
@@ -122,9 +119,7 @@ public class DueDatesActivity extends AppCompatActivity
         selectedCourseID = selected.getCourseID();
         selectedType = selected.getReminderType();
         selectedDate = selected.getDueDate();
-
     }
-
 
     public void deleteButtonOnClick(View v)
     {
