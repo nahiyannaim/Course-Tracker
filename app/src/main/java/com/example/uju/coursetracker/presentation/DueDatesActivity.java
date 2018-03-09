@@ -14,8 +14,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.example.uju.coursetracker.R;
-import com.example.uju.coursetracker.application.MainActivity;
-import com.example.uju.coursetracker.business.AccessCourses;
 import com.example.uju.coursetracker.business.AccessReminders;
 import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.objects.Reminder;
