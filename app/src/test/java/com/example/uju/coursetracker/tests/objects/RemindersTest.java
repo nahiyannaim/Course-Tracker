@@ -20,7 +20,7 @@ public class RemindersTest extends TestCase
         assertTrue("Quiz".equals(rm.getReminderType()));
         assertTrue("19-07-18".equals(rm.getDueDate()));
 
-        
+
 
         System.out.println("Finished Reminder Testing");
 
