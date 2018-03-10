@@ -1,4 +1,4 @@
-package com.example.uju.coursetracker.persistence;
+package com.example.uju.coursetracker.tests.persistence;
 
 
 import com.example.uju.coursetracker.presentation.MainActivity;
