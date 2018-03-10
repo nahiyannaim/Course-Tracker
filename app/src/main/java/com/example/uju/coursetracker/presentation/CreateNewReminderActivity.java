@@ -3,7 +3,6 @@ package com.example.uju.coursetracker.presentation;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -18,8 +17,8 @@ import com.example.uju.coursetracker.business.AccessCourses;
 import com.example.uju.coursetracker.business.AccessReminders;
 import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.objects.Reminder;
-
 import java.util.ArrayList;
+
 
 public class CreateNewReminderActivity extends AppCompatActivity {
 
@@ -27,8 +26,7 @@ public class CreateNewReminderActivity extends AppCompatActivity {
     private ArrayList<Course> newCourseList;
     private ArrayAdapter<Course> courseArrayAdapter;
 
-    private
-    AccessReminders accessReminders;
+    private AccessReminders accessReminders;
     private ArrayList<Reminder> reminderList;
     private int selectedReminder = -1;
     private String selectedCourseID;
@@ -49,6 +47,7 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         reminderList = new ArrayList<Reminder>();
 
         String result2 = accessNewCourses.getCurrentCoursesSeq(newCourseList);
+
         if (result2 != null)
         {
             MessagesActivity.fatalError(this, result2);
@@ -80,11 +79,14 @@ public class CreateNewReminderActivity extends AppCompatActivity {
                     Button doneButton = (Button)findViewById(R.id.RemDoneButton);
 
 
-                    if (position == selectedReminder) {
+                    if (position == selectedReminder)
+                    {
                         listView.setItemChecked(position, false);
                         doneButton.setEnabled(false);
                         selectedReminder = -1;
-                    } else {
+                    }
+                    else
+                    {
                         listView.setItemChecked(position, true);
                         doneButton.setEnabled(true);
                         selectedReminder = position;
@@ -140,19 +142,28 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
         String result;
         result = validateDate(reminder);
-        if (result == null) {
+        if (result == null)
+        {
             result = accessReminders.insertReminder(reminder);
-            if (result == null) {
+
+            if (result == null)
+            {
                 accessReminders.getRemindersSeq(reminderList);
                 int pos = reminderList.indexOf(reminder);
-                if (pos >= 0) {
+
+                if (pos >= 0)
+                {
                     ListView listView = (ListView)findViewById(R.id.ReminderList);
                     listView.setSelection(pos);
                 }
-            } else {
+            }
+            else
+            {
                 MessagesActivity.fatalError(this, result);
             }
-        } else {
+        }
+        else
+        {
             MessagesActivity.warning(this, result);
         }
 

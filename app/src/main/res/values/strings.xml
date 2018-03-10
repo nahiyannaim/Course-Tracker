@@ -32,7 +32,7 @@
 
     <string name="currentCourse">My Current Courses</string>
     <string name="addReminderButton">Add Reminder</string>
-    <string name="typeOfReminder">Type:</string>
+    <string name="typeOfReminder">Reminder Type:</string>
     <string-array name="reminderTypes">
         <item>Assignment</item>
         <item>Quiz</item>
@@ -40,7 +40,7 @@
         <item>Final</item>
         <item>Project</item>
     </string-array>
-    <string name="RemDate">Date:</string>
+    <string name="RemDate">Due Date:</string>
     <string name="RemDoneButton">DONE</string>
 
     <string name="addReminderButton2">Delete</string>
