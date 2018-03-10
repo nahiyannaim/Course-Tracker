@@ -136,7 +136,6 @@ public class MyCompletedCoursesActivity extends Activity
     {
         Course course = createCourseFromEditText();
         String result;
-
         result = validateCourseData(course, true);
         if (result == null) {
             result = accessCompletedCourses.insertCompletedCourse(course);
