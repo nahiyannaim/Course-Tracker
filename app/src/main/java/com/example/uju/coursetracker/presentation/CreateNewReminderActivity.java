@@ -119,7 +119,7 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
     public void buttonCourseCreateOnClick(View v)
     {
-        Log.d("myTag", "hello");
+
         EditText editDate = (EditText) findViewById(R.id.editText);
         selectedDate = (editDate.getText()).toString();
 
@@ -130,28 +130,30 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
         String result;
         result = validateDate(reminder);
-        if (result == null) {
+        if (result == null)
+        {
             result = accessReminders.insertReminder(reminder); //cant find problem
-            if (result == null) {
+            if (result == null)
+            {
                 accessReminders.getRemindersSeq(reminderList);
                 courseArrayAdapter.notifyDataSetChanged();
                 int pos = reminderList.indexOf(reminder);
-                if (pos >= 0) {
+                if (pos >= 0)
+                {
                     ListView listView = (ListView)findViewById(R.id.ReminderList);
                     listView.setSelection(pos);
                 }
-            } else {
+            }
+            else
+            {
                 MessagesActivity.fatalError(this, result);
             }
-        } else {
+        }
+        else
+        {
             MessagesActivity.warning(this, result);
         }
-        for(int i = 0; i < reminderList.size(); i++)
-        {
-            Log.d("myTag", reminderList.get(i)+"");
-        }
 
-//        Log.d("myTag", reminderList.size()+"");
 
     }
 
