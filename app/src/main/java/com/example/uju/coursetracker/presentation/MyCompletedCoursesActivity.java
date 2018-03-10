@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -137,7 +136,6 @@ public class MyCompletedCoursesActivity extends Activity
     {
         Course course = createCourseFromEditText();
         String result;
-        Log.d("myTag", "test");
         result = validateCourseData(course, true);
         if (result == null) {
             result = accessCompletedCourses.insertCompletedCourse(course);

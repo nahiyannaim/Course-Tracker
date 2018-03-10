@@ -97,12 +97,12 @@ public class DueDatesActivity extends AppCompatActivity
         {
             @Override
             public void onClick(View view)
-
             {
                 goToReminderPage();
             }
         });
     }
+
 
     public void selectReminderAtPosition(int position)
     {

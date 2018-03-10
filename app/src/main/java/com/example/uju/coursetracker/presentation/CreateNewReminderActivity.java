@@ -27,9 +27,9 @@ public class CreateNewReminderActivity extends AppCompatActivity {
     private ArrayList<Course> newCourseList;
     private ArrayAdapter<Course> courseArrayAdapter;
 
-    private AccessReminders accessReminders;
+    private
+    AccessReminders accessReminders;
     private ArrayList<Reminder> reminderList;
-
     private int selectedReminder = -1;
     private String selectedCourseID;
     private String selectedType;
@@ -44,6 +44,9 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
         //current semester courses list
         newCourseList = new ArrayList<Course>();
+
+        accessReminders = new AccessReminders();
+        reminderList = new ArrayList<Reminder>();
 
         String result2 = accessNewCourses.getCurrentCoursesSeq(newCourseList);
         if (result2 != null)
@@ -99,16 +102,24 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
 
         Button doneButton = findViewById(R.id.RemDoneButton);
+//        doneButton.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View view)
+//            {
+//                goToDueDatesPage();
+//            }
+//        });
         doneButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
+                buttonReminderCreateOnClick(view);
                 goToDueDatesPage();
             }
         });
     }
-
 
     public void selectReminderAtPosition(int position)
     {
@@ -117,9 +128,8 @@ public class CreateNewReminderActivity extends AppCompatActivity {
     }
 
 
-    public void buttonCourseCreateOnClick(View v)
+    public void buttonReminderCreateOnClick(View v)
     {
-
         EditText editDate = (EditText) findViewById(R.id.editText);
         selectedDate = (editDate.getText()).toString();
 
@@ -130,30 +140,21 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
         String result;
         result = validateDate(reminder);
-        if (result == null)
-        {
-            result = accessReminders.insertReminder(reminder); //cant find problem
-            if (result == null)
-            {
+        if (result == null) {
+            result = accessReminders.insertReminder(reminder);
+            if (result == null) {
                 accessReminders.getRemindersSeq(reminderList);
-                courseArrayAdapter.notifyDataSetChanged();
                 int pos = reminderList.indexOf(reminder);
-                if (pos >= 0)
-                {
+                if (pos >= 0) {
                     ListView listView = (ListView)findViewById(R.id.ReminderList);
                     listView.setSelection(pos);
                 }
-            }
-            else
-            {
+            } else {
                 MessagesActivity.fatalError(this, result);
             }
-        }
-        else
-        {
+        } else {
             MessagesActivity.warning(this, result);
         }
-
 
     }
 
