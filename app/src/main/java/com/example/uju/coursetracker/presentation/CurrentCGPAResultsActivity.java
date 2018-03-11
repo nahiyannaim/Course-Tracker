@@ -21,7 +21,7 @@ public class CurrentCGPAResultsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_cgpa_results);
 
-        TextView tv = (TextView) findViewById(R.id.textView4);
+        TextView tv =  findViewById(R.id.textView4);
         double currCGPA = calculate(DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCompletedCourses());
         int completedCourseListSize = (DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCompletedCourses()).size();
 

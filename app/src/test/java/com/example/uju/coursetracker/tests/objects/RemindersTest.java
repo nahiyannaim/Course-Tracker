@@ -25,4 +25,4 @@ public class RemindersTest extends TestCase
         System.out.println("Finished Reminder Testing");
 
     }
-;}
+}
