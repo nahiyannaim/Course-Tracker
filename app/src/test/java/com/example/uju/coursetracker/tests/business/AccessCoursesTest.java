@@ -17,28 +17,128 @@ public class AccessCoursesTest extends TestCase
         super(arg0);
     }
 
-    public void test1()
+    public void testCompletedCourses()
     {
-        AccessCourses ac;
-        Course course;
+        System.out.println("\nStarting test AccessCourses for: Completed Courses");
 
         DatabaseService.closeDataAccess();
-
-        System.out.println("\nStarting test AccessCourses");
-
         DatabaseService.createDataAccess(new StubDatabase(dbName));
 
+        Course course;
+        AccessCourses ac;
+        String result ="";
         ac = new AccessCourses();
 
+
+
+        // Accessing the 1st course
         course = ac.getSequentialCompleted();
+
+        assertNotNull(ac);
+        assertNotNull(course);
         assertEquals("COMP 1010", course.getCourseID());
         assertEquals("Introduction To Java 1", course.getCourseName());
+        assertEquals("A", course.getGrade());
+
+
+
+        // Accessing the 3rd course
+        course = ac.getSequentialCompleted();
+        course = ac.getSequentialCompleted();
+
+        assertNotNull(ac);
+        assertNotNull(course);
+        assertEquals("COMP 2140", course.getCourseID());
+        assertEquals("Data Structures", course.getCourseName());
+        assertEquals("B", course.getGrade());
+
+
+
+        // Accessing the 6th course
+        course = ac.getSequentialCompleted();
+        course = ac.getSequentialCompleted();
+        course = ac.getSequentialCompleted();
+
+        assertNotNull(ac);
+        assertNotNull(course);
+        assertEquals("COMP 3020", course.getCourseID());
+        assertEquals("Human-Computer Interaction", course.getCourseName());
+        assertEquals("A", course.getGrade());
+
+
+
+        // Finished traversing completed courses list in database after 12 items
+        course = ac.getSequentialCompleted();
+        course = ac.getSequentialCompleted();
+        course = ac.getSequentialCompleted();
+        course = ac.getSequentialCompleted();
+        course = ac.getSequentialCompleted();
+        course = ac.getSequentialCompleted();
+        course = ac.getSequentialCompleted();
+
+        assertNull(course);
+        assertNotNull(ac);
+
 
         // ... ADD MORE
 
-        // ....Similarly add test for Current also
+        DatabaseService.closeDataAccess();
+        System.out.println("Finished test");
+    }
+
+
+    public void testCurrentCourses()
+    {
+        System.out.println("\nStarting test AccessCourses for: Current Courses");
 
         DatabaseService.closeDataAccess();
-        System.out.println("Finished test AccessCourses");
+        DatabaseService.createDataAccess(new StubDatabase(dbName));
+
+        Course course;
+        AccessCourses ac;
+        String result ="";
+        ac = new AccessCourses();
+
+
+
+        // Accessing the 1st course
+        course = ac.getSequentialCurrent();
+
+        assertNotNull(ac);
+        assertNotNull(course);
+        assertEquals("SOCO 1200", course.getCourseID());
+        assertEquals("Introduction To Sociology", course.getCourseName());
+        assertEquals("A", course.getGrade());
+
+
+
+        // Accessing the last course
+        course = ac.getSequentialCurrent();
+        course = ac.getSequentialCurrent();
+
+        assertNotNull(ac);
+        assertNotNull(course);
+        assertEquals("ENGL 1300", course.getCourseID());
+        assertEquals("Intro To English Literature", course.getCourseName());
+        assertEquals("A", course.getGrade());
+
+
+
+        // Finished traversing current courses list in database after 3 items
+        course = ac.getSequentialCurrent();
+
+        assertNull(course);
+        assertNotNull(ac);
+
+
+
+        // ... ADD MORE
+
+        DatabaseService.closeDataAccess();
+        System.out.println("Finished test");
     }
+
+
+
+
 }
