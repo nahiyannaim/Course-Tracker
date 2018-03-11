@@ -4,6 +4,9 @@ import com.example.uju.coursetracker.objects.Breakdown;
 import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.objects.Reminder;
 import com.example.uju.coursetracker.persistence.DataAccess;
+import com.example.uju.coursetracker.persistence.DataAccessObject;
+import com.example.uju.coursetracker.presentation.MainActivity;
+
 import junit.framework.TestCase;
 import java.util.ArrayList;
 
@@ -24,9 +27,10 @@ public class StubDatabaseTest extends TestCase
         // Use the following statements to run with the stub database:
         dataAccess = new StubDatabase();
         dataAccess.open("Stub");
-        // or switch to the real database:
-        // dataAccess = new DataAccessObject(Main.dbName);
-        // dataAccess.open(Main.getDBPathName());
+
+        // or switch to the real HSQLDB database:
+        // dataAccess = new DataAccessObject(MainActivity.dbName);
+        // dataAccess.open(MainActivity.getDBPathName());
     }
 
     public void tearDown()
