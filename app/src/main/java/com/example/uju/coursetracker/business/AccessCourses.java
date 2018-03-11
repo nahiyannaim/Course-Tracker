@@ -1,66 +1,40 @@
 package com.example.uju.coursetracker.business;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.example.uju.coursetracker.presentation.MainActivity;
 import com.example.uju.coursetracker.application.DatabaseService;
 import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.persistence.DataAccess;
 
+
 public class AccessCourses
 {
 
     private DataAccess dataAccess;
-    private List<Course> courses;
+    private List<Course> completedcourses;
+    private List<Course> currentCourses;
     private Course course;
-    private int currentCourse;
+    private Course course2;
+    private int count;
+    private int count2;
 
     public AccessCourses()
     {
         //dataAccess = (StubDatabase) DatabaseService.getDataAccess(MainActivity.dbName);
         dataAccess = DatabaseService.getDataAccess(MainActivity.dbName);
-        courses = null;
+        completedcourses = null;
+        currentCourses = null;
         course = null;
-        currentCourse = 0;
+        count = 0;
+        count2 = 0;
     }
 
-//    public String getCourses(List<Course> courses, String key)
-//    {
-//        courses.clear();
-//        return dataAccess.getCourseSequential(courses, key);
-//    }
 
-//    public String updateCompletedCourse(Course currentCourse)
-//    {
-//        return dataAccess.updateOldCourse(currentCourse);
-//    }
-//
-//    public String updateNewCourse(Course currentCourse)
-//    {
-//        return dataAccess.updateNewCourse(currentCourse);
-//    }
-//
-//    public String deleteCompletedCourse(Course currentCourse)
-//    {
-//        return dataAccess.deleteOldCourse(currentCourse);
-//    }
-//
-//    public String deleteNewCourse(Course currentCourse)
-//    {
-//        return dataAccess.deleteNewCourse(currentCourse);
-//    }
-//
-//    public String insertCompletedCourse(Course currentCourse)
-//    {
-//        return dataAccess.insertOldCourse(currentCourse);
-//    }
-//
-//    public String insertNewCourse(Course currentCourse)
-//    {
-//        return dataAccess.insertNewCourse(currentCourse);
-//    }
+    /////////////////////////////
+    //Completed Courses:
+    /////////////////////////////
 
-
-    //ITERATION 2 ****************************
     public String getCompletedCoursesSeq(List<Course> courses)
     {
         courses.clear();
@@ -81,6 +55,31 @@ public class AccessCourses
     {
         return dataAccess.deleteCompletedCourse(currentCourse);
     }
+
+    public Course getSequentialCompleted()
+    {
+        String result = null;
+        if (completedcourses == null)
+        {
+            // the following line was added as a result of a failing test in AccessCoursesTest!
+            completedcourses = new ArrayList<Course>();
+            result = dataAccess.getCompletedCoursesSeq(completedcourses);
+            count = 0;
+        }
+        if (count < completedcourses.size())
+        {
+            course = completedcourses.get(count);
+            count++;
+        }
+        else
+        {
+            completedcourses = null;
+            course = null;
+            count = 0;
+        }
+        return course;
+    }
+
 
 
     /////////////////////////////
@@ -108,5 +107,28 @@ public class AccessCourses
         return dataAccess.deleteCurrentCourse(currentCourse);
     }
 
+    public Course getSequentialCurrent()
+    {
+        String result = null;
+        if (currentCourses == null)
+        {
+            // the following line was added as a result of a failing test in AccessCoursesTest!
+            currentCourses = new ArrayList<Course>();
+            result = dataAccess.getCurrentCoursesSeq(currentCourses);
+            count2 = 0;
+        }
+        if (count2 < currentCourses.size())
+        {
+            course2 = currentCourses.get(count2);
+            count2++;
+        }
+        else
+        {
+            currentCourses = null;
+            course2 = null;
+            count2 = 0;
+        }
+        return course2;
+    }
 
 }
