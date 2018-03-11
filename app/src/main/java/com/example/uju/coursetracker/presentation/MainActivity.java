@@ -1,4 +1,4 @@
-package com.example.uju.coursetracker.application;
+package com.example.uju.coursetracker.presentation;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -10,11 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.content.Intent;
 import com.example.uju.coursetracker.R;
-import com.example.uju.coursetracker.presentation.DueDatesActivity;
-import com.example.uju.coursetracker.presentation.MessagesActivity;
-import com.example.uju.coursetracker.presentation.MyAllCoursesActivity;
-import com.example.uju.coursetracker.presentation.MyCompletedCoursesActivity;
-import com.example.uju.coursetracker.presentation.MyCurrentCoursesActivity;
+import com.example.uju.coursetracker.application.DatabaseService;
 
 import java.io.File;
 import java.io.FileWriter;

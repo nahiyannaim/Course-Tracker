@@ -1,10 +1,9 @@
 package com.example.uju.coursetracker.presentation;
 
-
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,43 +13,49 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.business.AccessCourses;
+import com.example.uju.coursetracker.business.AccessReminders;
 import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.objects.Reminder;
 
 import java.util.ArrayList;
-import android.widget.AdapterView.OnItemSelectedListener;
-
 
 public class CreateNewReminderActivity extends AppCompatActivity {
 
     private AccessCourses accessNewCourses;
     private ArrayList<Course> newCourseList;
     private ArrayAdapter<Course> courseArrayAdapter;
-    private ArrayAdapter<CharSequence> RemTypeAdapter;
-    private String newCoursesDBName = "new";
-    private Course selectedCourse;
-    private EditText selectedRemType;
+
+    private AccessReminders accessReminders;
+    private ArrayList<Reminder> reminderList;
+
+    private int selectedReminder = -1;
+    private String selectedCourseID;
+//    private String selectedType;
+  //  private String selectedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_reminder);
-      
+
         accessNewCourses = new AccessCourses();
 
-        //current semester courseList
+        //current semester courses list
         newCourseList = new ArrayList<Course>();
 
         String result2 = accessNewCourses.getCurrentCoursesSeq(newCourseList);
-        if (result2 != null) {
+        if (result2 != null)
+        {
             MessagesActivity.fatalError(this, result2);
-        } else {
+        }
+        else
+        {
             courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, newCourseList) {
                 @Override
-                public View getView(int position, View convertView, ViewGroup parent) {
+                public View getView(int position, View convertView, ViewGroup parent)
+                {
                     View view = super.getView(position, convertView, parent);
 
                     TextView text1 = view.findViewById(android.R.id.text1);
@@ -63,12 +68,36 @@ public class CreateNewReminderActivity extends AppCompatActivity {
                 }
             };
 
-            final ListView listView2 = findViewById(R.id.printComplCourses);
-            listView2.setAdapter(courseArrayAdapter);
+            final ListView listView = findViewById(R.id.printComplCourses);
+            listView.setAdapter(courseArrayAdapter);
 
-            createSpinner();
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Button doneButton = (Button)findViewById(R.id.RemDoneButton);
+
+
+                    if (position == selectedReminder) {
+                        listView.setItemChecked(position, false);
+                        doneButton.setEnabled(false);
+
+                        selectedReminder = -1;
+                    } else {
+                        listView.setItemChecked(position, true);
+                        doneButton.setEnabled(true);
+
+                        selectedReminder = position;
+                        selectReminderAtPosition(position);
+                    }
+                }
+            });
 
         }
+
+        Spinner remTypeSpinner = findViewById(R.id.RemSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.reminderTypes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        remTypeSpinner.setAdapter(adapter);
 
 
         Button doneButton = findViewById(R.id.RemDoneButton);
@@ -82,37 +111,66 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         });
     }
 
-    private void createSpinner()
+
+    public void selectReminderAtPosition(int position)
     {
-        Spinner remTypeSpinner = findViewById(R.id.RemSpinner);
-        final ArrayAdapter<CharSequence> RemTypeAdapter = ArrayAdapter.createFromResource(this,
-                R.array.reminderTypes, android.R.layout.simple_spinner_item);
-        RemTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        remTypeSpinner.setAdapter(RemTypeAdapter);
-        remTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int pos, long id) {
+        Course selected = courseArrayAdapter.getItem(position);
+        selectedCourseID = selected.getCourseID();
+    }
 
-                CharSequence remTyp = RemTypeAdapter.getItem(pos);
-                selectedRemType = findViewById(R.id.editText2);
-                selectedRemType.setText(remTyp.toString());
 
+    public void buttonCourseCreateOnClick(View v)
+    {
+        EditText editDate = (EditText) findViewById(R.id.editText);
+
+        String dueDate = (editDate.getText()).toString();
+
+        Reminder reminder = new Reminder(selectedCourseID, "Mid", dueDate);
+        String result;
+
+        result = validateDate(reminder);
+        if (result == null) {
+            result = accessReminders.insertReminder(reminder);
+            if (result == null) {
+                accessReminders.getRemindersSeq(reminderList);
+                courseArrayAdapter.notifyDataSetChanged();
+                int pos = reminderList.indexOf(reminder);
+                if (pos >= 0) {
+                    ListView listView = (ListView)findViewById(R.id.ReminderList);
+                    listView.setSelection(pos);
+                }
+            } else {
+                MessagesActivity.fatalError(this, result);
             }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+        } else {
+            MessagesActivity.warning(this, result);
+        }
 
-            }
+        Log.d("myTag", reminderList.size()+"");
 
-        });
 
     }
 
-    private void goToDueDatesPage() {
+
+    private String validateDate(Reminder reminder)
+    {
+        String result = null;
+
+        if((reminder.getDueDate()).length() == 0)
+        {
+            result = "Due date required";
+        }
+
+        return result;
+    }
+
+
+
+
+
+    private void goToDueDatesPage()
+    {
         Intent intent = new Intent(this, DueDatesActivity.class);
         startActivity(intent);
     }
-
-
 }

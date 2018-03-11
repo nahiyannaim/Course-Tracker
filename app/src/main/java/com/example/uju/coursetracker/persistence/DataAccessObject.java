@@ -4,6 +4,7 @@ package com.example.uju.coursetracker.persistence;
 import android.util.Log;
 
 import com.example.uju.coursetracker.objects.Course;
+import com.example.uju.coursetracker.objects.Reminder;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,6 +24,8 @@ public class DataAccessObject implements DataAccess
 
     private ArrayList<Course> completedCourses;
     private ArrayList<Course> currentCourses;
+    private ArrayList<Reminder> remindersList;
+
 
     private String cmdString;
     private int updateCount;
@@ -366,6 +369,158 @@ public class DataAccessObject implements DataAccess
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    ///////////////
+    //For Reminders
+    ///////////////
+
+
+    public String getRemindersSeq(List<Reminder> list)
+    {
+        Reminder reminder;
+        String myID, myType, myDate;
+        myID = EOF;
+        myType = EOF;
+        myDate = EOF;
+
+
+
+        result = null;
+        try
+        {
+            cmdString = "Select * from Reminders";
+            rs5 = st3.executeQuery(cmdString);
+
+            while (rs5.next())
+            {
+                myID = rs5.getString("CourseID");
+                myType = rs5.getString("Type");
+                myDate = rs5.getString("Date");
+
+
+                reminder = new Reminder(myID, myType, myDate);
+                list.add(reminder);
+            }
+            rs5.close();
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+
+
+
+        return result;
+    }
+
+    public ArrayList<Reminder> getReminders()
+    {
+
+        String myID, myType, myDate;
+        Reminder reminder;
+        int counter;
+
+        myID = EOF;
+        myType = EOF;
+        myDate = EOF;
+
+        counter = 0;
+        remindersList = new ArrayList<Reminder>();
+        try
+        {
+            cmdString = "Select * from Reminders";
+            rs4 = st2.executeQuery(cmdString);
+
+            while (rs4.next())
+            {
+
+                myID = rs4.getString("CourseID");
+                myType = rs4.getString("Type");
+                myDate = rs4.getString("Date");
+
+                reminder = new Reminder(myID, myType, myDate);
+                remindersList.add(reminder);
+                counter++;
+            }
+            rs4.close();
+        }
+        catch (Exception e)
+        {
+            processSQLError(e);
+        }
+        return remindersList;
+
+    }
+
+    public String insertReminder(Reminder reminder)
+    {
+        String values;
+
+        result = null;
+        try
+        {
+            values =  "'" +reminder.getCourseID() + "', '" +reminder.getReminderType() + "', '" +reminder.getDueDate()+"'";
+            cmdString = "Insert into Reminders " +" Values(" +values +")";
+            //System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+        return result;
+    }
+
+    public String updateReminder(Reminder reminder)
+    {
+        String values;
+        String where;
+
+        result = null;
+        try
+        {
+            // Should check for empty values and not update them
+            values = "Grade='" +reminder.getDueDate()
+                    +"'";
+            where = "where CourseID='" +reminder.getCourseID() +"'";
+            cmdString = "Update Reminders " +" Set " +values +" " +where;
+            //System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+        return result;
+    }
+
+    public String deleteReminder(Reminder reminder)
+    {
+        String values;
+
+        result = null;
+        try
+        {
+            values = reminder.getCourseID();
+            cmdString = "Delete from Reminders where CourseID='" +values +"'";
+            //System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+        return result;
+    }
+
+
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////////////
 
     public String checkWarning(Statement st, int updateCount)
     {
