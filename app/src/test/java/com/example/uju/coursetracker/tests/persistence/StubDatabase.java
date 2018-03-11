@@ -36,34 +36,47 @@ public class StubDatabase implements DataAccess
         remList = new ArrayList<Reminder>();
         oldCourses= new ArrayList<Course>();
         newCourses= new ArrayList<Course>();
-        genCrs(oldCourses,newCourses);
-        genRem();
+        genCrs(oldCourses, newCourses);
+        genRem(remList);
 
         System.out.println("Opened " +dbType +" database " +dbName);
     }
 
-    private void genRem()
+    private void genRem(ArrayList<Reminder> remList)
     {
         Reminder currRem;
 
         //SOCO 1200 Reminders
         currRem = new Reminder("SOCO 1200", "Assignment", "01/02/2018");
+        remList.add(currRem);
         currRem = new Reminder("SOCO 1200", "Assignment", "02/09/2018");
+        remList.add(currRem);
         currRem = new Reminder("SOCO 1200", "Midterm", "02/20/2018");
+        remList.add(currRem);
         currRem = new Reminder("SOCO 1200", "Final", "04/02/2018");
+        remList.add(currRem);
 
         //ECON 1020 Reminders
         currRem = new Reminder("ECON 1020", "Assignment", "03/15/2018");
+        remList.add(currRem);
         currRem = new Reminder("ECON 1020", "Quiz", "01/17/2018");
+        remList.add(currRem);
         currRem = new Reminder("ECON 1020", "Midterm", "02/23/2018");
+        remList.add(currRem);
         currRem = new Reminder("ECON 1020", "Assignment", "01/09/2018");
+        remList.add(currRem);
         currRem = new Reminder("ECON 1020", "Quiz", "01/03/2018");
+        remList.add(currRem);
         currRem = new Reminder("ECON 1020", "Final", "04/12/2018");
+        remList.add(currRem);
 
         //ENGL 1300 Reminders
         currRem = new Reminder("ENGL 1300", "Final", "04/09/2018");
+        remList.add(currRem);
         currRem = new Reminder("ENGL 1300", "Assignment", "02/25/2018");
+        remList.add(currRem);
         currRem = new Reminder("ENGL 1300", "Midterm", "02/19/2018");
+        remList.add(currRem);
 
     }
 
