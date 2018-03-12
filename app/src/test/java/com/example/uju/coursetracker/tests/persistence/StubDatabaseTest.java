@@ -99,6 +99,12 @@ public class StubDatabaseTest extends TestCase
         assertEquals(11, dataAccess.getCompletedCourses().size());
 
 
+        //adding to empty list
+        //deleting from empty list
+        //adding null
+        //updating null
+        //deleting null
+
         // ... ADD MORE
 
 
