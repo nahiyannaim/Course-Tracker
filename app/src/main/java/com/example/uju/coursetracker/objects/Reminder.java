@@ -37,4 +37,27 @@ public class Reminder {
         this.dueDate = dueDate;
     }
 
+
+    public boolean equals(Object other)
+    {
+        boolean result;
+        Reminder r;
+
+        result = false;
+
+        if (other instanceof Reminder)
+        {
+            r = (Reminder) other;
+            if (((r.getCourseID() == null) && (courseID == null)) || (r.getCourseID().equals(courseID)))
+            {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+
+
+
+
 }
