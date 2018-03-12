@@ -17,6 +17,13 @@ public class ReminderTest extends TestCase
         assertTrue("Final".equals(reminder.getReminderType()));
         assertTrue("07/19/2018".equals(reminder.getDueDate()));
 
+        Reminder reminder2 = new Reminder("COMP 3350", "Final", "07/19/2018");
+        assertTrue(reminder.equals(reminder2));
+
+        Reminder reminder3 = reminder;
+        assertSame(reminder, reminder3);
+
+
         System.out.println("Finished Test");
 
     }

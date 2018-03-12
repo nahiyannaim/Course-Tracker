@@ -142,20 +142,19 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
         String result;
         result = validateDate(reminder);
-        if (result == null)
+        if (result == null && selectedCourseID != null)
         {
             result = accessReminders.insertReminder(reminder);
 
             if (result == null)
             {
                 accessReminders.getRemindersSeq(reminderList);
-                int pos = reminderList.indexOf(reminder);
-
-                if (pos >= 0)
-                {
-                    ListView listView = (ListView)findViewById(R.id.ReminderList);
-                    listView.setSelection(pos);
-                }
+//                int pos = reminderList.indexOf(reminder);
+//                if (pos >= 0)
+//                {
+//                    ListView listView = (ListView)findViewById(R.id.ReminderList);
+//                    listView.setSelection(pos);
+//                }
             }
             else
             {
