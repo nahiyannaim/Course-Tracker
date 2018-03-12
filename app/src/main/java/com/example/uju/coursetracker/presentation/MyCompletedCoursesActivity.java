@@ -230,14 +230,11 @@ public class MyCompletedCoursesActivity extends Activity
         return null;
     }
 
-
-
     private void goToCurrentCGPA()
     {
         Intent intent = new Intent(this, CurrentCGPAResultsActivity.class);
         startActivity(intent);
     }
-
 
     private void goToCurrentCourses()
     {

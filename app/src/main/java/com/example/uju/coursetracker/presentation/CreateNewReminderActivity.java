@@ -102,23 +102,13 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         remTypeSpinner.setAdapter(adapter);
 
-
         Button doneButton = findViewById(R.id.RemDoneButton);
-//        doneButton.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View view)
-//            {
-//                goToDueDatesPage();
-//            }
-//        });
         doneButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
                 buttonReminderCreateOnClick(view);
-                goToDueDatesPage();
             }
         });
     }
@@ -132,6 +122,9 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
     public void buttonReminderCreateOnClick(View v)
     {
+        String noCourseSelected = "No selected Course";
+        String result;
+
         EditText editDate = (EditText) findViewById(R.id.editText);
         selectedDate = (editDate.getText()).toString();
 
@@ -140,41 +133,51 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
         Reminder reminder = new Reminder(selectedCourseID, selectedType, selectedDate);
 
-        String result;
-        result = validateDate(reminder);
-        if (result == null && selectedCourseID != null)
+        if(selectedCourseID != null)
         {
-            result = accessReminders.insertReminder(reminder);
-
+            result = validateDate(reminder);
             if (result == null)
             {
-                accessReminders.getRemindersSeq(reminderList);
-//                int pos = reminderList.indexOf(reminder);
-//                if (pos >= 0)
-//                {
-//                    ListView listView = (ListView)findViewById(R.id.ReminderList);
-//                    listView.setSelection(pos);
-//                }
+                result = accessReminders.insertReminder(reminder);
+                if (result == null)
+                {
+                    accessReminders.getRemindersSeq(reminderList);
+                    goToDueDatesPage();
+                }
+                else
+                {
+                    MessagesActivity.fatalError(this, result);
+                }
             }
             else
             {
-                MessagesActivity.fatalError(this, result);
+                MessagesActivity.warning(this, result);
             }
         }
         else
         {
-            MessagesActivity.warning(this, result);
+            MessagesActivity.warning(this, noCourseSelected);
         }
-
     }
 
     private String validateDate(Reminder reminder)
     {
         String result = null;
+        int dueDatelength = (reminder.getDueDate()).length();
 
-        if((reminder.getDueDate()).length() == 0)
+        if(dueDatelength <= 0 || dueDatelength > 10)
         {
-            result = "Due date required";
+            result = "Please enter a valid date in the format MM/DD/YYYY.";
+        }
+        else
+        {
+            if(reminder.getDueDate().charAt())
+
+            for(int i=0; i < dueDatelength; i++)
+            {
+
+            }
+
         }
 
         return result;
