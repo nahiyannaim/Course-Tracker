@@ -178,11 +178,15 @@ public class StubDatabase implements DataAccess
     {
         int index;
 
-        index = oldCourses.indexOf(course);
-        if (index >= 0)
+        if(course != null)
         {
-            oldCourses.set(index, course);
+            index = oldCourses.indexOf(course);
+            if (index >= 0)
+            {
+                oldCourses.set(index, course);
+            }
         }
+
         return null;
     }
 
@@ -190,10 +194,14 @@ public class StubDatabase implements DataAccess
     public String updateReminder(Reminder reminder)
     {
         int index;
-        index = remList.indexOf(reminder);
-        if(index >= 0)
+
+        if(reminder != null)
         {
-            remList.set(index,reminder);
+            index = remList.indexOf(reminder);
+            if (index >= 0)
+            {
+                remList.set(index, reminder);
+            }
         }
         return null;
     }
@@ -203,11 +211,15 @@ public class StubDatabase implements DataAccess
     {
         int index;
 
-        index = newCourses.indexOf(course);
-        if (index >= 0)
+        if(course != null)
         {
-            newCourses.set(index, course);
+            index = newCourses.indexOf(course);
+            if (index >= 0)
+            {
+                newCourses.set(index, course);
+            }
         }
+
         return null;
     }
 
@@ -216,11 +228,15 @@ public class StubDatabase implements DataAccess
     {
         int index;
 
-        index = oldCourses.indexOf(course);
-        if (index >= 0)
+        if(course != null)
         {
-            oldCourses.remove(index);
+            index = oldCourses.indexOf(course);
+            if (index >= 0)
+            {
+                oldCourses.remove(index);
+            }
         }
+
         return null;
     }
 
@@ -229,11 +245,15 @@ public class StubDatabase implements DataAccess
     {
         int index;
 
-        index = remList.indexOf(reminder);
-        if (index >= 0)
+        if(reminder != null)
         {
-            remList.remove(index);
+            index = remList.indexOf(reminder);
+            if (index >= 0)
+            {
+                remList.remove(index);
+            }
         }
+
         return null;
     }
 
@@ -242,53 +262,80 @@ public class StubDatabase implements DataAccess
     {
         int index;
 
-        index = newCourses.indexOf(course);
-        if (index >= 0)
+        if(course != null)
         {
-            newCourses.remove(index);
+            index = newCourses.indexOf(course);
+            if (index >= 0)
+            {
+                newCourses.remove(index);
+            }
         }
+
         return null;
     }
 
 
     public String insertCompletedCourse(Course course)
     {
-        oldCourses.add(course);
+        if(course != null)
+        {
+            oldCourses.add(course);
+        }
+
         return null;
     }
 
 
     public String insertReminder(Reminder reminder)
     {
-        remList.add(reminder);
+        if(reminder != null)
+        {
+            remList.add(reminder);
+        }
+
         return null;
     }
 
 
     public String insertCurrentCourse(Course course)
     {
-        newCourses.add(course);
+        if(course != null)
+        {
+            newCourses.add(course);
+        }
+
         return null;
     }
 
 
     public String getCompletedCoursesSeq(List<Course> completedCoursesList)
     {
-        completedCoursesList.addAll(oldCourses);
+        if(completedCoursesList != null)
+        {
+            completedCoursesList.addAll(oldCourses);
+        }
+
         return null;
     }
 
 
     public String getCurrentCoursesSeq(List<Course> currentCoursesList)
     {
-        currentCoursesList.addAll(newCourses);
+        if(currentCoursesList != null)
+        {
+            currentCoursesList.addAll(newCourses);
+        }
         return null;
     }
 
 
     public String getRemindersSeq(List<Reminder> list)
     {
-        list.addAll(remList);
+        if(list != null)
+        {
+            list.addAll(remList);
+        }
+
         return null;
     }
 
