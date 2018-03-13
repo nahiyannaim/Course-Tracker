@@ -7,18 +7,15 @@ import com.example.uju.coursetracker.objects.Breakdown;
 import com.example.uju.coursetracker.objects.Course;
 import java.util.*;
 
-
 // This is the stub database for the project
-// This stub database will have a set of initial contents and will provide the data for other classes.
+// This stub database will have a set of initial contents and will provide the data for Testing
 
 public class StubDatabase implements DataAccess
 {
     private String dbName;
     private String dbType = "stub";
-
     private ArrayList<Course> oldCourses;
     private ArrayList<Course> newCourses;
-    private ArrayList<Course> fullCourses;
     private ArrayList<Reminder> remList;
 
     public StubDatabase(String dbName)
@@ -154,25 +151,6 @@ public class StubDatabase implements DataAccess
         System.out.println("Closed " +dbType +" database " +dbName);
     }
 
-//    public void createFullList()
-//    {
-//        int count= 0 ;
-//        int cnt2=0;
-//        for (int i =0 ; i<oldCourses.size()+newCourses.size() ; i++)
-//        {
-//
-//            if(count<oldCourses.size())
-//            {
-//                fullCourses.add(oldCourses.get(i));
-//            }//if end
-//            else
-//            {
-//                fullCourses.add(newCourses.get(cnt2));
-//                cnt2++;
-//            }//else end
-//            count++;
-//        }//for end
-//    }
 
     public String updateCompletedCourse(Course course)
     {

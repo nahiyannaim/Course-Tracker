@@ -60,15 +60,6 @@ public class Course
         return breakdownList;
     }
 
-//    public void printBreakdownList()
-//    {
-//        String txt = "";
-//        for(int i = 0 ; i< breakdownList.size() ; i++){
-//            txt+=breakdownList.get(i)+ " ";
-//        }
-//        System.out.print("Breakdown List: " + txt);
-//    }
-
     public boolean equals(Object other)
     {
         boolean result;
