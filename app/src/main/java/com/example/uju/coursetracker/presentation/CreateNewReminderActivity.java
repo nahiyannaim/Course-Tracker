@@ -118,7 +118,6 @@ public class CreateNewReminderActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 buttonReminderCreateOnClick(view);
-                goToDueDatesPage();
             }
         });
     }
@@ -132,6 +131,9 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
     public void buttonReminderCreateOnClick(View v)
     {
+        String noCourseSelected = "Please select a Course from the list.";
+        String result;
+
         EditText editDate = (EditText) findViewById(R.id.editText);
         selectedDate = (editDate.getText()).toString();
 
@@ -140,31 +142,30 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
         Reminder reminder = new Reminder(selectedCourseID, selectedType, selectedDate);
 
-        String result;
-        result = validateDate(reminder);
-        if (result == null)
+        if(selectedCourseID != null)
         {
-            result = accessReminders.insertReminder(reminder);
-
+            result = validateDate(reminder);
             if (result == null)
             {
-                accessReminders.getRemindersSeq(reminderList);
-                int pos = reminderList.indexOf(reminder);
-
-                if (pos >= 0)
+                result = accessReminders.insertReminder(reminder);
+                if (result == null)
                 {
-                    ListView listView = (ListView)findViewById(R.id.ReminderList);
-                    listView.setSelection(pos);
+                    accessReminders.getRemindersSeq(reminderList);
+                    goToDueDatesPage();
+                }
+                else
+                {
+                    MessagesActivity.fatalError(this, result);
                 }
             }
             else
             {
-                MessagesActivity.fatalError(this, result);
+                MessagesActivity.warning(this, result);
             }
         }
         else
         {
-            MessagesActivity.warning(this, result);
+            MessagesActivity.warning(this, noCourseSelected);
         }
 
     }
@@ -172,11 +173,30 @@ public class CreateNewReminderActivity extends AppCompatActivity {
     private String validateDate(Reminder reminder)
     {
         String result = null;
+        int length = (reminder.getDueDate()).length();
+        String date = reminder.getDueDate();
 
-        if((reminder.getDueDate()).length() == 0)
+        if(length != 10)
         {
-            result = "Due date required";
+            result = "Please enter a valid date in the format MM/DD/YYYY.";
         }
+        else
+        {
+            if(date.charAt(2) != '/' || date.charAt(5) != '/')
+                result = "Please enter a valid date in the format MM/DD/YYYY.";
+
+            if(Integer.parseInt(date.substring(0, 2)) <= 0 || Integer.parseInt(date.substring(0, 2)) > 12)
+                result = "Invalid Month entered. Please enter a valid date in the format MM/DD/YYYY.";
+
+            if(Integer.parseInt(date.substring(3, 5)) <= 0 || Integer.parseInt(date.substring(3, 5)) > 31)
+                result = "Invalid Date entered. Please enter a valid date in the format MM/DD/YYYY.";
+
+            if(Integer.parseInt(date.substring(6)) < 2018 || Integer.parseInt(date.substring(6)) > 2020)
+                result = "Invalid Year entered. Please enter a valid date in the format MM/DD/YYYY.";
+
+        }
+
+
 
         return result;
     }

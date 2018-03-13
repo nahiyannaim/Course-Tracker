@@ -60,15 +60,6 @@ public class Course
         return breakdownList;
     }
 
-    public void printBreakdownList()
-    {
-        String txt = "";
-        for(int i = 0 ; i< breakdownList.size() ; i++){
-            txt+=breakdownList.get(i)+ " ";
-        }
-        System.out.print("Breakdown List: " + txt);
-    }
-
     public boolean equals(Object other)
     {
         boolean result;
@@ -79,7 +70,7 @@ public class Course
         if (other instanceof Course)
         {
             c = (Course) other;
-            if (((c.courseID == null) && (courseID == null)) || (c.courseID.equals(courseID)))
+            if (((c.getCourseID() == null) && (courseID == null)) || (c.getCourseID().equals(courseID)))
             {
                 result = true;
             }

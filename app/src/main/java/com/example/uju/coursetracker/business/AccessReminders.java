@@ -26,7 +26,10 @@ public class AccessReminders
 
     public String getRemindersSeq(List<Reminder> reminders)
     {
-        reminders.clear();
+        if(reminders != null)
+        {
+            reminders.clear();
+        }
         return dataAccess.getRemindersSeq(reminders);
     }
 

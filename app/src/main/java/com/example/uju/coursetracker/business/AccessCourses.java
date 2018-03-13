@@ -12,7 +12,7 @@ public class AccessCourses
 {
 
     private DataAccess dataAccess;
-    private List<Course> completedcourses;
+    private List<Course> completedCourses;
     private List<Course> currentCourses;
     private Course course;
     private Course course2;
@@ -23,12 +23,13 @@ public class AccessCourses
     {
         //dataAccess = (StubDatabase) DatabaseService.getDataAccess(MainActivity.dbName);
         dataAccess = DatabaseService.getDataAccess(MainActivity.dbName);
-        completedcourses = null;
+        completedCourses = null;
         currentCourses = null;
         course = null;
         count = 0;
         count2 = 0;
     }
+
 
 
     /////////////////////////////
@@ -37,7 +38,11 @@ public class AccessCourses
 
     public String getCompletedCoursesSeq(List<Course> courses)
     {
-        courses.clear();
+        if(courses != null)
+        {
+            courses.clear();
+        }
+
         return dataAccess.getCompletedCoursesSeq(courses);
     }
 
@@ -59,21 +64,21 @@ public class AccessCourses
     public Course getSequentialCompleted()
     {
         String result = null;
-        if (completedcourses == null)
+        if (completedCourses == null)
         {
             // the following line was added as a result of a failing test in AccessCoursesTest!
-            completedcourses = new ArrayList<Course>();
-            result = dataAccess.getCompletedCoursesSeq(completedcourses);
+            completedCourses = new ArrayList<Course>();
+            result = dataAccess.getCompletedCoursesSeq(completedCourses);
             count = 0;
         }
-        if (count < completedcourses.size())
+        if (count < completedCourses.size())
         {
-            course = completedcourses.get(count);
+            course = completedCourses.get(count);
             count++;
         }
         else
         {
-            completedcourses = null;
+            completedCourses = null;
             course = null;
             count = 0;
         }
@@ -88,7 +93,10 @@ public class AccessCourses
 
     public String getCurrentCoursesSeq(List<Course> courses)
     {
-        courses.clear();
+        if(courses != null)
+        {
+            courses.clear();
+        }
         return dataAccess.getCurrentCoursesSeq(courses);
     }
 
