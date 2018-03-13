@@ -26,7 +26,7 @@ public class AccessCoursesTest extends TestCase
         DatabaseService.createDataAccess(new StubDatabase(dbName));
 
         Course course;
-        AccessCourses ac = new AccessCourses();;
+        AccessCourses ac = new AccessCourses();
         String result ="";
 
 
