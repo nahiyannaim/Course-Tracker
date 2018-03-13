@@ -23,6 +23,9 @@ public class CourseTest extends TestCase
         Course course3 = course ;
         assertSame(course, course3);
 
+        //empty strings
+        //null object test
+
         System.out.println("Finished Test");
     }
 }

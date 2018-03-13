@@ -102,7 +102,16 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         remTypeSpinner.setAdapter(adapter);
 
+
         Button doneButton = findViewById(R.id.RemDoneButton);
+//        doneButton.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View view)
+//            {
+//                goToDueDatesPage();
+//            }
+//        });
         doneButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -122,7 +131,7 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
     public void buttonReminderCreateOnClick(View v)
     {
-        String noCourseSelected = "No selected Course";
+        String noCourseSelected = "Please select a Course from the list.";
         String result;
 
         EditText editDate = (EditText) findViewById(R.id.editText);
@@ -158,27 +167,36 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         {
             MessagesActivity.warning(this, noCourseSelected);
         }
+
     }
 
     private String validateDate(Reminder reminder)
     {
         String result = null;
-        int dueDatelength = (reminder.getDueDate()).length();
+        int length = (reminder.getDueDate()).length();
+        String date = reminder.getDueDate();
 
-        if(dueDatelength <= 0 || dueDatelength > 10)
+        if(length != 10)
         {
             result = "Please enter a valid date in the format MM/DD/YYYY.";
         }
         else
         {
-            if(reminder.getDueDate().charAt())
+            if(date.charAt(2) != '/' || date.charAt(5) != '/')
+                result = "Please enter a valid date in the format MM/DD/YYYY.";
 
-            for(int i=0; i < dueDatelength; i++)
-            {
+            if(Integer.parseInt(date.substring(0, 2)) <= 0 || Integer.parseInt(date.substring(0, 2)) > 12)
+                result = "Invalid Month entered. Please enter a valid date in the format MM/DD/YYYY.";
 
-            }
+            if(Integer.parseInt(date.substring(3, 5)) <= 0 || Integer.parseInt(date.substring(3, 5)) > 31)
+                result = "Invalid Date entered. Please enter a valid date in the format MM/DD/YYYY.";
+
+            if(Integer.parseInt(date.substring(6)) < 2018 || Integer.parseInt(date.substring(6)) > 2020)
+                result = "Invalid Year entered. Please enter a valid date in the format MM/DD/YYYY.";
 
         }
+
+
 
         return result;
     }

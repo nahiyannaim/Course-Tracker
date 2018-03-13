@@ -7,6 +7,9 @@ import com.example.uju.coursetracker.presentation.MainActivity;
 import com.example.uju.coursetracker.tests.persistence.StubDatabase;
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class AccessCoursesTest extends TestCase
 {
@@ -79,6 +82,21 @@ public class AccessCoursesTest extends TestCase
         assertNull(course);
         assertNotNull(ac);
 
+
+
+
+        //// IT WORKS !!!!
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        ArrayList<Course> lala = new ArrayList<Course>();
+
+        result = ac.insertCompletedCourse(new Course("Arts","aaaa","b"));
+        result = ac.updateCompletedCourse(new Course("Arts","aaaa","F"));
+        result = ac.updateCompletedCourse(new Course("Arts","aaaa","C+"));
+
+        result = ac.getCompletedCoursesSeq(lala);
+
+        System.out.println((lala.get(lala.indexOf(new Course("Arts","aaaa","F")))).getGrade());
+        ///////////////////////////////////////////////////////////////////////////////////////////
 
         // ... ADD MORE
 
