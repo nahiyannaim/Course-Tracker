@@ -135,7 +135,7 @@ public class CreateNewReminderActivity extends AppCompatActivity
 
         if(selectedCourseID != null)
         {
-            result = validateDate(reminder);
+            result = accessReminders.validateDate(reminder);
             if (result == null)
             {
                 result = accessReminders.insertReminder(reminder);
@@ -161,33 +161,7 @@ public class CreateNewReminderActivity extends AppCompatActivity
         }
     }
 
-    private String validateDate(Reminder reminder)
-    {
-        String result = null;
-        int length = (reminder.getDueDate()).length();
-        String date = reminder.getDueDate();
 
-        if(length != 10)
-        {
-            result = "Please enter a valid date in the format MM/DD/YYYY.";
-        }
-        else
-        {
-            if(date.charAt(2) != '/' || date.charAt(5) != '/')
-                result = "Please enter a valid date in the format MM/DD/YYYY.";
-
-            if(Integer.parseInt(date.substring(0, 2)) <= 0 || Integer.parseInt(date.substring(0, 2)) > 12)
-                result = "Invalid Month entered. Please enter a valid date in the format MM/DD/YYYY.";
-
-            if(Integer.parseInt(date.substring(3, 5)) <= 0 || Integer.parseInt(date.substring(3, 5)) > 31)
-                result = "Invalid Date entered. Please enter a valid date in the format MM/DD/YYYY.";
-
-            if(Integer.parseInt(date.substring(6)) < 2018 || Integer.parseInt(date.substring(6)) > 2020)
-                result = "Invalid Year entered. Please enter a valid date in the format MM/DD/YYYY.";
-        }
-
-        return result;
-    }
 
     private void goToDueDatesPage()
     {
