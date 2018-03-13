@@ -131,4 +131,43 @@ public class AccessCourses
         }
         return course2;
     }
+
+
+    public String validateCourseData(Course course)
+    {
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
+        boolean flag =  false;
+        String result = null;
+
+        if (course.getCourseID().length() == 0)
+        {
+            result = "Please enter a valid Course ID.";
+        }
+
+        if (course.getGrade().length() == 0)
+        {
+            result = "Please enter a valid grade.";
+        }
+
+        for(int j=0; j<  temp.grades.length; j++)
+        {
+            if( !(course.getGrade().equalsIgnoreCase(temp.grades[j])) )
+            {
+                flag = true;
+            }
+            else
+            {
+                flag = false;
+                break;
+            }
+        }
+
+        if(flag)
+        {
+            result = "Please enter a valid grade.";
+        }
+
+        return result ;
+    }
+
 }

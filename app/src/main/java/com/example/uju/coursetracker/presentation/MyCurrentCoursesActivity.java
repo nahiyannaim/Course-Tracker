@@ -123,7 +123,7 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
         Course course = createCourseFromEditText();
         String result;
 
-        result = validateCourseData(course, true);
+        result = accessNewCourses.validateCourseData(course);
         if (result == null)
         {
             result = accessNewCourses.insertCurrentCourse(course);
@@ -155,7 +155,7 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
 
         String result;
 
-        result = validateCourseData(course, false);
+        result = accessNewCourses.validateCourseData(course);
         if (result == null)
         {
             result = accessNewCourses.updateCurrentCourse(course);
@@ -200,6 +200,7 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
         }
         else
         {
+            result = accessNewCourses.validateCourseData(course);
             MessagesActivity.warning(this, result);
         }
     }
@@ -214,29 +215,7 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
         return course;
     }
 
-    private String validateCourseData(Course course, boolean isNewCourse)
-    {
-        if (course.getCourseID().length() == 0)
-        {
-            return "Course ID required";
-        }
 
-        if (course.getGrade().length() == 0)
-        {
-            return "Course grade required";
-        }
-        if( !(course.getGrade().equals("A+") ||  course.getGrade().equalsIgnoreCase("A") ||
-                course.getGrade().equals("B+") || course.getGrade().equalsIgnoreCase("B") ||
-                course.getGrade().equals("C+") || course.getGrade().equalsIgnoreCase("C") ||
-                course.getGrade().equals("D+") || course.getGrade().equalsIgnoreCase("D") ||
-                course.getGrade().equalsIgnoreCase("F"))  && !(( course.getGrade().equals("a+") ||  course.getGrade().equals("b+") || course.getGrade().equals("c+")) ))
-        {
-            return "Invalid course grade";
-
-        }
-
-        return null;
-    }
 
     private void goToPredictCGPA()
     {

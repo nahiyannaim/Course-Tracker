@@ -70,7 +70,6 @@ public class AccessReminders
         return reminder;
     }
 
-
     public String validateDate(Reminder rem)
     {
         String result = null;
@@ -98,7 +97,5 @@ public class AccessReminders
 
         return result;
     }
-
-
 
 }
