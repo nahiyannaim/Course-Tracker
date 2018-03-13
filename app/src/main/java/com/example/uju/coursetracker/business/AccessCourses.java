@@ -7,10 +7,8 @@ import com.example.uju.coursetracker.application.DatabaseService;
 import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.persistence.DataAccess;
 
-
 public class AccessCourses
 {
-
     private DataAccess dataAccess;
     private List<Course> completedCourses;
     private List<Course> currentCourses;
@@ -21,7 +19,6 @@ public class AccessCourses
 
     public AccessCourses()
     {
-        //dataAccess = (StubDatabase) DatabaseService.getDataAccess(MainActivity.dbName);
         dataAccess = DatabaseService.getDataAccess(MainActivity.dbName);
         completedCourses = null;
         currentCourses = null;
@@ -30,11 +27,9 @@ public class AccessCourses
         count2 = 0;
     }
 
-
-
-    /////////////////////////////
-    //Completed Courses:
-    /////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //   FOR COMPLETED COURSES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public String getCompletedCoursesSeq(List<Course> courses)
     {
@@ -85,11 +80,9 @@ public class AccessCourses
         return course;
     }
 
-
-
-    /////////////////////////////
-    //Current Courses:
-    /////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //   FOR CURRENT COURSES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public String getCurrentCoursesSeq(List<Course> courses)
     {
@@ -138,5 +131,4 @@ public class AccessCourses
         }
         return course2;
     }
-
 }

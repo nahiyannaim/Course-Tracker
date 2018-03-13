@@ -19,19 +19,16 @@ import java.util.ArrayList;
 
 public class DueDatesActivity extends AppCompatActivity
 {
-
     private ArrayAdapter<Reminder> reminderArrayAdapter;
     private int selectedReminder = -1;
     private AccessReminders accessReminders;
     private ArrayList<Reminder> reminderList;
-
     private String selectedCourseID;
     private String selectedType;
     private String selectedDate;
 
     private final int courseIDTextSize = 20;
     private final int dueDateTextSize = 20;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -50,7 +47,8 @@ public class DueDatesActivity extends AppCompatActivity
         }
         else
         {
-            reminderArrayAdapter = new ArrayAdapter<Reminder>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, reminderList) {
+            reminderArrayAdapter = new ArrayAdapter<Reminder>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, reminderList)
+            {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent)
                 {
@@ -83,7 +81,6 @@ public class DueDatesActivity extends AppCompatActivity
                         listView.setItemChecked(position, false);
                         deleteButton.setEnabled(false);
                         selectedReminder = -1;
-
                     }
                     else
                     {
@@ -96,9 +93,8 @@ public class DueDatesActivity extends AppCompatActivity
             });
         }
 
-
+        // this button would take us to create new reminders page
         Button addRemButton = findViewById(R.id.addReminderButton);
-
         addRemButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -109,7 +105,6 @@ public class DueDatesActivity extends AppCompatActivity
         });
     }
 
-
     public void selectReminderAtPosition(int position)
     {
         Reminder selected = reminderArrayAdapter.getItem(position);
@@ -117,54 +112,33 @@ public class DueDatesActivity extends AppCompatActivity
         selectedCourseID = selected.getCourseID();
         selectedType = selected.getReminderType();
         selectedDate = selected.getDueDate();
-
     }
-
 
     public void deleteButtonOnClick(View v)
     {
-
         Reminder reminder = new Reminder(selectedCourseID, selectedType, selectedDate);
         String result;
 
         result = accessReminders.deleteReminder(reminder);
 
-            if (result == null)
-            {
-                int pos = reminderList.indexOf(reminder);
+        if (result == null)
+        {
+            int pos = reminderList.indexOf(reminder);
 
-                if (pos >= 0)
-                {
-                    ListView listView = (ListView) findViewById(R.id.ReminderList);
-                    listView.setSelection(pos);
-                }
-
-                accessReminders.getRemindersSeq(reminderList);
-                reminderArrayAdapter.notifyDataSetChanged();
-            }
-            else
+            if (pos >= 0)
             {
-                MessagesActivity.warning(this, result);
+                ListView listView = (ListView) findViewById(R.id.ReminderList);
+                listView.setSelection(pos);
             }
 
-
-
-
+            accessReminders.getRemindersSeq(reminderList);
+            reminderArrayAdapter.notifyDataSetChanged();
+        }
+        else
+        {
+            MessagesActivity.warning(this, result);
+        }
     }
-
-
-
-    private Course createCourseFromEditText()
-    {
-        EditText editCourseID = (EditText)findViewById(R.id.editCourseID);
-        EditText editGrade = (EditText)findViewById(R.id.editGrade);
-
-        Course course = new Course(editCourseID.getText().toString(), "", editGrade.getText().toString());
-
-        return course;
-    }
-
-
 
     private void goToReminderPage()
     {
@@ -172,16 +146,9 @@ public class DueDatesActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-
-
     public void onBackPressed()
     {
         Intent intent = new Intent(this, MainActivity.class);
-        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
-
-
-
-
 }

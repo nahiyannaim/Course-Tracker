@@ -19,9 +19,8 @@ import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.objects.Reminder;
 import java.util.ArrayList;
 
-
-public class CreateNewReminderActivity extends AppCompatActivity {
-
+public class CreateNewReminderActivity extends AppCompatActivity
+{
     private AccessCourses accessNewCourses;
     private ArrayList<Course> newCourseList;
     private ArrayAdapter<Course> courseArrayAdapter;
@@ -54,7 +53,8 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         }
         else
         {
-            courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, newCourseList) {
+            courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, newCourseList)
+            {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent)
                 {
@@ -73,11 +73,11 @@ public class CreateNewReminderActivity extends AppCompatActivity {
             final ListView listView = findViewById(R.id.printComplCourses);
             listView.setAdapter(courseArrayAdapter);
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+            {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Button doneButton = (Button)findViewById(R.id.RemDoneButton);
-
 
                     if (position == selectedReminder)
                     {
@@ -94,7 +94,6 @@ public class CreateNewReminderActivity extends AppCompatActivity {
                     }
                 }
             });
-
         }
 
         Spinner remTypeSpinner = findViewById(R.id.RemSpinner);
@@ -102,16 +101,8 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         remTypeSpinner.setAdapter(adapter);
 
-
+        // this button would create a reminder and take us to due dates page
         Button doneButton = findViewById(R.id.RemDoneButton);
-//        doneButton.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View view)
-//            {
-//                goToDueDatesPage();
-//            }
-//        });
         doneButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -127,7 +118,6 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         Course selected = courseArrayAdapter.getItem(position);
         selectedCourseID = selected.getCourseID();
     }
-
 
     public void buttonReminderCreateOnClick(View v)
     {
@@ -151,6 +141,7 @@ public class CreateNewReminderActivity extends AppCompatActivity {
                 if (result == null)
                 {
                     accessReminders.getRemindersSeq(reminderList);
+
                     goToDueDatesPage();
                 }
                 else
@@ -167,7 +158,6 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         {
             MessagesActivity.warning(this, noCourseSelected);
         }
-
     }
 
     private String validateDate(Reminder reminder)
@@ -193,10 +183,7 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
             if(Integer.parseInt(date.substring(6)) < 2018 || Integer.parseInt(date.substring(6)) > 2020)
                 result = "Invalid Year entered. Please enter a valid date in the format MM/DD/YYYY.";
-
         }
-
-
 
         return result;
     }

@@ -7,7 +7,6 @@ import com.example.uju.coursetracker.persistence.DataAccess;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class AccessReminders
 {
     private DataAccess dataAccess;
@@ -22,7 +21,6 @@ public class AccessReminders
         reminder = null;
         count = 0 ;
     }
-
 
     public String getRemindersSeq(List<Reminder> reminders)
     {
@@ -48,7 +46,6 @@ public class AccessReminders
         return dataAccess.deleteReminder(reminder);
     }
 
-
     public Reminder getSequentialReminders()
     {
         String result = null;
@@ -72,6 +69,4 @@ public class AccessReminders
         }
         return reminder;
     }
-
-
 }
