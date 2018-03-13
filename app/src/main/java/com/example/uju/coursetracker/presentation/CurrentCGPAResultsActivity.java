@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.application.DatabaseService;
-import static com.example.uju.coursetracker.business.CalculateCurrentCGPA.calculate;
+import com.example.uju.coursetracker.business.CalculateCurrentCGPA;
 
 public class CurrentCGPAResultsActivity extends AppCompatActivity
 {
@@ -18,7 +18,8 @@ public class CurrentCGPAResultsActivity extends AppCompatActivity
         setContentView(R.layout.activity_current_cgpa_results);
 
         TextView tv = (TextView) findViewById(R.id.textView4);
-        double currCGPA = calculate(DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCompletedCourses());
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
+        double currCGPA = temp.calculate(DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCompletedCourses());
         int completedCourseListSize = (DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCompletedCourses()).size();
 
         if(completedCourseListSize <= 0)

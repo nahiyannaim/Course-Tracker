@@ -133,7 +133,7 @@ public class MyCompletedCoursesActivity extends Activity
     {
         Course course = createCourseFromEditText();
         String result;
-        result = validateCourseData(course, true);
+        result = accessCompletedCourses.validateCourseData(course);
         if (result == null)
         {
             result = accessCompletedCourses.insertCompletedCourse(course);
@@ -165,7 +165,7 @@ public class MyCompletedCoursesActivity extends Activity
 
         String result;
 
-        result = validateCourseData(course, false);
+        result = accessCompletedCourses.validateCourseData(course);
         if (result == null)
         {
             result = accessCompletedCourses.updateCompletedCourse(course);
@@ -210,6 +210,7 @@ public class MyCompletedCoursesActivity extends Activity
         }
         else
         {
+            result = accessCompletedCourses.validateCourseData(course);
             MessagesActivity.warning(this, result);
         }
     }
@@ -222,31 +223,6 @@ public class MyCompletedCoursesActivity extends Activity
         Course course = new Course(editCourseID.getText().toString(), "", editGrade.getText().toString());
 
         return course;
-    }
-
-    private String validateCourseData(Course course, boolean isNewCourse)
-    {
-        if (course.getCourseID().length() == 0)
-        {
-            return "Course ID required";
-        }
-
-        if (course.getGrade().length() == 0)
-        {
-            return "Course grade required";
-        }
-
-        if( !(course.getGrade().equals("A+") ||  course.getGrade().equalsIgnoreCase("A") ||
-                course.getGrade().equals("B+") || course.getGrade().equalsIgnoreCase("B") ||
-                course.getGrade().equals("C+") || course.getGrade().equalsIgnoreCase("C") ||
-                course.getGrade().equals("D+") || course.getGrade().equalsIgnoreCase("D") ||
-                course.getGrade().equalsIgnoreCase("F"))  && !(( course.getGrade().equals("a+") ||  course.getGrade().equals("b+") || course.getGrade().equals("c+")) ))
-        {
-            return "Invalid course grade";
-
-        }
-
-        return null;
     }
 
     private void goToCurrentCGPA()

@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class CalculateCurrentCGPA
 {
+
+    final String[] grades = {"A+","A","B+","B","C+","C","D","F"};
+    final double[] points = {4.5,4.0,3.5,3.0,2.5,2.0,1.0,0.0};
+
     //This is where we will calculate the current CGPA based on the already completed courses of the user
-    public static double calculate(ArrayList<Course> completedCoursesList)
+    public double calculate(ArrayList<Course> completedCoursesList)
     {
-
-        final String[] grades = {"A+","A","B+","B","C+","C","D","F"};
-        final double[] points = {4.5,4.0,3.5,3.0,2.5,2.0,1.0,0.0};
-
         String temp = "";
         double totalPoints = 0.0;
         double currCGPA;

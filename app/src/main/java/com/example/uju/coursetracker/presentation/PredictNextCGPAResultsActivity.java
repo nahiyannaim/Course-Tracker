@@ -17,8 +17,8 @@ public class PredictNextCGPAResultsActivity extends AppCompatActivity
         setContentView(R.layout.activity_predict_next_cgpa_results);
 
         TextView tv = (TextView) findViewById(R.id.predictResult);
-
-        double currCGPA = CalculateCurrentCGPA.calculate(DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCompletedCourses());
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
+        double currCGPA = temp.calculate(DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCompletedCourses());
         int totalCoursesCompleted = (DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCompletedCourses()).size();
         double predictedCGPA = PredictNextCGPA.calculate(DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCurrentCourses(), currCGPA, totalCoursesCompleted);
         int currentCourseListSize = (DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCurrentCourses()).size();

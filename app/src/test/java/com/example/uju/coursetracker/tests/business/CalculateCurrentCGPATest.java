@@ -14,12 +14,13 @@ public class CalculateCurrentCGPATest extends TestCase
 
         ArrayList<Course> list = new ArrayList();
         double result;
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
 
         list.add(new Course("COMP 1010", "Intro to CS", "A"));
         list.add(new Course("MATH 1500", "Calculus", "B+"));
 
 
-        result = CalculateCurrentCGPA.calculate(list);
+        result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(3.75, result);
@@ -35,6 +36,7 @@ public class CalculateCurrentCGPATest extends TestCase
 
         ArrayList<Course> list = new ArrayList();
         double result;
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
 
         list.add(new Course("COMP 1010", "Intro to CS", "A+"));
         list.add(new Course("COMP 1020", "Advanced CS", "A"));
@@ -45,7 +47,7 @@ public class CalculateCurrentCGPATest extends TestCase
         list.add(new Course("GEOG 1280", "Human Geography", "D"));
         list.add(new Course("Math 1500", "Intro Calculus", "F"));
 
-        result = CalculateCurrentCGPA.calculate(list);
+        result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(2.56, result);
@@ -61,12 +63,13 @@ public class CalculateCurrentCGPATest extends TestCase
 
         ArrayList<Course> list = new ArrayList();
         double result;
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
 
         list.add(new Course("COMP 1010", "Intro to CS", "P+"));
         list.add(new Course("COMP 1020", "Advanced CS", "S"));
 
 
-        result = CalculateCurrentCGPA.calculate(list);
+        result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
@@ -82,6 +85,7 @@ public class CalculateCurrentCGPATest extends TestCase
 
         ArrayList<Course> list = new ArrayList();
         double result;
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
 
         list.add(new Course("MATH 1010", "Intro to Math", "P+"));
         list.add(new Course("PHYS 1010", "Intro to Physics", "A"));
@@ -89,7 +93,7 @@ public class CalculateCurrentCGPATest extends TestCase
         list.add(new Course("BIOL 1010", "Intro to Biology", "B+"));
 
 
-        result = CalculateCurrentCGPA.calculate(list);
+        result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
@@ -103,11 +107,12 @@ public class CalculateCurrentCGPATest extends TestCase
         System.out.println("Starting test: Empty grades");
 
         ArrayList<Course> list = new ArrayList();
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
 
         list.add(new Course("ENVR 1000", "Environmental Science", " "));
         list.add(new Course("STAT 2000", "Advanced Statistics", " "));
 
-        double result = CalculateCurrentCGPA.calculate(list);
+        double result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
@@ -121,6 +126,7 @@ public class CalculateCurrentCGPATest extends TestCase
         System.out.println("Starting Test: Mixed Combination grades");
 
         ArrayList<Course> list = new ArrayList();
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
         double result;
 
         list.add(new Course("MATH 1010", "Intro to Math", "A"));
@@ -129,7 +135,7 @@ public class CalculateCurrentCGPATest extends TestCase
         list.add(new Course("BIOL 1010", "Intro to Biology", "2"));
         list.add(new Course("COMP 1010", "Intro to Programming", "B+"));
 
-        result = CalculateCurrentCGPA.calculate(list);
+        result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
@@ -143,8 +149,9 @@ public class CalculateCurrentCGPATest extends TestCase
         System.out.println("Starting test: Empty list");
 
         ArrayList<Course> list = new ArrayList();
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
 
-        double result = CalculateCurrentCGPA.calculate(list);
+        double result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
@@ -156,7 +163,8 @@ public class CalculateCurrentCGPATest extends TestCase
     {
         System.out.println("Starting test: null list");
 
-        double result = CalculateCurrentCGPA.calculate(null);
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
+        double result = temp.calculate(null);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
@@ -168,12 +176,13 @@ public class CalculateCurrentCGPATest extends TestCase
     {
         System.out.println("Starting test: null list item");
 
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
         ArrayList<Course> list = new ArrayList();
         list.add(null);
         list.add(null);
         list.add(null);
 
-        double result = CalculateCurrentCGPA.calculate(list);
+        double result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
