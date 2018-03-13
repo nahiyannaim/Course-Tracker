@@ -5,10 +5,8 @@ import com.example.uju.coursetracker.objects.Course;
 import junit.framework.TestCase;
 import java.util.ArrayList;
 
-
 public class CalculateCurrentCGPATest extends TestCase
 {
-
     public void testValidGrades()
     {
 
@@ -29,8 +27,6 @@ public class CalculateCurrentCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
-
 
     public void testAllValidGrades()
     {
@@ -58,8 +54,6 @@ public class CalculateCurrentCGPATest extends TestCase
 		System.out.println("Finished Test");
     }
 
-
-
     public void testInvalidGrades()
     {
 
@@ -80,7 +74,6 @@ public class CalculateCurrentCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testValidAndInvalidGrades()
     {
@@ -105,7 +98,6 @@ public class CalculateCurrentCGPATest extends TestCase
         System.out.println("Finished Test");
     }
 
-
     public void testEmptyGrades()
     {
         System.out.println("Starting test: Empty grades");
@@ -122,9 +114,6 @@ public class CalculateCurrentCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
-
-
 
     public void testMixedCombinationGrades()
     {
@@ -149,8 +138,6 @@ public class CalculateCurrentCGPATest extends TestCase
         System.out.println("Finished Test");
     }
 
-
-
     public void testEmptyList()
     {
         System.out.println("Starting test: Empty list");
@@ -165,8 +152,6 @@ public class CalculateCurrentCGPATest extends TestCase
         System.out.println("Finished test");
     }
 
-
-
     public void testNullList()
     {
         System.out.println("Starting test: null list");
@@ -178,8 +163,6 @@ public class CalculateCurrentCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
-
 
     public void testNullListItem()
     {
@@ -197,7 +180,5 @@ public class CalculateCurrentCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
-
 }
 

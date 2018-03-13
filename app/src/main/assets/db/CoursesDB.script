@@ -27,6 +27,3 @@ INSERT INTO COMPLETEDCOURSES VALUES('WOMN 3000', 'Women And Gender Studies','D')
 INSERT INTO CURRENTCOURSES VALUES('SOCO 1200', 'Introduction To Sociology', 'B');
 INSERT INTO CURRENTCOURSES VALUES('ECON 1020', 'Introduction To Economics', 'A+');
 INSERT INTO CURRENTCOURSES VALUES('ENGL 1300', 'Intro To English Literature', 'C');
-
-
-

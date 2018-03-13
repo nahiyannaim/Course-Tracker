@@ -1,11 +1,7 @@
-
 package com.example.uju.coursetracker.persistence;
-
-import android.util.Log;
 
 import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.objects.Reminder;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -49,7 +45,6 @@ public class DataAccessObject implements DataAccess
             st1 = c1.createStatement();
             st2 = c1.createStatement();
             st3 = c1.createStatement();
-
         }
         catch (Exception e)
         {
@@ -81,12 +76,10 @@ public class DataAccessObject implements DataAccess
         myCourseName = EOF;
         myGrade = EOF;
 
-
-
         result = null;
         try
         {
-            cmdString = "Select * from CompletedCourses"; //**************** CHANGE TO completedCourses later
+            cmdString = "Select * from CompletedCourses";
             rs5 = st3.executeQuery(cmdString);
 
             while (rs5.next())
@@ -94,7 +87,6 @@ public class DataAccessObject implements DataAccess
                 myID = rs5.getString("CourseID");
                 myCourseName = rs5.getString("Name");
                 myGrade = rs5.getString("Grade");
-
 
                 course = new Course(myID, myCourseName, myGrade);
                 completedCoursesList.add(course);
@@ -106,11 +98,8 @@ public class DataAccessObject implements DataAccess
             result = processSQLError(e);
         }
 
-
-
         return result;
     }
-
 
     public ArrayList<Course> getCompletedCourses()
     {
@@ -126,7 +115,7 @@ public class DataAccessObject implements DataAccess
         completedCourses = new ArrayList<Course>();
         try
         {
-            cmdString = "Select * from CompletedCourses";  //**************** CHANGE TO completedCourses later
+            cmdString = "Select * from CompletedCourses";
             rs4 = st2.executeQuery(cmdString);
             // ResultSetMetaData md4 = rs4.getMetaData();
             while (rs4.next())
@@ -146,10 +135,9 @@ public class DataAccessObject implements DataAccess
         {
             processSQLError(e);
         }
+
         return completedCourses;
     }
-
-
 
     public String insertCompletedCourse(Course course)
     {
@@ -168,9 +156,9 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
-
 
     public String updateCompletedCourse(Course course)
     {
@@ -193,6 +181,7 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
 
@@ -213,14 +202,13 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//   FOR CURRENT COURSES
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //   FOR CURRENT COURSES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public String getCurrentCoursesSeq(List<Course> currentCoursesList)
     {
@@ -229,8 +217,6 @@ public class DataAccessObject implements DataAccess
         myID = EOF;
         myCourseName = EOF;
         myGrade = EOF;
-
-
 
         result = null;
         try
@@ -255,11 +241,8 @@ public class DataAccessObject implements DataAccess
             result = processSQLError(e);
         }
 
-
-
         return result;
     }
-
 
     public  ArrayList<Course> getCurrentCourses()
     {
@@ -295,10 +278,9 @@ public class DataAccessObject implements DataAccess
         {
             processSQLError(e);
         }
+
         return currentCourses;
     }
-
-
 
     public String insertCurrentCourse(Course course)
     {
@@ -317,9 +299,9 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
-
 
     public String updateCurrentCourse(Course course)
     {
@@ -342,6 +324,7 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
 
@@ -362,16 +345,13 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
 
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    ///////////////
-    //For Reminders
-    ///////////////
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //   FOR REMINDERS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public String getRemindersSeq(List<Reminder> list)
     {
@@ -380,8 +360,6 @@ public class DataAccessObject implements DataAccess
         myID = EOF;
         myType = EOF;
         myDate = EOF;
-
-
 
         result = null;
         try
@@ -405,8 +383,6 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
-
-
 
         return result;
     }
@@ -446,8 +422,8 @@ public class DataAccessObject implements DataAccess
         {
             processSQLError(e);
         }
-        return remindersList;
 
+        return remindersList;
     }
 
     public String insertReminder(Reminder reminder)
@@ -467,6 +443,7 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
 
@@ -491,6 +468,7 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
 
@@ -511,15 +489,13 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
 
-
-
-
-
-
-    ///////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //   FOR WARNINGS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public String checkWarning(Statement st, int updateCount)
     {
@@ -542,6 +518,7 @@ public class DataAccessObject implements DataAccess
         {
             result = "Tuple not inserted correctly.";
         }
+
         return result;
     }
 

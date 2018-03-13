@@ -7,18 +7,15 @@ import com.example.uju.coursetracker.objects.Breakdown;
 import com.example.uju.coursetracker.objects.Course;
 import java.util.*;
 
-
 // This is the stub database for the project
-// This stub database will have a set of initial contents and will provide the data for other classes.
+// This stub database will have a set of initial contents and will provide the data for Testing
 
 public class StubDatabase implements DataAccess
 {
     private String dbName;
     private String dbType = "stub";
-
     private ArrayList<Course> oldCourses;
     private ArrayList<Course> newCourses;
-    private ArrayList<Course> fullCourses;
     private ArrayList<Reminder> remList;
 
     public StubDatabase(String dbName)
@@ -148,167 +145,177 @@ public class StubDatabase implements DataAccess
         newC.add(course);
     }
 
-
     public void close()
     {
         System.out.println("Closed " +dbType +" database " +dbName);
     }
 
-//    public void createFullList()
-//    {
-//        int count= 0 ;
-//        int cnt2=0;
-//        for (int i =0 ; i<oldCourses.size()+newCourses.size() ; i++)
-//        {
-//
-//            if(count<oldCourses.size())
-//            {
-//                fullCourses.add(oldCourses.get(i));
-//            }//if end
-//            else
-//            {
-//                fullCourses.add(newCourses.get(cnt2));
-//                cnt2++;
-//            }//else end
-//            count++;
-//        }//for end
-//    }
-
     public String updateCompletedCourse(Course course)
     {
         int index;
 
-        index = oldCourses.indexOf(course);
-        if (index >= 0)
+        if(course != null)
         {
-            oldCourses.set(index, course);
+            index = oldCourses.indexOf(course);
+            if (index >= 0)
+            {
+                oldCourses.set(index, course);
+            }
         }
+
         return null;
     }
-
 
     public String updateReminder(Reminder reminder)
     {
         int index;
-        index = remList.indexOf(reminder);
-        if(index >= 0)
+
+        if(reminder != null)
         {
-            remList.set(index,reminder);
+            index = remList.indexOf(reminder);
+            if (index >= 0)
+            {
+                remList.set(index, reminder);
+            }
         }
         return null;
     }
-
 
     public String updateCurrentCourse(Course course)
     {
         int index;
 
-        index = newCourses.indexOf(course);
-        if (index >= 0)
+        if(course != null)
         {
-            newCourses.set(index, course);
+            index = newCourses.indexOf(course);
+            if (index >= 0)
+            {
+                newCourses.set(index, course);
+            }
         }
+
         return null;
     }
-
 
     public String deleteCompletedCourse(Course course)
     {
         int index;
 
-        index = oldCourses.indexOf(course);
-        if (index >= 0)
+        if(course != null)
         {
-            oldCourses.remove(index);
+            index = oldCourses.indexOf(course);
+            if (index >= 0)
+            {
+                oldCourses.remove(index);
+            }
         }
+
         return null;
     }
-
 
     public String deleteReminder(Reminder reminder)
     {
         int index;
 
-        index = remList.indexOf(reminder);
-        if (index >= 0)
+        if(reminder != null)
         {
-            remList.remove(index);
+            index = remList.indexOf(reminder);
+            if (index >= 0)
+            {
+                remList.remove(index);
+            }
         }
+
         return null;
     }
-
 
     public String deleteCurrentCourse(Course course)
     {
         int index;
 
-        index = newCourses.indexOf(course);
-        if (index >= 0)
+        if(course != null)
         {
-            newCourses.remove(index);
+            index = newCourses.indexOf(course);
+            if (index >= 0)
+            {
+                newCourses.remove(index);
+            }
+        }
+
+        return null;
+    }
+
+    public String insertCompletedCourse(Course course)
+    {
+        if(course != null)
+        {
+            oldCourses.add(course);
+        }
+
+        return null;
+    }
+
+    public String insertReminder(Reminder reminder)
+    {
+        if(reminder != null)
+        {
+            remList.add(reminder);
+        }
+
+        return null;
+    }
+
+    public String insertCurrentCourse(Course course)
+    {
+        if(course != null)
+        {
+            newCourses.add(course);
+        }
+
+        return null;
+    }
+
+    public String getCompletedCoursesSeq(List<Course> completedCoursesList)
+    {
+        if(completedCoursesList != null)
+        {
+            completedCoursesList.addAll(oldCourses);
+        }
+
+        return null;
+    }
+
+    public String getCurrentCoursesSeq(List<Course> currentCoursesList)
+    {
+        if(currentCoursesList != null)
+        {
+            currentCoursesList.addAll(newCourses);
         }
         return null;
     }
 
-
-    public String insertCompletedCourse(Course course)
-    {
-        oldCourses.add(course);
-        return null;
-    }
-
-
-    public String insertReminder(Reminder reminder)
-    {
-        remList.add(reminder);
-        return null;
-    }
-
-
-    public String insertCurrentCourse(Course course)
-    {
-        newCourses.add(course);
-        return null;
-    }
-
-
-    public String getCompletedCoursesSeq(List<Course> completedCoursesList)
-    {
-        completedCoursesList.addAll(oldCourses);
-        return null;
-    }
-
-
-    public String getCurrentCoursesSeq(List<Course> currentCoursesList)
-    {
-        currentCoursesList.addAll(newCourses);
-        return null;
-    }
-
-
     public String getRemindersSeq(List<Reminder> list)
     {
-        list.addAll(remList);
+        if(list != null)
+        {
+            list.addAll(remList);
+        }
+
         return null;
     }
-
 
     public  ArrayList<Course> getCompletedCourses()
     {
         return oldCourses;
     }
 
-
     public ArrayList<Course> getCurrentCourses()
     {
         return newCourses;
     }
 
-
     public  ArrayList<Reminder> getReminders()
     {
         return remList;
     }
-
-
 }

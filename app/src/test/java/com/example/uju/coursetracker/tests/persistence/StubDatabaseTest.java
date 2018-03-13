@@ -1,6 +1,5 @@
 package com.example.uju.coursetracker.tests.persistence;
 
-import com.example.uju.coursetracker.objects.Breakdown;
 import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.objects.Reminder;
 import com.example.uju.coursetracker.persistence.DataAccess;
@@ -35,13 +34,11 @@ public class StubDatabaseTest extends TestCase
 
     public void tearDown()
     {
-        //**********  SHOULD WE CALL the .close method here since we call open above
         System.out.println("\nFinished Persistence test DataAccess (using stub)");
     }
 
     public void testCompletedCoursesDB()
     {
-
         System.out.println("\nStarting test StubDatabaseTest for: Completed Courses");
 
         ArrayList<Course> courses;
@@ -99,20 +96,66 @@ public class StubDatabaseTest extends TestCase
         assertEquals(11, dataAccess.getCompletedCourses().size());
 
 
-        //adding to empty list
-        //deleting from empty list
-        //adding null
-        //updating null
-        //deleting null
 
-        // ... ADD MORE
+        // testing null
+        Course course4 = null;
+        result = dataAccess.insertCompletedCourse(course4);
+        assertNull(result);
+        assertEquals(-1, dataAccess.getCompletedCourses().indexOf(course4));
+        assertEquals(11, dataAccess.getCompletedCourses().size());
+        result = dataAccess.deleteCompletedCourse(course4);
+        assertNull(result);
+        assertEquals(-1, dataAccess.getCompletedCourses().indexOf(course4));
+        assertEquals(11, dataAccess.getCompletedCourses().size());
+        result = dataAccess.updateCompletedCourse(course4);
+        assertNull(result);
+        assertEquals(-1, dataAccess.getCompletedCourses().indexOf(course4));
+        assertEquals(11, dataAccess.getCompletedCourses().size());
+
+
+
+
+        ArrayList <Course> list = new ArrayList<Course>();
+        Course course5 = new Course("HNSC 2000", "Human Nutrition", "C");
+
+        // testing Empty list
+        dataAccess.getCompletedCourses().clear();
+
+        result = dataAccess.getCompletedCoursesSeq(list);
+        assertNull(result);
+        assertNotNull(list);
+        assertEquals(0, list.size());
+
+        result = dataAccess.insertCompletedCourse(course5);
+        assertNull(result);
+        course5 = dataAccess.getCompletedCourses().get(dataAccess.getCompletedCourses().indexOf(course5));
+        assertNotNull(course5);
+        assertEquals("HNSC 2000", course5.getCourseID());
+        assertEquals("Human Nutrition", course5.getCourseName());
+        assertEquals("C", course5.getGrade());
+        assertEquals(1, dataAccess.getCompletedCourses().size());
+
+        Course course6 = new Course("HNSC 2000", "Human Nutrition", "A+");
+        result = dataAccess.updateCompletedCourse(course6);
+        assertNull(result);
+        course6 = dataAccess.getCompletedCourses().get(dataAccess.getCompletedCourses().indexOf(course6));
+        assertNotNull(course6);
+        assertEquals("HNSC 2000", course6.getCourseID());
+        assertEquals("Human Nutrition", course6.getCourseName());
+        assertEquals("A+", course6.getGrade());
+        assertEquals(1, dataAccess.getCompletedCourses().size());
+
+        result = dataAccess.deleteCompletedCourse(course5);
+        assertNull(result);
+        result = dataAccess.deleteCompletedCourse(course5);
+        assertNull(result);
+        assertEquals(-1, dataAccess.getCompletedCourses().indexOf(course5));
+        assertEquals(0, dataAccess.getCompletedCourses().size());
 
 
         System.out.println("Finished test");
 
     }
-
-
 
     public void testCurrentCoursesDB()
     {
@@ -174,14 +217,66 @@ public class StubDatabaseTest extends TestCase
         assertEquals(2, dataAccess.getCurrentCourses().size());
 
 
-        // ... ADD MORE
+
+        // testing null
+        Course course4 = null;
+        result = dataAccess.insertCurrentCourse(course4);
+        assertNull(result);
+        assertEquals(-1, dataAccess.getCurrentCourses().indexOf(course4));
+        assertEquals(2, dataAccess.getCurrentCourses().size());
+        result = dataAccess.deleteCurrentCourse(course4);
+        assertNull(result);
+        assertEquals(-1, dataAccess.getCurrentCourses().indexOf(course4));
+        assertEquals(2, dataAccess.getCurrentCourses().size());
+        result = dataAccess.updateCurrentCourse(course4);
+        assertNull(result);
+        assertEquals(-1, dataAccess.getCurrentCourses().indexOf(course4));
+        assertEquals(2, dataAccess.getCurrentCourses().size());
+
+
+
+
+        ArrayList <Course> list = new ArrayList<Course>();
+        Course course5 = new Course("HNSC 2000", "Human Nutrition", "C");
+
+        // testing Empty list
+        dataAccess.getCurrentCourses().clear();
+
+        result = dataAccess.getCurrentCoursesSeq(list);
+        assertNull(result);
+        assertNotNull(list);
+        assertEquals(0, list.size());
+
+        result = dataAccess.insertCurrentCourse(course5);
+        assertNull(result);
+        course5 = dataAccess.getCurrentCourses().get(dataAccess.getCurrentCourses().indexOf(course5));
+        assertNotNull(course5);
+        assertEquals("HNSC 2000", course5.getCourseID());
+        assertEquals("Human Nutrition", course5.getCourseName());
+        assertEquals("C", course5.getGrade());
+        assertEquals(1, dataAccess.getCurrentCourses().size());
+
+        Course course6 = new Course("HNSC 2000", "Human Nutrition", "A+");
+        result = dataAccess.updateCurrentCourse(course6);
+        assertNull(result);
+        course6 = dataAccess.getCurrentCourses().get(dataAccess.getCurrentCourses().indexOf(course6));
+        assertNotNull(course6);
+        assertEquals("HNSC 2000", course6.getCourseID());
+        assertEquals("Human Nutrition", course6.getCourseName());
+        assertEquals("A+", course6.getGrade());
+        assertEquals(1, dataAccess.getCurrentCourses().size());
+
+        result = dataAccess.deleteCurrentCourse(course5);
+        assertNull(result);
+        result = dataAccess.deleteCurrentCourse(course5);
+        assertNull(result);
+        assertEquals(-1, dataAccess.getCurrentCourses().indexOf(course5));
+        assertEquals(0, dataAccess.getCurrentCourses().size());
+
 
         System.out.println("Finished test");
 
     }
-
-
-
 
     public void testRemindersDB()
     {
@@ -243,11 +338,65 @@ public class StubDatabaseTest extends TestCase
         assertEquals(12, dataAccess.getCompletedCourses().size());
 
 
-        // ... ADD MORE
+
+        // testing null
+        Reminder reminder4 = null;
+        result = dataAccess.insertReminder(reminder4);
+        assertNull(result);
+        assertEquals(-1, dataAccess.getReminders().indexOf(reminder4));
+        assertEquals(12, dataAccess.getReminders().size());
+        result = dataAccess.deleteReminder(reminder4);
+        assertNull(result);
+        assertEquals(-1, dataAccess.getReminders().indexOf(reminder4));
+        assertEquals(12, dataAccess.getReminders().size());
+        result = dataAccess.updateReminder(reminder4);
+        assertNull(result);
+        assertEquals(-1, dataAccess.getReminders().indexOf(reminder4));
+        assertEquals(12, dataAccess.getReminders().size());
+
+
+
+        ArrayList <Reminder> list = new ArrayList<Reminder>();
+        Reminder reminder5 = new Reminder("HNSC 2000", "Midterm", "10/10/2018");
+
+
+
+        // testing Empty list
+        dataAccess.getReminders().clear();
+
+        result = dataAccess.getRemindersSeq(list);
+        assertNull(result);
+        assertNotNull(list);
+        assertEquals(0, list.size());
+
+        result = dataAccess.insertReminder(reminder5);
+        assertNull(result);
+        reminder5 = dataAccess.getReminders().get(dataAccess.getReminders().indexOf(reminder5));
+        assertNotNull(reminder5);
+        assertEquals("HNSC 2000", reminder5.getCourseID());
+        assertEquals("Midterm", reminder5.getReminderType());
+        assertEquals("10/10/2018", reminder5.getDueDate());
+        assertEquals(1, dataAccess.getReminders().size());
+
+        Reminder reminder6 = new Reminder("HNSC 2000", "Midterm", "12/12/2018");
+        result = dataAccess.updateReminder(reminder6);
+        assertNull(result);
+        reminder6 = dataAccess.getReminders().get(dataAccess.getReminders().indexOf(reminder6));
+        assertNotNull(reminder6);
+        assertEquals("HNSC 2000", reminder6.getCourseID());
+        assertEquals("Midterm", reminder6.getReminderType());
+        assertEquals("12/12/2018", reminder6.getDueDate());
+        assertEquals(1, dataAccess.getReminders().size());
+
+        result = dataAccess.deleteReminder(reminder5);
+        assertNull(result);
+        result = dataAccess.deleteReminder(reminder5);
+        assertNull(result);
+        assertEquals(-1, dataAccess.getReminders().indexOf(reminder5));
+        assertEquals(0, dataAccess.getReminders().size());
+
 
         System.out.println("Finished test");
 
     }
-
-
 }

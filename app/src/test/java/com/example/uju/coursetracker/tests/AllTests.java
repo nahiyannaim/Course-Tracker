@@ -43,6 +43,4 @@ public class AllTests
     {
         suite.addTestSuite(StubDatabaseTest.class);
     }
-
-
 }

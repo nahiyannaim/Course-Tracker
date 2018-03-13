@@ -8,10 +8,8 @@ import com.example.uju.coursetracker.application.DatabaseService;
 import com.example.uju.coursetracker.business.CalculateCurrentCGPA;
 import com.example.uju.coursetracker.business.PredictNextCGPA;
 
-
 public class PredictNextCGPAResultsActivity extends AppCompatActivity
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -38,6 +36,5 @@ public class PredictNextCGPAResultsActivity extends AppCompatActivity
         {
             tv.setText(Double.toString(currCGPA)); // If there is no Courses in current semester, display the current CGPA
         }
-
     }
 }
