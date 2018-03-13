@@ -10,7 +10,6 @@ import junit.framework.TestCase;
 
 import java.util.ArrayList;
 
-
 public class AccessRemindersTest extends TestCase
 {
     private static String dbName = MainActivity.dbName;

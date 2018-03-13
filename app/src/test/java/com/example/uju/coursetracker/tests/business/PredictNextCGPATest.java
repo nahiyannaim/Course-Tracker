@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class PredictNextCGPATest extends TestCase
 {
-
     public void testValidGrades()
     {
 
@@ -30,7 +29,6 @@ public class PredictNextCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testAllValidGrades()
     {
@@ -58,7 +56,6 @@ public class PredictNextCGPATest extends TestCase
         System.out.println("Finished Test");
     }
 
-
     public void testInvalidGrades()
     {
 
@@ -79,7 +76,6 @@ public class PredictNextCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testValidAndInvalidGrades()
     {
@@ -104,8 +100,6 @@ public class PredictNextCGPATest extends TestCase
         System.out.println("Finished Test");
     }
 
-
-
     public void testEmptyGrades()
     {
         System.out.println("Starting test PredictNextCGPA for: Empty grades");
@@ -122,7 +116,6 @@ public class PredictNextCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testMixedCombinationGrades()
     {
@@ -147,7 +140,6 @@ public class PredictNextCGPATest extends TestCase
         System.out.println("Finished Test");
     }
 
-
     public void testEmptyList()
     {
         System.out.println("Starting test PredictNextCGPA for: Empty list");
@@ -162,7 +154,6 @@ public class PredictNextCGPATest extends TestCase
         System.out.println("Finished test");
     }
 
-
     public void testNullList()
     {
         System.out.println("Starting test PredictNextCGPA for: null list");
@@ -174,7 +165,6 @@ public class PredictNextCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testInvalidCurrentCGPA()
     {
@@ -189,7 +179,6 @@ public class PredictNextCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testInvalidTotalCoursesCompleted()
     {
@@ -216,7 +205,6 @@ public class PredictNextCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testNullListItem()
     {
@@ -257,7 +245,4 @@ public class PredictNextCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
-
-
 }
