@@ -45,7 +45,8 @@ public class MyAllCoursesActivity extends AppCompatActivity
             completedCourseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, oldCourseList)
             {
                 @Override
-                public View getView(int position, View convertView, ViewGroup parent) {
+                public View getView(int position, View convertView, ViewGroup parent)
+                {
                     View view = super.getView(position, convertView, parent);
 
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
@@ -76,7 +77,8 @@ public class MyAllCoursesActivity extends AppCompatActivity
             courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, newCourseList)
             {
                 @Override
-                public View getView(int position, View convertView, ViewGroup parent) {
+                public View getView(int position, View convertView, ViewGroup parent)
+                {
                     View view = super.getView(position, convertView, parent);
 
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
