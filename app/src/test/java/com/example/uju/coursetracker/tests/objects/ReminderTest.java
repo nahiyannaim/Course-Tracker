@@ -5,7 +5,6 @@ import junit.framework.TestCase;
 
 public class ReminderTest extends TestCase
 {
-
     public void testReminder()
     {
         System.out.println("Starting Object Test: testReminder");
@@ -61,5 +60,4 @@ public class ReminderTest extends TestCase
         System.out.println("Finished Test");
 
     }
-
 }

@@ -39,7 +39,6 @@ public class StubDatabaseTest extends TestCase
 
     public void testCompletedCoursesDB()
     {
-
         System.out.println("\nStarting test StubDatabaseTest for: Completed Courses");
 
         ArrayList<Course> courses;
@@ -157,8 +156,6 @@ public class StubDatabaseTest extends TestCase
         System.out.println("Finished test");
 
     }
-
-
 
     public void testCurrentCoursesDB()
     {
@@ -281,9 +278,6 @@ public class StubDatabaseTest extends TestCase
 
     }
 
-
-
-
     public void testRemindersDB()
     {
 
@@ -405,5 +399,4 @@ public class StubDatabaseTest extends TestCase
         System.out.println("Finished test");
 
     }
-
 }

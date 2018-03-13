@@ -145,12 +145,10 @@ public class StubDatabase implements DataAccess
         newC.add(course);
     }
 
-
     public void close()
     {
         System.out.println("Closed " +dbType +" database " +dbName);
     }
-
 
     public String updateCompletedCourse(Course course)
     {
@@ -168,7 +166,6 @@ public class StubDatabase implements DataAccess
         return null;
     }
 
-
     public String updateReminder(Reminder reminder)
     {
         int index;
@@ -183,7 +180,6 @@ public class StubDatabase implements DataAccess
         }
         return null;
     }
-
 
     public String updateCurrentCourse(Course course)
     {
@@ -201,7 +197,6 @@ public class StubDatabase implements DataAccess
         return null;
     }
 
-
     public String deleteCompletedCourse(Course course)
     {
         int index;
@@ -217,7 +212,6 @@ public class StubDatabase implements DataAccess
 
         return null;
     }
-
 
     public String deleteReminder(Reminder reminder)
     {
@@ -235,7 +229,6 @@ public class StubDatabase implements DataAccess
         return null;
     }
 
-
     public String deleteCurrentCourse(Course course)
     {
         int index;
@@ -252,7 +245,6 @@ public class StubDatabase implements DataAccess
         return null;
     }
 
-
     public String insertCompletedCourse(Course course)
     {
         if(course != null)
@@ -262,7 +254,6 @@ public class StubDatabase implements DataAccess
 
         return null;
     }
-
 
     public String insertReminder(Reminder reminder)
     {
@@ -274,7 +265,6 @@ public class StubDatabase implements DataAccess
         return null;
     }
 
-
     public String insertCurrentCourse(Course course)
     {
         if(course != null)
@@ -284,7 +274,6 @@ public class StubDatabase implements DataAccess
 
         return null;
     }
-
 
     public String getCompletedCoursesSeq(List<Course> completedCoursesList)
     {
@@ -296,7 +285,6 @@ public class StubDatabase implements DataAccess
         return null;
     }
 
-
     public String getCurrentCoursesSeq(List<Course> currentCoursesList)
     {
         if(currentCoursesList != null)
@@ -305,7 +293,6 @@ public class StubDatabase implements DataAccess
         }
         return null;
     }
-
 
     public String getRemindersSeq(List<Reminder> list)
     {
@@ -317,23 +304,18 @@ public class StubDatabase implements DataAccess
         return null;
     }
 
-
     public  ArrayList<Course> getCompletedCourses()
     {
         return oldCourses;
     }
-
 
     public ArrayList<Course> getCurrentCourses()
     {
         return newCourses;
     }
 
-
     public  ArrayList<Reminder> getReminders()
     {
         return remList;
     }
-
-
 }
