@@ -38,7 +38,11 @@ public class AccessCourses
 
     public String getCompletedCoursesSeq(List<Course> courses)
     {
-        courses.clear();
+        if(courses != null)
+        {
+            courses.clear();
+        }
+
         return dataAccess.getCompletedCoursesSeq(courses);
     }
 
@@ -89,7 +93,10 @@ public class AccessCourses
 
     public String getCurrentCoursesSeq(List<Course> courses)
     {
-        courses.clear();
+        if(courses != null)
+        {
+            courses.clear();
+        }
         return dataAccess.getCurrentCoursesSeq(courses);
     }
 
