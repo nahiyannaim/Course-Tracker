@@ -17,18 +17,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
-//testing local branch
-
-
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
     private DrawerLayout dLayout;
     private ActionBarDrawerToggle dToggle;
-    public static final String dbName = "CoursesDB"; //For accessing the database called MyCourses
-    private static String dbPathName = "database/CoursesDB";
 
-    //To start and close the database
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //   FOR INSTANTIATING THE DATABASE
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static final String dbName = "CoursesDB"; //For accessing the database called CoursesDB
+    private static String dbPathName = "database/CoursesDB";
 
     public static void startUp()
     {
@@ -51,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         System.out.println("Setting DB path to: " + pathName);
         dbPathName = pathName;
     }
-
 
     private void copyDatabaseToDevice() {
         final String DB_PATH = "db";
@@ -104,9 +102,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
-
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //   FOR HOMEPAGE
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +112,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.main_activity);
 
         //Setup of the navigation bar in the home page
-
         dLayout = (DrawerLayout)findViewById(R.id.drawer);
         dToggle = new ActionBarDrawerToggle(MainActivity.this,dLayout,R.string.open,R.string.close);
         dLayout.addDrawerListener(dToggle);
@@ -123,9 +120,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView)findViewById(R.id.nav_v);
         navigationView.setNavigationItemSelectedListener(this);
 
-
+        //Start the database
         copyDatabaseToDevice();
-        startUp(); //Start the database
+        startUp();
 
     }
 

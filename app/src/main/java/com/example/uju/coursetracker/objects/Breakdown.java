@@ -1,6 +1,5 @@
 package com.example.uju.coursetracker.objects;
 
-
 public class Breakdown
 {
     private String courseID; // COMP 3350
