@@ -14,7 +14,7 @@ public class DataAccessObject implements DataAccess
 {
     private Statement st1, st2, st3;
     private Connection c1;
-    private ResultSet rs2, rs3, rs4, rs5;
+    private ResultSet rs2, rs4, rs5;
     private String dbName;
     private String dbType;
 
@@ -117,7 +117,6 @@ public class DataAccessObject implements DataAccess
         {
             cmdString = "Select * from CompletedCourses";
             rs4 = st2.executeQuery(cmdString);
-            // ResultSetMetaData md4 = rs4.getMetaData();
             while (rs4.next())
             {
 
@@ -148,7 +147,6 @@ public class DataAccessObject implements DataAccess
         {
             values =  "'" +course.getCourseID() + "', '" +course.getCourseName() + "', '" +course.getGrade()+"'";
             cmdString = "Insert into CompletedCourses " +" Values(" +values +")";
-            //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
@@ -173,7 +171,6 @@ public class DataAccessObject implements DataAccess
                     +"'";
             where = "where CourseID='" +course.getCourseID() +"'";
             cmdString = "Update CompletedCourses " +" Set " +values +" " +where;
-            //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
@@ -194,7 +191,7 @@ public class DataAccessObject implements DataAccess
         {
             values = course.getCourseID();
             cmdString = "Delete from CompletedCourses where CourseID='" +values +"'";
-            //System.out.println(cmdString);
+
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
@@ -260,7 +257,6 @@ public class DataAccessObject implements DataAccess
         {
             cmdString = "Select * from CurrentCourses";
             rs4 = st2.executeQuery(cmdString);
-            // ResultSetMetaData md4 = rs4.getMetaData();
             while (rs4.next())
             {
 
@@ -291,7 +287,6 @@ public class DataAccessObject implements DataAccess
         {
             values =  "'" +course.getCourseID() + "', '" +course.getCourseName() + "', '" +course.getGrade()+"'";
             cmdString = "Insert into CurrentCourses " +" Values(" +values +")";
-            //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
@@ -316,7 +311,6 @@ public class DataAccessObject implements DataAccess
                     +"'";
             where = "where CourseID='" +course.getCourseID() +"'";
             cmdString = "Update CurrentCourses " +" Set " +values +" " +where;
-            //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
@@ -337,7 +331,6 @@ public class DataAccessObject implements DataAccess
         {
             values = course.getCourseID();
             cmdString = "Delete from CurrentCourses where CourseID='" +values +"'";
-            //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
@@ -435,7 +428,6 @@ public class DataAccessObject implements DataAccess
         {
             values =  "'" +reminder.getCourseID() + "', '" +reminder.getReminderType() + "', '" +reminder.getDueDate()+"'";
             cmdString = "Insert into Reminders " +" Values(" +values +")";
-            //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
@@ -481,7 +473,6 @@ public class DataAccessObject implements DataAccess
         {
             values = reminder.getCourseID();
             cmdString = "Delete from Reminders where CourseID='" +values +"'";
-            //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
