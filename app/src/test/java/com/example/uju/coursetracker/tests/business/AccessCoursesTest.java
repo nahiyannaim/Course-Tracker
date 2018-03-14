@@ -258,6 +258,22 @@ public class AccessCoursesTest extends TestCase
 
 
 
+        Course course4 = new Course("STAT 6500","Advanced Stat","B");
+
+        // Invalid grade
+        course4.setGrade("X");
+        assertEquals("Please enter a valid grade.", ac.validateCourseData(course4));
+
+        // Empty grade
+        course4.setGrade("");
+        assertEquals("Please enter a valid grade.", ac.validateCourseData(course4));
+
+        // Empty course ID
+        course4.setCourseID("");
+        assertEquals("Please enter a valid Course ID.", ac.validateCourseData(course4));
+
+
+
         DatabaseService.closeDataAccess();
         System.out.println("Finished test");
     }
