@@ -19,8 +19,8 @@ import com.example.uju.coursetracker.objects.Course;
 import java.util.ArrayList;
 
 
-public class MyCurrentCoursesActivity extends AppCompatActivity {
-
+public class MyCurrentCoursesActivity extends AppCompatActivity
+{
     private AccessCourses accessNewCourses;
     private ArrayList<Course> newCourseList;
     private ArrayAdapter<Course> courseArrayAdapter;
@@ -61,18 +61,23 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
             final ListView listView = (ListView) findViewById(R.id.CurrentCourseList);
             listView.setAdapter(courseArrayAdapter);
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+            {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+                {
                     Button updateButton = (Button)findViewById(R.id.buttonCourseUpdate2);
                     Button deleteButton = (Button)findViewById(R.id.buttonCourseDelete2);
 
-                    if (position == selectedCoursePosition) {
+                    if (position == selectedCoursePosition)
+                    {
                         listView.setItemChecked(position, false);
                         updateButton.setEnabled(false);
                         deleteButton.setEnabled(false);
                         selectedCoursePosition = -1;
-                    } else {
+                    }
+                    else
+                    {
                         listView.setItemChecked(position, true);
                         updateButton.setEnabled(true);
                         deleteButton.setEnabled(true);
@@ -140,7 +145,8 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
             }
             else
             {
-                MessagesActivity.fatalError(this, result);
+                result = "This Course already exists in the list." ;
+                MessagesActivity.warning(this, result);
             }
         }
         else
@@ -172,7 +178,8 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
             }
             else
             {
-                MessagesActivity.fatalError(this, result);
+                result = "Cannot Update a course that is not in the list.";
+                MessagesActivity.warning(this, result);
             }
         }
         else
@@ -201,6 +208,12 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
         else
         {
             result = accessNewCourses.validateCourseData(course);
+
+            if(result == null)
+            {
+                result = "Cannot Delete a course that is not in the list.";
+            }
+
             MessagesActivity.warning(this, result);
         }
     }
@@ -214,8 +227,6 @@ public class MyCurrentCoursesActivity extends AppCompatActivity {
 
         return course;
     }
-
-
 
     private void goToPredictCGPA()
     {

@@ -8,12 +8,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.business.AccessReminders;
-import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.objects.Reminder;
 import java.util.ArrayList;
 
@@ -136,6 +134,7 @@ public class DueDatesActivity extends AppCompatActivity
         }
         else
         {
+            result = "Please select a Reminder to delete.";
             MessagesActivity.warning(this, result);
         }
     }
