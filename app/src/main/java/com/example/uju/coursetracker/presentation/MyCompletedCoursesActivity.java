@@ -150,6 +150,7 @@ public class MyCompletedCoursesActivity extends Activity
             }
             else
             {
+                result = "Course already exists";
                 MessagesActivity.fatalError(this, result);
             }
         }
@@ -182,6 +183,7 @@ public class MyCompletedCoursesActivity extends Activity
             }
             else
             {
+                result = "Cannot update a course that is not in the list";
                 MessagesActivity.fatalError(this, result);
             }
         }
@@ -211,6 +213,10 @@ public class MyCompletedCoursesActivity extends Activity
         else
         {
             result = accessCompletedCourses.validateCourseData(course);
+            if(result == null)
+            {
+                result = "Course cannot be deleted since it is not in the list";
+            }
             MessagesActivity.warning(this, result);
         }
     }
