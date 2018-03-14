@@ -19,9 +19,8 @@ import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.objects.Reminder;
 import java.util.ArrayList;
 
-
-public class CreateNewReminderActivity extends AppCompatActivity {
-
+public class CreateNewReminderActivity extends AppCompatActivity
+{
     private AccessCourses accessNewCourses;
     private ArrayList<Course> newCourseList;
     private ArrayAdapter<Course> courseArrayAdapter;
@@ -34,7 +33,8 @@ public class CreateNewReminderActivity extends AppCompatActivity {
     private String selectedDate;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_reminder);
 
@@ -54,7 +54,8 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         }
         else
         {
-            courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, newCourseList) {
+            courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, newCourseList)
+            {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent)
                 {
@@ -73,11 +74,12 @@ public class CreateNewReminderActivity extends AppCompatActivity {
             final ListView listView = findViewById(R.id.printComplCourses);
             listView.setAdapter(courseArrayAdapter);
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+            {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+                {
                     Button doneButton = (Button)findViewById(R.id.RemDoneButton);
-
 
                     if (position == selectedReminder)
                     {
@@ -94,7 +96,6 @@ public class CreateNewReminderActivity extends AppCompatActivity {
                     }
                 }
             });
-
         }
 
         Spinner remTypeSpinner = findViewById(R.id.RemSpinner);
@@ -102,16 +103,8 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         remTypeSpinner.setAdapter(adapter);
 
-
+        // this button would create a reminder and take us to due dates page
         Button doneButton = findViewById(R.id.RemDoneButton);
-//        doneButton.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View view)
-//            {
-//                goToDueDatesPage();
-//            }
-//        });
         doneButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -128,7 +121,6 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         selectedCourseID = selected.getCourseID();
     }
 
-
     public void buttonReminderCreateOnClick(View v)
     {
         String noCourseSelected = "Please select a Course from the list.";
@@ -144,13 +136,14 @@ public class CreateNewReminderActivity extends AppCompatActivity {
 
         if(selectedCourseID != null)
         {
-            result = validateDate(reminder);
+            result = accessReminders.validateDate(reminder);
             if (result == null)
             {
                 result = accessReminders.insertReminder(reminder);
                 if (result == null)
                 {
                     accessReminders.getRemindersSeq(reminderList);
+
                     goToDueDatesPage();
                 }
                 else
@@ -167,38 +160,6 @@ public class CreateNewReminderActivity extends AppCompatActivity {
         {
             MessagesActivity.warning(this, noCourseSelected);
         }
-
-    }
-
-    private String validateDate(Reminder reminder)
-    {
-        String result = null;
-        int length = (reminder.getDueDate()).length();
-        String date = reminder.getDueDate();
-
-        if(length != 10)
-        {
-            result = "Please enter a valid date in the format MM/DD/YYYY.";
-        }
-        else
-        {
-            if(date.charAt(2) != '/' || date.charAt(5) != '/')
-                result = "Please enter a valid date in the format MM/DD/YYYY.";
-
-            if(Integer.parseInt(date.substring(0, 2)) <= 0 || Integer.parseInt(date.substring(0, 2)) > 12)
-                result = "Invalid Month entered. Please enter a valid date in the format MM/DD/YYYY.";
-
-            if(Integer.parseInt(date.substring(3, 5)) <= 0 || Integer.parseInt(date.substring(3, 5)) > 31)
-                result = "Invalid Date entered. Please enter a valid date in the format MM/DD/YYYY.";
-
-            if(Integer.parseInt(date.substring(6)) < 2018 || Integer.parseInt(date.substring(6)) > 2020)
-                result = "Invalid Year entered. Please enter a valid date in the format MM/DD/YYYY.";
-
-        }
-
-
-
-        return result;
     }
 
     private void goToDueDatesPage()

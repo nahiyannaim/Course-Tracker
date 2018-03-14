@@ -10,7 +10,6 @@ import com.example.uju.coursetracker.persistence.DataAccess;
 
 public class AccessCourses
 {
-
     private DataAccess dataAccess;
     private List<Course> completedCourses;
     private List<Course> currentCourses;
@@ -21,7 +20,6 @@ public class AccessCourses
 
     public AccessCourses()
     {
-        //dataAccess = (StubDatabase) DatabaseService.getDataAccess(MainActivity.dbName);
         dataAccess = DatabaseService.getDataAccess(MainActivity.dbName);
         completedCourses = null;
         currentCourses = null;
@@ -30,11 +28,9 @@ public class AccessCourses
         count2 = 0;
     }
 
-
-
-    /////////////////////////////
-    //Completed Courses:
-    /////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //   FOR COMPLETED COURSES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public String getCompletedCoursesSeq(List<Course> courses)
     {
@@ -85,11 +81,9 @@ public class AccessCourses
         return course;
     }
 
-
-
-    /////////////////////////////
-    //Current Courses:
-    /////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //   FOR CURRENT COURSES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public String getCurrentCoursesSeq(List<Course> courses)
     {
@@ -137,6 +131,45 @@ public class AccessCourses
             count2 = 0;
         }
         return course2;
+    }
+
+    public String validateCourseData(Course course)
+    {
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
+        boolean flag =  false;
+        String result = null;
+
+        if (course.getCourseID().length() == 0)
+        {
+            result = "Please enter a valid Course ID.";
+        }
+        else
+        {
+            if (course.getGrade().length() == 0)
+            {
+                result = "Please enter a valid grade.";
+            }
+
+            for (int j = 0; j < temp.grades.length; j++)
+            {
+                if (!(course.getGrade().equalsIgnoreCase(temp.grades[j])))
+                {
+                    flag = true;
+                }
+                else
+                {
+                    flag = false;
+                    break;
+                }
+            }
+
+            if (flag)
+            {
+                result = "Please enter a valid grade.";
+            }
+        }
+
+        return result ;
     }
 
 }

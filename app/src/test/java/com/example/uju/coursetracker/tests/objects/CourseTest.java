@@ -5,7 +5,6 @@ import junit.framework.TestCase;
 
 public class CourseTest extends TestCase
 {
-
     public void testCourse()
     {
         System.out.println("Starting Object Test: testCourse");

@@ -8,7 +8,6 @@ import com.example.uju.coursetracker.tests.persistence.StubDatabase;
 import junit.framework.TestCase;
 import java.util.ArrayList;
 
-
 public class AccessCoursesTest extends TestCase
 {
     private static String dbName = MainActivity.dbName;
@@ -149,7 +148,6 @@ public class AccessCoursesTest extends TestCase
         System.out.println("Finished test");
     }
 
-
     public void testCurrentCourses()
     {
         System.out.println("\nStarting test AccessCourses for: Current Courses");
@@ -260,11 +258,23 @@ public class AccessCoursesTest extends TestCase
 
 
 
+        Course course4 = new Course("STAT 6500","Advanced Stat","B");
+
+        // Invalid grade
+        course4.setGrade("X");
+        assertEquals("Please enter a valid grade.", ac.validateCourseData(course4));
+
+        // Empty grade
+        course4.setGrade("");
+        assertEquals("Please enter a valid grade.", ac.validateCourseData(course4));
+
+        // Empty course ID
+        course4.setCourseID("");
+        assertEquals("Please enter a valid Course ID.", ac.validateCourseData(course4));
+
+
+
         DatabaseService.closeDataAccess();
         System.out.println("Finished test");
     }
-
-
-
-
 }

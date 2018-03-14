@@ -7,13 +7,16 @@ import com.example.uju.coursetracker.persistence.DataAccess;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class AccessReminders
 {
     private DataAccess dataAccess;
     private List<Reminder> reminderList;
     private Reminder reminder;
     private int count;
+    private final int maxMonth = 12;
+    private final int maxDate = 31;
+    private final int minYear = 2018;
+    private final int maxYear = 2020;
 
     public AccessReminders()
     {
@@ -22,7 +25,6 @@ public class AccessReminders
         reminder = null;
         count = 0 ;
     }
-
 
     public String getRemindersSeq(List<Reminder> reminders)
     {
@@ -48,7 +50,6 @@ public class AccessReminders
         return dataAccess.deleteReminder(reminder);
     }
 
-
     public Reminder getSequentialReminders()
     {
         String result = null;
@@ -73,5 +74,32 @@ public class AccessReminders
         return reminder;
     }
 
+    public String validateDate(Reminder rem)
+    {
+        String result = null;
+        int length = (rem.getDueDate()).length();
+        String date = rem.getDueDate();
+
+        if(length != 10)
+        {
+            result = "Please enter a valid date in the format MM/DD/YYYY.";
+        }
+        else
+        {
+            if(date.charAt(2) != '/' || date.charAt(5) != '/')
+                result = "Please enter a valid date in the format MM/DD/YYYY.";
+
+            if(Integer.parseInt(date.substring(0, 2)) <= 0 || Integer.parseInt(date.substring(0, 2)) > maxMonth)
+                result = "Invalid Month entered. Please enter a valid date in the format MM/DD/YYYY.";
+
+            if(Integer.parseInt(date.substring(3, 5)) <= 0 || Integer.parseInt(date.substring(3, 5)) > maxDate)
+                result = "Invalid Date entered. Please enter a valid date in the format MM/DD/YYYY.";
+
+            if(Integer.parseInt(date.substring(6)) < minYear || Integer.parseInt(date.substring(6)) > maxYear)
+                result = "Invalid Year entered. Please enter a valid date in the format MM/DD/YYYY.";
+        }
+
+        return result;
+    }
 
 }

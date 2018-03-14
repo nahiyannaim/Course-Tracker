@@ -5,15 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 import com.example.uju.coursetracker.R;
-import com.example.uju.coursetracker.application.DatabaseService;
+import com.example.uju.coursetracker.business.AccessCourses;
+import com.example.uju.coursetracker.business.CalculateCurrentCGPA;
+import com.example.uju.coursetracker.objects.Course;
 
-import static com.example.uju.coursetracker.business.CalculateCurrentCGPA.calculate;
-
+import java.util.ArrayList;
 
 public class CurrentCGPAResultsActivity extends AppCompatActivity
 {
-
-
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,11 +20,16 @@ public class CurrentCGPAResultsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_cgpa_results);
 
-        TextView tv = (TextView) findViewById(R.id.textView4);
-        double currCGPA = calculate(DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCompletedCourses());
-        int completedCourseListSize = (DatabaseService.getDataAccess(MainActivity.getDBPathName()).getCompletedCourses()).size();
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
+        AccessCourses ac = new AccessCourses();
+        ArrayList<Course> list = new ArrayList();
 
-        if(completedCourseListSize <= 0)
+        ac.getCompletedCoursesSeq(list);
+        TextView tv = (TextView) findViewById(R.id.textView4);
+
+        double currCGPA = temp.calculate(list);
+
+        if(list.size() <= 0)
         {
             MessagesActivity.warning(this, "No Completed Courses found");
         }
@@ -38,7 +42,5 @@ public class CurrentCGPAResultsActivity extends AppCompatActivity
         {
             tv.setText("0.0");
         }
-
     }
-
 }

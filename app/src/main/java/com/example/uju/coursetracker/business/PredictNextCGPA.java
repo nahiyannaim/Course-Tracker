@@ -15,6 +15,7 @@ public class PredictNextCGPA
         double prevPoints = 0.0;
         double prediction;
         boolean flag = false;
+        CalculateCurrentCGPA curr = new CalculateCurrentCGPA();
 
         if(currentCGPA >= 0 && currentCGPA <= maxGPA && totalCoursesCompleted >= 0)
         {
@@ -22,9 +23,9 @@ public class PredictNextCGPA
 
             if (currentCoursesList != null && currentCoursesList.size() > 0 && currentCoursesList.get(0) != null)
             {
-                if(CalculateCurrentCGPA.calculate(currentCoursesList) != -1.0)
+                if(curr.calculate(currentCoursesList) != -1.0)
                 {
-                    prevPoints += CalculateCurrentCGPA.calculate(currentCoursesList) * currentCoursesList.size();
+                    prevPoints += curr.calculate(currentCoursesList) * currentCoursesList.size();
                 }
                 else
                 {
@@ -52,7 +53,5 @@ public class PredictNextCGPA
         }
 
         return prediction;
-
     }
-
 }
