@@ -33,7 +33,7 @@
             android:id="@+id/CompletedCourseList"
             android:layout_width="match_parent"
             android:layout_height="452dp"
-            android:scrollbars="vertical">
+            android:listSelector="#c5d1d4">
 
         </ListView>
 

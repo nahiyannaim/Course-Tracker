@@ -15,19 +15,15 @@ import java.util.ArrayList;
 
 public class MyAllCoursesActivity extends AppCompatActivity
 {
-
     // For Completed Courses
     private AccessCourses accessCompletedCourses;
     private ArrayList<Course> oldCourseList;
     private ArrayAdapter<Course> completedCourseArrayAdapter;
-    private String completedCoursesDBName = "old";
 
     // For Current Courses
     private AccessCourses accessNewCourses;
     private ArrayList<Course> newCourseList;
     private ArrayAdapter<Course> courseArrayAdapter;
-    private String newCoursesDBName = "new";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,19 +31,22 @@ public class MyAllCoursesActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_allcourses);
 
-        // For Completed Courses ----------------------------------------------------------------------------
+        // For Completed Courses -------------------------------------------------------------------
         accessCompletedCourses = new AccessCourses();
-
-        //completed course List
         oldCourseList = new ArrayList<Course>();
 
-        String result = accessCompletedCourses.getCourses(oldCourseList, completedCoursesDBName);
-        if (result != null) {
+        String result = accessCompletedCourses.getCompletedCoursesSeq(oldCourseList);
+        if (result != null)
+        {
             MessagesActivity.fatalError(this, result);
-        } else {
-            completedCourseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, oldCourseList) {
+        }
+        else
+        {
+            completedCourseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, oldCourseList)
+            {
                 @Override
-                public View getView(int position, View convertView, ViewGroup parent) {
+                public View getView(int position, View convertView, ViewGroup parent)
+                {
                     View view = super.getView(position, convertView, parent);
 
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
@@ -62,26 +61,24 @@ public class MyAllCoursesActivity extends AppCompatActivity
 
             final ListView listView = (ListView) findViewById(R.id.printCompleted);
             listView.setAdapter(completedCourseArrayAdapter);
-
         }
 
-        //------------------------------------------------------------------------------------------------------------------
-
-
-
-        // For Current Courses ---------------------------------------------------------------------------------------------
+        // For Current Courses ---------------------------------------------------------------------
         accessNewCourses = new AccessCourses();
-
-        //current semester courseList
         newCourseList = new ArrayList<Course>();
 
-        String result2 = accessNewCourses.getCourses(newCourseList, newCoursesDBName);
-        if (result2 != null) {
+        String result2 = accessNewCourses.getCurrentCoursesSeq(newCourseList);
+        if (result2 != null)
+        {
             MessagesActivity.fatalError(this, result2);
-        } else {
-            courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, newCourseList) {
+        }
+        else
+        {
+            courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, newCourseList)
+            {
                 @Override
-                public View getView(int position, View convertView, ViewGroup parent) {
+                public View getView(int position, View convertView, ViewGroup parent)
+                {
                     View view = super.getView(position, convertView, parent);
 
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
@@ -96,9 +93,6 @@ public class MyAllCoursesActivity extends AppCompatActivity
 
             final ListView listView2 = (ListView) findViewById(R.id.printCurrent);
             listView2.setAdapter(courseArrayAdapter);
-
         }
-
-        //------------------------------------------------------------------------------------------------------------------
     }
 }

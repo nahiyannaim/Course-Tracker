@@ -5,64 +5,45 @@ import java.util.ArrayList;
 
 public class CalculateCurrentCGPA
 {
+
+    final String[] grades = {"A+","A","B+","B","C+","C","D","F"};
+    final double[] points = {4.5,4.0,3.5,3.0,2.5,2.0,1.0,0.0};
+
     //This is where we will calculate the current CGPA based on the already completed courses of the user
-    public static double calculate(ArrayList<Course> completedCoursesList)
+    public double calculate(ArrayList<Course> completedCoursesList)
     {
         String temp = "";
         double totalPoints = 0.0;
         double currCGPA;
         boolean flag = false;
+        boolean flag2 = false;
 
         if(completedCoursesList != null && completedCoursesList.size() > 0 && completedCoursesList.get(0) != null)
         {
             for (int i = 0; i < completedCoursesList.size(); i++)
             {
                 temp = (completedCoursesList.get(i)).getGrade();
+                flag2 = false;
 
-                if (temp.equals("A+"))
+                for(int j=0; j< grades.length; j++)
                 {
-                    totalPoints += 4.5;
+                    if (temp.equalsIgnoreCase(grades[j]) )
+                    {
+                        totalPoints += points[j];
+                        flag2 = true;
+                    }
                 }
-                else if (temp.equals("A"))
-                {
-                    totalPoints += 4.0;
-                }
-                else if (temp.equals("B+"))
-                {
-                    totalPoints += 3.5;
-                }
-                else if (temp.equals("B"))
-                {
-                    totalPoints += 3.0;
-                }
-                else if (temp.equals("C+"))
-                {
-                    totalPoints += 2.5;
-                }
-                else if (temp.equals("C"))
-                {
-                    totalPoints += 2.0;
-                }
-                else if (temp.equals("D"))
-                {
-                    totalPoints += 1.0;
-                }
-                else if (temp.equals("F"))
-                {
-                    totalPoints += 0.0;
-                }
-                else
+
+                if(!flag2) //No valid grades were found
                 {
                     flag = true;
                 }
-
-            }//for
+            }
         }
         else
         {
             flag = true;
         }
-
 
         if(!flag)
         {
@@ -75,6 +56,5 @@ public class CalculateCurrentCGPA
         }
 
         return currCGPA;
-
     }
 }

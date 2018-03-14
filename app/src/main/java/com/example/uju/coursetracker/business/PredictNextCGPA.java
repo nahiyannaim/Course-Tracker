@@ -10,59 +10,27 @@ public class PredictNextCGPA
 
     public static double calculate(ArrayList<Course> currentCoursesList, double currentCGPA, int totalCoursesCompleted)
     {
+        final double maxGPA = 4.5;
         String temp = "";
-        double points = 0.0;
+        double prevPoints = 0.0;
         double prediction;
         boolean flag = false;
+        CalculateCurrentCGPA curr = new CalculateCurrentCGPA();
 
-        if(currentCGPA >= 0 && currentCGPA <= 4.5 && totalCoursesCompleted >= 0)
+        if(currentCGPA >= 0 && currentCGPA <= maxGPA && totalCoursesCompleted >= 0)
         {
-            points = currentCGPA * totalCoursesCompleted;
+            prevPoints  = currentCGPA * totalCoursesCompleted;
 
             if (currentCoursesList != null && currentCoursesList.size() > 0 && currentCoursesList.get(0) != null)
             {
-                for (int i = 0; i < currentCoursesList.size(); i++)
+                if(curr.calculate(currentCoursesList) != -1.0)
                 {
-                    temp = (currentCoursesList.get(i)).getGrade();
-
-                    if (temp.equals("A+"))
-                    {
-                        points += 4.5;
-                    }
-                    else if (temp.equals("A"))
-                    {
-                        points += 4.0;
-                    }
-                    else if (temp.equals("B+"))
-                    {
-                        points += 3.5;
-                    }
-                    else if (temp.equals("B"))
-                    {
-                        points += 3.0;
-                    }
-                    else if (temp.equals("C+"))
-                    {
-                        points += 2.5;
-                    }
-                    else if (temp.equals("C"))
-                    {
-                        points += 2.0;
-                    }
-                    else if (temp.equals("D"))
-                    {
-                        points += 1.0;
-                    }
-                    else if (temp.equals("F"))
-                    {
-                        points += 0.0;
-                    }
-                    else
-                    {
-                        flag = true;
-                    }
-
-                }//for
+                    prevPoints += curr.calculate(currentCoursesList) * currentCoursesList.size();
+                }
+                else
+                {
+                    flag = true;
+                }
             }
             else
             {
@@ -76,7 +44,7 @@ public class PredictNextCGPA
 
         if(!flag)
         {
-            prediction = points / ( currentCoursesList.size() + totalCoursesCompleted);
+            prediction = prevPoints  / ( currentCoursesList.size() + totalCoursesCompleted);
             prediction  = Math.round(prediction*100.0)/100.0; //Rounding to 2 decimal places
         }
         else
@@ -85,7 +53,5 @@ public class PredictNextCGPA
         }
 
         return prediction;
-
     }
-
 }

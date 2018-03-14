@@ -2,14 +2,11 @@ package com.example.uju.coursetracker.tests.business;
 
 import com.example.uju.coursetracker.business.PredictNextCGPA;
 import com.example.uju.coursetracker.objects.Course;
-
 import junit.framework.TestCase;
-
 import java.util.ArrayList;
 
 public class PredictNextCGPATest extends TestCase
 {
-
     public void testValidGrades()
     {
 
@@ -30,7 +27,6 @@ public class PredictNextCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testAllValidGrades()
     {
@@ -58,7 +54,6 @@ public class PredictNextCGPATest extends TestCase
         System.out.println("Finished Test");
     }
 
-
     public void testInvalidGrades()
     {
 
@@ -79,7 +74,6 @@ public class PredictNextCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testValidAndInvalidGrades()
     {
@@ -104,8 +98,6 @@ public class PredictNextCGPATest extends TestCase
         System.out.println("Finished Test");
     }
 
-
-
     public void testEmptyGrades()
     {
         System.out.println("Starting test PredictNextCGPA for: Empty grades");
@@ -122,7 +114,6 @@ public class PredictNextCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testMixedCombinationGrades()
     {
@@ -147,7 +138,6 @@ public class PredictNextCGPATest extends TestCase
         System.out.println("Finished Test");
     }
 
-
     public void testEmptyList()
     {
         System.out.println("Starting test PredictNextCGPA for: Empty list");
@@ -162,7 +152,6 @@ public class PredictNextCGPATest extends TestCase
         System.out.println("Finished test");
     }
 
-
     public void testNullList()
     {
         System.out.println("Starting test PredictNextCGPA for: null list");
@@ -174,7 +163,6 @@ public class PredictNextCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testInvalidCurrentCGPA()
     {
@@ -189,7 +177,6 @@ public class PredictNextCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testInvalidTotalCoursesCompleted()
     {
@@ -216,7 +203,6 @@ public class PredictNextCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testNullListItem()
     {
@@ -259,5 +245,53 @@ public class PredictNextCGPATest extends TestCase
     }
 
 
+    public void testLowerCaseGrades()
+    {
+
+        System.out.println("Starting Test PredictNextCGPA for: Lower Case grades");
+
+        ArrayList<Course> list = new ArrayList();
+        double result;
+
+        list.add(new Course("MATH 1010", "Intro to Math", "a+"));
+        list.add(new Course("MATH 2000", "Intro to Math2", "a"));
+        list.add(new Course("PHYS 1010", "Intro to Physics", "b+"));
+        list.add(new Course("PHYS 2000", "Intro to Physics2", "b"));
+        list.add(new Course("CHEM 1010", "Intro to Chemistry", "c+"));
+        list.add(new Course("BIOL 1010", "Intro to Biology", "c"));
+        list.add(new Course("COMP 1010", "Intro to Programming", "d"));
+        list.add(new Course("COMP 2000", "Intro to Programming2", "f"));
+
+        result = PredictNextCGPA.calculate(list, 3.0, 5);
+
+        assertNotNull(result);
+        assertEquals(2.73, result);
+
+
+        System.out.println("Finished Test");
+    }
+
+    public void testMixedCasesGrades()
+    {
+
+        System.out.println("Starting Test PredictNextCGPA for: Mixed Cases grades");
+
+        ArrayList<Course> list = new ArrayList();
+        double result;
+
+        list.add(new Course("MATH 1010", "Intro to Math", "a"));
+        list.add(new Course("PHYS 1010", "Intro to Physics", "b+"));
+        list.add(new Course("CHEM 1010", "Intro to Chemistry", "A"));
+        list.add(new Course("BIOL 1010", "Intro to Biology", "C"));
+        list.add(new Course("COMP 1010", "Intro to Programming", "d"));
+
+        result = PredictNextCGPA.calculate(list, 3.0, 5);
+
+        assertNotNull(result);
+        assertEquals(2.95, result);
+
+
+        System.out.println("Finished Test");
+    }
 
 }
