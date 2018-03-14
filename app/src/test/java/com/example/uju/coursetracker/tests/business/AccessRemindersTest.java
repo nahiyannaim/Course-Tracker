@@ -146,6 +146,28 @@ public class AccessRemindersTest extends TestCase
         assertEquals(16, list.size());
 
 
+
+        Reminder reminder4 = new Reminder("STAT 5000","Project","06/06/2018");
+
+        reminder4.setDueDate("11111111111111111");  // Invalid length of date
+        assertEquals("Please enter a valid date in the format MM/DD/YYYY.", ar.validateDate(reminder4));
+
+        reminder4.setDueDate("");  // Empty date
+        assertEquals("Please enter a valid date in the format MM/DD/YYYY.", ar.validateDate(reminder4));
+
+        reminder4.setDueDate("99/01/2018");  // Invalid Month
+        assertEquals("Invalid Month entered. Please enter a valid date in the format MM/DD/YYYY.", ar.validateDate(reminder4));
+
+        reminder4.setDueDate("01/99/2018");  // Invalid Date
+        assertEquals("Invalid Date entered. Please enter a valid date in the format MM/DD/YYYY.", ar.validateDate(reminder4));
+
+        reminder4.setDueDate("01/01/9999");  // Invalid Year
+        assertEquals("Invalid Year entered. Please enter a valid date in the format MM/DD/YYYY.", ar.validateDate(reminder4));
+
+        reminder4.setDueDate("05-05-2018");  // Slash not used in input
+        assertEquals("Please enter a valid date in the format MM/DD/YYYY.", ar.validateDate(reminder4));
+
+
         DatabaseService.closeDataAccess();
         System.out.println("Finished test AccessReminders");
     }

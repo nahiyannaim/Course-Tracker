@@ -13,6 +13,10 @@ public class AccessReminders
     private List<Reminder> reminderList;
     private Reminder reminder;
     private int count;
+    private final int maxMonth = 12;
+    private final int maxDate = 31;
+    private final int minYear = 2018;
+    private final int maxYear = 2020;
 
     public AccessReminders()
     {
@@ -85,13 +89,13 @@ public class AccessReminders
             if(date.charAt(2) != '/' || date.charAt(5) != '/')
                 result = "Please enter a valid date in the format MM/DD/YYYY.";
 
-            if(Integer.parseInt(date.substring(0, 2)) <= 0 || Integer.parseInt(date.substring(0, 2)) > 12)
+            if(Integer.parseInt(date.substring(0, 2)) <= 0 || Integer.parseInt(date.substring(0, 2)) > maxMonth)
                 result = "Invalid Month entered. Please enter a valid date in the format MM/DD/YYYY.";
 
-            if(Integer.parseInt(date.substring(3, 5)) <= 0 || Integer.parseInt(date.substring(3, 5)) > 31)
+            if(Integer.parseInt(date.substring(3, 5)) <= 0 || Integer.parseInt(date.substring(3, 5)) > maxDate)
                 result = "Invalid Date entered. Please enter a valid date in the format MM/DD/YYYY.";
 
-            if(Integer.parseInt(date.substring(6)) < 2018 || Integer.parseInt(date.substring(6)) > 2020)
+            if(Integer.parseInt(date.substring(6)) < minYear || Integer.parseInt(date.substring(6)) > maxYear)
                 result = "Invalid Year entered. Please enter a valid date in the format MM/DD/YYYY.";
         }
 
