@@ -44,7 +44,8 @@ public class MyCompletedCoursesActivity extends Activity
             courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, courseList)
             {
                 @Override
-                public View getView(int position, View convertView, ViewGroup parent) {
+                public View getView(int position, View convertView, ViewGroup parent)
+                {
                     View view = super.getView(position, convertView, parent);
 
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
@@ -63,16 +64,20 @@ public class MyCompletedCoursesActivity extends Activity
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
             {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+                {
                     Button updateButton = (Button)findViewById(R.id.buttonCourseUpdate);
                     Button deleteButton = (Button)findViewById(R.id.buttonCourseDelete);
 
-                    if (position == selectedCoursePosition) {
+                    if (position == selectedCoursePosition)
+                    {
                         listView.setItemChecked(position, false);
                         updateButton.setEnabled(false);
                         deleteButton.setEnabled(false);
                         selectedCoursePosition = -1;
-                    } else {
+                    }
+                    else
+                    {
                         listView.setItemChecked(position, true);
                         updateButton.setEnabled(true);
                         deleteButton.setEnabled(true);
@@ -150,7 +155,8 @@ public class MyCompletedCoursesActivity extends Activity
             }
             else
             {
-                MessagesActivity.fatalError(this, result);
+                result = "This Course already exists in the list." ;
+                MessagesActivity.warning(this, result);
             }
         }
         else
@@ -182,7 +188,8 @@ public class MyCompletedCoursesActivity extends Activity
             }
             else
             {
-                MessagesActivity.fatalError(this, result);
+                result = "Cannot Update a course that is not in the list.";
+                MessagesActivity.warning(this, result);
             }
         }
         else
@@ -211,6 +218,12 @@ public class MyCompletedCoursesActivity extends Activity
         else
         {
             result = accessCompletedCourses.validateCourseData(course);
+
+            if(result == null)
+            {
+                result = "Cannot Delete a course that is not in the list.";
+            }
+
             MessagesActivity.warning(this, result);
         }
     }
