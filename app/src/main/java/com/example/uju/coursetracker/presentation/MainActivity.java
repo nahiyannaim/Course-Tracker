@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.content.Intent;
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.application.DatabaseService;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -39,19 +38,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DatabaseService.closeDataAccess();
     }
 
-    public static String getDBPathName() {
+    public static String getDBPathName()
+    {
         if (dbPathName == null)
             return dbName;
         else
             return dbPathName;
     }
 
-    public static void setDBPathName(String pathName) {
+    public static void setDBPathName(String pathName)
+    {
         System.out.println("Setting DB path to: " + pathName);
         dbPathName = pathName;
     }
 
-    private void copyDatabaseToDevice() {
+    private void copyDatabaseToDevice()
+    {
         final String DB_PATH = "db";
 
         String[] assetNames;
@@ -59,10 +61,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         File dataDirectory = context.getDir(DB_PATH, Context.MODE_PRIVATE);
         AssetManager assetManager = getAssets();
 
-        try {
+        try
+        {
 
             assetNames = assetManager.list(DB_PATH);
-            for (int i = 0; i < assetNames.length; i++) {
+            for (int i = 0; i < assetNames.length; i++)
+            {
                 assetNames[i] = DB_PATH + "/" + assetNames[i];
             }
 
@@ -70,15 +74,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             setDBPathName(dataDirectory.toString() + "/" + dbName);
 
-        } catch (IOException ioe) {
+        }
+        catch (IOException ioe)
+        {
             MessagesActivity.warning(this, "Unable to access application data: " + ioe.getMessage());
         }
     }
 
-    public void copyAssetsToDirectory(String[] assets, File directory) throws IOException {
+    public void copyAssetsToDirectory(String[] assets, File directory) throws IOException
+    {
         AssetManager assetManager = getAssets();
 
-        for (String asset : assets) {
+        for (String asset : assets)
+        {
             String[] components = asset.split("/");
             String copyPath = directory.toString() + "/" + components[components.length - 1];
             char[] buffer = new char[1024];
@@ -86,12 +94,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             File outFile = new File(copyPath);
 
-            if (!outFile.exists()) {
+            if (!outFile.exists())
+            {
                 InputStreamReader in = new InputStreamReader(assetManager.open(asset));
                 FileWriter out = new FileWriter(outFile);
 
                 count = in.read(buffer);
-                while (count != -1) {
+                while (count != -1)
+                {
                     out.write(buffer, 0, count);
                     count = in.read(buffer);
                 }
@@ -107,7 +117,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
@@ -127,7 +138,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy()
+    {
         super.onDestroy();
 
         //close the database
@@ -135,17 +147,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(dToggle.onOptionsItemSelected(item)){
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if(dToggle.onOptionsItemSelected(item))
+        {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item)
+    {
         int id = item.getItemId();
-        switch (id) {
+        switch (id)
+        {
 
             case R.id.cgpaCalc:
                 Intent calc = new Intent(MainActivity.this, MyCompletedCoursesActivity.class);

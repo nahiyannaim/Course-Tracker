@@ -467,12 +467,17 @@ public class DataAccessObject implements DataAccess
     public String deleteReminder(Reminder reminder)
     {
         String values;
+        String values2;
+        String values3;
 
         result = null;
         try
         {
             values = reminder.getCourseID();
-            cmdString = "Delete from Reminders where CourseID='" +values +"'";
+            values2 = reminder.getReminderType();
+            values3 = reminder.getDueDate();
+            cmdString = "Delete from Reminders where CourseID='" +values +"' AND Type='" + values2
+                    + "' AND Date='" + values3 + "'";
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
