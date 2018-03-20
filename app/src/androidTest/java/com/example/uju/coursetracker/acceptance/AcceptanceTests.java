@@ -10,7 +10,9 @@ public class AcceptanceTests
     public static Test suite()
     {
         suite = new TestSuite("Acceptance tests");
-        suite.addTestSuite(CoursesTest.class);
+        suite.addTestSuite(CurrentCGPATest.class);
+        suite.addTestSuite(PredictCGPATest.class);
+        suite.addTestSuite(RemindersTest.class);
         return suite;
     }
 }
