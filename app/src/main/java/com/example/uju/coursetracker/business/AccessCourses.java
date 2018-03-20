@@ -7,6 +7,7 @@ import com.example.uju.coursetracker.application.DatabaseService;
 import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.persistence.DataAccess;
 
+
 public class AccessCourses
 {
     private DataAccess dataAccess;

@@ -10,7 +10,7 @@ import java.util.*;
 // This is the stub database for the project
 // This stub database will have a set of initial contents and will provide the data for Testing
 
-public class StubDatabase implements DataAccess
+public class DataAccessStub implements DataAccess
 {
     private String dbName;
     private String dbType = "stub";
@@ -18,12 +18,12 @@ public class StubDatabase implements DataAccess
     private ArrayList<Course> newCourses;
     private ArrayList<Reminder> remList;
 
-    public StubDatabase(String dbName)
+    public DataAccessStub(String dbName)
     {
         this.dbName = dbName;
     }
 
-    public StubDatabase()
+    public DataAccessStub()
     {
         this(MainActivity.dbName);
     }
