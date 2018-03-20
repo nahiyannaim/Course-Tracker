@@ -34,7 +34,19 @@ public class StubDatabaseTest extends TestCase
 
     public void tearDown()
     {
+        dataAccess.close();
         System.out.println("\nFinished Persistence test DataAccess (using stub)");
+    }
+
+    // This is a NEW method in iteration 3
+    public static void dataAccessTest(DataAccess dataAccess)
+    {
+        StubDatabaseTest dataAccessTest = new StubDatabaseTest("");
+        dataAccessTest.dataAccess = dataAccess;
+
+        dataAccessTest.testCompletedCoursesDB();
+        dataAccessTest.testCurrentCoursesDB();
+        dataAccessTest.testRemindersDB();
     }
 
     public void testCompletedCoursesDB()
