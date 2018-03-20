@@ -1,76 +1,83 @@
-package com.example.uju.coursetracker.persistence;
+package com.example.uju.coursetracker.tests.persistence;
 
-
+import com.example.uju.coursetracker.objects.Reminder;
+import com.example.uju.coursetracker.persistence.DataAccess;
 import com.example.uju.coursetracker.presentation.MainActivity;
 import com.example.uju.coursetracker.objects.Breakdown;
 import com.example.uju.coursetracker.objects.Course;
-import com.example.uju.coursetracker.objects.Reminder;
-
 import java.util.*;
 
-
 // This is the stub database for the project
-// This stub database will have a set of initial contents and will provide the data for other classes.
+// This stub database will have a set of initial contents and will provide the data for Testing
 
-public class StubDatabase
+public class DataAccessStub implements DataAccess
 {
     private String dbName;
     private String dbType = "stub";
-
     private ArrayList<Course> oldCourses;
     private ArrayList<Course> newCourses;
-    private ArrayList<Course> fullCourses;
     private ArrayList<Reminder> remList;
 
-    public StubDatabase(String dbName)
+    public DataAccessStub(String dbName)
     {
         this.dbName = dbName;
     }
 
-    public StubDatabase()
+    public DataAccessStub()
     {
         this(MainActivity.dbName);
     }
 
     public void open(String dbName)
-	{
+    {
         remList = new ArrayList<Reminder>();
-		oldCourses= new ArrayList<Course>();
+        oldCourses= new ArrayList<Course>();
         newCourses= new ArrayList<Course>();
-        genCrs(oldCourses,newCourses);
-        genRem();
+        genCrs(oldCourses, newCourses);
+        genRem(remList);
 
         System.out.println("Opened " +dbType +" database " +dbName);
-	}
+    }
 
-    public void genRem()
+    private void genRem(ArrayList<Reminder> remList)
     {
         Reminder currRem;
 
         //SOCO 1200 Reminders
         currRem = new Reminder("SOCO 1200", "Assignment", "01/02/2018");
+        remList.add(currRem);
         currRem = new Reminder("SOCO 1200", "Assignment", "02/09/2018");
+        remList.add(currRem);
         currRem = new Reminder("SOCO 1200", "Midterm", "02/20/2018");
+        remList.add(currRem);
         currRem = new Reminder("SOCO 1200", "Final", "04/02/2018");
+        remList.add(currRem);
 
         //ECON 1020 Reminders
         currRem = new Reminder("ECON 1020", "Assignment", "03/15/2018");
+        remList.add(currRem);
         currRem = new Reminder("ECON 1020", "Quiz", "01/17/2018");
+        remList.add(currRem);
         currRem = new Reminder("ECON 1020", "Midterm", "02/23/2018");
+        remList.add(currRem);
         currRem = new Reminder("ECON 1020", "Assignment", "01/09/2018");
+        remList.add(currRem);
         currRem = new Reminder("ECON 1020", "Quiz", "01/03/2018");
+        remList.add(currRem);
         currRem = new Reminder("ECON 1020", "Final", "04/12/2018");
+        remList.add(currRem);
 
         //ENGL 1300 Reminders
         currRem = new Reminder("ENGL 1300", "Final", "04/09/2018");
+        remList.add(currRem);
         currRem = new Reminder("ENGL 1300", "Assignment", "02/25/2018");
+        remList.add(currRem);
         currRem = new Reminder("ENGL 1300", "Midterm", "02/19/2018");
-
-
+        remList.add(currRem);
 
     }
 
-	public void genCrs(ArrayList<Course> old ,ArrayList<Course> newC )
+    private void genCrs(ArrayList<Course> old ,ArrayList<Course> newC )
     {
         Course course;
         Breakdown nwBk;
@@ -138,151 +145,177 @@ public class StubDatabase
         newC.add(course);
     }
 
-
     public void close()
     {
         System.out.println("Closed " +dbType +" database " +dbName);
     }
 
-	public void createFullList()
+    public String updateCompletedCourse(Course course)
     {
-        int count= 0 ;
-        int cnt2=0;
-        for (int i =0 ; i<oldCourses.size()+newCourses.size() ; i++)
-        {
+        int index;
 
-            if(count<oldCourses.size())
+        if(course != null)
+        {
+            index = oldCourses.indexOf(course);
+            if (index >= 0)
             {
-                fullCourses.add(oldCourses.get(i));
-            }//if end
-            else
+                oldCourses.set(index, course);
+            }
+        }
+
+        return null;
+    }
+
+    public String updateReminder(Reminder reminder)
+    {
+        int index;
+
+        if(reminder != null)
+        {
+            index = remList.indexOf(reminder);
+            if (index >= 0)
             {
-                fullCourses.add(newCourses.get(cnt2));
-                cnt2++;
-            }//else end
-            count++;
-        }//for end
+                remList.set(index, reminder);
+            }
+        }
+        return null;
     }
 
-    public String updateOldCourse(Course currentCourse)
+    public String updateCurrentCourse(Course course)
     {
         int index;
 
-        index = oldCourses.indexOf(currentCourse);
-        if (index >= 0)
+        if(course != null)
         {
-            oldCourses.set(index, currentCourse);
+            index = newCourses.indexOf(course);
+            if (index >= 0)
+            {
+                newCourses.set(index, course);
+            }
         }
+
         return null;
     }
 
-    public String updateRem(Reminder rem)
-    {
-        int index;
-        index = remList.indexOf(rem);
-        if(index >= 0)
-        {
-            remList.set(index,rem);
-        }
-        return null;
-    }
-
-    public String updateNewCourse(Course currentCourse)
+    public String deleteCompletedCourse(Course course)
     {
         int index;
 
-        index = newCourses.indexOf(currentCourse);
-        if (index >= 0)
+        if(course != null)
         {
-            newCourses.set(index, currentCourse);
+            index = oldCourses.indexOf(course);
+            if (index >= 0)
+            {
+                oldCourses.remove(index);
+            }
         }
+
         return null;
     }
 
-    public String deleteOldCourse(Course currentCourse)
+    public String deleteReminder(Reminder reminder)
     {
         int index;
 
-        index = oldCourses.indexOf(currentCourse);
-        if (index >= 0)
+        if(reminder != null)
         {
-            oldCourses.remove(index);
+            index = remList.indexOf(reminder);
+            if (index >= 0)
+            {
+                remList.remove(index);
+            }
         }
+
         return null;
     }
 
-    public String deleteRem(Reminder rem)
+    public String deleteCurrentCourse(Course course)
     {
         int index;
 
-        index = remList.indexOf(rem);
-        if (index >= 0)
+        if(course != null)
         {
-            remList.remove(index);
+            index = newCourses.indexOf(course);
+            if (index >= 0)
+            {
+                newCourses.remove(index);
+            }
         }
+
         return null;
     }
 
-    public String deleteNewCourse(Course currentCourse)
+    public String insertCompletedCourse(Course course)
     {
-        int index;
-
-        index = newCourses.indexOf(currentCourse);
-        if (index >= 0)
+        if(course != null)
         {
-            newCourses.remove(index);
+            oldCourses.add(course);
+        }
+
+        return null;
+    }
+
+    public String insertReminder(Reminder reminder)
+    {
+        if(reminder != null)
+        {
+            remList.add(reminder);
+        }
+
+        return null;
+    }
+
+    public String insertCurrentCourse(Course course)
+    {
+        if(course != null)
+        {
+            newCourses.add(course);
+        }
+
+        return null;
+    }
+
+    public String getCompletedCoursesSeq(List<Course> completedCoursesList)
+    {
+        if(completedCoursesList != null)
+        {
+            completedCoursesList.addAll(oldCourses);
+        }
+
+        return null;
+    }
+
+    public String getCurrentCoursesSeq(List<Course> currentCoursesList)
+    {
+        if(currentCoursesList != null)
+        {
+            currentCoursesList.addAll(newCourses);
         }
         return null;
     }
 
-
-    public String insertOldCourse(Course currentCourse)
+    public String getRemindersSeq(List<Reminder> list)
     {
-        oldCourses.add(currentCourse);
-
-        return null;
-    }
-
-    public String insertRem(Reminder rem)
-    {
-        remList.add(rem);
-
-        return null;
-    }
-
-    public String insertNewCourse(Course currentCourse)
-    {
-        newCourses.add(currentCourse);
-
-        return null;
-    }
-
-    public String getCourseSequential(List<Course> courseResult,String key)
-    {
-        if(key.equals("old")) {
-            courseResult.addAll(oldCourses);
+        if(list != null)
+        {
+            list.addAll(remList);
         }
-        else if (key.equals("new")) {
-            courseResult.addAll(newCourses);
-        }
-        else{
-            courseResult.addAll(fullCourses);
-        }
+
         return null;
     }
 
-    public ArrayList<Course> getOldCourses() {
+    public  ArrayList<Course> getCompletedCourses()
+    {
         return oldCourses;
     }
-    public ArrayList<Course> getNewCourses()
+
+    public ArrayList<Course> getCurrentCourses()
     {
         return newCourses;
-
     }
 
-    public ArrayList<Reminder> getRem()
+    public  ArrayList<Reminder> getReminders()
     {
         return remList;
     }
-
 }
