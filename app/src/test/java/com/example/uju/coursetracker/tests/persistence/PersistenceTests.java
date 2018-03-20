@@ -10,7 +10,7 @@ public class PersistenceTests
     public static Test suite()
     {
         suite = new TestSuite("Persistence tests");
-        suite.addTestSuite(StubDatabaseTest.class);
+        suite.addTestSuite(DataAccessTest.class);
         return suite;
     }
 }

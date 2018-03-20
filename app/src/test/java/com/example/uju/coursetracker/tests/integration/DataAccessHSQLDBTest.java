@@ -3,7 +3,8 @@ package com.example.uju.coursetracker.tests.integration;
 import com.example.uju.coursetracker.application.DatabaseService;
 import com.example.uju.coursetracker.persistence.DataAccess;
 import com.example.uju.coursetracker.presentation.MainActivity;
-import com.example.uju.coursetracker.tests.persistence.StubDatabaseTest;
+import com.example.uju.coursetracker.tests.persistence.DataAccessTest;
+
 import junit.framework.TestCase;
 
 
@@ -28,7 +29,7 @@ public class DataAccessHSQLDBTest extends TestCase
         DatabaseService.createDataAccess(dbName);
         dataAccess = DatabaseService.getDataAccess(dbName);
 
-        StubDatabaseTest.dataAccessTest(dataAccess);
+        DataAccessTest.dataAccessTest(dataAccess);
 
         DatabaseService.closeDataAccess();
 
