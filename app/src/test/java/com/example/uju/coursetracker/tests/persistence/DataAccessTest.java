@@ -3,18 +3,16 @@ package com.example.uju.coursetracker.tests.persistence;
 import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.objects.Reminder;
 import com.example.uju.coursetracker.persistence.DataAccess;
-import com.example.uju.coursetracker.persistence.DataAccessObject;
-import com.example.uju.coursetracker.presentation.MainActivity;
 
 import junit.framework.TestCase;
 import java.util.ArrayList;
 
 
-public class StubDatabaseTest extends TestCase
+public class DataAccessTest extends TestCase
 {
     private DataAccess dataAccess;
 
-    public StubDatabaseTest(String arg0)
+    public DataAccessTest(String arg0)
     {
         super(arg0);
     }
@@ -24,7 +22,7 @@ public class StubDatabaseTest extends TestCase
         System.out.println("\nStarting Persistence test DataAccess (using stub)");
 
         // Use the following statements to run with the stub database:
-        dataAccess = new StubDatabase();
+        dataAccess = new DataAccessStub();
         dataAccess.open("Stub");
 
         // or switch to the real HSQLDB database:
@@ -41,7 +39,7 @@ public class StubDatabaseTest extends TestCase
     // This is a NEW method in iteration 3
     public static void dataAccessTest(DataAccess dataAccess)
     {
-        StubDatabaseTest dataAccessTest = new StubDatabaseTest("");
+        DataAccessTest dataAccessTest = new DataAccessTest("");
         dataAccessTest.dataAccess = dataAccess;
 
         dataAccessTest.testCompletedCoursesDB();
@@ -51,7 +49,7 @@ public class StubDatabaseTest extends TestCase
 
     public void testCompletedCoursesDB()
     {
-        System.out.println("\nStarting test StubDatabaseTest for: Completed Courses");
+        System.out.println("\nStarting test DataAccessTest for: Completed Courses");
 
         ArrayList<Course> courses;
         Course course;
@@ -172,7 +170,7 @@ public class StubDatabaseTest extends TestCase
     public void testCurrentCoursesDB()
     {
 
-        System.out.println("\nStarting test StubDatabaseTest for: Current Courses");
+        System.out.println("\nStarting test DataAccessTest for: Current Courses");
 
         ArrayList<Course> courses;
         Course course;
@@ -293,7 +291,7 @@ public class StubDatabaseTest extends TestCase
     public void testRemindersDB()
     {
 
-        System.out.println("\nStarting test StubDatabaseTest for: Reminders");
+        System.out.println("\nStarting test DataAccessTest for: Reminders");
 
         ArrayList<Reminder> reminders;
         Reminder reminder;
