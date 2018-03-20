@@ -1,15 +1,14 @@
 package com.example.uju.coursetracker.acceptance;
 
-
 import android.test.ActivityInstrumentationTestCase2;
 
 import com.example.uju.coursetracker.presentation.MainActivity;
 
-public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity>
+public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity>
 {
     //private Solo solo;
 
-    public CoursesTest()
+    public RemindersTest()
     {
         super(MainActivity.class);
     }
