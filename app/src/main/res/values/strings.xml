@@ -22,16 +22,8 @@
     <string name="course_id">Course ID:</string>
     <string name="predictTitle">Based on the grades you entered for your Current Courses, Your Predicted CGPA is: </string>
     <string name="currentCourse">My Current Courses</string>
-    <string name="addReminderButton">Add/Edit</string>
-    <string name="addReminderButton2">Delete</string>
-    <string name="duedates">My Reminders</string>
-
-    <string name="addReminderButton">Add/Edit</string>
-    <string name="addReminderButton2">Delete</string>
-    <string name="duedates">My Reminders</string>
-
-  
-    <string name="typeOfReminder">Type:</string>
+    <string name="addReminderButton">Add Reminder</string>
+    <string name="typeOfReminder">Reminder Type:</string>
     <string-array name="reminderTypes">
         <item>Assignment</item>
         <item>Quiz</item>
@@ -39,11 +31,11 @@
         <item>Final</item>
         <item>Project</item>
     </string-array>
-    <string name="RemDate">Date:</string>
+    <string name="RemDate">Due Date:</string>
     <string name="RemDoneButton">DONE</string>
     <string name="addReminderButton2">Delete</string>
     <string name="duedates">My Reminders</string>
-    <string name="welcomeText">Welcome To Course Tracker! Tap On The Menu On Top Left Corner To Get Started.</string>
+    <string name="welcomeText">Welcome to Course Tracker! Tap on the Menu on top left corner to get started.</string>
     <string name="calculate_my_current_cgpa">Calculate my current CGPA</string>
     <string name="predict_my_next_cgpa">PREDICT MY NEXT CGPA</string>
     <string name="my_current_courses">My Current Courses</string>
@@ -54,9 +46,4 @@
     <string name="navButton3">Predict Next CGPA</string>
     <string name="navButton4">My Reminders</string>
 
-    <string name="fatalError">Fatal error</string>
-    <string name="warning">Warning</string>
-    <string name="mycourse_title">My Completed Courses: </string>
-
 </resources>
-

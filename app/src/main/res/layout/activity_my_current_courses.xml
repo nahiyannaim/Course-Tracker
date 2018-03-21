@@ -22,7 +22,7 @@
             android:id="@+id/title2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="My Current Courses"
+            android:text="@string/my_current_courses"
             android:textAlignment="center"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@android:color/holo_blue_light"
-            android:text="Predict my CGPA"
+            android:text="@string/predict_my_cgpa"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -182,7 +182,5 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.494" />
     </android.support.constraint.ConstraintLayout>
-
-
 
 </android.support.constraint.ConstraintLayout>

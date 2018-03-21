@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item android:id="@+id/crs"
-            android:title="My Courses" android:icon="@drawable/ic_list">
+            android:title="@string/navButton1" android:icon="@drawable/ic_list">
         </item>>
 
         <item android:id="@+id/cgpaCalc"
-            android:title="My Current CGPA" android:icon="@drawable/ic_calculator">
+            android:title="@string/navButton2" android:icon="@drawable/ic_calculator">
         </item>>
 
         <item android:id="@+id/cgpaPred"
-            android:title="Predict Next CGPA" android:icon="@drawable/ic_eye">
+            android:title="@string/navButton3" android:icon="@drawable/ic_eye">
         </item>>
 
         <item android:id="@+id/myRem"
-            android:title="My Reminders" android:icon="@drawable/ic_calendar">
+            android:title="@string/navButton4" android:icon="@drawable/ic_calendar">
         </item>>
 
     </group>

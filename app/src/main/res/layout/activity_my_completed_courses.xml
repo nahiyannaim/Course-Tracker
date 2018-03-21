@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@android:color/holo_blue_light"
-            android:text="Calculate my current CGPA"
+            android:text="@string/calculate_my_current_cgpa"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@android:color/holo_green_light"
-            android:text="PREDICT MY NEXT CGPA"
+            android:text="@string/predict_my_next_cgpa"
             android:textColor="@color/white"
             android:textSize="20sp" />
 

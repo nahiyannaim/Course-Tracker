@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer"
-    tools:context="com.example.uju.coursetracker.application.MainActivity">
+    tools:context="com.example.uju.coursetracker.presentation.MainActivity">
 
 
     <android.support.constraint.ConstraintLayout
@@ -14,18 +14,20 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView6"
-            android:layout_width="262dp"
-            android:layout_height="55dp"
-            android:text="Course Tracker"
+            android:id="@+id/welcomeText"
+            android:layout_width="415dp"
+            android:layout_height="148dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/welcomeText"
             android:textAlignment="center"
             android:textSize="30sp"
+            android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.44" />
+            app:layout_constraintVertical_bias="0.448" />
     </android.support.constraint.ConstraintLayout>
 
 

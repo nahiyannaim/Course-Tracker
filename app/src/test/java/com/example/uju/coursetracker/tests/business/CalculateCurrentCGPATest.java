@@ -5,10 +5,8 @@ import com.example.uju.coursetracker.objects.Course;
 import junit.framework.TestCase;
 import java.util.ArrayList;
 
-
 public class CalculateCurrentCGPATest extends TestCase
 {
-
     public void testValidGrades()
     {
 
@@ -16,12 +14,13 @@ public class CalculateCurrentCGPATest extends TestCase
 
         ArrayList<Course> list = new ArrayList();
         double result;
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
 
         list.add(new Course("COMP 1010", "Intro to CS", "A"));
         list.add(new Course("MATH 1500", "Calculus", "B+"));
 
 
-        result = CalculateCurrentCGPA.calculate(list);
+        result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(3.75, result);
@@ -30,8 +29,6 @@ public class CalculateCurrentCGPATest extends TestCase
         System.out.println("Finished Test");
     }
 
-
-
     public void testAllValidGrades()
     {
 
@@ -39,6 +36,7 @@ public class CalculateCurrentCGPATest extends TestCase
 
         ArrayList<Course> list = new ArrayList();
         double result;
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
 
         list.add(new Course("COMP 1010", "Intro to CS", "A+"));
         list.add(new Course("COMP 1020", "Advanced CS", "A"));
@@ -49,7 +47,7 @@ public class CalculateCurrentCGPATest extends TestCase
         list.add(new Course("GEOG 1280", "Human Geography", "D"));
         list.add(new Course("Math 1500", "Intro Calculus", "F"));
 
-        result = CalculateCurrentCGPA.calculate(list);
+        result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(2.56, result);
@@ -58,8 +56,6 @@ public class CalculateCurrentCGPATest extends TestCase
 		System.out.println("Finished Test");
     }
 
-
-
     public void testInvalidGrades()
     {
 
@@ -67,12 +63,13 @@ public class CalculateCurrentCGPATest extends TestCase
 
         ArrayList<Course> list = new ArrayList();
         double result;
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
 
         list.add(new Course("COMP 1010", "Intro to CS", "P+"));
         list.add(new Course("COMP 1020", "Advanced CS", "S"));
 
 
-        result = CalculateCurrentCGPA.calculate(list);
+        result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
@@ -80,7 +77,6 @@ public class CalculateCurrentCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testValidAndInvalidGrades()
     {
@@ -89,6 +85,7 @@ public class CalculateCurrentCGPATest extends TestCase
 
         ArrayList<Course> list = new ArrayList();
         double result;
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
 
         list.add(new Course("MATH 1010", "Intro to Math", "P+"));
         list.add(new Course("PHYS 1010", "Intro to Physics", "A"));
@@ -96,7 +93,7 @@ public class CalculateCurrentCGPATest extends TestCase
         list.add(new Course("BIOL 1010", "Intro to Biology", "B+"));
 
 
-        result = CalculateCurrentCGPA.calculate(list);
+        result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
@@ -104,27 +101,24 @@ public class CalculateCurrentCGPATest extends TestCase
 
         System.out.println("Finished Test");
     }
-
 
     public void testEmptyGrades()
     {
         System.out.println("Starting test: Empty grades");
 
         ArrayList<Course> list = new ArrayList();
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
 
         list.add(new Course("ENVR 1000", "Environmental Science", " "));
         list.add(new Course("STAT 2000", "Advanced Statistics", " "));
 
-        double result = CalculateCurrentCGPA.calculate(list);
+        double result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
 
         System.out.println("Finished Test");
     }
-
-
-
 
     public void testMixedCombinationGrades()
     {
@@ -132,6 +126,7 @@ public class CalculateCurrentCGPATest extends TestCase
         System.out.println("Starting Test: Mixed Combination grades");
 
         ArrayList<Course> list = new ArrayList();
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
         double result;
 
         list.add(new Course("MATH 1010", "Intro to Math", "A"));
@@ -140,7 +135,7 @@ public class CalculateCurrentCGPATest extends TestCase
         list.add(new Course("BIOL 1010", "Intro to Biology", "2"));
         list.add(new Course("COMP 1010", "Intro to Programming", "B+"));
 
-        result = CalculateCurrentCGPA.calculate(list);
+        result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
@@ -149,15 +144,14 @@ public class CalculateCurrentCGPATest extends TestCase
         System.out.println("Finished Test");
     }
 
-
-
     public void testEmptyList()
     {
         System.out.println("Starting test: Empty list");
 
         ArrayList<Course> list = new ArrayList();
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
 
-        double result = CalculateCurrentCGPA.calculate(list);
+        double result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
@@ -165,32 +159,30 @@ public class CalculateCurrentCGPATest extends TestCase
         System.out.println("Finished test");
     }
 
-
-
     public void testNullList()
     {
         System.out.println("Starting test: null list");
 
-        double result = CalculateCurrentCGPA.calculate(null);
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
+        double result = temp.calculate(null);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
 
         System.out.println("Finished Test");
     }
-
-
 
     public void testNullListItem()
     {
         System.out.println("Starting test: null list item");
 
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
         ArrayList<Course> list = new ArrayList();
         list.add(null);
         list.add(null);
         list.add(null);
 
-        double result = CalculateCurrentCGPA.calculate(list);
+        double result = temp.calculate(list);
 
         assertNotNull(result);
         assertEquals(-1.0, result);
@@ -198,6 +190,56 @@ public class CalculateCurrentCGPATest extends TestCase
         System.out.println("Finished Test");
     }
 
+    public void testLowerCaseGrades()
+    {
+
+        System.out.println("Starting Test: Lower Case grades");
+
+        ArrayList<Course> list = new ArrayList();
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
+        double result;
+
+        list.add(new Course("MATH 1010", "Intro to Math", "a+"));
+        list.add(new Course("MATH 2000", "Intro to Math2", "a"));
+        list.add(new Course("PHYS 1010", "Intro to Physics", "b+"));
+        list.add(new Course("PHYS 2000", "Intro to Physics2", "b"));
+        list.add(new Course("CHEM 1010", "Intro to Chemistry", "c+"));
+        list.add(new Course("BIOL 1010", "Intro to Biology", "c"));
+        list.add(new Course("COMP 1010", "Intro to Programming", "d"));
+        list.add(new Course("COMP 2000", "Intro to Programming2", "f"));
+
+        result = temp.calculate(list);
+
+        assertNotNull(result);
+        assertEquals(2.56, result);
+
+
+        System.out.println("Finished Test");
+    }
+
+    public void testMixedCasesGrades()
+    {
+
+        System.out.println("Starting Test: Mixed Cases grades");
+
+        ArrayList<Course> list = new ArrayList();
+        CalculateCurrentCGPA temp = new CalculateCurrentCGPA();
+        double result;
+
+        list.add(new Course("MATH 1010", "Intro to Math", "a"));
+        list.add(new Course("PHYS 1010", "Intro to Physics", "b+"));
+        list.add(new Course("CHEM 1010", "Intro to Chemistry", "A"));
+        list.add(new Course("BIOL 1010", "Intro to Biology", "C"));
+        list.add(new Course("COMP 1010", "Intro to Programming", "d"));
+
+        result = temp.calculate(list);
+
+        assertNotNull(result);
+        assertEquals(2.9, result);
+
+
+        System.out.println("Finished Test");
+    }
 
 }
 

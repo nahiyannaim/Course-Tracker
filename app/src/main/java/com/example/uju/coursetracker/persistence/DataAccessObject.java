@@ -1,10 +1,7 @@
-
 package com.example.uju.coursetracker.persistence;
 
-import android.util.Log;
-
 import com.example.uju.coursetracker.objects.Course;
-
+import com.example.uju.coursetracker.objects.Reminder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,12 +14,13 @@ public class DataAccessObject implements DataAccess
 {
     private Statement st1, st2, st3;
     private Connection c1;
-    private ResultSet rs2, rs3, rs4, rs5;
+    private ResultSet rs2, rs4, rs5;
     private String dbName;
     private String dbType;
 
     private ArrayList<Course> completedCourses;
     private ArrayList<Course> currentCourses;
+    private ArrayList<Reminder> remindersList;
 
     private String cmdString;
     private int updateCount;
@@ -47,7 +45,6 @@ public class DataAccessObject implements DataAccess
             st1 = c1.createStatement();
             st2 = c1.createStatement();
             st3 = c1.createStatement();
-
         }
         catch (Exception e)
         {
@@ -79,12 +76,10 @@ public class DataAccessObject implements DataAccess
         myCourseName = EOF;
         myGrade = EOF;
 
-
-
         result = null;
         try
         {
-            cmdString = "Select * from CompletedCourses"; //**************** CHANGE TO completedCourses later
+            cmdString = "Select * from CompletedCourses";
             rs5 = st3.executeQuery(cmdString);
 
             while (rs5.next())
@@ -92,7 +87,6 @@ public class DataAccessObject implements DataAccess
                 myID = rs5.getString("CourseID");
                 myCourseName = rs5.getString("Name");
                 myGrade = rs5.getString("Grade");
-
 
                 course = new Course(myID, myCourseName, myGrade);
                 completedCoursesList.add(course);
@@ -104,11 +98,8 @@ public class DataAccessObject implements DataAccess
             result = processSQLError(e);
         }
 
-
-
         return result;
     }
-
 
     public ArrayList<Course> getCompletedCourses()
     {
@@ -124,9 +115,8 @@ public class DataAccessObject implements DataAccess
         completedCourses = new ArrayList<Course>();
         try
         {
-            cmdString = "Select * from CompletedCourses";  //**************** CHANGE TO completedCourses later
+            cmdString = "Select * from CompletedCourses";
             rs4 = st2.executeQuery(cmdString);
-            // ResultSetMetaData md4 = rs4.getMetaData();
             while (rs4.next())
             {
 
@@ -144,10 +134,9 @@ public class DataAccessObject implements DataAccess
         {
             processSQLError(e);
         }
+
         return completedCourses;
     }
-
-
 
     public String insertCompletedCourse(Course course)
     {
@@ -158,7 +147,6 @@ public class DataAccessObject implements DataAccess
         {
             values =  "'" +course.getCourseID() + "', '" +course.getCourseName() + "', '" +course.getGrade()+"'";
             cmdString = "Insert into CompletedCourses " +" Values(" +values +")";
-            //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
@@ -166,9 +154,9 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
-
 
     public String updateCompletedCourse(Course course)
     {
@@ -183,7 +171,6 @@ public class DataAccessObject implements DataAccess
                     +"'";
             where = "where CourseID='" +course.getCourseID() +"'";
             cmdString = "Update CompletedCourses " +" Set " +values +" " +where;
-            //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
@@ -191,6 +178,7 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
 
@@ -203,7 +191,7 @@ public class DataAccessObject implements DataAccess
         {
             values = course.getCourseID();
             cmdString = "Delete from CompletedCourses where CourseID='" +values +"'";
-            //System.out.println(cmdString);
+
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
@@ -211,14 +199,13 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//   FOR CURRENT COURSES
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //   FOR CURRENT COURSES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public String getCurrentCoursesSeq(List<Course> currentCoursesList)
     {
@@ -227,8 +214,6 @@ public class DataAccessObject implements DataAccess
         myID = EOF;
         myCourseName = EOF;
         myGrade = EOF;
-
-
 
         result = null;
         try
@@ -253,11 +238,8 @@ public class DataAccessObject implements DataAccess
             result = processSQLError(e);
         }
 
-
-
         return result;
     }
-
 
     public  ArrayList<Course> getCurrentCourses()
     {
@@ -275,7 +257,6 @@ public class DataAccessObject implements DataAccess
         {
             cmdString = "Select * from CurrentCourses";
             rs4 = st2.executeQuery(cmdString);
-            // ResultSetMetaData md4 = rs4.getMetaData();
             while (rs4.next())
             {
 
@@ -293,10 +274,9 @@ public class DataAccessObject implements DataAccess
         {
             processSQLError(e);
         }
+
         return currentCourses;
     }
-
-
 
     public String insertCurrentCourse(Course course)
     {
@@ -307,7 +287,6 @@ public class DataAccessObject implements DataAccess
         {
             values =  "'" +course.getCourseID() + "', '" +course.getCourseName() + "', '" +course.getGrade()+"'";
             cmdString = "Insert into CurrentCourses " +" Values(" +values +")";
-            //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
@@ -315,9 +294,9 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
-
 
     public String updateCurrentCourse(Course course)
     {
@@ -332,7 +311,6 @@ public class DataAccessObject implements DataAccess
                     +"'";
             where = "where CourseID='" +course.getCourseID() +"'";
             cmdString = "Update CurrentCourses " +" Set " +values +" " +where;
-            //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         }
@@ -340,6 +318,7 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
 
@@ -352,6 +331,127 @@ public class DataAccessObject implements DataAccess
         {
             values = course.getCourseID();
             cmdString = "Delete from CurrentCourses where CourseID='" +values +"'";
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+
+        return result;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //   FOR REMINDERS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public String getRemindersSeq(List<Reminder> list)
+    {
+        Reminder reminder;
+        String myID, myType, myDate;
+        myID = EOF;
+        myType = EOF;
+        myDate = EOF;
+
+        result = null;
+        try
+        {
+            cmdString = "Select * from Reminders";
+            rs5 = st3.executeQuery(cmdString);
+
+            while (rs5.next())
+            {
+                myID = rs5.getString("CourseID");
+                myType = rs5.getString("Type");
+                myDate = rs5.getString("Date");
+
+
+                reminder = new Reminder(myID, myType, myDate);
+                list.add(reminder);
+            }
+            rs5.close();
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+
+        return result;
+    }
+
+    public ArrayList<Reminder> getReminders()
+    {
+
+        String myID, myType, myDate;
+        Reminder reminder;
+        int counter;
+
+        myID = EOF;
+        myType = EOF;
+        myDate = EOF;
+
+        counter = 0;
+        remindersList = new ArrayList<Reminder>();
+        try
+        {
+            cmdString = "Select * from Reminders";
+            rs4 = st2.executeQuery(cmdString);
+
+            while (rs4.next())
+            {
+
+                myID = rs4.getString("CourseID");
+                myType = rs4.getString("Type");
+                myDate = rs4.getString("Date");
+
+                reminder = new Reminder(myID, myType, myDate);
+                remindersList.add(reminder);
+                counter++;
+            }
+            rs4.close();
+        }
+        catch (Exception e)
+        {
+            processSQLError(e);
+        }
+
+        return remindersList;
+    }
+
+    public String insertReminder(Reminder reminder)
+    {
+        String values;
+
+        result = null;
+        try
+        {
+            values =  "'" +reminder.getCourseID() + "', '" +reminder.getReminderType() + "', '" +reminder.getDueDate()+"'";
+            cmdString = "Insert into Reminders " +" Values(" +values +")";
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+
+        return result;
+    }
+
+    public String updateReminder(Reminder reminder)
+    {
+        String values;
+        String where;
+
+        result = null;
+        try
+        {
+            // Should check for empty values and not update them
+            values = "Grade='" +reminder.getDueDate()
+                    +"'";
+            where = "where CourseID='" +reminder.getCourseID() +"'";
+            cmdString = "Update Reminders " +" Set " +values +" " +where;
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
@@ -360,12 +460,38 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
     }
 
+    public String deleteReminder(Reminder reminder)
+    {
+        String values;
+        String values2;
+        String values3;
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        result = null;
+        try
+        {
+            values = reminder.getCourseID();
+            values2 = reminder.getReminderType();
+            values3 = reminder.getDueDate();
+            cmdString = "Delete from Reminders where CourseID='" +values +"' AND Type='" + values2
+                    + "' AND Date='" + values3 + "'";
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
 
+        return result;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //   FOR WARNINGS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public String checkWarning(Statement st, int updateCount)
     {
@@ -388,6 +514,7 @@ public class DataAccessObject implements DataAccess
         {
             result = "Tuple not inserted correctly.";
         }
+
         return result;
     }
 
