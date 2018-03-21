@@ -1,11 +1,9 @@
 package com.example.uju.coursetracker.acceptance;
 
-
 import android.test.ActivityInstrumentationTestCase2;
 import com.example.uju.coursetracker.presentation.MainActivity;
 import com.robotium.solo.Solo;
 import junit.framework.Assert;
-
 
 public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivity>
 {
@@ -31,20 +29,17 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
         solo.finishOpenedActivities();
     }
 
-    // Please note again that this is not a complete set of acceptance tests
-
     public void testValidCompletedCourse()
     {
-        //ADD MORE APPROPRIATE ASSERTS IN THIS METHOD
-
         solo.waitForActivity("MainActivity");
         solo.clickOnImageButton(0);
         solo.clickOnMenuItem("My Current CGPA");
         solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
 
-
         // Should show 3.42 before making any changes to courses
         solo.clickOnButton("Calculate my current CGPA");
+        Assert.assertTrue(solo.searchText("3.42"));
+
         solo.goBack();
         solo.waitForActivity("MyCompletedCoursesActivity");
         solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
@@ -58,11 +53,13 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
         Assert.assertTrue(solo.searchEditText("WOMN 3000"));
         Assert.assertTrue(solo.searchEditText("D"));
 
-
         solo.clearEditText(1);
         solo.enterText(1, "A");
         solo.clickOnButton("Update");
         solo.clickOnButton("Calculate my current CGPA");
+
+        //Should have 3.67 GPA once WOMN 3000 grade changed from D to A
+        Assert.assertTrue(solo.searchText("3.67"));
 
         solo.goBack();
         solo.waitForActivity("MyCompletedCoursesActivity");
@@ -83,9 +80,15 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
         solo.clickOnButton("Delete");
         solo.clickOnButton("Calculate my current CGPA");
 
+        //Should have 3.59 GPA once MATH 1700 course is deleted
+        Assert.assertTrue(solo.searchText("3.59"));
+
         solo.goBack();
         solo.waitForActivity("MyCompletedCoursesActivity");
         solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
+
+        Assert.assertTrue(solo.searchEditText("MATH 1700"));
+        Assert.assertTrue(solo.searchEditText("A+"));
 
         //Assert.assertFalse(solo.searchEditText("MATH 1700"));
 
@@ -101,6 +104,9 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
 
         solo.clickOnButton("Create");
         solo.clickOnButton("Calculate my current CGPA");
+
+        //Should have 3.29 GPA once STAT 6000 course is created with a grade of F
+        Assert.assertTrue(solo.searchText("3.29"));
 
         solo.goBack();
         solo.waitForActivity("MyCompletedCoursesActivity");
@@ -140,8 +146,6 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
         solo.goBack();
         solo.clickOnImageButton(0);
         solo.waitForActivity("MainActivity");
-        solo.assertCurrentActivity("Expected activity MainActivity", "MainActivity");
-
     }
 
 //    public void testInvalidCompletedCourse()
