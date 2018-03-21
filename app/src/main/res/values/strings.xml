@@ -36,5 +36,14 @@
     <string name="addReminderButton2">Delete</string>
     <string name="duedates">My Reminders</string>
     <string name="welcomeText">Welcome to Course Tracker! Tap on the Menu on top left corner to get started.</string>
+    <string name="calculate_my_current_cgpa">Calculate my current CGPA</string>
+    <string name="predict_my_next_cgpa">PREDICT MY NEXT CGPA</string>
+    <string name="my_current_courses">My Current Courses</string>
+    <string name="predict_my_cgpa">Predict my CGPA</string>
+
+    <string name="navButton1">My Courses</string>
+    <string name="navButton2">My Current CGPA</string>
+    <string name="navButton3">Predict Next CGPA</string>
+    <string name="navButton4">My Reminders</string>
 
 </resources>
