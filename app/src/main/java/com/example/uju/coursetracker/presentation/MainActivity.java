@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.mapPage:
-                Intent mPage = new Intent(MainActivity.this, PickMapActivity.class);
+                Intent mPage = new Intent(MainActivity.this, E1Activity.class);
                 startActivity(mPage);
                 break;
         }
