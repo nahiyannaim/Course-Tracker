@@ -7,15 +7,15 @@ import android.os.Bundle;
 import com.example.uju.coursetracker.R;
 import com.example.uju.coursetracker.objects.ImageAdapter;
 
-public class E1Activity extends AppCompatActivity {
+public class E2Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_e1);
+        setContentView(R.layout.activity_e2);
 
         ViewPager viewPager = findViewById(R.id.viewPager);
-        ImageAdapter adapter = new ImageAdapter(this,1);
+        ImageAdapter adapter = new ImageAdapter(this,2);
         viewPager.setAdapter(adapter);
     }
 }

@@ -13,6 +13,7 @@ import com.example.uju.coursetracker.R;
 
 public class ImageAdapter extends PagerAdapter {
     private Context cntxt;
+    private int type;
     private  int [] e1ImgIds = new int [] {R.drawable.facilities_e1eitc1,R.drawable.facilities_e1eitc2,
                                            R.drawable.facilities_e1eitc3,R.drawable.facilities_e1eitc4,
                                            R.drawable.facilities_e1eitc5,R.drawable.facilities_e1eitc6,
@@ -32,13 +33,24 @@ public class ImageAdapter extends PagerAdapter {
                                            R.drawable.facilities_e3eitc9,R.drawable.facilities_e3eitc10,
                                            R.drawable.facilities_e3eitc11,R.drawable.facilities_e3eitc12};
 
-    public ImageAdapter(Context context){
+    public ImageAdapter(Context context,int tpe){
         cntxt=context;
+        type=tpe;
     }
 
     @Override
     public int getCount() {
-        return e1ImgIds.length;
+        int len =0;
+        if(type==1){
+            len = e1ImgIds.length;
+        }
+        else if(type==2){
+            len = e2ImgIds.length;
+        }
+        else if(type==3){
+            len = e3ImgIds.length;
+        }
+        return len;
     }
 
     @Override
@@ -48,9 +60,19 @@ public class ImageAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
+        int [] id_s= new int[12];
+        if(type==1){
+            id_s = e1ImgIds;
+        }
+        else if(type==2){
+            id_s = e2ImgIds;
+        }
+        else if(type==3){
+            id_s = e3ImgIds;
+        }
         ImageView imageView = new ImageView(cntxt);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageResource(e1ImgIds[position]);
+        imageView.setImageResource(id_s[position]);
         container.addView(imageView,0);
         return imageView;
     }
