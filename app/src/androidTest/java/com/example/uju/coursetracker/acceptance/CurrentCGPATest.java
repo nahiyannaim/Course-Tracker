@@ -166,7 +166,6 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
         solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
 
 
-
         // Trying to create course with Invalid/Empty course ID
         solo.clickOnButton("Create");
         Assert.assertTrue(solo.searchText("Warning"));
@@ -175,8 +174,7 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
         solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
 
 
-
-        // Trying to update a course with Invalid/Empty grade
+        // Trying to update a course with Empty grade
         Assert.assertTrue(solo.searchText("COMP 1010"));
         solo.clickOnText("COMP 1010");
         solo.clearEditText(1);
@@ -188,9 +186,22 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
         solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
 
 
+        // Trying to update a course with Invalid grade
+        Assert.assertTrue(solo.searchText("COMP 3010"));
+        solo.clickOnText("COMP 3010");
+        solo.clearEditText(1);
+        solo.enterText(1, "AAAAAAA");
+        solo.clickOnButton("Update");
+        solo.waitForDialogToOpen();
+        Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("Please enter a valid grade."));
+        solo.goBack();
+        solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
+
 
         //Updating a course that is not in the list
         solo.clearEditText(0);
+        solo.clearEditText(1);
         solo.enterText(0, "MATH 987654321");
         solo.enterText(1, "A");
         solo.clickOnButton("Update");
@@ -225,7 +236,6 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
         Assert.assertTrue(solo.searchText("This Course already exists in the list."));
         solo.goBack();
         solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
-
 
 
         //Should show 3.42 since no real changes were made to any courses
