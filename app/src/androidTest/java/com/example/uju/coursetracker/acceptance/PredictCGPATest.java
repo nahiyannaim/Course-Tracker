@@ -104,4 +104,9 @@ public class PredictCGPATest  extends ActivityInstrumentationTestCase2<MainActiv
 //        solo.goBack();
 //        solo.assertCurrentActivity("Expected activity HomeActivity", "HomeActivity");
 //    }
+    //    public void testValidCurrentCourse()
+//    {
+//
+//
+//    }
 }
