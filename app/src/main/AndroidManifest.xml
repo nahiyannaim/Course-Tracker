@@ -22,8 +22,11 @@
         <activity android:name=".presentation.PredictNextCGPAResultsActivity" />
         <activity android:name=".presentation.MyAllCoursesActivity" />
         <activity android:name=".presentation.DueDatesActivity" />
-        <activity android:name=".presentation.PickMapActivity"/>
-        <activity android:name=".presentation.CreateNewReminderActivity"></activity>
+        <activity android:name=".presentation.PickMapActivity" />
+        <activity android:name=".presentation.CreateNewReminderActivity" />
+        <activity android:name=".presentation.E1Activity" />
+        <activity android:name=".presentation.E2Activity" />
+        <activity android:name=".presentation.E3Activity"></activity>
     </application>
 
 </manifest>
