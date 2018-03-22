@@ -47,14 +47,16 @@
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/e3Button" />
+                android:text="@string/e3Button"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/button8"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/e2Button" />
+                android:text="@string/e2Button"
+                android:visibility="invisible" />
         </LinearLayout>
 
         <Button
@@ -63,7 +65,8 @@
             android:layout_height="247dp"
             android:layout_gravity="right"
             android:layout_marginRight="50dp"
-            android:text="@string/e1Button" />
+            android:text="@string/e1Button"
+            android:visibility="invisible" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
