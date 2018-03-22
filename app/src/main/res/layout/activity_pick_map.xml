@@ -7,15 +7,79 @@
 
     tools:context="com.example.uju.coursetracker.presentation.PickMapActivity">
 
+    <Button
+        android:id="@+id/e1_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="244dp"
+        android:layout_marginEnd="91dp"
+        android:layout_marginRight="91dp"
+        android:text="@string/e1Button"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/e3_button"
+        app:layout_constraintTop_toBottomOf="@+id/e2_button" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
-        android:layout_height="462dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="183dp"
         android:layout_marginEnd="50dp"
         android:layout_marginStart="50dp"
+        android:contentDescription="@string/pickMap"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:srcCompat="@drawable/pick_map" />
+
+    <Button
+        android:id="@+id/e2_button"
+        android:layout_width="238dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="33dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="236dp"
+        android:text="@string/e2Button"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/e1_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/e3_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/e3_button"
+        android:layout_width="0dp"
+        android:layout_height="203dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginRight="91dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginLeft="57dp"
+        android:layout_marginTop="55dp"
+        android:text="@string/e3Button"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/e1_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginRight="84dp"
+        android:layout_marginTop="97dp"
+        android:text="@string/pickMapText"
+        android:textColor="@android:color/black"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
