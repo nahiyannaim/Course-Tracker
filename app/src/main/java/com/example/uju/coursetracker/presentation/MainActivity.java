@@ -182,6 +182,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent remm = new Intent(MainActivity.this, DueDatesActivity.class);
                 startActivity(remm);
                 break;
+
+            case R.id.mapz:
+                Intent mapp = new Intent(MainActivity.this, PickMapActivity.class);
+                startActivity(mapp);
+                break;
         }
 
         return true;
