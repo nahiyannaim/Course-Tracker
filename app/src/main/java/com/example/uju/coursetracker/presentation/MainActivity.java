@@ -183,9 +183,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(remm);
                 break;
 
-            case R.id.mapz:
-                Intent mapp = new Intent(MainActivity.this, PickMapActivity.class);
-                startActivity(mapp);
+            case R.id.mapPage:
+                Intent mPage = new Intent(MainActivity.this, PickMapActivity.class);
+                startActivity(mPage);
                 break;
         }
 
