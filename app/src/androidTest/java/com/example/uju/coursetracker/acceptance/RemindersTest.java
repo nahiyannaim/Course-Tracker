@@ -15,10 +15,6 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
 
     public void setUp() throws Exception {
         solo = new Solo(getInstrumentation(), getActivity());
-
-        // Disable this for full acceptance test
-        // System.out.println("Injecting stub database.");
-        // Services.createDataAccess(new DataAccessStub(Main.dbName));
     }
 
     @Override
@@ -26,9 +22,6 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
         solo.finishOpenedActivities();
     }
 
-    //
-//    // Please note again that this is not a complete set of acceptance tests
-//
     public void testDeleteReminder() {
         solo.waitForActivity("MainActivity");
         solo.clickOnImageButton(0);
