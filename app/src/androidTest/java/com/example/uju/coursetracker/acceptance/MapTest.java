@@ -23,7 +23,7 @@ public class MapTest extends ActivityInstrumentationTestCase2<MainActivity>{
 
     public void setUp() throws Exception
     {
-        super.setUp();
+        
         solo = new Solo(getInstrumentation(), getActivity());
 
     }

@@ -15,7 +15,7 @@ public class E1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_e1);
 
         ViewPager viewPager = findViewById(R.id.viewPager);
-        ImageAdapter adapter = new ImageAdapter(this,1);
+        ImageAdapter adapter = new ImageAdapter(this,1);System.out.println(adapter.getCount());
         viewPager.setAdapter(adapter);
     }
 }
