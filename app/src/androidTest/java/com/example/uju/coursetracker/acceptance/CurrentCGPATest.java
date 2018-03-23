@@ -148,38 +148,108 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
         solo.waitForActivity("MainActivity");
     }
 
-//    public void testInvalidCompletedCourse()
-//    {
-//        solo.waitForActivity("HomeActivity");
-//        solo.clickOnButton("Students");
-//        solo.assertCurrentActivity("Expected activity StudentsActivity", "StudentsActivity");
-//
-//        solo.clickOnButton("Create");
-//        Assert.assertTrue(solo.searchText("Warning"));
-//        solo.goBack();
-//
-//        Assert.assertTrue(solo.searchText("100: Gary Chalmers"));
-//        solo.clickOnText("100: Gary Chalmers");
-//
-//        solo.clearEditText(1);
-//        solo.clickOnButton("Update");
-//        solo.waitForDialogToOpen();
-//        Assert.assertTrue(solo.searchText("Warning"));
-//        solo.goBack();
-//
-//        solo.enterText(1, "Something Something");
-//
-//        solo.clearEditText(0);
-//        solo.enterText(0, "987654321");
-//        solo.clickOnButton("Delete");
-//        solo.waitForDialogToOpen();
-//        Assert.assertTrue(solo.searchText("Warning"));
-//        solo.goBack();
-//
-//        solo.clickOnButton("Update");
-//        solo.waitForDialogToOpen();
-//        Assert.assertTrue(solo.searchText("Fatal error"));
-//        solo.goBack();
-//        solo.assertCurrentActivity("Expected activity HomeActivity", "HomeActivity");
-//    }
+    public void testInvalidCompletedCourse()
+    {
+
+        solo.waitForActivity("MainActivity");
+        solo.clickOnImageButton(0);
+        solo.clickOnMenuItem("My Current CGPA");
+        solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
+
+
+        // Should show 3.42 before making any changes to courses
+        solo.clickOnButton("Calculate my current CGPA");
+        Assert.assertTrue(solo.searchText("3.42"));
+
+        solo.goBack();
+        solo.waitForActivity("MyCompletedCoursesActivity");
+        solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
+
+
+        // Trying to create course with Invalid/Empty course ID
+        solo.clickOnButton("Create");
+        Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("Please enter a valid Course ID."));
+        solo.goBack();
+        solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
+
+
+        // Trying to update a course with Empty grade
+        Assert.assertTrue(solo.searchText("COMP 1010"));
+        solo.clickOnText("COMP 1010");
+        solo.clearEditText(1);
+        solo.clickOnButton("Update");
+        solo.waitForDialogToOpen();
+        Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("Please enter a valid grade."));
+        solo.goBack();
+        solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
+
+
+        // Trying to update a course with Invalid grade
+        Assert.assertTrue(solo.searchText("COMP 3010"));
+        solo.clickOnText("COMP 3010");
+        solo.clearEditText(1);
+        solo.enterText(1, "AAAAAAA");
+        solo.clickOnButton("Update");
+        solo.waitForDialogToOpen();
+        Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("Please enter a valid grade."));
+        solo.goBack();
+        solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
+
+
+        //Updating a course that is not in the list
+        solo.clearEditText(0);
+        solo.clearEditText(1);
+        solo.enterText(0, "MATH 987654321");
+        solo.enterText(1, "A");
+        solo.clickOnButton("Update");
+        solo.waitForDialogToOpen();
+        Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("Cannot Update a course that is not in the list."));
+        solo.goBack();
+        solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
+
+
+        //Deleting a course that is not in the list
+        solo.clearEditText(0);
+        solo.clearEditText(1);
+        solo.enterText(0, "STAT 5555555555");
+        solo.enterText(1, "C+");
+        solo.clickOnButton("Delete");
+        solo.waitForDialogToOpen();
+        Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("Cannot Delete a course that is not in the list."));
+        solo.goBack();
+        solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
+
+
+        //Creating a duplicate course with same courseID
+        Assert.assertTrue(solo.searchText("COMP 1010"));
+        solo.clearEditText(0);
+        solo.clearEditText(1);
+        solo.enterText(0, "COMP 1010");
+        solo.enterText(1, "A");
+        solo.clickOnButton("Create");
+        Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("This Course already exists in the list."));
+        solo.goBack();
+        solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
+
+
+        //Should show 3.42 since no real changes were made to any courses
+        solo.clickOnButton("Calculate my current CGPA");
+        Assert.assertTrue(solo.searchText("3.42"));
+
+        solo.goBack();
+        solo.waitForActivity("MyCompletedCoursesActivity");
+        solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
+
+
+        //Exit
+        solo.goBack();
+        solo.clickOnImageButton(0);
+        solo.waitForActivity("MainActivity");
+    }
 }
