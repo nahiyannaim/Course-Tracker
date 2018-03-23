@@ -47,7 +47,7 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
         solo.clickOnButton("Delete");
         Assert.assertFalse(solo.searchText("ENGL 1300"));
 
-        solo.goBackToActivity("DueDatesActivity");
+        //solo.goBackToActivity("DueDatesActivity");
     }
     public void testAddReminder() {
         solo.waitForActivity("MainActivity");
@@ -84,8 +84,8 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
 
         solo.goBackToActivity("DueDatesActivity");
 
-        solo.goBack();
-        solo.waitForActivity("MainActivity");
+//        solo.goBack();
+//        solo.waitForActivity("MainActivity");
     }
     public void testInvalidDelete() {
         solo.waitForActivity("MainActivity");
@@ -99,8 +99,8 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
         solo .waitForDialogToOpen();
         Assert.assertTrue(solo.searchText("Warning"));
 
-        solo.goBack();
-        solo.waitForActivity("MainActivity");
+//        solo.goBack();
+//        solo.waitForActivity("MainActivity");
 
     }
 
@@ -236,6 +236,11 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
         solo.waitForDialogToOpen();
         Assert.assertTrue(solo.searchText("Warning"));
         solo.goBack();
+
+        solo.goBackToActivity("DueDatesActivity");
+
+        solo.goBack();
+        solo.waitForActivity("MainActivity");
 
     }
 
