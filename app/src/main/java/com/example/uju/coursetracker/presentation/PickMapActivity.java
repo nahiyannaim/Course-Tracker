@@ -24,7 +24,8 @@ public class PickMapActivity extends AppCompatActivity {
     }
 
     public void activateButtons(){
-        but1 = (ImageButton)findViewById(R.id.imageButton);
+
+        but1 = findViewById(R.id.imageButton);
         but1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,7 +34,7 @@ public class PickMapActivity extends AppCompatActivity {
             }
         });
 
-        but2 = (ImageButton) findViewById(R.id.imageButton2);
+        but2 = findViewById(R.id.imageButton2);
         but2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +43,7 @@ public class PickMapActivity extends AppCompatActivity {
             }
         });
 
-        but3 = (ImageButton) findViewById(R.id.imageButton3);
+        but3 = findViewById(R.id.imageButton3);
         but3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

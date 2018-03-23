@@ -23,6 +23,7 @@
         android:layout_alignLeft="@+id/imageButton2"
         android:layout_alignStart="@+id/imageButton2"
         android:layout_below="@+id/imageButton2"
+        android:contentDescription="@string/e1Button"
         app:srcCompat="@drawable/b_e1" />
 
     <ImageButton
@@ -33,6 +34,7 @@
         android:layout_marginTop="220dp"
         android:layout_toEndOf="@+id/imageButton3"
         android:layout_toRightOf="@+id/imageButton3"
+        android:contentDescription="@string/e2Button"
         app:srcCompat="@drawable/b_e2" />
 
     <ImageButton
@@ -44,5 +46,6 @@
         android:layout_alignTop="@+id/imageButton2"
         android:layout_marginLeft="75dp"
         android:layout_marginStart="75dp"
+        android:contentDescription="@string/e3Button"
         app:srcCompat="@drawable/b_e3" />
 </RelativeLayout>

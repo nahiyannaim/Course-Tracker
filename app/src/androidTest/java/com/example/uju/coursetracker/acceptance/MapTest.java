@@ -1,9 +1,12 @@
 package com.example.uju.coursetracker.acceptance;
 
+import android.graphics.Point;
 import android.test.ActivityInstrumentationTestCase2;
 import com.example.uju.coursetracker.presentation.MainActivity;
 import com.robotium.solo.Solo;
 import junit.framework.Assert;
+
+import com.example.uju.coursetracker.R;
 
 /**
  * Created by daniel on 2018-03-22.
@@ -23,234 +26,272 @@ public class MapTest extends ActivityInstrumentationTestCase2<MainActivity>{
         super.setUp();
         solo = new Solo(getInstrumentation(), getActivity());
 
-        // Disable this for full acceptance test
-        // System.out.println("Injecting stub database.");
-        // Services.createDataAccess(new DataAccessStub(Main.dbName));
     }
 
     @Override
     public void tearDown() throws Exception
     {
         super.tearDown();
-        solo.finishOpenedActivities();
     }
 
     public void testEITCMaps(){
         solo.waitForActivity("MainActivity");
         solo.clickOnImageButton(0);
         solo.clickOnMenuItem("EITC Maps");
+
+        solo.waitForActivity("PickMapActivity");
         solo.assertCurrentActivity("Expected activity: PickMapActivity", "PickMapActivity");
 
 
         //TEST MAP SLIDER FOR EITC E1
-        solo.clickOnButton("e1_button");
-        solo.assertCurrentActivity("","");                                    //check that you are on the slider activity
+        solo.clickOnImageButton(0);
+        solo.waitForActivity("E1Activity", 120000);
 
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc1");      //check that the right image is shown (10 times)
+        //check that you are on the slider activity
+        solo.assertCurrentActivity("Expected activity: E1Activity","E1Activity");
 
-        solo.clickOnButton("");                                                         //click on "next" button 9 times
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc2");
+        Point size = new Point();
+        solo.getCurrentActivity().getWindowManager().getDefaultDisplay().getSize(size);
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc3");
+        //check that the right image is shown (10 times)
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc4");
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc1).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc5");
+        //swipe left 9 times
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc2).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc6");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc3).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc7");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc4).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc8");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc5).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc9");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc6).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc10");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc7).isVisible());
 
-        //TEST MAP SLIDER BACKWARDS (USING SLIDER "BACK" BUTTON)
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc8).isVisible());
 
-        solo.clickOnButton("");                                                         //click on "prev" button 9 times
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc9");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc9).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc8");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc10).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc7");
+        //TEST MAP SLIDER BACKWARDS //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc6");
+        //swipe right 9 times
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc5");
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc9).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc4");
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc8).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc3");
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc7).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc2");
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc6).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e1eitc1");
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc5).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc4).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc3).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc2).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e1eitc1).isVisible());
 
         solo.goBack();
-        // check that you are on the pick map activity
+        solo.waitForActivity("PickMapActivity");
+
+        // check that you are on the pick map activity ///////////////////////////////////////////////////////////////////////////////////////////
+
         solo.assertCurrentActivity("Expected activity: PickMapActivity","PickMapActivity");
 
-        //TEST MAP SLIDER FOR EITC E2 /////////////////////////////////////////////////////////////////////////////////////////////////////
+        //TEST MAP SLIDER FOR EITC E2 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        solo.clickOnButton("e2_button");
-        solo.assertCurrentActivity("","");                                    //check that you are on the slider activity
+        solo.clickOnImageButton(1);
+        solo.waitForActivity("E2Activity");
 
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc1");      //check that the right image is shown (9 times)
+        //check that you are on the slider activity //////////////////////////////////////////////////////////////////////////////////////////////
 
-        solo.clickOnButton("");                                                         //click on "next" button 8 times
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc2");
+        solo.assertCurrentActivity("Expected activity: E2Activity","E2Activity");
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc3");
+        //check that the right image is shown (9 times) //////////////////////////////////////////////////////////////////////////////////////////
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc4");
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc1).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc5");
+        //swipe left 8 times /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc6");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc2).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc7");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc3).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc8");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc4).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc9");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc5).isVisible());
 
-        //TEST MAP SLIDER BACKWARDS (USING SLIDER "BACK" BUTTON)
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc6).isVisible());
 
-        solo.clickOnButton("");                                                         //click on "prev" button 8 times
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc8");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc7).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc7");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc8).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc6");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc9).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc5");
+        //TEST MAP SLIDER BACKWARDS //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc4");
+        //swipe right 8 times
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc3");
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc8).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc2");
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc7).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e2eitc1");
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc6).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc5).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc4).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc3).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc2).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e2eitc1).isVisible());
 
         solo.goBack();
-        // check that you are on the pick map activity
+        solo.waitForActivity("PickMapActivity");
+
+        // check that you are on the pick map activity ///////////////////////////////////////////////////////////////////////////////////////////
+
         solo.assertCurrentActivity("Expected activity: PickMapActivity","PickMapActivity");
 
-        //TEST MAP SLIDER FOR EITC E3 /////////////////////////////////////////////////////////////////////////////////////////////////////
+        //TEST MAP SLIDER FOR EITC E3 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        solo.clickOnButton("e3_button");
-        solo.assertCurrentActivity("","");                                    //check that you are on the slider activity
+        solo.clickOnImageButton(2);
+        solo.waitForActivity("E3Activity");
 
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc1");      //check that the right image is shown (12 times)
+        //check that you are on the slider activity //////////////////////////////////////////////////////////////////////////////////////////////
 
-        solo.clickOnButton("");                                                         //click on "next" button 11 times
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc2");
+        solo.assertCurrentActivity("Expected activity: E3Activity","E3Activity");
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc3");
+        //check that the right image is shown (12 times) /////////////////////////////////////////////////////////////////////////////////////////
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc4");
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc1).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc5");
+        //swipe left 11 times ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc6");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc2).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc7");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc3).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc8");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc4).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc9");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc5).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc10");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc6).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc11");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc7).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc12");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc8).isVisible());
 
-        //TEST MAP SLIDER BACKWARDS (USING SLIDER "BACK" BUTTON)
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc11");        //click on "prev" button 11 times
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc9).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc10");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc10).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc9");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc11).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc8");
+        solo.drag(size.x-10, 10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc12).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc7");
+        //TEST MAP SLIDER BACKWARDS //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc6");
+        //swipe right 11 times
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc5");
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc11).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc4");
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc10).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc3");
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc9).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc2");
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc8).isVisible());
 
-        solo.clickOnButton("");
-        Assert.assertEquals(solo.getImage(0).getContentDescription(), "e3eitc1");
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc7).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc6).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc5).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc4).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc3).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc2).isVisible());
+
+        solo.drag(10, size.x-10, size.y/2, size.y/2,1);
+        Assert.assertTrue(solo.getCurrentActivity().getResources().getDrawable(R.drawable.facilities_e3eitc1).isVisible());
 
         solo.goBack();
-        // check that you are on the pick map activity
+        solo.waitForActivity("PickMapActivity");
+
+        // check that you are on the pick map activity ///////////////////////////////////////////////////////////////////////////////////////////
         solo.assertCurrentActivity("Expected activity: PickMapActivity","PickMapActivity");
 
         solo.goBack();
-        //check that you are on the main activity
+        solo.waitForActivity("MainActivity");
+
+        //check that you are on the main activity ////////////////////////////////////////////////////////////////////////////////////////////////
         solo.assertCurrentActivity("Expected activity: MainActivity","MainActivity");
-
-
     }
 }

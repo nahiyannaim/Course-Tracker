@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.example.uju.coursetracker.R;
 /**
  * Created by francisokoro on 2018-03-22.
+ * True
  */
 
 public class ImageAdapter extends PagerAdapter {
@@ -32,6 +33,8 @@ public class ImageAdapter extends PagerAdapter {
                                            R.drawable.facilities_e3eitc7,R.drawable.facilities_e3eitc8,
                                            R.drawable.facilities_e3eitc9,R.drawable.facilities_e3eitc10,
                                            R.drawable.facilities_e3eitc11,R.drawable.facilities_e3eitc12};
+    //int i = 0;
+
 
     public ImageAdapter(Context context,int tpe){
         cntxt=context;
@@ -40,6 +43,7 @@ public class ImageAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
+
         int len =0;
         if(type==1){
             len = e1ImgIds.length;
@@ -71,7 +75,7 @@ public class ImageAdapter extends PagerAdapter {
             id_s = e3ImgIds;
         }
         ImageView imageView = new ImageView(cntxt);
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         imageView.setImageResource(id_s[position]);
         container.addView(imageView,0);
         return imageView;
