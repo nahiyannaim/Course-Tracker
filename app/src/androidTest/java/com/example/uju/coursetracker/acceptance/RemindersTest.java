@@ -36,7 +36,34 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
         solo.clickOnButton("Delete");
         Assert.assertFalse(solo.searchText("ENGL 1300"));
 
-        //solo.goBackToActivity("DueDatesActivity");
+        //RESTORE DB
+        solo.clickOnButton("Add Reminder");
+        solo.waitForActivity("CreateNewReminderActivity");
+        solo.assertCurrentActivity("Expected activity CreateNewReminder Activity", "CreateNewReminderActivity");
+
+        Assert.assertTrue(solo.searchText("ENGL 1300"));
+        Assert.assertTrue(solo.searchText("C"));
+        solo.clickOnText("ENGL 1300");
+
+
+        boolean actual = solo.searchText("Reminder Type:");
+        assertEquals("RemType text not found", true, actual);
+
+        solo.pressSpinnerItem(0, 2);
+        actual = solo.isSpinnerTextSelected(0, "Midterm");
+        assertEquals("Spinner is not Midterm", true, actual);
+
+
+        solo.clearEditText(0);
+        solo.enterText(0, "02/19/2018");
+
+        solo.clickOnButton("DONE");
+        solo.waitForActivity("DueDatesActivity");
+        solo.assertCurrentActivity("Expected activity DueDatesActivity", "DueDatesActivity");
+
+
+        solo.goBack();
+        solo.waitForActivity("MainActivity");
     }
     public void testAddReminder() {
         solo.waitForActivity("MainActivity");
@@ -46,6 +73,7 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
 
         //ADD REMINDER
         solo.clickOnButton("Add Reminder");
+        solo.waitForActivity("CreateNewReminderActivity");
         solo.assertCurrentActivity("Expected activity CreateNewReminder Activity", "CreateNewReminderActivity");
 
         Assert.assertTrue(solo.searchText("ECON 1020"));
@@ -65,21 +93,27 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
         solo.enterText(0, "07/23/2018");
 
         solo.clickOnButton("DONE");
+        solo.waitForActivity("DueDatesActivity");
         solo.assertCurrentActivity("Expected activity DueDatesActivity", "DueDatesActivity");
 
         Assert.assertTrue(solo.searchText("ECON 1020"));
         Assert.assertTrue(solo.searchText("Assignment"));
         Assert.assertTrue(solo.searchText("Due: 07/23/2018"));
 
-        solo.goBackToActivity("DueDatesActivity");
+        //RESTORE DB
 
-//        solo.goBack();
-//        solo.waitForActivity("MainActivity");
+        solo.clickOnText("ECON 1020",2);
+        solo.clickOnButton("Delete");
+        Assert.assertTrue(solo.searchText("ECON 1020",0));
+
+        solo.goBack();
+        solo.waitForActivity("MainActivity");
     }
     public void testInvalidDelete() {
         solo.waitForActivity("MainActivity");
         solo.clickOnImageButton(0);
         solo.clickOnMenuItem("My Reminders");
+        solo.waitForActivity("DueDatesActivity");
         solo.assertCurrentActivity("Expected activity DueDatesActivity", "DueDatesActivity");
 
         //INVALID DELETE
@@ -88,8 +122,9 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
         solo .waitForDialogToOpen();
         Assert.assertTrue(solo.searchText("Warning"));
 
-//        solo.goBack();
-//        solo.waitForActivity("MainActivity");
+        solo.goBack();
+        solo.waitForActivity("MainActivity");
+
 
     }
 
@@ -97,10 +132,12 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
         solo.waitForActivity("MainActivity");
         solo.clickOnImageButton(0);
         solo.clickOnMenuItem("My Reminders");
+        solo.waitForActivity("DueDatesActivity");
         solo.assertCurrentActivity("Expected activity DueDatesActivity", "DueDatesActivity");
 
         //TEST W/OUT CLICKING ON COURSE
         solo.clickOnButton("Add Reminder");
+        solo.waitForActivity("CreateNewReminderActivity");
         solo.assertCurrentActivity("Expected activity CreateNewReminder Activity", "CreateNewReminderActivity");
 
         solo.clickOnButton("DONE");
@@ -145,7 +182,10 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
         solo.clickOnButton("DONE");
         solo.waitForDialogToOpen();
         Assert.assertTrue(solo.searchText("Warning"));
+
+        solo.goBackToActivity("DueDatesActivity");
         solo.goBack();
+        solo.waitForActivity("MainActivity");
 
     }
     public void testInvalidDate()
@@ -153,6 +193,7 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
         solo.waitForActivity("MainActivity");
         solo.clickOnImageButton(0);
         solo.clickOnMenuItem("My Reminders");
+        solo.waitForActivity("DueDatesActivity");
         solo.assertCurrentActivity("Expected activity DueDatesActivity", "DueDatesActivity");
 
         //ADD REMINDER
