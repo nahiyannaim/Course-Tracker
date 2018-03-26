@@ -296,11 +296,11 @@ public class DataAccessTest extends TestCase
 //
 //        System.out.println("Finished test");
 //
-//    }
-//
-//    public void testRemindersDB()
-//    {
-//
+    }
+
+    public void testRemindersDB()
+    {
+
 //        System.out.println("\nStarting test DataAccessTest for: Reminders");
 //
 //        ArrayList<Reminder> reminders;

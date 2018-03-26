@@ -448,7 +448,7 @@ public class DataAccessObject implements DataAccess
         try
         {
             // Should check for empty values and not update them
-            values = "Grade='" +reminder.getDueDate()
+            values = "Date='" +reminder.getDueDate()
                     +"'";
             where = "where CourseID='" +reminder.getCourseID() +"'";
             cmdString = "Update Reminders " +" Set " +values +" " +where;
