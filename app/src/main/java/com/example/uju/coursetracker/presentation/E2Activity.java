@@ -6,10 +6,12 @@ import android.os.Bundle;
 
 import com.example.uju.coursetracker.R;
 
-public class E2Activity extends AppCompatActivity {
+public class E2Activity extends AppCompatActivity
+{
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_e2);
 

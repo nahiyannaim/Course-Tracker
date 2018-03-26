@@ -5,15 +5,11 @@ import android.test.ActivityInstrumentationTestCase2;
 import com.example.uju.coursetracker.presentation.MainActivity;
 import com.robotium.solo.Solo;
 import junit.framework.Assert;
-
 import com.example.uju.coursetracker.R;
 
-/**
- * Created by daniel on 2018-03-22.
- * True - Last Push
- */
 
-public class MapTest extends ActivityInstrumentationTestCase2<MainActivity>{
+public class MapTest extends ActivityInstrumentationTestCase2<MainActivity>
+{
     private Solo solo;
 
     public MapTest()
@@ -34,7 +30,8 @@ public class MapTest extends ActivityInstrumentationTestCase2<MainActivity>{
         super.tearDown();
     }
 
-    public void testEITCMaps(){
+    public void testEITCMaps()
+    {
         solo.waitForActivity("MainActivity");
         solo.clickOnImageButton(0);
         solo.clickOnMenuItem("EITC Maps");
