@@ -10,7 +10,7 @@ import com.example.uju.coursetracker.R;
 
 /**
  * Created by daniel on 2018-03-22.
- * True
+ * True - Last Push
  */
 
 public class MapTest extends ActivityInstrumentationTestCase2<MainActivity>{
