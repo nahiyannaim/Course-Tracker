@@ -10,8 +10,10 @@ public class DatabaseService
 
     public static DataAccess createDataAccess(String dbName)
     {
+        System.out.println(dbName);
         if (dataAccessService == null)
         {
+            System.out.println("IM HERE");
             dataAccessService = new DataAccessObject(dbName);
             dataAccessService.open(MainActivity.getDBPathName());
         }
