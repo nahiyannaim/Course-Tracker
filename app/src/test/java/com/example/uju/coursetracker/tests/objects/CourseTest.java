@@ -24,7 +24,10 @@ public class CourseTest extends TestCase
         Course course2 = new Course("Math 1500", "Calculus", "A");
         assertTrue(course.equals(course2));
 
-
+        //Grade validity
+        Course course21 = new Course("Math 1500","Calculus","T");
+        assertNull(course21);
+        Course course22 = new Course("Math 1200", "");
         //Inequality
         course3 = new Course("Stat 2000", "Statistics 2", "B");
         assertFalse(course2.equals(course3));

@@ -22,6 +22,7 @@ public class DataAccessObject implements DataAccess
     private ArrayList<Course> currentCourses;
     private ArrayList<Reminder> remindersList;
 
+
     private String cmdString;
     private int updateCount;
     private String result;

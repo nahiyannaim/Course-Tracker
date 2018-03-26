@@ -3,7 +3,7 @@ package com.example.uju.coursetracker.objects;
 public class Reminder
 {
     private String courseID; // e.g. COMP 1010
-    private String reminderType; // e.g. Assignment/ Project / Term test
+    private String reminderType; // e.g. Assignment/ Project / Midterm/ Quiz / Final
     private String dueDate; // MM/DD/YYYY
 
     public Reminder(String courseID, String reminderType, String dueDate)

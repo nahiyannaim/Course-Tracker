@@ -93,7 +93,7 @@ public class AccessReminders
                 result = "Invalid Month entered. Please enter a valid date in the format MM/DD/YYYY.";
 
             if(Integer.parseInt(date.substring(3, 5)) <= 0 || Integer.parseInt(date.substring(3, 5)) > maxDate)
-                result = "Invalid Date entered. Please enter a valid date in the format MM/DD/YYYY.";
+                result = "Invalid Day entered. Please enter a valid date in the format MM/DD/YYYY.";
 
             if(Integer.parseInt(date.substring(6)) < minYear || Integer.parseInt(date.substring(6)) > maxYear)
                 result = "Invalid Year entered. Please enter a valid date in the format MM/DD/YYYY.";

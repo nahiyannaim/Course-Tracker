@@ -17,6 +17,10 @@
             android:title="@string/navButton4" android:icon="@drawable/ic_calendar">
         </item>>
 
+        <item android:id="@+id/mapPage"
+            android:title="@string/navButton5" android:icon="@drawable/ic_location">
+        </item>>
+
     </group>
 
 
