@@ -1,6 +1,5 @@
 package com.example.uju.coursetracker.tests;
 
-
 import com.example.uju.coursetracker.tests.integration.IntegrationTests;
 import junit.framework.Test;
 import junit.framework.TestSuite;

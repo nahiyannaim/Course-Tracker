@@ -80,18 +80,24 @@ public class DataAccessObject implements DataAccess
         try
         {
             cmdString = "Select * from CompletedCourses";
-            rs5 = st3.executeQuery(cmdString);
-
-            while (rs5.next())
+            rs2 = st1.executeQuery(cmdString);
+        }
+        catch (Exception e)
+        {
+            processSQLError(e);
+        }
+        try
+        {
+            while (rs2.next())
             {
-                myID = rs5.getString("CourseID");
-                myCourseName = rs5.getString("Name");
-                myGrade = rs5.getString("Grade");
+                myID = rs2.getString("CourseID");
+                myCourseName = rs2.getString("Name");
+                myGrade = rs2.getString("Grade");
 
                 course = new Course(myID, myCourseName, myGrade);
                 completedCoursesList.add(course);
             }
-            rs5.close();
+            rs2.close();
         }
         catch (Exception e)
         {
@@ -209,6 +215,7 @@ public class DataAccessObject implements DataAccess
 
     public String getCurrentCoursesSeq(List<Course> currentCoursesList)
     {
+
         Course course;
         String myID, myCourseName, myGrade;
         myID = EOF;

@@ -1,6 +1,5 @@
 package com.example.uju.coursetracker.tests;
 
-
 import com.example.uju.coursetracker.tests.business.BusinessTests;
 import com.example.uju.coursetracker.tests.objects.ObjectTests;
 import com.example.uju.coursetracker.tests.persistence.PersistenceTests;

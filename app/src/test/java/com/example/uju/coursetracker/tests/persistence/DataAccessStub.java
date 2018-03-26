@@ -247,10 +247,14 @@ public class DataAccessStub implements DataAccess
 
     public String insertCompletedCourse(Course course)
     {
+        string result;
         if(course != null)
         {
             oldCourses.add(course);
+            result = null''
         }
+        else
+
 
         return null;
     }
