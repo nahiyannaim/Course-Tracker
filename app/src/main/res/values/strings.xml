@@ -45,7 +45,7 @@
     <string name="e3Button">e3_button</string>
     <string name="navButton1">My Courses</string>
     <string name="pickMap">pickMap</string>
-    <string name="pickMapText">Pick A Map To View</string>
+    <string name="pickMapText">Pick a Map to view:</string>
     <string name="navButton2">My Current CGPA</string>
     <string name="navButton3">Predict Next CGPA</string>
     <string name="navButton4">My Reminders</string>

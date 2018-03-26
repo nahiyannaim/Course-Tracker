@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.uju.coursetracker.R;
-import com.example.uju.coursetracker.objects.ImageAdapter;
 
 public class E1Activity extends AppCompatActivity {
 

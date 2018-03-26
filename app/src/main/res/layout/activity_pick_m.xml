@@ -10,11 +10,10 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/imageButton3"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
         android:text="@string/pickMapText"
-        android:textColor="@android:color/black"
         android:textSize="36sp"
-        android:textStyle="bold"
-       />
+        android:textStyle="italic" />
 
     <ImageButton
         android:id="@+id/imageButton"
