@@ -157,33 +157,100 @@ public class PredictCGPATest  extends ActivityInstrumentationTestCase2<MainActiv
         solo.clickOnMenuItem("Predict Next CGPA");
         solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
 
-        solo.clickOnButton("Create");
-        Assert.assertTrue(solo.searchText("Warning"));
-        Assert.assertTrue(solo.searchText("Please enter a valid course ID"));
+        // Should show 3.37 before making any changes to courses
+        solo.clickOnButton("Predict my CGPA");
+        Assert.assertTrue(solo.searchText("3.37"));
+
         solo.goBack();
+        solo.waitForActivity("MyCurrentCoursesActivity");
+        solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
 
-        Assert.assertTrue(solo.searchText("100: Gary Chalmers"));
-        solo.clickOnText("100: Gary Chalmers");
 
+        // Trying to create course with Invalid/Empty course ID
+        solo.clickOnButton("Create");
+        solo.waitForDialogToOpen();
+        Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("Please enter a valid Course ID."));
+        solo.goBack();
+        solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
+
+
+        // Trying to update a course with Empty grade
+        Assert.assertTrue(solo.searchText("SOCO 1200"));
+        solo.clickOnText("SOCO 1200");
         solo.clearEditText(1);
         solo.clickOnButton("Update");
         solo.waitForDialogToOpen();
         Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("Please enter a valid grade."));
         solo.goBack();
+        solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
 
-        solo.enterText(1, "Something Something");
 
+        // Trying to update a course with Invalid grade
+        Assert.assertTrue(solo.searchText("ENGL 1300"));
+        solo.clickOnText("ENGL 1300");
+        solo.clearEditText(1);
+        solo.enterText(1, "XXXXXXX");
+        solo.clickOnButton("Update");
+        solo.waitForDialogToOpen();
+        Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("Please enter a valid grade."));
+        solo.goBack();
+        solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
+
+
+        //Updating a course that is not in the list
         solo.clearEditText(0);
-        solo.enterText(0, "987654321");
+        solo.clearEditText(1);
+        solo.enterText(0, "ASIA 1700");
+        solo.enterText(1, "A+");
+        solo.clickOnButton("Update");
+        solo.waitForDialogToOpen();
+        Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("Cannot Update a course that is not in the list."));
+        solo.goBack();
+        solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
+
+
+        //Deleting a course that is not in the list
+        solo.clearEditText(0);
+        solo.clearEditText(1);
+        solo.enterText(0, "PSYC 1500");
+        solo.enterText(1, "B+");
         solo.clickOnButton("Delete");
         solo.waitForDialogToOpen();
         Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("Cannot Delete a course that is not in the list."));
         solo.goBack();
+        solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
 
-        solo.clickOnButton("Update");
-        solo.waitForDialogToOpen();
-        Assert.assertTrue(solo.searchText("Fatal error"));
+
+        //Creating a duplicate course with same courseID
+        Assert.assertTrue(solo.searchText("ECON 1020"));
+        solo.clearEditText(0);
+        solo.clearEditText(1);
+        solo.enterText(0, "ECON 1020");
+        solo.enterText(1, "A");
+        solo.clickOnButton("Create");
+        Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("This Course already exists in the list."));
         solo.goBack();
-        solo.assertCurrentActivity("Expected activity HomeActivity", "HomeActivity");
+        solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
+
+
+        //Should show 3.37 since no real changes were made to any courses
+        solo.clickOnButton("Predict my CGPA");
+        Assert.assertTrue(solo.searchText("3.37"));
+
+        solo.goBack();
+        solo.waitForActivity("MyCurrentCoursesActivity");
+        solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
+
+
+        //Exit
+        solo.goBack();
+        solo.clickOnImageButton(0);
+        solo.waitForActivity("MainActivity");
     }
 }
