@@ -17,7 +17,8 @@ public class BusinessPersistenceSeamTest extends TestCase
     {
         super(arg0);
     }
-
+//   ******   run with stub
+    // comment out real sql connection
     public void testAccessCourses()
     {
 
