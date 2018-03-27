@@ -36,9 +36,9 @@ public class PredictCGPATest  extends ActivityInstrumentationTestCase2<MainActiv
         solo.clickOnMenuItem("Predict Next CGPA");
         solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
 
-        // Should show 3.37 before making any changes to courses
+        // Should show 3.54 before making any changes to courses
         solo.clickOnButton("Predict my CGPA");
-        Assert.assertTrue(solo.searchText("3.37"));
+        Assert.assertTrue(solo.searchText("3.54"));
 
         solo.goBack();
         solo.waitForActivity("MyCurrentCoursesActivity");
@@ -51,22 +51,22 @@ public class PredictCGPATest  extends ActivityInstrumentationTestCase2<MainActiv
         Assert.assertTrue(solo.searchText("SOCO 1200"));
         solo.clickOnText("SOCO 1200");
         Assert.assertTrue(solo.searchEditText("SOCO 1200"));
-        Assert.assertTrue(solo.searchEditText("B"));
+        Assert.assertTrue(solo.searchEditText("A"));
 
         solo.clearEditText(1);
-        solo.enterText(1, "A+");
+        solo.enterText(1, "F");
         solo.clickOnButton("Update");
         solo.clickOnButton("Predict my CGPA");
 
-        //Should have 3.47 GPA once ECON 1020 grade changed from A+ to D
-        Assert.assertTrue(solo.searchText("3.47"));
+        //Should have 3.27 GPA once SOCO 1200 grade changed from A to F
+        Assert.assertTrue(solo.searchText("3.27"));
 
         solo.goBack();
         solo.waitForActivity("MyCurrentCoursesActivity");
         solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
 
         Assert.assertTrue(solo.searchEditText("SOCO 1200"));
-        Assert.assertTrue(solo.searchEditText("A+"));
+        Assert.assertTrue(solo.searchEditText("F"));
 
 
         ////////////////
@@ -75,20 +75,20 @@ public class PredictCGPATest  extends ActivityInstrumentationTestCase2<MainActiv
         Assert.assertTrue(solo.searchText("ENGL 1300"));
         solo.clickOnText("ENGL 1300");
         Assert.assertTrue(solo.searchEditText("ENGL 1300"));
-        Assert.assertTrue(solo.searchEditText("C"));
+        Assert.assertTrue(solo.searchEditText("A"));
 
         solo.clickOnButton("Delete");
         solo.clickOnButton("Predict my CGPA");
 
-        //Should have 3.57 GPA once ENGL 1300 course is deleted
-        Assert.assertTrue(solo.searchText("3.57"));
+        //Should have 3.22 GPA once ENGL 1300 course is deleted
+        Assert.assertTrue(solo.searchText("3.22"));
 
         solo.goBack();
         solo.waitForActivity("MyCurrentCoursesActivity");
         solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
 
-        Assert.assertTrue(solo.searchEditText("ENGL 1300"));
-        Assert.assertTrue(solo.searchEditText("C"));
+//        Assert.assertTrue(solo.searchEditText("ENGL 1300"));
+//        Assert.assertTrue(solo.searchEditText("A"));
 
 
         ///////////////
@@ -103,8 +103,8 @@ public class PredictCGPATest  extends ActivityInstrumentationTestCase2<MainActiv
         solo.clickOnButton("Create");
         solo.clickOnButton("Predict my CGPA");
 
-        //Should have 3.34 GPA once COMP 4300 course is created with a grade of F
-        Assert.assertTrue(solo.searchText("3.34"));
+        //Should have 3.0 GPA once COMP 4300 course is created with a grade of F
+        Assert.assertTrue(solo.searchText("3.0"));
 
         solo.goBack();
         solo.waitForActivity("MyCurrentCoursesActivity");
@@ -123,7 +123,7 @@ public class PredictCGPATest  extends ActivityInstrumentationTestCase2<MainActiv
         solo.clearEditText(0);
         solo.clearEditText(1);
         solo.enterText(0, "ENGL 1300");
-        solo.enterText(1, "C");
+        solo.enterText(1, "A");
         solo.clickOnButton("Create");
 
         Assert.assertTrue(solo.searchText("SOCO 1200"));
@@ -131,13 +131,13 @@ public class PredictCGPATest  extends ActivityInstrumentationTestCase2<MainActiv
         //solo.clearEditText(0);
         //solo.enterText(0, "SOCO 1200");
         solo.clearEditText(1);
-        solo.enterText(1, "B");
+        solo.enterText(1, "A");
         solo.clickOnButton("Update");
 
 
-        //Should show 3.37 after restoring to original contents
+        //Should show 3.54 after restoring to original contents
         solo.clickOnButton("Predict my CGPA");
-        Assert.assertTrue(solo.searchText("3.37"));
+        Assert.assertTrue(solo.searchText("3.54"));
         solo.goBack();
         solo.waitForActivity("MyCurrentCoursesActivity");
         solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
@@ -157,9 +157,9 @@ public class PredictCGPATest  extends ActivityInstrumentationTestCase2<MainActiv
         solo.clickOnMenuItem("Predict Next CGPA");
         solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
 
-        // Should show 3.37 before making any changes to courses
+        // Should show 3.54 before making any changes to courses
         solo.clickOnButton("Predict my CGPA");
-        Assert.assertTrue(solo.searchText("3.37"));
+        Assert.assertTrue(solo.searchText("3.54"));
 
         solo.goBack();
         solo.waitForActivity("MyCurrentCoursesActivity");
@@ -239,9 +239,9 @@ public class PredictCGPATest  extends ActivityInstrumentationTestCase2<MainActiv
         solo.assertCurrentActivity("Expected activity MyCurrentCoursesActivity", "MyCurrentCoursesActivity");
 
 
-        //Should show 3.37 since no real changes were made to any courses
+        //Should show 3.54 since no real changes were made to any courses
         solo.clickOnButton("Predict my CGPA");
-        Assert.assertTrue(solo.searchText("3.37"));
+        Assert.assertTrue(solo.searchText("3.54"));
 
         solo.goBack();
         solo.waitForActivity("MyCurrentCoursesActivity");
