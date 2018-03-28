@@ -4,6 +4,7 @@ import com.example.uju.coursetracker.persistence.DataAccess;
 import com.example.uju.coursetracker.persistence.DataAccessObject;
 import com.example.uju.coursetracker.presentation.MainActivity;
 
+
 public class DatabaseService
 {
     private static DataAccess dataAccessService = null;
