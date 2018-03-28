@@ -26,7 +26,7 @@ public class ReminderTest extends TestCase
 
 
         //Inequality
-        reminder3 = new Reminder("STAT 2000", "Midterm", "01/01/2019");
+        reminder3 = new Reminder("COMP 3350", "Midterm", "07/19/2018");
         assertFalse(reminder2.equals(reminder3));
 
 

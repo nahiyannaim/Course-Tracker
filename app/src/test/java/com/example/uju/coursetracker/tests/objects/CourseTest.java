@@ -26,8 +26,16 @@ public class CourseTest extends TestCase
 
         //Grade validity
         Course course21 = new Course("Math 1500","Calculus","T");
-        assertNull(course21);
-        Course course22 = new Course("Math 1200", "");
+        assertEquals("", course21.getGrade());
+
+        //Course invalid name
+        Course course22 = new Course("Math 1500", "Algebra", "A");
+        assertFalse(course22.equals(course2));
+
+        //Course invalid ID
+        Course course23 = new Course("Math 1300", "Calculus", "A");
+        assertFalse(course2.equals(course23));
+
         //Inequality
         course3 = new Course("Stat 2000", "Statistics 2", "B");
         assertFalse(course2.equals(course3));

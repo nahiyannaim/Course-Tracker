@@ -53,7 +53,8 @@ public class Reminder
         if (other instanceof Reminder)
         {
             r = (Reminder) other;
-            if (((r.getCourseID() == null) && (courseID == null)) || (r.getCourseID().equals(courseID)))
+            if (((r.getCourseID() == null) && (courseID == null)) || (r.getCourseID().equals(courseID) && r.getReminderType().equals(reminderType)
+            && r.getDueDate().equals(dueDate)))
             {
                 result = true;
             }

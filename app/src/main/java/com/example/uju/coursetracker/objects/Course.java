@@ -14,7 +14,7 @@ public class Course
         this.courseID = id;
         this.courseName = name;
         this.breakdownList = new ArrayList<>();
-        this.grade = grade;
+        setGrade(grade);
     }
 
     //Constructor for new courses with no assigned grade, grade wont be instantiated
@@ -52,7 +52,21 @@ public class Course
 
     public void setGrade(String grade)
     {
-        this.grade = grade;
+        if (grade == null)
+        {
+            this.grade = null;
+        }
+       else if(grade.equalsIgnoreCase("A+") || grade.equalsIgnoreCase("A") || grade.equalsIgnoreCase("B+") ||
+                grade.equalsIgnoreCase("B") || grade.equalsIgnoreCase("C+") ||
+                grade.equalsIgnoreCase("C") || grade.equalsIgnoreCase("D") || grade.equalsIgnoreCase("F"))
+        {
+            this.grade = grade;
+        }
+        else
+        {
+            this.grade = "";
+        }
+
     }
 
     public ArrayList<Breakdown> getBreakdownList()
@@ -70,7 +84,7 @@ public class Course
         if (other instanceof Course)
         {
             c = (Course) other;
-            if (((c.getCourseID() == null) && (courseID == null)) || (c.getCourseID().equals(courseID)))
+            if (((c.getCourseID() == null) && (courseID == null)) || (c.getCourseID().equals(courseID) && c.getCourseName().equals(courseName)))
             {
                 result = true;
             }
