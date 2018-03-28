@@ -17,10 +17,6 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
     public void setUp() throws Exception
     {
         solo = new Solo(getInstrumentation(), getActivity());
-
-        // Disable this for full acceptance test
-        // System.out.println("Injecting stub database.");
-        // Services.createDataAccess(new DataAccessStub(Main.dbName));
     }
 
     @Override
@@ -45,7 +41,7 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
         solo.assertCurrentActivity("Expected activity MyCompletedCoursesActivity", "MyCompletedCoursesActivity");
 
 
-        ////////////////////////
+        ///////////////////////
         // Update
         ///////////////////////
         Assert.assertTrue(solo.searchText("WOMN 3000"));
@@ -71,7 +67,7 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
 
         ////////////////
         // Delete
-        ///////////////////////
+        ////////////////
         Assert.assertTrue(solo.searchText("MATH 1700"));
         solo.clickOnText("MATH 1700");
         Assert.assertTrue(solo.searchEditText("MATH 1700"));
@@ -90,12 +86,11 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
         Assert.assertTrue(solo.searchEditText("MATH 1700"));
         Assert.assertTrue(solo.searchEditText("A+"));
 
-        //Assert.assertFalse(solo.searchEditText("MATH 1700"));
 
 
         ///////////////
         // Create
-        ///////////////////////
+        ///////////////
         solo.clearEditText(0);
         solo.clearEditText(1);
 

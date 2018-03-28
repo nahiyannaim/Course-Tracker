@@ -109,7 +109,7 @@ public class DataAccessStub implements DataAccess
         old.add(course);
         course = new Course("MATH 1700", "Calculus 2","A+");
         old.add(course);
-        course = new Course("WOMN 1500", "Women And Gender Studies","D");
+        course = new Course("WOMN 3000", "Women And Gender Studies","D");
         old.add(course);
 
         //New Courses------------------------------------------------------------------------------

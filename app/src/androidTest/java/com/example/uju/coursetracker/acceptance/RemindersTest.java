@@ -1,7 +1,6 @@
 package com.example.uju.coursetracker.acceptance;
 
 import android.test.ActivityInstrumentationTestCase2;
-
 import com.robotium.solo.Solo;
 import junit.framework.Assert;
 import com.example.uju.coursetracker.presentation.MainActivity;
@@ -39,7 +38,6 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
         Assert.assertTrue(solo.searchText("Due: 02/19/2018"));
         solo.clickOnText("Due: 02/19/2018");
         solo.clickOnButton("Delete");
-        //Assert.assertFalse(solo.searchText("ENGL 1300"));
 
         //RESTORE DB
         solo.clickOnButton("Add Reminder");
@@ -143,6 +141,25 @@ public class RemindersTest extends ActivityInstrumentationTestCase2<MainActivity
         solo.waitForActivity("MainActivity");
         solo.clickOnImageButton(0);
         solo.clickOnMenuItem("My Reminders");
+        solo.waitForActivity("DueDatesActivity");
+        solo.assertCurrentActivity("Expected activity DueDatesActivity", "DueDatesActivity");
+
+
+        //TEST FOR ADDING A REMINDER THAT ALREADY EXISTS
+        solo.clickOnButton("Add Reminder");
+        solo.waitForActivity("CreateNewReminderActivity");
+        solo.assertCurrentActivity("Expected activity CreateNewReminder Activity", "CreateNewReminderActivity");
+        Assert.assertTrue(solo.searchText("ECON 1020"));
+        Assert.assertTrue(solo.searchText("A"));
+        solo.clickOnText("ECON 1020");
+        solo.clearEditText(0);
+        solo.enterText(0,"01/09/2018");
+        solo.clickOnButton("DONE");
+        solo.waitForDialogToOpen();
+        Assert.assertTrue(solo.searchText("Warning"));
+        Assert.assertTrue(solo.searchText("This reminder already exists. Cannot Add a duplicate reminder."));
+        solo.goBack();
+        solo.goBack();
         solo.waitForActivity("DueDatesActivity");
         solo.assertCurrentActivity("Expected activity DueDatesActivity", "DueDatesActivity");
 

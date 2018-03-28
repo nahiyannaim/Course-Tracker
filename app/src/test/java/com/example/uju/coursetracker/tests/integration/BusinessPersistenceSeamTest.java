@@ -1,6 +1,5 @@
 package com.example.uju.coursetracker.tests.integration;
 
-
 import com.example.uju.coursetracker.application.DatabaseService;
 import com.example.uju.coursetracker.business.AccessCourses;
 import com.example.uju.coursetracker.business.AccessReminders;
@@ -8,10 +7,9 @@ import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.objects.Reminder;
 import com.example.uju.coursetracker.presentation.MainActivity;
 import com.example.uju.coursetracker.tests.persistence.DataAccessStub;
-
 import junit.framework.TestCase;
-
 import java.util.ArrayList;
+
 
 public class BusinessPersistenceSeamTest extends TestCase
 {

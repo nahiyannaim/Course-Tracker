@@ -25,7 +25,8 @@ public class PickMapActivity extends AppCompatActivity
 
     }
 
-    public void activateButtons(){
+    public void activateButtons()
+    {
 
         but1 = findViewById(R.id.imageButton);
         but1.setOnClickListener(new View.OnClickListener()

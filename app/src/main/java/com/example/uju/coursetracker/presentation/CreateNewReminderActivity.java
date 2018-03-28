@@ -124,6 +124,7 @@ public class CreateNewReminderActivity extends AppCompatActivity
     public void buttonReminderCreateOnClick(View v)
     {
         String noCourseSelected = "Please select a Course from the list.";
+        String duplicateReminder = "This reminder already exists. Cannot Add a duplicate reminder.";
         String result;
 
         EditText editDate = (EditText) findViewById(R.id.editText);
@@ -148,7 +149,7 @@ public class CreateNewReminderActivity extends AppCompatActivity
                 }
                 else
                 {
-                    MessagesActivity.fatalError(this, result);
+                    MessagesActivity.warning(this, duplicateReminder);
                 }
             }
             else

@@ -5,7 +5,6 @@ import com.example.uju.coursetracker.objects.Reminder;
 import com.example.uju.coursetracker.persistence.DataAccess;
 import com.example.uju.coursetracker.persistence.DataAccessObject;
 import com.example.uju.coursetracker.presentation.MainActivity;
-
 import junit.framework.TestCase;
 import java.util.ArrayList;
 

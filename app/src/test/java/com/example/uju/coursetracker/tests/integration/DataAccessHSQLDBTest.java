@@ -4,7 +4,6 @@ import com.example.uju.coursetracker.application.DatabaseService;
 import com.example.uju.coursetracker.persistence.DataAccess;
 import com.example.uju.coursetracker.presentation.MainActivity;
 import com.example.uju.coursetracker.tests.persistence.DataAccessTest;
-
 import junit.framework.TestCase;
 
 
