@@ -17,6 +17,9 @@ public class DataAccessHSQLDBTest extends TestCase
     {
         super(arg0);
     }
+//////  *****  this has to run all asserts/tests of DataAccessTest with real sql
+    /// DataAccessTest should have some way of receiving from this class and execute all the asserts with SQL instead of stub db (DataAccessTest uses stub by default)
+    // this is already achieved using the NEW method in iteration 3 in DataAccessTest.java
 
     public void testDataAccess()
     {

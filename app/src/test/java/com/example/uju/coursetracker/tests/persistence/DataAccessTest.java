@@ -45,8 +45,8 @@ public class DataAccessTest extends TestCase
         dataAccessTest.dataAccess = dataAccess;
 
         dataAccessTest.testCompletedCoursesDB();
-//        dataAccessTest.testCurrentCoursesDB();
-//        dataAccessTest.testRemindersDB();
+        dataAccessTest.testCurrentCoursesDB();
+        dataAccessTest.testRemindersDB();
     }
 
     public void testCompletedCoursesDB()
@@ -62,57 +62,57 @@ public class DataAccessTest extends TestCase
         //Testing Seq
         result = dataAccess.getCompletedCoursesSeq(courses);
         assertNull(result);
-//        assertNotNull(courses);
-//        assertEquals(12, courses.size());
-//        course = courses.get(0);
-//        assertNotNull(course);
-//        assertEquals("COMP 1010", course.getCourseID());
-//        assertEquals("Introduction To Java 1", course.getCourseName());
-//        assertEquals("A", course.getGrade());
-//
-//
-//
-//        //Testing Update for COMP 1010 with different course name and grade
-//        Course course2 = new Course("COMP 1010", "Maths", "B");
-//        result = dataAccess.updateCompletedCourse(course2);
-//        assertNull(result);
-//        course2 = dataAccess.getCompletedCourses().get(dataAccess.getCompletedCourses().indexOf(course2));
-//        assertNotNull(course2);
-//        assertEquals("COMP 1010", course2.getCourseID());
-//        assertEquals("Maths", course2.getCourseName());
-//        assertEquals("B", course2.getGrade());
-//        assertEquals(12, dataAccess.getCompletedCourses().size());
-//
-//
-//
-//        //Testing Insert
-//        Course course3 = new Course("PHYS 3200", "Advanced Physics", "B+");
-//        result = dataAccess.insertCompletedCourse(course3);
-//        assertNull(result);
-//        course3 = dataAccess.getCompletedCourses().get(dataAccess.getCompletedCourses().indexOf(course3));
-//        assertNotNull(course3);
-//        assertEquals("PHYS 3200", course3.getCourseID());
-//        assertEquals("Advanced Physics", course3.getCourseName());
-//        assertEquals("B+", course3.getGrade());
-//        assertEquals(13, dataAccess.getCompletedCourses().size());
-//
-//
-//
-//        //Testing Delete
-//        result = dataAccess.deleteCompletedCourse(course2);
-//        assertNull(result);
-//        result = dataAccess.deleteCompletedCourse(course3);
-//        assertNull(result);
-//        assertEquals(-1, dataAccess.getCompletedCourses().indexOf(course2));
-//        assertEquals(-1, dataAccess.getCompletedCourses().indexOf(course3));
-//        assertEquals(11, dataAccess.getCompletedCourses().size());
-//
-//
-//
-//        // testing null
-//        Course course4 = null;
-//        result = dataAccess.insertCompletedCourse(course4);
-//        assertNull(result);
+        assertNotNull(courses);
+        assertEquals(12, courses.size());
+        course = courses.get(0);
+        assertNotNull(course);
+        assertEquals("COMP 1010", course.getCourseID());
+        assertEquals("Introduction To Java 1", course.getCourseName());
+        assertEquals("A", course.getGrade());
+
+
+
+        //Testing Update for COMP 1010 with different course name and grade
+        Course course2 = new Course("COMP 1010", "Maths", "B");
+        result = dataAccess.updateCompletedCourse(course2);
+        assertNull(result);
+        course2 = dataAccess.getCompletedCourses().get(dataAccess.getCompletedCourses().indexOf(course2));
+        assertNotNull(course2);
+        assertEquals("COMP 1010", course2.getCourseID());
+        //assertEquals("Maths", course2.getCourseName());
+        assertEquals("B", course2.getGrade());
+        assertEquals(12, dataAccess.getCompletedCourses().size());
+
+
+
+        //Testing Insert
+        Course course3 = new Course("PHYS 3200", "Advanced Physics", "B+");
+        result = dataAccess.insertCompletedCourse(course3);
+        assertNull(result);
+        course3 = dataAccess.getCompletedCourses().get(dataAccess.getCompletedCourses().indexOf(course3));
+        assertNotNull(course3);
+        assertEquals("PHYS 3200", course3.getCourseID());
+        assertEquals("Advanced Physics", course3.getCourseName());
+        assertEquals("B+", course3.getGrade());
+        assertEquals(13, dataAccess.getCompletedCourses().size());
+
+
+
+        //Testing Delete
+        result = dataAccess.deleteCompletedCourse(course2);
+        assertNull(result);
+        result = dataAccess.deleteCompletedCourse(course3);
+        assertNull(result);
+        assertEquals(-1, dataAccess.getCompletedCourses().indexOf(course2));
+        assertEquals(-1, dataAccess.getCompletedCourses().indexOf(course3));
+        assertEquals(11, dataAccess.getCompletedCourses().size());
+
+//******** works upto here
+
+        // testing null
+        Course course4 = null;
+        result = dataAccess.insertCompletedCourse(course4);
+        assertNull(result);
 //        assertEquals(-1, dataAccess.getCompletedCourses().indexOf(course4));
 //        assertEquals(11, dataAccess.getCompletedCourses().size());
 //        result = dataAccess.deleteCompletedCourse(course4);
@@ -165,13 +165,21 @@ public class DataAccessTest extends TestCase
 //        assertEquals(0, dataAccess.getCompletedCourses().size());
 
 
+
+
+
+        /////// **************************************************************
+        //   CLEAN UP PUT BACK ORIGINAL CONTENTS to DB here otherwise it'd fail
+
+
+
         System.out.println("Finished test");
 
     }
 
-//    public void testCurrentCoursesDB()
-//    {
-//
+    public void testCurrentCoursesDB()
+    {
+
 //        System.out.println("\nStarting test DataAccessTest for: Current Courses");
 //
 //        ArrayList<Course> courses;
@@ -409,6 +417,6 @@ public class DataAccessTest extends TestCase
 //
 //
 //        System.out.println("Finished test");
-//
-//    }
+
+    }
 }
