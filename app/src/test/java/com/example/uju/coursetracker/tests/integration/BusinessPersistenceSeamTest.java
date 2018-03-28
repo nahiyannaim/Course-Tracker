@@ -27,10 +27,10 @@ public class BusinessPersistenceSeamTest extends TestCase
         System.out.println("\nStarting Integration test of AccessCourses (Business) to Persistence Seam");
 
         //Uses Real HSQLDB
-        //DatabaseService.createDataAccess(MainActivity.dbName);
+        DatabaseService.createDataAccess(MainActivity.dbName);
 
         //Uses Stub DB
-        DatabaseService.createDataAccess(new DataAccessStub(MainActivity.dbName));
+        //DatabaseService.createDataAccess(new DataAccessStub(MainActivity.dbName));
 
 
         /////////////////////////////////////////////////////////////////////////////////

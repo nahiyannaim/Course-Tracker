@@ -13,7 +13,6 @@ public class DatabaseService
         System.out.println(dbName);
         if (dataAccessService == null)
         {
-            System.out.println("IM HERE");
             dataAccessService = new DataAccessObject(dbName);
             dataAccessService.open(MainActivity.getDBPathName());
         }
