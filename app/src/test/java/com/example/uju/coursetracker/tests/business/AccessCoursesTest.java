@@ -167,8 +167,8 @@ public class AccessCoursesTest extends TestCase
 
         assertNotNull(ac);
         assertNotNull(course);
-        assertEquals("SOCO 1200", course.getCourseID());
-        assertEquals("Introduction To Sociology", course.getCourseName());
+        assertEquals("ECON 1020", course.getCourseID());
+        assertEquals("Introduction To Economics", course.getCourseName());
         assertEquals("A", course.getGrade());
 
 
@@ -179,8 +179,8 @@ public class AccessCoursesTest extends TestCase
 
         assertNotNull(ac);
         assertNotNull(course);
-        assertEquals("ENGL 1300", course.getCourseID());
-        assertEquals("Intro To English Literature", course.getCourseName());
+        assertEquals("SOCO 1200", course.getCourseID());
+        assertEquals("Introduction To Sociology", course.getCourseName());
         assertEquals("A", course.getGrade());
 
 

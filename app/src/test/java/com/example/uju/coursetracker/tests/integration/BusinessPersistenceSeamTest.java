@@ -18,9 +18,6 @@ public class BusinessPersistenceSeamTest extends TestCase
         super(arg0);
     }
 
-    // Run with stub as default
-    // Comment out real sql connection
-
     public void testAccessCourses()
     {
         DatabaseService.closeDataAccess();
@@ -107,15 +104,14 @@ public class BusinessPersistenceSeamTest extends TestCase
         // For Current Courses
         /////////////////////////////////////////////////////////////////////////////////
 
-// SQL DB stores them using alphabetical order so instead of SOCO 1200 it finds ECON 1020 as first element in list
-//        // Accessing the 1st course
-//        course = ac.getSequentialCurrent();
-//
-//        assertNotNull(ac);
-//        assertNotNull(course);
-//        assertEquals("SOCO 1200", course.getCourseID());
-//        assertEquals("Introduction To Sociology", course.getCourseName());
-//        assertEquals("A", course.getGrade());
+        // Accessing the 1st course
+        course = ac.getSequentialCurrent();
+
+        assertNotNull(ac);
+        assertNotNull(course);
+        assertEquals("ECON 1020", course.getCourseID());
+        assertEquals("Introduction To Economics", course.getCourseName());
+        assertEquals("A", course.getGrade());
 
 
         list = new ArrayList<Course>();
@@ -176,16 +172,6 @@ public class BusinessPersistenceSeamTest extends TestCase
 
         DatabaseService.closeDataAccess();
 
-  //////*** USE OF RESULT variable
-//
-//        result = as.deleteStudent(student);
-//        assertNull(result);
-//        assertNull(as.getRandom("400"));
-//
-//        result = as.insertStudent(student);
-//        assertNull(result);
-
-
         System.out.println("Finished Integration test of AccessCourses (Business) to Persistence Seam");
     }
 
@@ -209,15 +195,14 @@ public class BusinessPersistenceSeamTest extends TestCase
 
         ar = new AccessReminders();
 
-// SQL DB stores them using alphabetical order so instead of SOCO 1200 it finds ECON 1020 as first element in list
-//        // Accessing the 1st reminder
-//        reminder = ar.getSequentialReminders();
-//
-//        assertNotNull(ar);
-//        assertNotNull(reminder);
-//        assertEquals("SOCO 1200", reminder.getCourseID());
-//        assertEquals("Assignment", reminder.getReminderType());
-//        assertEquals("01/02/2018", reminder.getDueDate());
+        // Accessing the 1st reminder
+        reminder = ar.getSequentialReminders();
+
+        assertNotNull(ar);
+        assertNotNull(reminder);
+        assertEquals("ECON 1020", reminder.getCourseID());
+        assertEquals("Assignment", reminder.getReminderType());
+        assertEquals("01/09/2018", reminder.getDueDate());
 
 
 
