@@ -149,16 +149,23 @@ public class DataAccessObject implements DataAccess
         String values;
 
         result = null;
-        try
+        if(course != null)
         {
-            values =  "'" +course.getCourseID() + "', '" +course.getCourseName() + "', '" +course.getGrade()+"'";
-            cmdString = "Insert into CompletedCourses " +" Values(" +values +")";
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1, updateCount);
+            try
+            {
+                values = "'" + course.getCourseID() + "', '" + course.getCourseName() + "', '" + course.getGrade() + "'";
+                cmdString = "Insert into CompletedCourses " + " Values(" + values + ")";
+                updateCount = st1.executeUpdate(cmdString);
+                result = checkWarning(st1, updateCount);
+            }
+            catch (Exception e)
+            {
+                result = processSQLError(e);
+            }
         }
-        catch (Exception e)
+        else
         {
-            result = processSQLError(e);
+            result = "ERROR: Inserting null course";
         }
 
         return result;
@@ -170,19 +177,26 @@ public class DataAccessObject implements DataAccess
         String where;
 
         result = null;
-        try
+        if(course != null)
         {
-            // Should check for empty values and not update them
-            values = "Grade='" +course.getGrade()
-                    +"'";
-            where = "where CourseID='" +course.getCourseID() +"'";
-            cmdString = "Update CompletedCourses " +" Set " +values +" " +where;
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1, updateCount);
+            try
+            {
+                // Should check for empty values and not update them
+                values = "Grade='" + course.getGrade()
+                        + "'";
+                where = "where CourseID='" + course.getCourseID() + "'";
+                cmdString = "Update CompletedCourses " + " Set " + values + " " + where;
+                updateCount = st1.executeUpdate(cmdString);
+                result = checkWarning(st1, updateCount);
+            }
+            catch (Exception e)
+            {
+                result = processSQLError(e);
+            }
         }
-        catch (Exception e)
+        else
         {
-            result = processSQLError(e);
+            result = "ERROR: Updating a null course";
         }
 
         return result;
@@ -193,17 +207,24 @@ public class DataAccessObject implements DataAccess
         String values;
 
         result = null;
-        try
+        if(course != null)
         {
-            values = course.getCourseID();
-            cmdString = "Delete from CompletedCourses where CourseID='" +values +"'";
+            try
+            {
+                values = course.getCourseID();
+                cmdString = "Delete from CompletedCourses where CourseID='" + values + "'";
 
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1, updateCount);
+                updateCount = st1.executeUpdate(cmdString);
+                result = checkWarning(st1, updateCount);
+            }
+            catch (Exception e)
+            {
+                result = processSQLError(e);
+            }
         }
-        catch (Exception e)
+        else
         {
-            result = processSQLError(e);
+            result = "ERROR: Deleting null course";
         }
 
         return result;
@@ -290,16 +311,23 @@ public class DataAccessObject implements DataAccess
         String values;
 
         result = null;
-        try
+        if(course != null)
         {
-            values =  "'" +course.getCourseID() + "', '" +course.getCourseName() + "', '" +course.getGrade()+"'";
-            cmdString = "Insert into CurrentCourses " +" Values(" +values +")";
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1, updateCount);
+            try
+            {
+                values = "'" + course.getCourseID() + "', '" + course.getCourseName() + "', '" + course.getGrade() + "'";
+                cmdString = "Insert into CurrentCourses " + " Values(" + values + ")";
+                updateCount = st1.executeUpdate(cmdString);
+                result = checkWarning(st1, updateCount);
+            }
+            catch (Exception e)
+            {
+                result = processSQLError(e);
+            }
         }
-        catch (Exception e)
+        else
         {
-            result = processSQLError(e);
+            result = "ERROR: Inserting null course";
         }
 
         return result;
@@ -311,19 +339,26 @@ public class DataAccessObject implements DataAccess
         String where;
 
         result = null;
-        try
+        if(course != null)
         {
-            // Should check for empty values and not update them
-            values = "Grade='" +course.getGrade()
-                    +"'";
-            where = "where CourseID='" +course.getCourseID() +"'";
-            cmdString = "Update CurrentCourses " +" Set " +values +" " +where;
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1, updateCount);
+            try
+            {
+                // Should check for empty values and not update them
+                values = "Grade='" + course.getGrade()
+                        + "'";
+                where = "where CourseID='" + course.getCourseID() + "'";
+                cmdString = "Update CurrentCourses " + " Set " + values + " " + where;
+                updateCount = st1.executeUpdate(cmdString);
+                result = checkWarning(st1, updateCount);
+            }
+            catch (Exception e)
+            {
+                result = processSQLError(e);
+            }
         }
-        catch (Exception e)
+        else
         {
-            result = processSQLError(e);
+            result = "ERROR: Updating a null course";
         }
 
         return result;
@@ -334,16 +369,23 @@ public class DataAccessObject implements DataAccess
         String values;
 
         result = null;
-        try
+        if(course != null)
         {
-            values = course.getCourseID();
-            cmdString = "Delete from CurrentCourses where CourseID='" +values +"'";
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1, updateCount);
+            try
+            {
+                values = course.getCourseID();
+                cmdString = "Delete from CurrentCourses where CourseID='" + values + "'";
+                updateCount = st1.executeUpdate(cmdString);
+                result = checkWarning(st1, updateCount);
+            }
+            catch (Exception e)
+            {
+                result = processSQLError(e);
+            }
         }
-        catch (Exception e)
+        else
         {
-            result = processSQLError(e);
+            result = "ERROR: Deleting null course";
         }
 
         return result;
@@ -431,16 +473,23 @@ public class DataAccessObject implements DataAccess
         String values;
 
         result = null;
-        try
+        if(reminder != null)
         {
-            values =  "'" +reminder.getCourseID() + "', '" +reminder.getReminderType() + "', '" +reminder.getDueDate()+"'";
-            cmdString = "Insert into Reminders " +" Values(" +values +")";
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1, updateCount);
+            try
+            {
+                values = "'" + reminder.getCourseID() + "', '" + reminder.getReminderType() + "', '" + reminder.getDueDate() + "'";
+                cmdString = "Insert into Reminders " + " Values(" + values + ")";
+                updateCount = st1.executeUpdate(cmdString);
+                result = checkWarning(st1, updateCount);
+            }
+            catch (Exception e)
+            {
+                result = processSQLError(e);
+            }
         }
-        catch (Exception e)
+        else
         {
-            result = processSQLError(e);
+            result = "ERROR: Inserting null reminder";
         }
 
         return result;
@@ -452,20 +501,27 @@ public class DataAccessObject implements DataAccess
         String where;
 
         result = null;
-        try
+        if(reminder != null)
         {
-            // Should check for empty values and not update them
-            values = "Grade='" +reminder.getDueDate()
-                    +"'";
-            where = "where CourseID='" +reminder.getCourseID() +"'";
-            cmdString = "Update Reminders " +" Set " +values +" " +where;
-            //System.out.println(cmdString);
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1, updateCount);
+            try
+            {
+                // Should check for empty values and not update them
+                values = "Grade='" + reminder.getDueDate()
+                        + "'";
+                where = "where CourseID='" + reminder.getCourseID() + "'";
+                cmdString = "Update Reminders " + " Set " + values + " " + where;
+                //System.out.println(cmdString);
+                updateCount = st1.executeUpdate(cmdString);
+                result = checkWarning(st1, updateCount);
+            }
+            catch (Exception e)
+            {
+                result = processSQLError(e);
+            }
         }
-        catch (Exception e)
+        else
         {
-            result = processSQLError(e);
+            result = "ERROR: Updating a null course";
         }
 
         return result;
@@ -478,19 +534,26 @@ public class DataAccessObject implements DataAccess
         String values3;
 
         result = null;
-        try
+        if(reminder != null)
         {
-            values = reminder.getCourseID();
-            values2 = reminder.getReminderType();
-            values3 = reminder.getDueDate();
-            cmdString = "Delete from Reminders where CourseID='" +values +"' AND Type='" + values2
-                    + "' AND Date='" + values3 + "'";
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1, updateCount);
+            try
+            {
+                values = reminder.getCourseID();
+                values2 = reminder.getReminderType();
+                values3 = reminder.getDueDate();
+                cmdString = "Delete from Reminders where CourseID='" + values + "' AND Type='" + values2
+                        + "' AND Date='" + values3 + "'";
+                updateCount = st1.executeUpdate(cmdString);
+                result = checkWarning(st1, updateCount);
+            }
+            catch (Exception e)
+            {
+                result = processSQLError(e);
+            }
         }
-        catch (Exception e)
+        else
         {
-            result = processSQLError(e);
+            result = "ERROR: Deleting null reminder";
         }
 
         return result;

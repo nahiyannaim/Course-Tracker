@@ -146,6 +146,7 @@ public class CurrentCGPATest extends ActivityInstrumentationTestCase2<MainActivi
         solo.goBack();
         solo.clickOnImageButton(0);
         solo.waitForActivity("MainActivity");
+        solo.assertCurrentActivity("Expected Activity MainActivity", "MainActivity");
     }
 
     public void testInvalidCompletedCourse()
