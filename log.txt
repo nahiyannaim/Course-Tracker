@@ -1,217 +1,169 @@
-Iteration 2 - Log
+Iteration 3 - Log
 
-Team meetings and rationales behind any decisions:
 
-Feb 18
-Fixed bug from Iteration 1. The bug was that the user input of lowercase grades was considered invalid by the program.
+Mar 19
+Meeting to discuss Iteration 3 process and requirements, choose which user story should be implemented
+Started to add code for integration tests
+Created single entry points (test suite) for each type of test: unit integration, and acceptance tests, called RunUnitTests, RunIntegrationTests, and RunAcceptanceTests.
 
-Feb 28
-Started implementing HSQL Database for iteration 2 of project
-Meeting to fix a bug from iteration 1. The bug was that the list item that the user selected was not highlighted. 
-Started implementing the activity page for “Due Dates”. “Due Dates” will contain the deadlines/due dates of assignments, midterms, etc. 
-Meeting to troubleshoot problems occuring with pulling and merging from GitHub (again)
-Started implementing the user interface for the “Create New Reminders” page
-Start cleanup of unnecessary codes
+Mar 20
+Decided on the user story for Iteration 3 - Lecture location (EITC Map) map
+Task assignments for individual members
+Added the required Robotium jar file to the project for acceptance test
+Finished creating templates for all the required kinds of tests for Iteration 3
+Finished implementing Acceptance test for valid completed courses in CurrentCGPATest 
 
-Mar 2
-Setting up the SQL database connection
-Designing and implementing due dates view/delete page 
-Finished implementing the SQL database substitute for the stub database
-Started planning on what the background of the home page should look like
-Started the implementation of Reminder object class
-Fixed Bug: Prediction now shows current CGPA if there are zero current semester courses instead of showing 0.0
+Mar 21
+Started implementing Acceptance test for invalid completed courses in CurrentCGPATest
+Started creating the Acceptance tests for Reminders
+Started creating the Acceptance tests for PredictCGPA
+Started implementation of iteration 3 big user story - Lecture locations (EITC Map)
 
-Mar 5
-Delete button works for due dates
-Create button still not working for new reminder
-New reminder does not show in due dates page\
+Mar 22
+Finished implementation of Lecture locations (EITC Map)
+Started creating the Acceptance Tests for EITC Map story
+Finished the Acceptance Tests for CurrentCGPA
+ 
+Mar 23
+Started implementation for Lecture locations activity
+Started integration tests for project
+Tests failing when switching connection to real HSQLDB
+Business-Persistence seam test template created
 
-Mar 6 (Voice call)
-Made changes to “Create new reminders” page
+Mar 26
+Business-Persistence seam test is now complete.
+DataAccess Integration tests still incomplete and failing
+All acceptance tests passed
 
-Mar 9
-Create New Reminder and Due dates now working 100% with SQL database
-Curr CGPA and Predict CGPA cleanup done. Removed duplications and hard coded strings. Cleanup based on iteration 1 feedback.
-UI Changes in Create new reminder
-
-Mar 10
-SQL database implementation completed for entire application
-Stub is now isolated in test package.
-Cosmetic overhaul for due dates and create new reminder
-
-Mar 11
-Stub now contains the same methods from DataAccess Interface. Also created the test file for Stub.
-Created tests for the entire Business, Objects and Persistence packages.
-Dependency injection for SQL
-
-Mar 12
-Back button in Due Dates page now takes you to home page instead of circling around to previous pages.
-Input Validation for due dates added. 
-Bug fix: no selected course in create new reminder now gives appropriate warning
-AccessCoursesTest completed, AccessRemindersTest completed, StubDatabaseTest completed
-Completed testing for Objects and Persistence package.
-Met with professor to discuss fixing issues based on iteration 1 feedback
-Working copy of Iteration 2
-
-Mar 13
-Drew the revised architectural sketch for iteration 2
-Cleaned up some dead code and made braces indentations/spaces consistent throughout the app. 
-Validation of due dates and course grades completed and relocated to business package.
-Persistence calls in presentation layer not there anymore. Using Business layer as middle man now.
-Changed all fatal errors into user friendly warning messages throughout the app.
-Final UI testing and preparing project handin
+Mar 27
+Made changes with DataAccessStub and DataAccessObject to fix issues with DataAccess Integration tests
+Finished the Integration tests for DataAccess
+Drew the revised architectural sketch for iteration 3 to reflect the seams being tested with integration tests
+Finishing up team retrospective activity
+Final code cleanup
+Final Test run for all 3 kinds of tests Unit, Integration and Acceptance (on actual device)
+Preparing project handin
 
 
 Task assignments, estimates, and actual time spent:
 
-Updating Navigation menu with new items
-Assigned to: Francis 
-Estimated Cost: 0.5 hours
-Actual time: 0.2 hours
- 
-Display all the due dates in list view
-Assigned to: Daniel
-Estimated Cost: 1 hour
-Actual time: 2 hours
-
-Due dates add/edit and delete buttons created
-Assigned to: Daniel
-Estimated Cost: 0.5 hours 
-Actual time: 2 hours
-
-Integrate necessary HSQL files in the project directory (SQL Setup) and isolate Stub to test package
-Assigned to: Nahiyan
-Estimated Cost: 1 hour
-Actual time: 1 hour 
-
-Incorporate real SQL database replacing the stub for Completed Courses and current CGPA calculator
-Assigned to: Nahiyan, Christian
+EITC Map user story (Layout)
+Assigned to: Daniel, Francis
 Estimated Cost: 2 hours
-Actual time:3.5 hours
- 
-Incorporate real SQL database replacing the stub for Current Courses and CGPA prediction
-Assigned to: Nahiyan, Christian
-Estimated Cost: 2 hours
-Actual time: 3.5 hours 
+Actual time: 3 hours
 
-Created and modified the Courses database Script file with SQL queries/statements
-Assigned to: Nahiyan, Christian
+EITC Map user story (Java)
+Assigned to: Daniel, Francis
 Estimated Cost: 1 hour
-Actual time:1 hour 
+Actual time: 1 hour
 
-Fixed bug from iteration 1. The list item that the user selected was not highlighted.
-Assigned to: Nahiyan, Christian
-Estimated Cost: 20 minutes
-Actual time: 30 minutes
+Change Navigation menu to incorporate EITC Map
+Assigned to: Francis
+Estimated Cost: 1 hour
+Actual time: 45 minutes
 
-Fixed Bug: Prediction now shows current CGPA instead of showing 0.0, if there are zero current semester courses 
-Assigned to: Nahiyan, Christian
+Update the Unit Testing for Reminder Object
+Assigned to: Uju
 Estimated Cost: 30 minutes
-Actual time: 15 minutes
+Actual time: 20 minutes
 
-Fixed bug/Added more input validation so that user input of lowercase grades is recognized by the app
-Assigned to: Nahiyan
-Estimated Cost: 1 hour
+Update the Unit Testing for Course Object to include some error checking
+Assigned to: Uju
+Estimated Cost: 30 minutes
 Actual time: 1 hour
 
-Calculate currentCGPA and predict next CGPA rewritten entirely to remove duplicated code and hard coded values
-Assigned to: Nahiyan
-Estimated Cost: 1.5 hour
-Actual time: 1.5 hour
-
-Modified stub database to account for reminders 
-Assigned to: Francis 
-Estimated Cost: 1 hour
-Actual time: 1 hour
-
-Created the add reminder page (Spinner and text fields) 
+Acceptance testing for Reminders story
 Assigned to: Uju
-Estimated Cost: 1 hour
-Actual time: 2 hours
-
-Implementation for the create new reminder page 
-Assigned to: Uju
-Estimated Cost: 2 hours
-Actual time: 1 hour
-
-Listview for the reminder page
-Assigned to: Uju
-Estimated Cost: 1 hour
-Actual time: 0.5 hour
-
-Tests for the Reminder Object
-Assigned to: Uju
-Estimated Cost: 45 minutes
-Actual time: 1 hour
-
-Implement whitebox testing for entire Business Package (AccessCoursesTest & AccessRemindersTest)
-Assigned to: Nahiyan
-Estimated Cost: 4 hours
+Estimated Cost: 2 hours 
 Actual time: 5 hours
 
-Implement whitebox testing for entire Persistence Package (StubDatabaseTest)
+Acceptance testing for Current CGPA story
 Assigned to: Nahiyan
 Estimated Cost: 5 hours
 Actual time: 7 hours
 
-Add more test cases to Objects (Course, Breakdown, Reminder) based on Iteration 1 feedback
+Acceptance testing for EITC Map story
+Assigned to: Daniel
+Estimated Cost: 6 hours
+Actual time: 15 hours
+
+Acceptance testing for Predict CGPA story
+Assigned to: Christian
+Estimated Cost: 5 hours
+Actual time: 8 hours
+
+Data Access with HSQLDB - Integration test (DataAccessTest)
+Assigned to: Christian
+Estimated Cost: 4 hours
+Actual time: 9 hours
+
+Business-Persistence Seam test - Integration test
+Assigned to: Nahiyan
+Estimated Cost: 4 hours
+Actual time: 5 hours
+
+Create single entry points (test suite) for each type of test: unit, integration, and acceptance tests, called RunUnitTests, RunIntegrationTests, and RunAcceptanceTests. 
 Assigned to: Nahiyan
 Estimated Cost: 1 hour
-Actual time: 2 hours
+Actual time: 1 hour
 
-Date input validation for Create new reminder page
+Make all tests involving the Persistence layer pass with BOTH stub and real database 
 Assigned to: Nahiyan, Christian
-Estimated Cost: 1 hour
-Actual time: 1 hour
+Estimated Cost: 6 hours
+Actual time: 7 hours
 
-Made CourseID, Type, and Date a primary key in the SQL script to allow insertion of multiple reminders for the same course
-Assigned to: Christian
-Estimated Cost: 1 hour
-Actual time: 30 minutes
-
-Overall code cleanup for project
-Assigned to: Christian
-Estimated Cost: 2 hours
-Actual time: 2 hours
-
-Implement user friendly warning messages for inserting a duplicate course, updating a non-existing course and deleting a non-existing course
-Assigned to: Christian, Nahiyan
-Estimated Cost: 1 hour
-Actual time: 1 hour
-
-Implement user friendly warning messages for blank reminder due dates, invalid input for reminder due dates  and unselected current course for reminders
-Assigned to: Christian, Nahiyan
-Estimated Cost: 1 hour
-Actual time: 1 hour
+Make the required changes to DataAccessStub and DataAccessObject to fix issues with Integration tests with the real database
+Assigned to: Nahiyan, Christian
+Estimated Cost: 3 hours
+Actual time: 3 hours
 
 
 
 
+New Big story for Iteration 3:
 
-Revised Big story for Iteration 2:
-
-Assignment/Due dates Reminder
-As a student, I want reminders for my assignments, midterms, projects, etc for my current courses
-Priority: high
-Cost: 7 days
+My Lecture Location Map
+As a student, I want to be able to view the map of a campus building to know where my courses are taught
+Priority: High
+Cost: 4 days
 
 New detailed stories:
 
-Create a new reminder for my current courses
-Make a new reminder for a specific course with its due date and reminder type
+Look at a map of a specific floor of a campus building
+View all rooms in all floors for a campus building in a Map view
+Priority: High
+Cost: 2 days
+
+View a map of a few buildings together  in one place
+Must be able to switch and view from one building to another
+Priority: High
+Cost: 2 days
+
+Developer stories:
+
+CurrentCGPA Acceptance testing
+Priority: High
+Cost: 3 days
+ 
+PredictCGPA Acceptance testing
 Priority: High
 Cost: 3 days
 
-Delete a reminder from all my reminders 
-Remove a certain reminder for a specific course for a particular reminder type
+Reminders Acceptance testing
+Priority: High
+Cost: 3 days
+
+Pick Map Acceptance testing
 Priority: High
 Cost: 2 days
 
-Create multiple reminders for the same course
-Make reminders with different reminder types (Assignment, Quiz, Midterm
-and Project) and different due dates for the same course
+Business-Persistence Seam test for Integration test
 Priority: High
-Cost: 2 days
+Cost: 4 days
+
+DataAccess testing with HSQLDB
+Priority: High
+Cost: 3 days
 
 
 Known Outstanding bugs and their fixes:
