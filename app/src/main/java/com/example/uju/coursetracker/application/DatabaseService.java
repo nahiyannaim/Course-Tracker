@@ -27,7 +27,6 @@ public class DatabaseService
             dataAccessService = alternateDataAccessService;
             dataAccessService.open(MainActivity.getDBPathName());
         }
-
         return dataAccessService;
     }
 

@@ -41,7 +41,7 @@
         app:itemTextColor="@color/darkgray"
         app:menu="@menu/nav_bar"></android.support.design.widget.NavigationView>
 
-  
+
 
 </android.support.v4.widget.DrawerLayout>
 

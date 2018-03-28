@@ -13,6 +13,7 @@ public class AcceptanceTests
         suite.addTestSuite(CurrentCGPATest.class);
         suite.addTestSuite(PredictCGPATest.class);
         suite.addTestSuite(RemindersTest.class);
+        suite.addTestSuite(MapTest.class);
         return suite;
     }
 }
