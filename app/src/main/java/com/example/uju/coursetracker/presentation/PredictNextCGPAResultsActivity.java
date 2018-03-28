@@ -18,7 +18,7 @@ public class PredictNextCGPAResultsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_predict_next_cgpa_results);
 
-        TextView tv = (TextView) findViewById(R.id.predictResult);
+        TextView tv = findViewById(R.id.predictResult);
 
         AccessCourses ac = new AccessCourses();
         AccessCourses ac2 = new AccessCourses();

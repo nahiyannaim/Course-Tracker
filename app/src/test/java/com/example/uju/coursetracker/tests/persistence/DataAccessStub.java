@@ -10,7 +10,7 @@ import java.util.*;
 // This is the stub database for the project
 // This stub database will have a set of initial contents and will provide the data for Testing
 
-public class StubDatabase implements DataAccess
+public class DataAccessStub implements DataAccess
 {
     private String dbName;
     private String dbType = "stub";
@@ -18,12 +18,12 @@ public class StubDatabase implements DataAccess
     private ArrayList<Course> newCourses;
     private ArrayList<Reminder> remList;
 
-    public StubDatabase(String dbName)
+    public DataAccessStub(String dbName)
     {
         this.dbName = dbName;
     }
 
-    public StubDatabase()
+    public DataAccessStub()
     {
         this(MainActivity.dbName);
     }
@@ -43,38 +43,37 @@ public class StubDatabase implements DataAccess
     {
         Reminder currRem;
 
+        //ECON 1020 Reminders
+        currRem = new Reminder("ECON 1020", "Assignment", "01/09/2018");
+        remList.add(currRem);
+        currRem = new Reminder("ECON 1020", "Assignment", "03/15/2018");
+        remList.add(currRem);
+        currRem = new Reminder("ECON 1020", "Final", "04/12/2018");
+        remList.add(currRem);
+        currRem = new Reminder("ECON 1020", "Midterm", "02/23/2018");
+        remList.add(currRem);
+        currRem = new Reminder("ECON 1020", "Quiz", "01/03/2018");
+        remList.add(currRem);
+        currRem = new Reminder("ECON 1020", "Quiz", "01/17/2018");
+        remList.add(currRem);
+
+        //ENGL 1300 Reminders
+        currRem = new Reminder("ENGL 1300", "Assignment", "02/25/2018");
+        remList.add(currRem);
+        currRem = new Reminder("ENGL 1300", "Final", "04/09/2018");
+        remList.add(currRem);
+        currRem = new Reminder("ENGL 1300", "Midterm", "02/19/2018");
+        remList.add(currRem);
+
         //SOCO 1200 Reminders
         currRem = new Reminder("SOCO 1200", "Assignment", "01/02/2018");
         remList.add(currRem);
         currRem = new Reminder("SOCO 1200", "Assignment", "02/09/2018");
         remList.add(currRem);
-        currRem = new Reminder("SOCO 1200", "Midterm", "02/20/2018");
-        remList.add(currRem);
         currRem = new Reminder("SOCO 1200", "Final", "04/02/2018");
         remList.add(currRem);
-
-        //ECON 1020 Reminders
-        currRem = new Reminder("ECON 1020", "Assignment", "03/15/2018");
+        currRem = new Reminder("SOCO 1200", "Midterm", "02/20/2018");
         remList.add(currRem);
-        currRem = new Reminder("ECON 1020", "Quiz", "01/17/2018");
-        remList.add(currRem);
-        currRem = new Reminder("ECON 1020", "Midterm", "02/23/2018");
-        remList.add(currRem);
-        currRem = new Reminder("ECON 1020", "Assignment", "01/09/2018");
-        remList.add(currRem);
-        currRem = new Reminder("ECON 1020", "Quiz", "01/03/2018");
-        remList.add(currRem);
-        currRem = new Reminder("ECON 1020", "Final", "04/12/2018");
-        remList.add(currRem);
-
-        //ENGL 1300 Reminders
-        currRem = new Reminder("ENGL 1300", "Final", "04/09/2018");
-        remList.add(currRem);
-        currRem = new Reminder("ENGL 1300", "Assignment", "02/25/2018");
-        remList.add(currRem);
-        currRem = new Reminder("ENGL 1300", "Midterm", "02/19/2018");
-        remList.add(currRem);
-
     }
 
     private void genCrs(ArrayList<Course> old ,ArrayList<Course> newC )
@@ -109,21 +108,11 @@ public class StubDatabase implements DataAccess
         old.add(course);
         course = new Course("MATH 1700", "Calculus 2","A+");
         old.add(course);
-        course = new Course("WOMN 1500", "Women And Gender Studies","D");
+        course = new Course("WOMN 3000", "Women And Gender Studies","D");
         old.add(course);
 
         //New Courses------------------------------------------------------------------------------
         //Electives
-        course = new Course("SOCO 1200", "Introduction To Sociology", "A");
-        bkDwnLst = course.getBreakdownList();
-        nwBk = new Breakdown("SOCO 1200", "Assignment",0.25);
-        bkDwnLst.add(nwBk);
-        nwBk = new Breakdown("SOCO 1200", "Midterm",0.35);
-        bkDwnLst.add(nwBk);
-        nwBk = new Breakdown("SOCO 1200", "Final",0.40);
-        bkDwnLst.add(nwBk);
-        newC.add(course);
-
         course = new Course("ECON 1020", "Introduction To Economics", "A");
         bkDwnLst = course.getBreakdownList();
         nwBk = new Breakdown("ECON 1020", "Assignment",0.80);
@@ -143,6 +132,16 @@ public class StubDatabase implements DataAccess
         nwBk = new Breakdown("ENGL 1300", "Final",0.40);
         bkDwnLst.add(nwBk);
         newC.add(course);
+
+        course = new Course("SOCO 1200", "Introduction To Sociology", "A");
+        bkDwnLst = course.getBreakdownList();
+        nwBk = new Breakdown("SOCO 1200", "Assignment",0.25);
+        bkDwnLst.add(nwBk);
+        nwBk = new Breakdown("SOCO 1200", "Midterm",0.35);
+        bkDwnLst.add(nwBk);
+        nwBk = new Breakdown("SOCO 1200", "Final",0.40);
+        bkDwnLst.add(nwBk);
+        newC.add(course);
     }
 
     public void close()
@@ -153,6 +152,7 @@ public class StubDatabase implements DataAccess
     public String updateCompletedCourse(Course course)
     {
         int index;
+        String result;
 
         if(course != null)
         {
@@ -161,14 +161,20 @@ public class StubDatabase implements DataAccess
             {
                 oldCourses.set(index, course);
             }
+            result = null;
+        }
+        else
+        {
+            result = "ERROR: Updating a null course";
         }
 
-        return null;
+        return result;
     }
 
     public String updateReminder(Reminder reminder)
     {
         int index;
+        String result;
 
         if(reminder != null)
         {
@@ -177,13 +183,20 @@ public class StubDatabase implements DataAccess
             {
                 remList.set(index, reminder);
             }
+            result = null;
         }
-        return null;
+        else
+        {
+            result = "ERROR: Updating a null reminder";
+        }
+
+        return result;
     }
 
     public String updateCurrentCourse(Course course)
     {
         int index;
+        String result;
 
         if(course != null)
         {
@@ -192,14 +205,20 @@ public class StubDatabase implements DataAccess
             {
                 newCourses.set(index, course);
             }
+            result = null;
+        }
+        else
+        {
+            result = "ERROR: Updating a null course";
         }
 
-        return null;
+        return result;
     }
 
     public String deleteCompletedCourse(Course course)
     {
         int index;
+        String result;
 
         if(course != null)
         {
@@ -208,14 +227,20 @@ public class StubDatabase implements DataAccess
             {
                 oldCourses.remove(index);
             }
+            result = null;
+        }
+        else
+        {
+            result = "ERROR: Deleting a null course";
         }
 
-        return null;
+        return result;
     }
 
     public String deleteReminder(Reminder reminder)
     {
         int index;
+        String result;
 
         if(reminder != null)
         {
@@ -224,14 +249,20 @@ public class StubDatabase implements DataAccess
             {
                 remList.remove(index);
             }
+            result = null;
+        }
+        else
+        {
+            result = "ERROR: Deleting a null reminder";
         }
 
-        return null;
+        return result;
     }
 
     public String deleteCurrentCourse(Course course)
     {
         int index;
+        String result;
 
         if(course != null)
         {
@@ -240,39 +271,65 @@ public class StubDatabase implements DataAccess
             {
                 newCourses.remove(index);
             }
+            result = null;
+        }
+        else
+        {
+            result = "ERROR: Deleting a null course";
         }
 
-        return null;
+        return result;
     }
 
     public String insertCompletedCourse(Course course)
     {
+        String result;
+
         if(course != null)
         {
             oldCourses.add(course);
+            result = null;
+        }
+        else
+        {
+            result = "ERROR: Inserting a course which is null";
         }
 
-        return null;
+        return result;
     }
 
     public String insertReminder(Reminder reminder)
     {
+        String result;
+
         if(reminder != null)
         {
             remList.add(reminder);
+            result = null;
+        }
+        else
+        {
+            result = "ERROR: Inserting a reminder which is null";
         }
 
-        return null;
+        return result;
     }
 
     public String insertCurrentCourse(Course course)
     {
+        String result;
+
         if(course != null)
         {
             newCourses.add(course);
+            result = null;
+        }
+        else
+        {
+            result = "ERROR: Inserting a course which is null";
         }
 
-        return null;
+        return result;
     }
 
     public String getCompletedCoursesSeq(List<Course> completedCoursesList)

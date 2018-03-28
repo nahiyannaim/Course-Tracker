@@ -4,7 +4,7 @@ import com.example.uju.coursetracker.application.DatabaseService;
 import com.example.uju.coursetracker.business.AccessCourses;
 import com.example.uju.coursetracker.objects.Course;
 import com.example.uju.coursetracker.presentation.MainActivity;
-import com.example.uju.coursetracker.tests.persistence.StubDatabase;
+import com.example.uju.coursetracker.tests.persistence.DataAccessStub;
 import junit.framework.TestCase;
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ public class AccessCoursesTest extends TestCase
         System.out.println("\nStarting test AccessCourses for: Completed Courses");
 
         DatabaseService.closeDataAccess();
-        DatabaseService.createDataAccess(new StubDatabase(dbName));
+        DatabaseService.createDataAccess(new DataAccessStub(dbName));
 
         Course course;
         AccessCourses ac = new AccessCourses();
@@ -153,7 +153,7 @@ public class AccessCoursesTest extends TestCase
         System.out.println("\nStarting test AccessCourses for: Current Courses");
 
         DatabaseService.closeDataAccess();
-        DatabaseService.createDataAccess(new StubDatabase(dbName));
+        DatabaseService.createDataAccess(new DataAccessStub(dbName));
 
         Course course;
         AccessCourses ac;
@@ -167,8 +167,8 @@ public class AccessCoursesTest extends TestCase
 
         assertNotNull(ac);
         assertNotNull(course);
-        assertEquals("SOCO 1200", course.getCourseID());
-        assertEquals("Introduction To Sociology", course.getCourseName());
+        assertEquals("ECON 1020", course.getCourseID());
+        assertEquals("Introduction To Economics", course.getCourseName());
         assertEquals("A", course.getGrade());
 
 
@@ -179,8 +179,8 @@ public class AccessCoursesTest extends TestCase
 
         assertNotNull(ac);
         assertNotNull(course);
-        assertEquals("ENGL 1300", course.getCourseID());
-        assertEquals("Intro To English Literature", course.getCourseName());
+        assertEquals("SOCO 1200", course.getCourseID());
+        assertEquals("Introduction To Sociology", course.getCourseName());
         assertEquals("A", course.getGrade());
 
 

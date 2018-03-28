@@ -24,6 +24,7 @@ public class AccessCourses
         completedCourses = null;
         currentCourses = null;
         course = null;
+        course2 = null;
         count = 0;
         count2 = 0;
     }

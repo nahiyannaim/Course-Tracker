@@ -4,7 +4,7 @@ import com.example.uju.coursetracker.application.DatabaseService;
 import com.example.uju.coursetracker.business.AccessReminders;
 import com.example.uju.coursetracker.objects.Reminder;
 import com.example.uju.coursetracker.presentation.MainActivity;
-import com.example.uju.coursetracker.tests.persistence.StubDatabase;
+import com.example.uju.coursetracker.tests.persistence.DataAccessStub;
 import junit.framework.TestCase;
 import java.util.ArrayList;
 
@@ -26,7 +26,7 @@ public class AccessRemindersTest extends TestCase
 
         System.out.println("\nStarting test AccessReminders for: test1");
 
-        DatabaseService.createDataAccess(new StubDatabase(dbName));
+        DatabaseService.createDataAccess(new DataAccessStub(dbName));
 
         ar = new AccessReminders();
 
@@ -36,9 +36,9 @@ public class AccessRemindersTest extends TestCase
 
         assertNotNull(ar);
         assertNotNull(reminder);
-        assertEquals("SOCO 1200", reminder.getCourseID());
+        assertEquals("ECON 1020", reminder.getCourseID());
         assertEquals("Assignment", reminder.getReminderType());
-        assertEquals("01/02/2018", reminder.getDueDate());
+        assertEquals("01/09/2018", reminder.getDueDate());
 
 
 
@@ -48,9 +48,9 @@ public class AccessRemindersTest extends TestCase
 
         assertNotNull(ar);
         assertNotNull(reminder);
-        assertEquals("SOCO 1200", reminder.getCourseID());
-        assertEquals("Midterm", reminder.getReminderType());
-        assertEquals("02/20/2018", reminder.getDueDate());
+        assertEquals("ECON 1020", reminder.getCourseID());
+        assertEquals("Final", reminder.getReminderType());
+        assertEquals("04/12/2018", reminder.getDueDate());
 
 
 
@@ -68,9 +68,9 @@ public class AccessRemindersTest extends TestCase
 
         assertNotNull(ar);
         assertNotNull(reminder);
-        assertEquals("ENGL 1300", reminder.getCourseID());
+        assertEquals("SOCO 1200", reminder.getCourseID());
         assertEquals("Midterm", reminder.getReminderType());
-        assertEquals("02/19/2018", reminder.getDueDate());
+        assertEquals("02/20/2018", reminder.getDueDate());
 
 
 
