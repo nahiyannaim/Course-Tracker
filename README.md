@@ -3,7 +3,7 @@
 *An Android app for post-secondary students and course advisors to calculate current CGPA of students and also predict their next CGPA based on their assumed final grades in the current semester. Additionally, the app also implements reminders for various due dates for quizzes, assignments, midterms etc.*
 
 <img src="course-tracker0.PNG" width="250"/> <img src="course-tracker1.PNG" width="250"/> <img src="course-tracker2.PNG" width="250"/>
-<img src="course-tracker3.PNG" width="250"/> <img src="course-tracker4.PNG" width="250"/>
+<img src="course-tracker3.PNG" width="250"/> <img src="course-tracker4.PNG" width="250"/> <img src="course-tracker5.PNG" width="250"/>
 
 
 ## Packages and Major source code files
